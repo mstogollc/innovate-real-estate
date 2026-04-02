@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Become an Affiliate | Innovate Real Estate</title>
+  <meta name="description" content="Partner with Innovate Real Estate as an affiliate. Earn referral commissions by connecting property owners with industry-leading tax strategies.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    body { background: var(--black); }
+
+    .affiliate-hero {
+      background: linear-gradient(135deg, var(--black) 0%, var(--dark-2) 100%);
+      border-bottom: 1px solid var(--border-dark);
+      padding: var(--space-20) var(--space-6);
+      text-align: center;
+    }
+
+    .affiliate-hero h1 {
+      font-size: var(--text-2xl);
+      font-weight: 900;
+      margin-bottom: var(--space-4);
+    }
+
+    .affiliate-hero p {
+      font-size: var(--text-lg);
+      color: var(--gray-light);
+      max-width: 55ch;
+      margin: 0 auto var(--space-8);
+      line-height: 1.65;
+    }
+
+    .affiliate-benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .benefit-pill {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      background: rgba(221,193,89,0.08);
+      border: 1px solid rgba(221,193,89,0.2);
+      border-radius: var(--radius-full);
+      padding: var(--space-3) var(--space-5);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--gold);
+      justify-content: center;
+    }
+
+    .affiliate-form-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: var(--space-16) var(--space-6);
+    }
+
+    .af-section-title {
+      font-size: var(--text-xl);
+      font-weight: 800;
+      margin-bottom: var(--space-2);
+    }
+
+    .af-section-sub {
+      font-size: var(--text-sm);
+      color: var(--gray-light);
+      margin-bottom: var(--space-8);
+    }
+
+    .af-form-card {
+      background: var(--dark);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      margin-bottom: var(--space-6);
+    }
+
+    .af-form-card h3 {
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: var(--space-6);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .af-form-card h3 span.card-num {
+      width: 28px;
+      height: 28px;
+      background: rgba(221,193,89,0.12);
+      border: 1px solid rgba(221,193,89,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--text-xs);
+      font-weight: 900;
+    }
+
+    .af-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-5);
+    }
+
+    .af-form-group {
+      margin-bottom: var(--space-5);
+    }
+
+    .af-form-group.full { grid-column: 1 / -1; }
+
+    .af-label {
+      display: block;
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--gray-light);
+      margin-bottom: var(--space-2);
+    }
+
+    .af-label .req { color: var(--gold); margin-left: 2px; }
+
+    .af-input,
+    .af-select,
+    .af-textarea {
+      width: 100%;
+      background: var(--dark-3);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      color: var(--white);
+      font-size: var(--text-sm);
+      transition: border-color var(--transition);
+    }
+
+    .af-input:focus,
+    .af-select:focus,
+    .af-textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(221,193,89,0.1);
+    }
+
+    .af-input.error { border-color: #e05555; }
+    .af-error { font-size: var(--text-xs); color: #e05555; margin-top: var(--space-2); display: none; }
+    .af-error.visible { display: block; }
+
+    .af-textarea { resize: vertical; min-height: 100px; }
+
+    .af-radio-group,
+    .af-checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+    }
+
+    .af-radio-option,
+    .af-check-option {
+      display: none;
+    }
+
+    .af-radio-label,
+    .af-check-label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      background: var(--dark-3);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-md);
+      padding: var(--space-3) var(--space-4);
+      cursor: pointer;
+      font-size: var(--text-sm);
+      color: var(--gray-light);
+      transition: all var(--transition);
+      user-select: none;
+    }
+
+    .af-radio-option:checked + .af-radio-label,
+    .af-check-option:checked + .af-check-label {
+      border-color: var(--gold);
+      color: var(--white);
+      background: rgba(221,193,89,0.08);
+    }
+
+    .af-radio-label:hover,
+    .af-check-label:hover {
+      border-color: rgba(221,193,89,0.3);
+      color: var(--white);
+    }
+
+    .af-check-label::before {
+      content: '';
+      width: 16px;
+      height: 16px;
+      border: 1.5px solid var(--border-dark);
+      border-radius: 3px;
+      flex-shrink: 0;
+      transition: all var(--transition);
+    }
+
+    .af-check-option:checked + .af-check-label::before {
+      background: var(--gold);
+      border-color: var(--gold);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='black' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13 4L6 11 3 8' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-size: 12px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .terms-check-row {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+    }
+
+    .terms-check-row input[type="checkbox"] {
+      margin-top: 2px;
+      accent-color: var(--gold);
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .terms-check-row label {
+      font-size: var(--text-xs);
+      color: var(--gray-light);
+      line-height: 1.55;
+      cursor: pointer;
+    }
+
+    .af-submit-btn {
+      width: 100%;
+      justify-content: center;
+      font-size: var(--text-base);
+      padding: var(--space-5);
+      margin-top: var(--space-6);
+    }
+
+    .af-success {
+      display: none;
+      text-align: center;
+      padding: var(--space-16) var(--space-8);
+      background: var(--dark);
+      border: 1px solid rgba(221,193,89,0.2);
+      border-radius: var(--radius-xl);
+      margin-top: var(--space-8);
+    }
+
+    .af-success.visible { display: block; }
+
+    @media (max-width: 700px) {
+      .affiliate-benefits { grid-template-columns: 1fr; }
+      .af-grid-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<div style="background:var(--dark);border-bottom:1px solid var(--border-dark);padding:var(--space-4) var(--space-6);display:flex;align-items:center;justify-content:space-between;">
+  <a href="index.html">
+    <img src="assets/logo.webp" alt="Innovate Real Estate" style="height:40px;width:auto;">
+  </a>
+  <a href="index.html" style="display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--gray-light);transition:color var(--transition);" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray-light)'">
+    <i data-lucide="arrow-left" style="width:16px;height:16px;"></i>
+    Back to Home
+  </a>
+</div>
+
+<!-- Hero -->
+<div class="affiliate-hero">
+  <div data-animate>
+    <span class="label" style="display:block;margin-bottom:var(--space-4);">Partner Program</span>
+    <h1>Become an Innovate Real Estate <span class="text-gold">Affiliate</span></h1>
+    <p>Connect your clients and contacts with the most powerful tax strategies available. You refer. We deliver. You earn.</p>
+    <div class="affiliate-benefits">
+      <div class="benefit-pill">
+        <i data-lucide="dollar-sign" style="width:16px;height:16px;"></i>
+        Competitive Commissions
+      </div>
+      <div class="benefit-pill">
+        <i data-lucide="users" style="width:16px;height:16px;"></i>
+        White-Glove Support
+      </div>
+      <div class="benefit-pill">
+        <i data-lucide="trending-up" style="width:16px;height:16px;"></i>
+        Real-Time Tracking
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Form -->
+<div class="affiliate-form-wrap">
+  <div style="text-align:center;margin-bottom:var(--space-10);" data-animate>
+    <h2 class="af-section-title">Affiliate Onboarding Application</h2>
+    <p class="af-section-sub">Fill out the form below to join our affiliate program. We'll be in touch within 1–2 business days.</p>
+  </div>
+
+  <form id="affiliate-form" novalidate>
+
+    <!-- Personal Info -->
+    <div class="af-form-card" data-animate>
+      <h3><span class="card-num">1</span>Personal Information</h3>
+      <div class="af-grid-2">
+        <div class="af-form-group">
+          <label class="af-label" for="af-name">First & Last Name <span class="req">*</span></label>
+          <input type="text" id="af-name" class="af-input" placeholder="Jane Smith" required>
+          <div class="af-error" id="af-name-err">Please enter your full name.</div>
+        </div>
+        <div class="af-form-group">
+          <label class="af-label" for="af-phone">Phone <span class="req">*</span></label>
+          <input type="tel" id="af-phone" class="af-input" placeholder="(555) 555-5555" required>
+          <div class="af-error" id="af-phone-err">Please enter a valid phone number.</div>
+        </div>
+        <div class="af-form-group">
+          <label class="af-label" for="af-email">Email <span class="req">*</span></label>
+          <input type="email" id="af-email" class="af-input" placeholder="jane@example.com" required>
+          <div class="af-error" id="af-email-err">Please enter a valid email.</div>
+        </div>
+        <div class="af-form-group">
+          <label class="af-label" for="af-city">City <span class="req">*</span></label>
+          <input type="text" id="af-city" class="af-input" placeholder="Miami" required>
+          <div class="af-error" id="af-city-err">Please enter your city.</div>
+        </div>
+        <div class="af-form-group full">
+          <label class="af-label" for="af-state">State <span class="req">*</span></label>
+          <select id="af-state" class="af-select" required>
+            <option value="">Select State</option>
+            <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option>
+            <option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option>
+            <option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option>
+            <option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option>
+            <option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option>
+            <option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
+            <option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option>
+            <option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option>
+            <option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
+            <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option>
+            <option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option>
+            <option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option>
+            <option>Wisconsin</option><option>Wyoming</option>
+          </select>
+          <div class="af-error" id="af-state-err">Please select your state.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Professional Status -->
+    <div class="af-form-card" data-animate>
+      <h3><span class="card-num">2</span>Professional Background</h3>
+      <div class="af-form-group">
+        <label class="af-label">Are you a Real Estate Professional?</label>
+        <div class="af-radio-group">
+          <input type="radio" name="af-rep" id="af-rep-yes" value="Yes" class="af-radio-option">
+          <label for="af-rep-yes" class="af-radio-label">Yes</label>
+          <input type="radio" name="af-rep" id="af-rep-no" value="No" class="af-radio-option">
+          <label for="af-rep-no" class="af-radio-label">No</label>
+          <input type="radio" name="af-rep" id="af-rep-ns" value="Not Sure" class="af-radio-option">
+          <label for="af-rep-ns" class="af-radio-label">Not Sure</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services to Refer -->
+    <div class="af-form-card" data-animate>
+      <h3><span class="card-num">3</span>Products Interested in Referring</h3>
+      <p style="font-size:var(--text-sm);color:var(--gray-light);margin-bottom:var(--space-5);">Select all services you're interested in referring clients for:</p>
+      <div class="af-checkbox-group">
+        <input type="checkbox" id="svc-costseg" value="Cost Segregation" class="af-check-option">
+        <label for="svc-costseg" class="af-check-label">Cost Segregation</label>
+
+        <input type="checkbox" id="svc-tpr" value="Tangible Property Regulations" class="af-check-option">
+        <label for="svc-tpr" class="af-check-label">Tangible Property Regulations</label>
+
+        <input type="checkbox" id="svc-unicap" value="263A UNICAP Exemption" class="af-check-option">
+        <label for="svc-unicap" class="af-check-label">263A UNICAP Exemption</label>
+
+        <input type="checkbox" id="svc-gzt" value="Green Zip Tape" class="af-check-option">
+        <label for="svc-gzt" class="af-check-label">Green Zip Tape</label>
+
+        <input type="checkbox" id="svc-mc" value="Method Change" class="af-check-option">
+        <label for="svc-mc" class="af-check-label">Method Change</label>
+
+        <input type="checkbox" id="svc-rnd" value="R&D Tax Credits" class="af-check-option">
+        <label for="svc-rnd" class="af-check-label">R&D Tax Credits</label>
+
+        <input type="checkbox" id="svc-energy" value="Energy Optimization" class="af-check-option">
+        <label for="svc-energy" class="af-check-label">Energy Optimization</label>
+
+        <input type="checkbox" id="svc-wealth" value="Wealth Strategies" class="af-check-option">
+        <label for="svc-wealth" class="af-check-label">Wealth Strategies</label>
+      </div>
+    </div>
+
+    <!-- Optional Fields -->
+    <div class="af-form-card" data-animate>
+      <h3><span class="card-num">4</span>Additional Information</h3>
+      <div class="af-form-group">
+        <label class="af-label" for="af-referred">Referred By (optional)</label>
+        <input type="text" id="af-referred" class="af-input" placeholder="Name of person who referred you to Innovate">
+      </div>
+      <div class="af-form-group">
+        <label class="af-label" for="af-notes">Notes (optional)</label>
+        <textarea id="af-notes" class="af-textarea" placeholder="Tell us about your network, typical clients, or anything else we should know..."></textarea>
+      </div>
+    </div>
+
+    <!-- Terms -->
+    <div class="af-form-card" data-animate>
+      <h3><span class="card-num">5</span>Terms & Agreement</h3>
+      <div style="background:var(--dark-3);border-radius:var(--radius-md);padding:var(--space-5);margin-bottom:var(--space-5);">
+        <p style="font-size:var(--text-xs);color:var(--gray-light);line-height:1.65;">
+          By submitting this affiliate application, you agree to partner with Innovate Real Estate in referring clients for tax strategy services. Commission rates and payment terms will be provided upon approval. You agree to accurately represent Innovate Real Estate's services and not make any guarantees of specific tax savings outcomes. You consent to receive communications regarding the affiliate program via phone, email, and SMS. This application does not guarantee acceptance into the affiliate program.
+        </p>
+      </div>
+      <div class="terms-check-row">
+        <input type="checkbox" id="af-terms" required>
+        <label for="af-terms">I agree to the affiliate program terms and consent to receive program communications from Innovate Real Estate. <span style="color:var(--gold);">*</span></label>
+      </div>
+      <div class="af-error" id="af-terms-err" style="margin-top:var(--space-3);">You must agree to the terms to apply.</div>
+    </div>
+
+    <button type="submit" class="btn btn--gold af-submit-btn">
+      <i data-lucide="send" style="width:18px;height:18px;"></i>
+      Submit Affiliate Application
+    </button>
+  </form>
+
+  <!-- Success -->
+  <div class="af-success" id="af-success">
+    <div style="width:72px;height:72px;background:rgba(221,193,89,0.1);border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-6);color:var(--gold);">
+      <i data-lucide="check-circle" style="width:36px;height:36px;"></i>
+    </div>
+    <h2 style="font-size:var(--text-2xl);font-weight:900;margin-bottom:var(--space-4);">Application Received!</h2>
+    <p style="font-size:var(--text-lg);color:var(--gray-light);max-width:45ch;margin:0 auto var(--space-8);line-height:1.65;">Thank you for your interest in our affiliate program. Our team will review your application and reach out within 1–2 business days.</p>
+    <div style="display:flex;flex-direction:column;gap:var(--space-4);align-items:center;">
+      <a href="index.html" class="btn btn--gold btn--lg">Return to Homepage</a>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div style="background:var(--black);border-top:1px solid var(--border-dark);padding:var(--space-6);text-align:center;">
+  <p style="font-size:var(--text-xs);color:var(--gray);">© 2025 Innovate Real Estate. Tax · Energy · Wealth | <a href="tel:8508053737" style="color:var(--gold);">850-805-3737</a></p>
+</div>
+
+<script>
+lucide.createIcons();
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('[data-animate]').forEach(el => io.observe(el));
+
+document.getElementById('af-phone').addEventListener('input', function() {
+  let val = this.value.replace(/\D/g, '');
+  if (val.length >= 6) val = '(' + val.slice(0,3) + ') ' + val.slice(3,6) + '-' + val.slice(6,10);
+  else if (val.length >= 3) val = '(' + val.slice(0,3) + ') ' + val.slice(3);
+  this.value = val;
+});
+
+function validateAF(id, errId, test) {
+  const el = document.getElementById(id);
+  const ok = test(el.value);
+  el.classList.toggle('error', !ok);
+  document.getElementById(errId).classList.toggle('visible', !ok);
+  return ok;
+}
+
+document.getElementById('affiliate-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  let valid = true;
+  valid = validateAF('af-name', 'af-name-err', v => v.trim().length > 1) && valid;
+  valid = validateAF('af-phone', 'af-phone-err', v => v.replace(/\D/g,'').length >= 10) && valid;
+  valid = validateAF('af-email', 'af-email-err', v => /\S+@\S+\.\S+/.test(v)) && valid;
+  valid = validateAF('af-city', 'af-city-err', v => v.trim().length > 0) && valid;
+  valid = validateAF('af-state', 'af-state-err', v => v.length > 0) && valid;
+  
+  const terms = document.getElementById('af-terms');
+  if (!terms.checked) {
+    document.getElementById('af-terms-err').classList.add('visible');
+    valid = false;
+  } else {
+    document.getElementById('af-terms-err').classList.remove('visible');
+  }
+  
+  if (!valid) return;
+  
+  this.style.display = 'none';
+  document.getElementById('af-success').classList.add('visible');
+  lucide.createIcons();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
+</body>
+</html>

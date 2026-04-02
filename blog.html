@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog & Tax Strategy Insights | Innovate Real Estate</title>
+  <meta name="description" content="Expert insights on cost segregation, bonus depreciation, 179D energy deductions, R&D tax credits, and advanced real estate tax strategies.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    .blog-page-hero {
+      background: var(--black);
+      padding: calc(var(--nav-height) + var(--space-16)) var(--space-6) var(--space-16);
+      border-bottom: 1px solid var(--border-dark);
+    }
+
+    .blog-filter-bar {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-12);
+    }
+
+    .filter-btn {
+      background: var(--dark-3);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-full);
+      padding: var(--space-2) var(--space-5);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--gray-light);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--black);
+    }
+
+    .blog-search {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      background: var(--dark-3);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-full);
+      padding: var(--space-2) var(--space-5);
+      margin-left: auto;
+      transition: border-color var(--transition);
+    }
+
+    .blog-search:focus-within {
+      border-color: rgba(221,193,89,0.4);
+    }
+
+    .blog-search input {
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: var(--text-sm);
+      width: 180px;
+      outline: none;
+    }
+
+    .blog-search input::placeholder { color: var(--gray); }
+
+    /* ── Featured Post ── */
+    .featured-post {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: var(--space-10);
+      align-items: center;
+      background: var(--dark-card);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      margin-bottom: var(--space-12);
+      transition: box-shadow var(--transition-slow);
+    }
+
+    .featured-post:hover {
+      box-shadow: 0 0 0 1px rgba(221,193,89,0.15), var(--shadow-lg);
+    }
+
+    .featured-post-img {
+      overflow: hidden;
+      height: 420px;
+    }
+
+    .featured-post-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+
+    .featured-post:hover .featured-post-img img { transform: scale(1.03); }
+
+    .featured-post-content {
+      padding: var(--space-10) var(--space-10) var(--space-10) 0;
+    }
+
+    .featured-label {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      background: rgba(221,193,89,0.1);
+      border: 1px solid rgba(221,193,89,0.2);
+      border-radius: var(--radius-full);
+      padding: var(--space-1) var(--space-4);
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--space-4);
+    }
+
+    .featured-post-title {
+      font-size: var(--text-xl);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: var(--space-5);
+    }
+
+    .featured-post-excerpt {
+      font-size: var(--text-base);
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+    }
+
+    .featured-post-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      font-size: var(--text-sm);
+      color: var(--gray);
+      margin-bottom: var(--space-6);
+    }
+
+    .post-author {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .post-author-avatar {
+      width: 28px;
+      height: 28px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--black);
+    }
+
+    /* ── Post Article Sections ── */
+    .article-section {
+      padding: var(--space-16) 0;
+      border-top: 1px solid var(--border-dark);
+    }
+
+    .article-grid {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: var(--space-16);
+      align-items: start;
+    }
+
+    .article-content {
+      max-width: 72ch;
+    }
+
+    .article-header {
+      margin-bottom: var(--space-8);
+    }
+
+    .article-image {
+      width: 100%;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      margin-bottom: var(--space-8);
+    }
+
+    .article-image img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+    }
+
+    .article-body h3 {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      margin: var(--space-6) 0 var(--space-3);
+      color: var(--white);
+    }
+
+    .article-body p {
+      color: rgba(255,255,255,0.78);
+      line-height: 1.75;
+      margin-bottom: var(--space-5);
+      font-size: var(--text-base);
+    }
+
+    .article-body ul {
+      color: rgba(255,255,255,0.78);
+      line-height: 1.75;
+      margin-bottom: var(--space-5);
+      padding-left: var(--space-6);
+    }
+
+    .article-body ul li {
+      margin-bottom: var(--space-2);
+    }
+
+    .article-body ul li::marker { color: var(--gold); }
+
+    .article-callout {
+      background: rgba(221,193,89,0.06);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+      padding: var(--space-5) var(--space-6);
+      margin: var(--space-8) 0;
+    }
+
+    .article-callout p {
+      color: rgba(255,255,255,0.9);
+      font-weight: 500;
+      font-style: italic;
+    }
+
+    .article-key-numbers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+      margin: var(--space-8) 0;
+    }
+
+    .key-num-card {
+      background: var(--dark-3);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      text-align: center;
+    }
+
+    .key-num-value {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 900;
+      color: var(--gold);
+      display: block;
+      margin-bottom: var(--space-1);
+    }
+
+    .key-num-label {
+      font-size: var(--text-xs);
+      color: var(--gray-light);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── Sidebar ── */
+    .blog-sidebar {
+      position: sticky;
+      top: calc(var(--nav-height) + var(--space-6));
+    }
+
+    .sidebar-widget {
+      background: var(--dark-card);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      margin-bottom: var(--space-6);
+    }
+
+    .sidebar-widget h4 {
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: var(--space-5);
+    }
+
+    .recent-post-item {
+      display: flex;
+      gap: var(--space-3);
+      margin-bottom: var(--space-5);
+      align-items: flex-start;
+    }
+
+    .recent-post-item:last-child { margin-bottom: 0; }
+
+    .recent-post-thumb {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .recent-post-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .recent-post-title {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.35;
+      transition: color var(--transition);
+    }
+
+    .recent-post-title:hover { color: var(--gold); }
+
+    .recent-post-date {
+      font-size: var(--text-xs);
+      color: var(--gray);
+      margin-top: var(--space-1);
+    }
+
+    @media (max-width: 1000px) {
+      .featured-post { grid-template-columns: 1fr; }
+      .featured-post-img { height: 280px; }
+      .featured-post-content { padding: var(--space-6); }
+      .article-grid { grid-template-columns: 1fr; }
+      .blog-sidebar { position: static; }
+    }
+
+    @media (max-width: 700px) {
+      .article-key-numbers { grid-template-columns: 1fr 1fr; }
+      .blog-filter-bar { gap: var(--space-2); }
+      .blog-search { width: 100%; }
+      .blog-search input { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav id="navbar" role="navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo.webp" alt="Innovate Real Estate">
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#tools">Tools</a></li>
+      <li><a href="blog.html" style="color:var(--gold);">Blog</a></li>
+      <li><a href="team.html">Our Team</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta-group">
+      <a href="submitform.html" class="btn btn--outline">Tax Savings Proposal</a>
+      <a href="affiliate.html" class="btn btn--gold">Become an Affiliate</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html#about">About</a>
+  <a href="index.html#services">Services</a>
+  <a href="index.html#tools">Tools</a>
+  <a href="blog.html">Blog</a>
+  <a href="team.html">Our Team</a>
+  <a href="index.html#contact">Contact</a>
+  <div class="mobile-nav-btns">
+    <a href="submitform.html" class="btn btn--outline btn--lg">Tax Savings Proposal</a>
+    <a href="affiliate.html" class="btn btn--gold btn--lg">Become an Affiliate</a>
+  </div>
+</div>
+
+<!-- Hero -->
+<div class="blog-page-hero">
+  <div class="container--wide">
+    <span class="label" style="display:block;margin-bottom:var(--space-4);">Tax Strategy Insights</span>
+    <h1 style="font-size:var(--text-2xl);font-weight:900;margin-bottom:var(--space-4);">Knowledge That <span class="text-gold">Pays</span></h1>
+    <p style="font-size:var(--text-lg);color:var(--gray-light);max-width:55ch;line-height:1.65;">
+      Expert guides, case studies, and tactical insights on cost segregation, bonus depreciation, 
+      and every tax strategy your property can benefit from.
+    </p>
+  </div>
+</div>
+
+<!-- Blog Content -->
+<div style="background:var(--dark);">
+  <div class="container--wide" style="padding-block:var(--space-12);">
+
+    <!-- Filter Bar -->
+    <div class="blog-filter-bar">
+      <button class="filter-btn active" onclick="filterPosts('all', this)">All Posts</button>
+      <button class="filter-btn" onclick="filterPosts('guide', this)">Guides</button>
+      <button class="filter-btn" onclick="filterPosts('tax-alert', this)">Tax Alerts</button>
+      <button class="filter-btn" onclick="filterPosts('strategy', this)">Strategy</button>
+      <button class="filter-btn" onclick="filterPosts('case-study', this)">Case Studies</button>
+      <button class="filter-btn" onclick="filterPosts('energy', this)">Energy</button>
+      <button class="filter-btn" onclick="filterPosts('rd', this)">R&D</button>
+      <div class="blog-search">
+        <i data-lucide="search" style="width:16px;height:16px;color:var(--gray);"></i>
+        <input type="text" placeholder="Search articles...">
+      </div>
+    </div>
+
+    <!-- Featured Post -->
+    <div class="featured-post" data-category="guide" data-animate>
+      <div class="featured-post-img">
+        <img src="assets/blog/blog-cost-seg-101.png" alt="Cost Segregation 101">
+      </div>
+      <div class="featured-post-content">
+        <div class="featured-label">★ Featured Guide</div>
+        <h2 class="featured-post-title">Cost Segregation 101: The Ultimate Guide for Property Owners</h2>
+        <div class="featured-post-meta">
+          <div class="post-author">
+            <div class="post-author-avatar">RS</div>
+            <span>Rob Schell</span>
+          </div>
+          <span>•</span>
+          <span>March 15, 2025</span>
+          <span>•</span>
+          <span>12 min read</span>
+        </div>
+        <p class="featured-post-excerpt">
+          Cost segregation is the IRS-approved method of accelerating depreciation deductions on commercial and investment real estate. Instead of depreciating your entire building over 39 years, a cost segregation study identifies components that depreciate over 5, 7, or 15 years — often generating six-figure savings in year one. This guide covers everything you need to know.
+        </p>
+        <a href="#post-1" class="btn btn--gold">Read Full Guide →</a>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         FULL ARTICLE SECTIONS
+    ═══════════════════════════════════════════════════════ -->
+
+    <!-- POST 1: Cost Seg 101 -->
+    <div class="article-section" id="post-1" data-category="guide">
+      <div class="article-grid">
+        <article class="article-content" data-animate>
+          <div class="article-header">
+            <div style="display:flex;gap:var(--space-3);align-items:center;margin-bottom:var(--space-4);">
+              <span class="blog-tag">Guide</span>
+              <span style="font-size:var(--text-xs);color:var(--gray);">March 15, 2025</span>
+            </div>
+            <h2 style="font-size:var(--text-2xl);font-weight:900;line-height:1.1;margin-bottom:var(--space-3);">Cost Segregation 101: The Ultimate Guide for Property Owners</h2>
+            <div style="display:flex;align-items:center;gap:var(--space-4);font-size:var(--text-sm);color:var(--gray);margin-bottom:var(--space-6);">
+              <div class="post-author">
+                <div class="post-author-avatar">RS</div>
+                <span>Rob Schell, Co-Founder & Principal</span>
+              </div>
+              <span>12 min read</span>
+            </div>
+          </div>
+          <div class="article-image">
+            <img src="assets/blog/blog-cost-seg-101.png" alt="Cost Segregation Guide" loading="lazy">
+          </div>
+          <div class="article-key-numbers">
+            <div class="key-num-card">
+              <span class="key-num-value">39 yrs</span>
+              <div class="key-num-label">Standard Building Life</div>
+            </div>
+            <div class="key-num-card">
+              <span class="key-num-value">5-15 yrs</span>
+              <div class="key-num-label">Cost Seg Components</div>
+            </div>
+            <div class="key-num-card">
+              <span class="key-num-value">30-40%</span>
+              <div class="key-num-label">Typical Value Reclassified</div>
+            </div>
+          </div>
+          <div class="article-body">
+            <h3>What is Cost Segregation?</h3>
+            <p>Cost segregation is a tax strategy that allows commercial real estate owners and investors to accelerate the depreciation of their building by reclassifying components of the property into shorter depreciable life categories. Rather than depreciating the entire structure over 39 years (or 27.5 years for residential), a cost segregation study identifies elements that the IRS allows to be depreciated over 5, 7, or 15 years.</p>
+            <p>A qualified engineering-based cost segregation study is performed by tax professionals who analyze your property's construction costs, blueprints, and physical components to identify assets that qualify for faster depreciation. The result is dramatically accelerated deductions — often generating hundreds of thousands in tax savings in the very first year.</p>
+            <div class="article-callout">
+              <p>"The average property owner using cost segregation captures 30–40% of their building's value in accelerated depreciation categories. On a $2M property, that's $600,000–$800,000 in reclassified assets — and potentially six figures in year-one tax savings."</p>
+            </div>
+            <h3>How Does It Work?</h3>
+            <p>The IRS recognizes that different components of a building have different useful lives. Personal property (items used in the operation of the business rather than the structure itself) depreciates over 5–7 years. Land improvements like parking lots, landscaping, and fencing depreciate over 15 years. The structural components of the building itself depreciate over 39 years.</p>
+            <p>A cost segregation study separates your building into these categories using a combination of engineering analysis, construction cost data, and IRS rules. The study produces a detailed report that your CPA uses to prepare amended or current tax returns with the accelerated depreciation schedules.</p>
+            <h3>Who Qualifies?</h3>
+            <ul>
+              <li>Commercial property owners with buildings valued at $500,000 or more</li>
+              <li>Real estate investors with rental properties</li>
+              <li>Business owners who own their operating facility</li>
+              <li>Properties recently purchased, constructed, or significantly improved</li>
+              <li>Properties owned for 5–15+ years (lookback studies available)</li>
+            </ul>
+            <h3>The Bonus Depreciation Multiplier</h3>
+            <p>Cost segregation becomes even more powerful when combined with bonus depreciation. Under current tax law, assets with a depreciable life of 20 years or less (which includes most cost segregation reclassified assets) are eligible for immediate expensing under bonus depreciation rules. While the percentage has declined from 100% in 2022, significant opportunities still exist — making it critical to act before the window closes further.</p>
+          </div>
+          <div style="margin-top:var(--space-8);">
+            <a href="submitform.html" class="btn btn--gold btn--lg">Get Your Free Cost Seg Analysis →</a>
+          </div>
+        </article>
+        <aside class="blog-sidebar">
+          <div class="sidebar-widget">
+            <h4>More Articles</h4>
+            <div class="recent-post-item">
+              <div class="recent-post-thumb"><img src="assets/blog/blog-bonus-depreciation.png" alt="" loading="lazy"></div>
+              <div><a href="#post-2" class="recent-post-title">Bonus Depreciation Phase-Down: What Property Owners Need to Know</a><div class="recent-post-date">Feb 28, 2025</div></div>
+            </div>
+            <div class="recent-post-item">
+              <div class="recent-post-thumb"><img src="assets/blog/blog-medical-office.png" alt="" loading="lazy"></div>
+              <div><a href="#post-4" class="recent-post-title">Medical Office Case Study</a><div class="recent-post-date">Dec 10, 2024</div></div>
+            </div>
+            <div class="recent-post-item">
+              <div class="recent-post-thumb"><img src="assets/blog/blog-energy-credits.png" alt="" loading="lazy"></div>
+              <div><a href="#post-5" class="recent-post-title">179D Energy Deductions Explained</a><div class="recent-post-date">Nov 5, 2024</div></div>
+            </div>
+          </div>
+          <div class="sidebar-widget" style="background:var(--gold);border-color:var(--gold);">
+            <h4 style="color:var(--black);">Free Analysis</h4>
+            <p style="font-size:var(--text-sm);color:rgba(0,0,0,0.8);line-height:1.6;margin-bottom:var(--space-4);">Find out exactly how much your property could be saving. No cost, no obligation.</p>
+            <a href="submitform.html" class="btn btn--white" style="color:var(--black);width:100%;justify-content:center;">Request Free Proposal</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- POST 2: Bonus Depreciation -->
+    <div class="article-section" id="post-2" data-category="tax-alert">
+      <div class="article-grid">
+        <article class="article-content" data-animate>
+          <div class="article-header">
+            <div style="display:flex;gap:var(--space-3);align-items:center;margin-bottom:var(--space-4);">
+              <span class="blog-tag">Tax Alert</span>
+              <span style="font-size:var(--text-xs);color:var(--gray);">February 28, 2025</span>
+            </div>
+            <h2 style="font-size:var(--text-2xl);font-weight:900;line-height:1.1;margin-bottom:var(--space-3);">Bonus Depreciation Phase-Down: What Property Owners Need to Know Now</h2>
+            <div style="display:flex;align-items:center;gap:var(--space-4);font-size:var(--text-sm);color:var(--gray);margin-bottom:var(--space-6);">
+              <div class="post-author">
+                <div class="post-author-avatar">LB</div>
+                <span>Lauren Burgess, Co-Founder & Principal</span>
+              </div>
+              <span>8 min read</span>
+            </div>
+          </div>
+          <div class="article-image">
+            <img src="assets/blog/blog-bonus-depreciation.png" alt="Bonus Depreciation" loading="lazy">
+          </div>
+          <div class="article-key-numbers">
+            <div class="key-num-card"><span class="key-num-value">60%</span><div class="key-num-label">2024 Bonus Rate</div></div>
+            <div class="key-num-card"><span class="key-num-value">40%</span><div class="key-num-label">2025 Bonus Rate</div></div>
+            <div class="key-num-card"><span class="key-num-value">0%</span><div class="key-num-label">2027+ Bonus Rate</div></div>
+          </div>
+          <div class="article-body">
+            <h3>The Phase-Down Timeline</h3>
+            <p>The Tax Cuts and Jobs Act of 2017 introduced 100% bonus depreciation, allowing property owners to immediately expense the full cost of qualifying assets in the year placed in service. This was one of the most powerful tax provisions ever enacted for real estate investors. But it was always temporary.</p>
+            <p>The phase-down schedule: 100% (2022), 80% (2023), 60% (2024), 40% (2025), 20% (2026), 0% (2027+). This means the window to capture maximum benefits is closing — every year of delay represents permanent loss of deduction opportunity.</p>
+            <div class="article-callout">
+              <p>"On a $3M property with 40% reclassified assets, the difference between acting in 2024 vs. 2026 is $216,000+ in lost deductions at a 37% tax rate. This is not a drill — the deadline is real."</p>
+            </div>
+            <h3>What You Should Do Right Now</h3>
+            <ul>
+              <li>If you purchased or improved property in the last 5 years, request a lookback study immediately</li>
+              <li>For planned purchases, front-load cost segregation in the purchase year</li>
+              <li>Work with your CPA to understand how the phase-down affects your specific tax situation</li>
+              <li>Consider accelerating planned improvement projects to capture higher bonus rates</li>
+            </ul>
+            <h3>Legislative Outlook</h3>
+            <p>There have been various legislative proposals to restore 100% bonus depreciation, but nothing has been enacted. Planning based on current law is the prudent approach — if legislation changes to your benefit, you can adjust; but you cannot recapture permanently lost deductions.</p>
+          </div>
+          <div style="margin-top:var(--space-8);">
+            <a href="submitform.html" class="btn btn--gold btn--lg">Claim Your 2024 Bonus Now →</a>
+          </div>
+        </article>
+        <aside class="blog-sidebar" style="position:static;"><!-- simplified on inner pages --></aside>
+      </div>
+    </div>
+
+    <!-- POST 3: Rental Property -->
+    <div class="article-section" id="post-3" data-category="strategy">
+      <div class="article-grid">
+        <article class="article-content" data-animate>
+          <div class="article-header">
+            <div style="display:flex;gap:var(--space-3);align-items:center;margin-bottom:var(--space-4);">
+              <span class="blog-tag">Strategy</span>
+              <span style="font-size:var(--text-xs);color:var(--gray);">January 20, 2025</span>
+            </div>
+            <h2 style="font-size:var(--text-2xl);font-weight:900;line-height:1.1;margin-bottom:var(--space-3);">Rental Property Tax Strategies That Save Millions</h2>
+            <div style="display:flex;align-items:center;gap:var(--space-4);font-size:var(--text-sm);color:var(--gray);margin-bottom:var(--space-6);">
+              <div class="post-author">
+                <div class="post-author-avatar">LB</div>
+                <span>Lauren Burgess</span>
+              </div>
+              <span>10 min read</span>
+            </div>
+          </div>
+          <div class="article-image">
+            <img src="assets/blog/blog-rental-property.png" alt="Rental Property Tax Strategies" loading="lazy">
+          </div>
+          <div class="article-body">
+            <h3>The Real Estate Professional Status Advantage</h3>
+            <p>One of the most powerful — and underutilized — provisions in the tax code is Real Estate Professional (REP) status. Qualifying as a REP allows you to deduct rental losses against ordinary income without limitation, potentially creating massive tax savings that otherwise wouldn't be available.</p>
+            <p>To qualify, you must spend more than 750 hours annually in real estate activities and more than 50% of your working time in real estate. For active investors and operators, this is often achievable — and the tax savings can be transformational.</p>
+            <h3>Short-Term Rental Loophole</h3>
+            <p>Short-term rentals (average stay of 7 days or less) are treated differently than traditional rentals under the tax code. If you materially participate in the rental activity, losses can offset ordinary income even without REP status. Combined with cost segregation, this creates extraordinary savings opportunities for AirBnB and vacation rental operators.</p>
+            <h3>Multifamily vs. Commercial Strategies</h3>
+            <p>Multifamily residential property (apartments, condos) depreciates over 27.5 years rather than 39 years — already faster than commercial. Cost segregation further accelerates this by reclassifying interior components, site improvements, and appliances to 5-7-15 year lives. For a 50-unit apartment complex, this can generate hundreds of thousands in first-year deductions.</p>
+            <div class="article-callout">
+              <p>"The combination of cost segregation + bonus depreciation + REP status is the most powerful triple stack in real estate tax planning. Used together, they can create enough paper losses to offset six figures or more in ordinary income."</p>
+            </div>
+          </div>
+          <div style="margin-top:var(--space-8);">
+            <a href="submitform.html" class="btn btn--gold btn--lg">Analyze Your Rental Portfolio →</a>
+          </div>
+        </article>
+        <aside class="blog-sidebar" style="position:static;"></aside>
+      </div>
+    </div>
+
+    <!-- POST 4: Medical Office Case Study -->
+    <div class="article-section" id="post-4" data-category="case-study">
+      <div class="article-grid">
+        <article class="article-content" data-animate>
+          <div class="article-header">
+            <div style="display:flex;gap:var(--space-3);align-items:center;margin-bottom:var(--space-4);">
+              <span class="blog-tag">Case Study</span>
+              <span style="font-size:var(--text-xs);color:var(--gray);">December 10, 2024</span>
+            </div>
+            <h2 style="font-size:var(--text-2xl);font-weight:900;line-height:1.1;margin-bottom:var(--space-3);">Medical Office Cost Segregation: A Case Study in Strategic Savings</h2>
+            <div style="display:flex;align-items:center;gap:var(--space-4);font-size:var(--text-sm);color:var(--gray);margin-bottom:var(--space-6);">
+              <div class="post-author">
+                <div class="post-author-avatar">RS</div>
+                <span>Rob Schell</span>
+              </div>
+              <span>7 min read</span>
+            </div>
+          </div>
+          <div class="article-image">
+            <img src="assets/blog/blog-medical-office.png" alt="Medical Office Cost Segregation" loading="lazy">
+          </div>
+          <div class="article-key-numbers">
+            <div class="key-num-card"><span class="key-num-value">$2.8M</span><div class="key-num-label">Building Value</div></div>
+            <div class="key-num-card"><span class="key-num-value">$340K</span><div class="key-num-label">First-Year Savings</div></div>
+            <div class="key-num-card"><span class="key-num-value">22x</span><div class="key-num-label">Study ROI</div></div>
+          </div>
+          <div class="article-body">
+            <h3>The Property</h3>
+            <p>A 12,000 square foot medical office building in the Gulf Coast region, purchased for $2.8 million and placed in service in early 2023. The property includes specialized medical exam rooms, diagnostic imaging space, a procedure suite, and standard administrative offices.</p>
+            <h3>The Analysis</h3>
+            <p>Our engineering team conducted a comprehensive cost segregation study, analyzing the building's construction documents, lease agreements, and component-by-component specifications. Medical office buildings are particularly advantageous for cost segregation because of the significant specialized electrical, plumbing, and medical gas systems installed throughout.</p>
+            <h3>Results</h3>
+            <p>The study reclassified 42% of the building's value — over $1.17 million — into accelerated depreciation categories. Combined with 60% bonus depreciation in 2024, the client generated $340,000 in first-year tax deductions, resulting in over $125,000 in actual cash tax savings.</p>
+            <div class="article-callout">
+              <p>"When Dr. Shaddix saw the numbers, he was genuinely stunned. His accountant had never mentioned cost segregation. The study paid for itself 22 times over in year one alone."</p>
+            </div>
+            <h3>Takeaway</h3>
+            <p>Medical facilities — from small practices to large healthcare campuses — consistently rank among the highest-yield properties for cost segregation. If you own or are purchasing medical real estate, a cost segregation study is essentially mandatory tax planning.</p>
+          </div>
+          <div style="margin-top:var(--space-8);">
+            <a href="submitform.html" class="btn btn--gold btn--lg">Get Your Property Analyzed →</a>
+          </div>
+        </article>
+        <aside class="blog-sidebar" style="position:static;"></aside>
+      </div>
+    </div>
+
+    <!-- POST 5: 179D Energy -->
+    <div class="article-section" id="post-5" data-category="energy">
+      <div class="article-grid">
+        <article class="article-content" data-animate>
+          <div class="article-header">
+            <div style="display:flex;gap:var(--space-3);align-items:center;margin-bottom:var(--space-4);">
+              <span class="blog-tag">Energy</span>
+              <span style="font-size:var(--text-xs);color:var(--gray);">November 5, 2024</span>
+            </div>
+            <h2 style="font-size:var(--text-2xl);font-weight:900;line-height:1.1;margin-bottom:var(--space-3);">179D Energy Deductions for Commercial Buildings: Up to $5 Per Square Foot</h2>
+            <div style="display:flex;align-items:center;gap:var(--space-4);font-size:var(--text-sm);color:var(--gray);margin-bottom:var(--space-6);">
+              <div class="post-author">
+                <div class="post-author-avatar">LB</div>
+                <span>Lauren Burgess</span>
+              </div>
+              <span>9 min read</span>
+            </div>
+          </div>
+          <div class="article-image">
+            <img src="assets/blog/blog-energy-credits.png" alt="179D Energy Deductions" loading="lazy">
+          </div>
+          <div class="article-body">
+            <h3>What is the 179D Deduction?</h3>
+            <p>Section 179D of the tax code provides a deduction of up to $5.00 per square foot for energy-efficient commercial buildings. The Inflation Reduction Act of 2022 dramatically expanded this deduction — more than doubling the potential benefit and broadening who can claim it.</p>
+            <h3>Who Can Claim 179D?</h3>
+            <p>Commercial building owners who have installed energy-efficient systems including HVAC, lighting, and building envelope improvements can claim 179D. Additionally, designers of qualifying government and tax-exempt entity buildings — including architects, engineers, and contractors — can receive an allocation of the deduction from the building owner.</p>
+            <h3>Qualifying Systems</h3>
+            <ul>
+              <li>HVAC and hot water systems meeting specific energy efficiency standards</li>
+              <li>Interior lighting systems with qualifying efficiency ratings</li>
+              <li>Building envelope improvements (insulation, windows, doors)</li>
+              <li>Combination of all three systems for maximum deduction</li>
+            </ul>
+            <div class="article-callout">
+              <p>"A 50,000 square foot office building with qualifying energy systems could receive a 179D deduction of $250,000. Combined with cost segregation, the total first-year deductions can be extraordinary."</p>
+            </div>
+            <h3>Combining 179D with Cost Segregation</h3>
+            <p>These two strategies are not mutually exclusive — they target different components and work together powerfully. Cost segregation accelerates depreciation on structural components; 179D provides an immediate deduction for energy-efficient systems. Smart tax planning deploys both simultaneously for maximum benefit.</p>
+          </div>
+          <div style="margin-top:var(--space-8);">
+            <a href="submitform.html" class="btn btn--gold btn--lg">Check 179D Eligibility →</a>
+          </div>
+        </article>
+        <aside class="blog-sidebar" style="position:static;"></aside>
+      </div>
+    </div>
+
+    <!-- POST 6: R&D Credits -->
+    <div class="article-section" id="post-6" data-category="rd">
+      <div class="article-grid">
+        <article class="article-content" data-animate>
+          <div class="article-header">
+            <div style="display:flex;gap:var(--space-3);align-items:center;margin-bottom:var(--space-4);">
+              <span class="blog-tag">R&D</span>
+              <span style="font-size:var(--text-xs);color:var(--gray);">October 18, 2024</span>
+            </div>
+            <h2 style="font-size:var(--text-2xl);font-weight:900;line-height:1.1;margin-bottom:var(--space-3);">R&D Tax Credits: Innovation Meets Tax Strategy — It's Not Just for Tech Companies</h2>
+            <div style="display:flex;align-items:center;gap:var(--space-4);font-size:var(--text-sm);color:var(--gray);margin-bottom:var(--space-6);">
+              <div class="post-author">
+                <div class="post-author-avatar">RS</div>
+                <span>Rob Schell</span>
+              </div>
+              <span>8 min read</span>
+            </div>
+          </div>
+          <div class="article-image">
+            <img src="assets/blog/blog-rnd-credits.png" alt="R&D Tax Credits" loading="lazy">
+          </div>
+          <div class="article-body">
+            <h3>The Biggest Misconception in Tax Planning</h3>
+            <p>Most business owners think R&D tax credits are reserved for biotech companies and Silicon Valley startups. This is one of the most costly misconceptions in the tax planning world. The R&D credit — Section 41 of the tax code — applies to any business that engages in activities to develop or improve processes, products, formulas, or techniques, even if the work is entirely internal.</p>
+            <h3>Who Actually Qualifies?</h3>
+            <p>The qualifying industries are far broader than most realize. Construction companies developing proprietary building techniques qualify. Restaurant operators who develop new recipes or processes qualify. Manufacturing companies improving production efficiency qualify. Engineering firms designing new systems qualify. Even software development for internal use often qualifies.</p>
+            <ul>
+              <li>Construction: New structural systems, custom building techniques</li>
+              <li>Manufacturing: Process improvements, quality control systems</li>
+              <li>Healthcare: Medical device design, clinical workflow software</li>
+              <li>Food service: Recipe development, preparation process innovation</li>
+              <li>Real estate: Proprietary development techniques, sustainable building methods</li>
+            </ul>
+            <div class="article-callout">
+              <p>"One of our manufacturing clients received $180,000 in R&D credits for improvements they'd been making to their production line for years — activities they never imagined qualified. The credit was available retroactively for 3 years."</p>
+            </div>
+            <h3>How Much Is the Credit Worth?</h3>
+            <p>The R&D credit is generally equal to 20% of qualifying expenditures above a base amount, or 14% under an alternative simplified calculation. For many mid-size businesses, this translates to $50,000–$500,000 in annual credits. Unlike deductions that reduce taxable income, credits reduce tax liability dollar for dollar — making them extraordinarily valuable.</p>
+          </div>
+          <div style="margin-top:var(--space-8);">
+            <a href="submitform.html" class="btn btn--gold btn--lg">Check R&D Credit Eligibility →</a>
+          </div>
+        </article>
+        <aside class="blog-sidebar" style="position:static;"></aside>
+      </div>
+    </div>
+
+  </div><!-- end container -->
+</div><!-- end bg wrapper -->
+
+<!-- CTA -->
+<div style="background:var(--gold);padding:var(--space-16) var(--space-6);text-align:center;">
+  <h2 style="font-size:var(--text-2xl);font-weight:900;color:var(--black);margin-bottom:var(--space-4);">Ready to Stop Overpaying?</h2>
+  <p style="font-size:var(--text-lg);color:rgba(0,0,0,0.7);max-width:50ch;margin:0 auto var(--space-8);line-height:1.65;">These strategies are only valuable if you actually implement them. Get your free analysis today.</p>
+  <a href="submitform.html" class="btn btn--white btn--lg" style="color:var(--black);">Request Your Free Tax Savings Proposal</a>
+</div>
+
+<!-- Footer -->
+<footer style="background:var(--black);border-top:1px solid var(--border-dark);padding:var(--space-8) var(--space-6);">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-4);">
+    <a href="index.html"><img src="assets/logo.webp" alt="Innovate Real Estate" style="height:36px;"></a>
+    <div style="display:flex;gap:var(--space-6);">
+      <a href="index.html" style="font-size:var(--text-sm);color:var(--gray);transition:color var(--transition);" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray)'">Home</a>
+      <a href="team.html" style="font-size:var(--text-sm);color:var(--gray);transition:color var(--transition);" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray)'">Team</a>
+      <a href="submitform.html" style="font-size:var(--text-sm);color:var(--gray);transition:color var(--transition);" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray)'">Get Started</a>
+    </div>
+    <p style="font-size:var(--text-xs);color:var(--gray);">© 2025 Innovate Real Estate. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+lucide.createIcons();
+
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobile-nav');
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileNav.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+document.querySelectorAll('.mobile-nav a, .mobile-nav-btns a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileNav.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('[data-animate]').forEach(el => io.observe(el));
+
+// Category filter
+function filterPosts(category, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('[data-category]').forEach(section => {
+    if (category === 'all' || section.dataset.category === category) {
+      section.style.display = '';
+    } else {
+      section.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>
