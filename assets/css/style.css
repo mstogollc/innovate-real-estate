@@ -597,6 +597,7 @@ html {
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
   scroll-padding-top: var(--nav-height);
+  overflow-x: hidden;
 }
 
 body {
@@ -879,6 +880,16 @@ button { cursor: pointer; background: none; border: none; }
   align-items: center;
   gap: var(--space-4);
   margin-top: var(--space-4);
+  width: 100%;
+  padding: 0 var(--space-8);
+  box-sizing: border-box;
+}
+
+.mobile-nav-btns .btn {
+  width: 100%;
+  justify-content: center;
+  white-space: normal;
+  text-align: center;
 }
 
 /* ── Hero Section ────────────────────────────────────────── */
@@ -1025,7 +1036,6 @@ button { cursor: pointer; background: none; border: none; }
 .about-image-badge {
   position: absolute;
   bottom: var(--space-6);
-  right: -var(--space-6);
   right: calc(-1 * var(--space-6));
   background: var(--gold);
   color: var(--black);
@@ -1860,6 +1870,10 @@ button { cursor: pointer; background: none; border: none; }
 @media (max-width: 900px) {
   .about-grid { grid-template-columns: 1fr; }
   .about-image-wrap img { height: 360px; }
+  .about-image-badge {
+    right: var(--space-4);
+    bottom: var(--space-4);
+  }
   .tools-grid { grid-template-columns: 1fr; }
   .testimonials-track { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: 1fr 1fr; }
@@ -1881,6 +1895,32 @@ button { cursor: pointer; background: none; border: none; }
   .hero-actions { flex-direction: column; }
   .hero-stats { grid-template-columns: repeat(2, 1fr); }
   .tool-row { grid-template-columns: 1fr; }
+  .building-visual { grid-template-columns: 1fr; }
+
+  /* Prevent tool result values from overflowing narrow cards */
+  .result-value {
+    font-size: clamp(1.1rem, 6vw, var(--text-2xl));
+    word-break: break-all;
+  }
+  .tool-result {
+    overflow: hidden;
+  }
+
+  /* Tighten hero section padding on small screens */
+  .hero-content {
+    padding-inline: var(--space-4);
+  }
+
+  /* Scroll-to-top button — bring slightly inward on small screens */
+  #scroll-top {
+    right: var(--space-4);
+    bottom: var(--space-4);
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Blog and contact section padding */
+  .section { padding-block: var(--space-16); }
 }
 
 /* ── Chart Container ─────────────────────────────────────── */
