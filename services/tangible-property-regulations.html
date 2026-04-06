@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tangible Property Regulations | Innovate Real Estate</title>
+  <meta name="description" content="The IRS Tangible Property Regulations contain some of the most underutilized deductions available to property owners. We make sure you're not leaving them on the table.">
+  <meta property="og:title" content="Tangible Property Regulations | Innovate Real Estate">
+  <meta property="og:description" content="The IRS Tangible Property Regulations contain some of the most underutilized deductions available to property owners. We make sure you're not leaving them on the table.">
+  <meta property="og:image" content="../assets/hero-main.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="../assets/logo.webp" as="image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    /* ── Service page specific styles ── */
+    .svc-hero {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      background: var(--dark);
+      padding-top: var(--nav-height);
+      position: relative;
+      overflow: hidden;
+    }
+    .svc-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 50%, rgba(221,193,89,0.08) 0%, transparent 60%);
+    }
+    .svc-hero-inner {
+      position: relative;
+      z-index: 2;
+      padding: var(--space-20) var(--space-8);
+      max-width: var(--content-wide);
+      margin: 0 auto;
+      width: 100%;
+    }
+    .svc-hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-5);
+    }
+    .svc-hero-eyebrow svg { width: 16px; height: 16px; }
+    .svc-hero h1 {
+      font-size: var(--text-3xl);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: var(--space-5);
+    }
+    .svc-hero h1 span { color: var(--gold); }
+    .svc-hero-subtitle {
+      font-size: var(--text-lg);
+      color: var(--gray-light);
+      max-width: 620px;
+      line-height: 1.7;
+      margin-bottom: var(--space-10);
+    }
+    .svc-hero-stat {
+      display: inline-flex;
+      flex-direction: column;
+      background: rgba(221,193,89,0.1);
+      border: 1px solid rgba(221,193,89,0.25);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5) var(--space-8);
+      margin-bottom: var(--space-8);
+    }
+    .svc-hero-stat-value {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .svc-hero-stat-label {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--gray-light);
+      margin-top: var(--space-1);
+    }
+    .svc-hero-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+
+    /* ── Breadcrumb ── */
+    .svc-breadcrumb {
+      background: var(--dark-2);
+      border-bottom: 1px solid var(--border);
+      padding: var(--space-3) var(--space-8);
+    }
+    .svc-breadcrumb-inner {
+      max-width: var(--content-wide);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-xs);
+      color: var(--gray);
+    }
+    .svc-breadcrumb a { color: var(--gray); transition: color var(--transition); }
+    .svc-breadcrumb a:hover { color: var(--gold); }
+    .svc-breadcrumb-sep { opacity: 0.4; }
+
+    /* ── Overview ── */
+    .svc-overview {
+      background: var(--dark-2);
+      padding: var(--space-24) var(--space-8);
+    }
+    .svc-overview-inner {
+      max-width: var(--content-default);
+      margin: 0 auto;
+      text-align: center;
+    }
+    .svc-overview-label {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-4);
+    }
+    .svc-overview-text {
+      font-size: var(--text-lg);
+      color: var(--gray-light);
+      line-height: 1.8;
+    }
+
+    /* ── How It Works ── */
+    .svc-steps {
+      background: var(--dark);
+      padding: var(--space-24) var(--space-8);
+    }
+    .svc-steps-inner { max-width: var(--content-wide); margin: 0 auto; }
+    .svc-section-header { text-align: center; margin-bottom: var(--space-16); }
+    .svc-section-header h2 { font-size: var(--text-2xl); font-weight: 900; color: var(--white); }
+    .svc-section-header p { color: var(--gray-light); margin-top: var(--space-4); font-size: var(--text-base); }
+    .svc-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-8);
+    }
+    .svc-step {
+      display: flex;
+      gap: var(--space-5);
+      background: var(--dark-card);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+    }
+    .svc-step-num {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--gold);
+      opacity: 0.25;
+      line-height: 1;
+      flex-shrink: 0;
+      width: 56px;
+    }
+    .svc-step h3 { font-size: var(--text-base); font-weight: 700; color: var(--white); margin-bottom: var(--space-2); }
+    .svc-step p { font-size: var(--text-sm); color: var(--gray-light); line-height: 1.7; }
+
+    /* ── Benefits ── */
+    .svc-benefits {
+      background: var(--dark-2);
+      padding: var(--space-24) var(--space-8);
+    }
+    .svc-benefits-inner { max-width: var(--content-wide); margin: 0 auto; }
+    .svc-benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+    .svc-benefit-card {
+      display: flex;
+      gap: var(--space-4);
+      background: var(--dark-card);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .svc-benefit-card:hover {
+      border-color: rgba(221,193,89,0.3);
+      box-shadow: 0 4px 24px rgba(221,193,89,0.08);
+    }
+    .svc-benefit-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(221,193,89,0.1);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .svc-benefit-card h4 { font-size: var(--text-sm); font-weight: 700; color: var(--white); margin-bottom: var(--space-1); }
+    .svc-benefit-card p { font-size: var(--text-sm); color: var(--gray-light); line-height: 1.6; }
+
+    /* ── Qualifies ── */
+    .svc-qualifies {
+      background: var(--dark);
+      padding: var(--space-24) var(--space-8);
+    }
+    .svc-qualifies-inner { max-width: var(--content-default); margin: 0 auto; }
+    .svc-qualifies-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-16); align-items: center; }
+    .svc-qualifies ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      margin-top: var(--space-8);
+    }
+    .svc-qualifies li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      color: var(--gray-light);
+      font-size: var(--text-base);
+      line-height: 1.6;
+    }
+    .svc-qualifies li svg { color: var(--gold); flex-shrink: 0; margin-top: 3px; }
+    .svc-cta-box {
+      background: var(--gold);
+      color: var(--black);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-12);
+      text-align: center;
+    }
+    .svc-cta-box h3 { font-size: var(--text-xl); font-weight: 900; margin-bottom: var(--space-3); }
+    .svc-cta-box p { font-size: var(--text-base); opacity: 0.8; margin-bottom: var(--space-8); }
+    .svc-cta-box .btn { background: var(--black); color: var(--gold); border-color: var(--black); }
+    .svc-cta-box .btn:hover { background: var(--dark-2); border-color: var(--dark-2); }
+
+    /* ── FAQ ── */
+    .svc-faq {
+      background: var(--dark-2);
+      padding: var(--space-24) var(--space-8);
+    }
+    .svc-faq-inner { max-width: var(--content-default); margin: 0 auto; }
+    .svc-faq-list { display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-10); }
+    .svc-faq-item {
+      background: var(--dark-card);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .svc-faq-item summary {
+      padding: var(--space-5) var(--space-6);
+      font-weight: 600;
+      font-size: var(--text-base);
+      color: var(--white);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-4);
+    }
+    .svc-faq-item summary::-webkit-details-marker { display: none; }
+    .svc-faq-item summary::after {
+      content: '+';
+      font-size: 1.4rem;
+      color: var(--gold);
+      flex-shrink: 0;
+      transition: transform var(--transition);
+    }
+    .svc-faq-item[open] summary::after { content: '−'; }
+    .svc-faq-item p {
+      padding: 0 var(--space-6) var(--space-5);
+      color: var(--gray-light);
+      font-size: var(--text-sm);
+      line-height: 1.75;
+    }
+
+    /* ── Bottom CTA ── */
+    .svc-bottom-cta {
+      background: var(--dark);
+      padding: var(--space-24) var(--space-8);
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .svc-bottom-cta h2 { font-size: var(--text-2xl); font-weight: 900; color: var(--white); margin-bottom: var(--space-4); }
+    .svc-bottom-cta p { color: var(--gray-light); max-width: 500px; margin: 0 auto var(--space-10); font-size: var(--text-base); }
+    .svc-bottom-cta-btns { display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap; }
+
+    /* ── Service nav other items ── */
+    .svc-also {
+      background: var(--dark-2);
+      padding: var(--space-20) var(--space-8);
+      border-top: 1px solid var(--border);
+    }
+    .svc-also-inner { max-width: var(--content-wide); margin: 0 auto; }
+    .svc-also h3 { font-size: var(--text-lg); font-weight: 700; color: var(--white); margin-bottom: var(--space-8); text-align: center; }
+    .svc-also-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
+    .svc-also-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      text-align: center;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .svc-also-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .svc-also-card span { font-size: var(--text-sm); font-weight: 600; color: var(--white); }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .svc-steps-grid { grid-template-columns: 1fr; }
+      .svc-benefits-grid { grid-template-columns: 1fr 1fr; }
+      .svc-qualifies-grid { grid-template-columns: 1fr; }
+      .svc-also-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .svc-benefits-grid { grid-template-columns: 1fr; }
+      .svc-hero-inner { padding-inline: var(--space-4); }
+      .svc-hero h1 { font-size: var(--text-2xl); }
+      .svc-also-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* Animate */
+    [data-animate] { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    [data-animate].animated { opacity: 1; transform: translateY(0); }
+    [data-delay="1"] { transition-delay: 0.1s; }
+    [data-delay="2"] { transition-delay: 0.2s; }
+    [data-delay="3"] { transition-delay: 0.3s; }
+    [data-delay="4"] { transition-delay: 0.4s; }
+    [data-delay="5"] { transition-delay: 0.5s; }
+    [data-delay="6"] { transition-delay: 0.6s; }
+  </style>
+</head>
+<body>
+
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo" aria-label="Innovate Real Estate Home">
+      <img src="../assets/logo.webp" alt="Innovate Real Estate Logo">
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="../index.html#about">About</a></li>
+      <li class="has-dropdown">
+        <a href="../index.html#services" class="dropdown-toggle">Services
+          <svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </a>
+        <ul class="nav-dropdown" role="menu">
+          <li><a href="../services/cost-segregation.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Cost Segregation</a></li>
+          <li><a href="../services/tangible-property-regulations.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Tangible Property Regs</a></li>
+          <li><a href="../services/unicap-exemption.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>263A UNICAP Exemption</a></li>
+          <li><a href="../services/green-zip-tape.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Green Zip Tape</a></li>
+          <li><a href="../services/method-change.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Method Change</a></li>
+          <li><a href="../services/rd-tax-credits.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>R&amp;D Tax Credits</a></li>
+          <li><a href="../services/energy-optimization.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Energy Optimization</a></li>
+          <li><a href="../services/wealth-strategies.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>Wealth Strategies</a></li>
+        </ul>
+      </li>
+      <li><a href="../index.html#tools">Tools</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="../team.html">Our Team</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme">
+      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+
+    <div class="nav-cta-group">
+      <a href="../submitform.html" class="btn btn--outline">Tax Savings Proposal</a>
+      <a href="../affiliate.html" class="btn btn--gold">Become an Affiliate</a>
+    </div>
+
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+  <a href="../index.html#about" class="mobile-link">About</a>
+  <div class="mobile-services-group">
+    <a href="../index.html#services" class="mobile-link mobile-services-toggle">Services
+      <svg class="chevron-icon-mobile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </a>
+    <div class="mobile-services-dropdown" id="mobile-services-dropdown">
+      <a href="../services/cost-segregation.html" class="mobile-sub-link">Cost Segregation</a>
+      <a href="../services/tangible-property-regulations.html" class="mobile-sub-link">Tangible Property Regs</a>
+      <a href="../services/unicap-exemption.html" class="mobile-sub-link">263A UNICAP Exemption</a>
+      <a href="../services/green-zip-tape.html" class="mobile-sub-link">Green Zip Tape</a>
+      <a href="../services/method-change.html" class="mobile-sub-link">Method Change</a>
+      <a href="../services/rd-tax-credits.html" class="mobile-sub-link">R&amp;D Tax Credits</a>
+      <a href="../services/energy-optimization.html" class="mobile-sub-link">Energy Optimization</a>
+      <a href="../services/wealth-strategies.html" class="mobile-sub-link">Wealth Strategies</a>
+    </div>
+  </div>
+  <a href="../index.html#tools" class="mobile-link">Tools</a>
+  <a href="../blog.html" class="mobile-link">Blog</a>
+  <a href="../team.html" class="mobile-link">Our Team</a>
+  <a href="../index.html#contact" class="mobile-link">Contact</a>
+  <div class="mobile-nav-btns">
+    <a href="../submitform.html" class="btn btn--outline btn--lg">Tax Savings Proposal</a>
+    <a href="../affiliate.html" class="btn btn--gold btn--lg">Become an Affiliate</a>
+  </div>
+  <button class="theme-toggle mobile-theme-toggle" id="mobile-theme-toggle" aria-label="Toggle light/dark theme">
+    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
+</div>
+
+<!-- ── HERO ───────────────────────────────────────────────── -->
+<section class="svc-hero">
+  <div class="svc-hero-inner">
+    <div class="svc-hero-eyebrow">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      Maximize Deductions Under IRS TPR Rules
+    </div>
+    <h1>
+      Tangible <span>PropertyRegulations</span>
+    </h1>
+    <p class="svc-hero-subtitle">The IRS Tangible Property Regulations contain some of the most underutilized deductions available to property owners. We make sure you're not leaving them on the table.</p>
+    <div class="svc-hero-stat">
+      <span class="svc-hero-stat-value">40%</span>
+      <span class="svc-hero-stat-label">More Deductions on Average</span>
+    </div>
+    <div class="svc-hero-actions">
+      <a href="../submitform.html" class="btn btn--gold btn--lg">Get a Free Proposal</a>
+      <a href="https://calendly.com/innovate-real-estate" target="_blank" class="btn btn--outline btn--lg">Schedule a Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── BREADCRUMB ──────────────────────────────────────────── -->
+<div class="svc-breadcrumb">
+  <div class="svc-breadcrumb-inner">
+    <a href="../index.html">Home</a>
+    <span class="svc-breadcrumb-sep">›</span>
+    <a href="../index.html#services">Services</a>
+    <span class="svc-breadcrumb-sep">›</span>
+    <span>Tangible Property Regulations</span>
+  </div>
+</div>
+
+<!-- ── OVERVIEW ───────────────────────────────────────────── -->
+<section class="svc-overview">
+  <div class="svc-overview-inner" data-animate>
+    <div class="svc-overview-label">What It Is</div>
+    <p class="svc-overview-text">The IRS Tangible Property Regulations (TPRs), finalized in 2013, define the rules for when property costs must be capitalized versus immediately expensed. Many property owners — and even their CPAs — are not fully leveraging the safe harbors and election opportunities these rules provide. Innovate Real Estate conducts thorough TPR reviews to identify missed expensing opportunities, partial asset dispositions, and de minimis safe harbor elections that generate immediate deductions.</p>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ───────────────────────────────────────── -->
+<section class="svc-steps">
+  <div class="svc-steps-inner">
+    <div class="svc-section-header" data-animate>
+      <h2>How It Works</h2>
+      <p>Our process is thorough, IRS-compliant, and built around your schedule.</p>
+    </div>
+    <div class="svc-steps-grid">
+      
+        <div class="svc-step" data-animate>
+          <div class="svc-step-num">01</div>
+          <div>
+            <h3>Depreciation Schedule Review</h3>
+            <p>We analyze your existing depreciation schedule to identify assets eligible for write-off under TPR rules.</p>
+          </div>
+        </div>
+
+        <div class="svc-step" data-animate>
+          <div class="svc-step-num">02</div>
+          <div>
+            <h3>Partial Asset Disposition</h3>
+            <p>When you replace a structural component (roof, HVAC, windows), we write off the retired asset immediately rather than continuing to depreciate it.</p>
+          </div>
+        </div>
+
+        <div class="svc-step" data-animate>
+          <div class="svc-step-num">03</div>
+          <div>
+            <h3>Repair vs. Capitalize Analysis</h3>
+            <p>We apply the correct IRS tests to determine whether expenditures qualify as deductible repairs or must be capitalized.</p>
+          </div>
+        </div>
+
+        <div class="svc-step" data-animate>
+          <div class="svc-step-num">04</div>
+          <div>
+            <h3>Election Filing</h3>
+            <p>We coordinate with your CPA to file the correct TPR elections with your tax return, securing the deductions permanently.</p>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BENEFITS ───────────────────────────────────────────── -->
+<section class="svc-benefits">
+  <div class="svc-benefits-inner">
+    <div class="svc-section-header" data-animate>
+      <h2>Key Benefits</h2>
+      <p>What you gain by working with Innovate Real Estate on tangible property regulations.</p>
+    </div>
+    <div class="svc-benefits-grid">
+      
+        <div class="svc-benefit-card" data-animate data-delay="1">
+          <div class="svc-benefit-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h4>Immediate Write-Offs</h4>
+            <p>Deduct the remaining book value of replaced components in the year of replacement.</p>
+          </div>
+        </div>
+
+        <div class="svc-benefit-card" data-animate data-delay="2">
+          <div class="svc-benefit-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h4>Repair Deductions</h4>
+            <p>Qualify routine maintenance and non-capitalized improvements as current-year deductions.</p>
+          </div>
+        </div>
+
+        <div class="svc-benefit-card" data-animate data-delay="3">
+          <div class="svc-benefit-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h4>De Minimis Safe Harbor</h4>
+            <p>Elect to expense items costing less than $2,500 (or $5,000 with audited financials) per invoice.</p>
+          </div>
+        </div>
+
+        <div class="svc-benefit-card" data-animate data-delay="4">
+          <div class="svc-benefit-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h4>Retroactive Application</h4>
+            <p>Apply TPR corrections to prior years via accounting method changes — no amended returns needed.</p>
+          </div>
+        </div>
+
+        <div class="svc-benefit-card" data-animate data-delay="5">
+          <div class="svc-benefit-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h4>Complements Cost Segregation</h4>
+            <p>Works alongside a cost seg study to maximize the full spectrum of deductions on a property.</p>
+          </div>
+        </div>
+
+        <div class="svc-benefit-card" data-animate data-delay="6">
+          <div class="svc-benefit-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h4>Reduces Effective Tax Rate</h4>
+            <p>Clients consistently lower their effective tax rates by 3–8 percentage points through TPR strategies.</p>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHO QUALIFIES + CTA ────────────────────────────────── -->
+<section class="svc-qualifies">
+  <div class="svc-qualifies-inner">
+    <div class="svc-qualifies-grid">
+      <div data-animate>
+        <div class="svc-overview-label">Who Qualifies</div>
+        <h2 style="font-size:var(--text-xl);font-weight:900;color:var(--white);margin-top:var(--space-3);">Is This Right for You?</h2>
+        <ul>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Property owners with buildings that have undergone renovation or component replacement</li>
+<li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Anyone who replaced a roof, HVAC system, windows, flooring, or other major component</li>
+<li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Businesses with existing depreciation schedules that have never been reviewed for TPR</li>
+<li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Property owners who have been capitalizing items that should have been expensed</li>
+        </ul>
+      </div>
+      <div class="svc-cta-box" data-animate>
+        <h3>Find Out What You Could Save</h3>
+        <p>Submit your property details and we'll prepare a free estimate of your potential tax savings — no obligation.</p>
+        <a href="../submitform.html" class="btn btn--lg">Request Free Proposal</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ────────────────────────────────────────────────── -->
+<section class="svc-faq">
+  <div class="svc-faq-inner">
+    <div class="svc-section-header" data-animate>
+      <h2>Common Questions</h2>
+    </div>
+    <div class="svc-faq-list">
+      
+        <details class="svc-faq-item">
+          <summary>What is a partial asset disposition?</summary>
+          <p>When you replace a structural component — like a roof — you can write off whatever's left of the original roof's depreciated value rather than continuing to depreciate something that no longer exists.</p>
+        </details>
+
+        <details class="svc-faq-item">
+          <summary>Do I need to amend prior returns?</summary>
+          <p>No. TPR corrections are made through accounting method changes (Form 3115), which allow catch-up deductions in the current year.</p>
+        </details>
+
+        <details class="svc-faq-item">
+          <summary>How does this differ from cost segregation?</summary>
+          <p>Cost seg is a forward-looking engineering study on purchase or construction. TPR work often focuses retroactively on replacements and repairs you've already made.</p>
+        </details>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPLORE OTHER SERVICES ─────────────────────────────── -->
+<div class="svc-also">
+  <div class="svc-also-inner">
+    <h3>Explore Other Services</h3>
+    <div class="svc-also-grid">
+      <a href="../services/cost-segregation.html" class="svc-also-card"><span>Cost Segregation</span></a>
+      <a href="../services/tangible-property-regulations.html" class="svc-also-card"><span>Tangible Property Regs</span></a>
+      <a href="../services/rd-tax-credits.html" class="svc-also-card"><span>R&amp;D Tax Credits</span></a>
+      <a href="../services/energy-optimization.html" class="svc-also-card"><span>Energy Optimization</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- ── BOTTOM CTA ─────────────────────────────────────────── -->
+<section class="svc-bottom-cta">
+  <h2>Ready to Stop Overpaying on Taxes?</h2>
+  <p>Let our team analyze your property and show you exactly how much you could be saving.</p>
+  <div class="svc-bottom-cta-btns">
+    <a href="../submitform.html" class="btn btn--gold btn--lg">Request Tax Savings Proposal</a>
+    <a href="https://calendly.com/innovate-real-estate" target="_blank" class="btn btn--outline btn--lg">Schedule a Consultation</a>
+  </div>
+</section>
+
+<footer id="footer">
+  <div class="container--wide">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="../assets/logo.webp" alt="Innovate Real Estate">
+        <p>Delivering industry-leading cost segregation studies and advanced tax strategies to property owners, investors, and business leaders nationwide.</p>
+        <div class="contact-social">
+          <a href="https://www.linkedin.com/company/innovate-real-estate850" target="_blank" class="social-link" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://x.com/InnovateTaxRE" target="_blank" class="social-link" aria-label="Twitter / X">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="../services/cost-segregation.html">Cost Segregation</a></li>
+          <li><a href="../services/tangible-property-regulations.html">Tangible Property Regs</a></li>
+          <li><a href="../services/unicap-exemption.html">263A UNICAP</a></li>
+          <li><a href="../services/rd-tax-credits.html">R&amp;D Tax Credits</a></li>
+          <li><a href="../services/energy-optimization.html">Energy Optimization</a></li>
+          <li><a href="../services/wealth-strategies.html">Wealth Strategies</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../index.html#about">About Us</a></li>
+          <li><a href="../team.html">Our Team</a></li>
+          <li><a href="../blog.html">Blog &amp; Insights</a></li>
+          <li><a href="../affiliate.html">Affiliate Program</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get Started</h4>
+        <ul>
+          <li><a href="../submitform.html">Tax Savings Proposal</a></li>
+          <li><a href="https://calendly.com/innovate-real-estate" target="_blank">Book a Consultation</a></li>
+          <li><a href="../index.html#tools">Free Tax Tools</a></li>
+          <li><a href="tel:8508053737">850-805-3737</a></li>
+          <li><a href="mailto:hello@innovaterealestate.net">hello@innovaterealestate.net</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">© 2025 Innovate Real Estate. All rights reserved. Tax strategies should be evaluated with your CPA.</div>
+      <div style="font-size:var(--text-xs);color:var(--gray);">Tax · Energy · Wealth</div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to Top -->
+<button id="scroll-top" aria-label="Scroll to top">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+// Theme toggle
+const root = document.documentElement;
+const savedTheme = localStorage.getItem('ire-theme') || 'dark';
+root.setAttribute('data-theme', savedTheme);
+[document.getElementById('theme-toggle'), document.getElementById('mobile-theme-toggle')].forEach(btn => {
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    const current = root.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('ire-theme', next);
+  });
+});
+
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobile-nav');
+if (hamburger && mobileNav) {
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    mobileNav.setAttribute('aria-hidden', !isOpen);
+  });
+  document.querySelectorAll('.mobile-link, .mobile-nav-btns a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+      mobileNav.setAttribute('aria-hidden', true);
+    });
+  });
+}
+
+// Mobile services dropdown toggle
+const svcToggle = document.querySelector('.mobile-services-toggle');
+const svcDropdown = document.getElementById('mobile-services-dropdown');
+if (svcToggle && svcDropdown) {
+  svcToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    const open = svcDropdown.classList.toggle('open');
+    svcToggle.classList.toggle('open', open);
+  });
+  svcDropdown.querySelectorAll('.mobile-sub-link').forEach(link => {
+    link.addEventListener('click', () => {
+      if (mobileNav) { mobileNav.classList.remove('open'); mobileNav.setAttribute('aria-hidden', 'true'); }
+      if (hamburger) { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); }
+    });
+  });
+}
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+// Scroll to top
+const scrollTop = document.getElementById('scroll-top');
+if (scrollTop) {
+  window.addEventListener('scroll', () => scrollTop.classList.toggle('visible', window.scrollY > 400), { passive: true });
+  scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+// Intersection observer for animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('animated'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+
+lucide.createIcons();
+</script>
+</body>
+</html>

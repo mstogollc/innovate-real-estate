@@ -223,7 +223,21 @@
     </a>
     <ul class="nav-links" role="list">
       <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#services">Services</a></li>
+      <li class="has-dropdown">
+          <a href="index.html#services" class="dropdown-toggle">Services
+            <svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <ul class="nav-dropdown" role="menu">
+            <li><a href="services/cost-segregation.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Cost Segregation</a></li>
+            <li><a href="services/tangible-property-regulations.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Tangible Property Regs</a></li>
+            <li><a href="services/unicap-exemption.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>263A UNICAP Exemption</a></li>
+            <li><a href="services/green-zip-tape.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Green Zip Tape</a></li>
+            <li><a href="services/method-change.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Method Change</a></li>
+            <li><a href="services/rd-tax-credits.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>R&amp;D Tax Credits</a></li>
+            <li><a href="services/energy-optimization.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Energy Optimization</a></li>
+            <li><a href="services/wealth-strategies.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>Wealth Strategies</a></li>
+          </ul>
+        </li>
       <li><a href="index.html#tools">Tools</a></li>
       <li><a href="blog.html">Blog</a></li>
       <li><a href="team.html" style="color:var(--gold);">Our Team</a></li>
@@ -510,6 +524,27 @@ const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
 }, { threshold: 0.1 });
 document.querySelectorAll('[data-animate]').forEach(el => io.observe(el));
+
+// ── Services mobile dropdown toggle ─────────────────────────────────────────
+const svcToggle = document.querySelector('.mobile-services-toggle');
+const svcDropdown = document.getElementById('mobile-services-dropdown');
+if (svcToggle && svcDropdown) {
+  svcToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    const open = svcDropdown.classList.toggle('open');
+    svcToggle.classList.toggle('open', open);
+  });
+  // Close mobile nav when a sub-link is clicked
+  svcDropdown.querySelectorAll('.mobile-sub-link').forEach(link => {
+    link.addEventListener('click', () => {
+      const mobileNav = document.getElementById('mobile-nav');
+      const hamburger = document.getElementById('hamburger');
+      if (mobileNav) { mobileNav.classList.remove('open'); mobileNav.setAttribute('aria-hidden', 'true'); }
+      if (hamburger) { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); }
+    });
+  });
+}
+
 </script>
 </body>
 </html>

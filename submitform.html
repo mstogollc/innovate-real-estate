@@ -1046,28 +1046,108 @@ function toggleErr(errId, show) {
 }
 
 // ── Form submission
-document.getElementById('proposal-form').addEventListener('submit', function(e) {
+document.getElementById('proposal-form').addEventListener('submit', async function(e) {
   e.preventDefault();
-  
+
+  // ── Validate step 4 fields ──────────────────────────────
   const terms = document.getElementById('terms-agree');
   if (!terms.checked) {
     document.getElementById('terms-err').classList.add('visible');
     return;
   }
-  
-  const refValid = validateField('referred-by', 'referred-err', v => v.trim().length > 0);
-  const agentValid = validateField('real-estate-agent', 'agent-err', v => v.trim().length > 0);
-  const repValid = validateField('innovate-rep', 'rep2-err', v => v.length > 0);
-  
+  const refValid  = validateField('referred-by',     'referred-err', v => v.trim().length > 0);
+  const agentValid = validateField('real-estate-agent','agent-err',   v => v.trim().length > 0);
+  const repValid   = validateField('innovate-rep',    'rep2-err',     v => v.length > 0);
   if (!refValid || !agentValid || !repValid) return;
-  
-  // Show success
-  this.style.display = 'none';
-  document.querySelector('.progress-wrap').style.display = 'none';
-  document.getElementById('form-success').classList.add('visible');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  lucide.createIcons();
+
+  // ── Disable submit button & show loading state ──────────
+  const submitBtn = this.querySelector('button[type="submit"]');
+  const origText  = submitBtn.innerHTML;
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = '<span style="opacity:.7">Sending…</span>';
+
+  // ── Build FormData from all form fields ─────────────────
+  const formData = new FormData(this);
+
+  // Collect checked radio/checkbox groups that FormData may miss
+  const hasImp = document.querySelector('input[name="hasImprovements"]:checked');
+  if (hasImp) formData.set('hasImprovements', hasImp.value);
+
+  const rePro = document.querySelector('input[name="reProfessional"]:checked');
+  if (rePro) formData.set('reProfessional', rePro.value);
+
+  const taxRate = document.querySelector('input[name="taxRate"]:checked');
+  if (taxRate) formData.set('taxRate', taxRate.value);
+
+  const taxYears = [...document.querySelectorAll('input[name="taxYear"]:checked')].map(el => el.value);
+  formData.set('taxYear', taxYears.join(', ') || 'Not specified');
+
+  const taxFiling = document.querySelector('input[name="taxFiling"]:checked');
+  if (taxFiling) formData.set('taxFiling', taxFiling.value);
+
+  const rentalType = document.querySelector('input[name="rentalType"]:checked');
+  if (rentalType) formData.set('rentalType', rentalType.value);
+
+  // FormSubmit.co special config fields
+  formData.append('_subject',  'New Tax Savings Proposal — ' + (formData.get('name') || 'Prospect'));
+  formData.append('_captcha',  'false');
+  formData.append('_template', 'table');
+
+  // ── POST to FormSubmit.co ────────────────────────────────
+  try {
+    const res = await fetch('https://formsubmit.co/ajax/hello@innovaterealestate.net', {
+      method:  'POST',
+      headers: { 'Accept': 'application/json' },
+      body:    formData
+    });
+    const json = await res.json();
+
+    if (json.success === 'true' || json.success === true) {
+      // ── Show success screen ───────────────────────────────
+      this.style.display = 'none';
+      document.querySelector('.progress-wrap').style.display = 'none';
+      document.getElementById('form-success').classList.add('visible');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      lucide.createIcons();
+    } else {
+      throw new Error(json.message || 'Submission failed');
+    }
+  } catch (err) {
+    // ── Show inline error ─────────────────────────────────
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = origText;
+    let errBox = document.getElementById('submit-error-msg');
+    if (!errBox) {
+      errBox = document.createElement('p');
+      errBox.id = 'submit-error-msg';
+      errBox.style.cssText = 'color:#e74c3c;margin-top:1rem;font-size:.9rem;text-align:center;';
+      submitBtn.parentNode.insertBefore(errBox, submitBtn.nextSibling);
+    }
+    errBox.textContent = 'Something went wrong — please try again or email hello@innovaterealestate.net directly.';
+    console.error('FormSubmit error:', err);
+  }
 });
+
+// ── Services mobile dropdown toggle ─────────────────────────────────────────
+const svcToggle = document.querySelector('.mobile-services-toggle');
+const svcDropdown = document.getElementById('mobile-services-dropdown');
+if (svcToggle && svcDropdown) {
+  svcToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    const open = svcDropdown.classList.toggle('open');
+    svcToggle.classList.toggle('open', open);
+  });
+  // Close mobile nav when a sub-link is clicked
+  svcDropdown.querySelectorAll('.mobile-sub-link').forEach(link => {
+    link.addEventListener('click', () => {
+      const mobileNav = document.getElementById('mobile-nav');
+      const hamburger = document.getElementById('hamburger');
+      if (mobileNav) { mobileNav.classList.remove('open'); mobileNav.setAttribute('aria-hidden', 'true'); }
+      if (hamburger) { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); }
+    });
+  });
+}
+
 </script>
 </body>
 </html>

@@ -2241,3 +2241,173 @@ button { cursor: pointer; background: none; border: none; }
   background: var(--gold-dark);
   transform: translateY(-2px);
 }
+
+/* ============================================================
+   SERVICES DROPDOWN NAV
+   ============================================================ */
+
+/* ── Desktop dropdown ─────────────────────────────────────── */
+.has-dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.chevron-icon {
+  width: 11px;
+  height: 11px;
+  transition: transform var(--transition);
+  flex-shrink: 0;
+}
+
+.has-dropdown:hover .chevron-icon,
+.has-dropdown:focus-within .chevron-icon {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  background: var(--dark-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2) 0;
+  min-width: 240px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.55);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  list-style: none;
+  z-index: 1100;
+}
+
+.has-dropdown:hover .nav-dropdown,
+.has-dropdown:focus-within .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Arrow pointer */
+.nav-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top: 0;
+  border-bottom-color: var(--border);
+}
+.nav-dropdown::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top: 0;
+  border-bottom-color: var(--dark-2);
+}
+
+.nav-dropdown li a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-5);
+  color: var(--gray-light);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  transition: color var(--transition), background var(--transition);
+  white-space: nowrap;
+}
+
+.nav-dropdown li a:hover {
+  color: var(--gold);
+  background: rgba(221,193,89,0.07);
+}
+
+.nav-dropdown li a .dd-icon {
+  width: 15px;
+  height: 15px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.nav-dropdown li + li {
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Light theme adjustments */
+[data-theme="light"] .nav-dropdown {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.1);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+}
+[data-theme="light"] .nav-dropdown::after { border-bottom-color: #ffffff; }
+[data-theme="light"] .nav-dropdown::before { border-bottom-color: rgba(0,0,0,0.1); }
+[data-theme="light"] .nav-dropdown li a { color: #555; }
+[data-theme="light"] .nav-dropdown li + li { border-top-color: rgba(0,0,0,0.05); }
+
+/* ── Mobile services submenu ──────────────────────────────── */
+.mobile-services-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mobile-services-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.chevron-icon-mobile {
+  width: 14px;
+  height: 14px;
+  transition: transform var(--transition);
+  flex-shrink: 0;
+}
+
+.mobile-services-toggle.open .chevron-icon-mobile {
+  transform: rotate(180deg);
+}
+
+.mobile-services-dropdown {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: rgba(221,193,89,0.05);
+  border: 1px solid rgba(221,193,89,0.15);
+  border-radius: var(--radius-lg);
+  width: 80%;
+}
+
+.mobile-services-dropdown.open {
+  display: flex;
+}
+
+.mobile-sub-link {
+  font-family: var(--font-body) !important;
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+  color: var(--gray-light) !important;
+  transition: color var(--transition) !important;
+}
+
+.mobile-sub-link:hover {
+  color: var(--gold) !important;
+}

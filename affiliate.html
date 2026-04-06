@@ -606,6 +606,27 @@ document.getElementById('affiliate-form').addEventListener('submit', function(e)
   lucide.createIcons();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
+// ── Services mobile dropdown toggle ─────────────────────────────────────────
+const svcToggle = document.querySelector('.mobile-services-toggle');
+const svcDropdown = document.getElementById('mobile-services-dropdown');
+if (svcToggle && svcDropdown) {
+  svcToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    const open = svcDropdown.classList.toggle('open');
+    svcToggle.classList.toggle('open', open);
+  });
+  // Close mobile nav when a sub-link is clicked
+  svcDropdown.querySelectorAll('.mobile-sub-link').forEach(link => {
+    link.addEventListener('click', () => {
+      const mobileNav = document.getElementById('mobile-nav');
+      const hamburger = document.getElementById('hamburger');
+      if (mobileNav) { mobileNav.classList.remove('open'); mobileNav.setAttribute('aria-hidden', 'true'); }
+      if (hamburger) { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); }
+    });
+  });
+}
+
 </script>
 </body>
 </html>
