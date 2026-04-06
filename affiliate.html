@@ -260,6 +260,88 @@
 
     .af-success.visible { display: block; }
 
+    /* Light theme overrides for affiliate form */
+    [data-theme="light"] .af-form-card {
+      background: #FFFFFF;
+      border-color: rgba(0,0,0,0.1);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    [data-theme="light"] .af-form-card h3 {
+      color: #B89D3A;
+    }
+    [data-theme="light"] .af-form-card h3 span.card-num {
+      background: rgba(184,157,58,0.1);
+      border-color: rgba(184,157,58,0.3);
+      color: #B89D3A;
+    }
+    [data-theme="light"] .af-section-title {
+      color: #1a1a1a;
+    }
+    [data-theme="light"] .af-section-sub {
+      color: #666666;
+    }
+    [data-theme="light"] .af-label {
+      color: #555555;
+    }
+    [data-theme="light"] .af-input,
+    [data-theme="light"] .af-select,
+    [data-theme="light"] .af-textarea {
+      background: #F7F6F2;
+      border-color: rgba(0,0,0,0.12);
+      color: #1a1a1a;
+    }
+    [data-theme="light"] .af-input::placeholder,
+    [data-theme="light"] .af-textarea::placeholder {
+      color: #999999;
+    }
+    [data-theme="light"] .af-input:focus,
+    [data-theme="light"] .af-select:focus,
+    [data-theme="light"] .af-textarea:focus {
+      border-color: #B89D3A;
+      box-shadow: 0 0 0 3px rgba(184,157,58,0.12);
+    }
+    [data-theme="light"] .af-radio-label,
+    [data-theme="light"] .af-check-label {
+      background: #F7F6F2;
+      border-color: rgba(0,0,0,0.1);
+      color: #555555;
+    }
+    [data-theme="light"] .af-radio-option:checked + .af-radio-label,
+    [data-theme="light"] .af-check-option:checked + .af-check-label {
+      border-color: #B89D3A;
+      color: #1a1a1a;
+      background: rgba(184,157,58,0.06);
+    }
+    [data-theme="light"] .af-radio-label:hover,
+    [data-theme="light"] .af-check-label:hover {
+      border-color: rgba(184,157,58,0.4);
+      color: #1a1a1a;
+    }
+    [data-theme="light"] .af-check-label::before {
+      border-color: rgba(0,0,0,0.2);
+    }
+    [data-theme="light"] .terms-check-row label {
+      color: #555555;
+    }
+    [data-theme="light"] .af-success {
+      background: #FFFFFF;
+      border-color: rgba(184,157,58,0.25);
+    }
+    [data-theme="light"] .affiliate-form-wrap {
+      background: #F0EDE6;
+    }
+    [data-theme="light"] .affiliate-footer {
+      background: #F0EDE6;
+      border-top-color: rgba(0,0,0,0.08);
+    }
+    [data-theme="light"] .affiliate-footer,
+    [data-theme="light"] .affiliate-footer a {
+      color: #666666;
+    }
+    [data-theme="light"] .affiliate-footer a:hover {
+      color: #B89D3A;
+    }
+
     @media (max-width: 700px) {
       .affiliate-benefits { grid-template-columns: 1fr; }
       .af-grid-2 { grid-template-columns: 1fr; }
@@ -273,10 +355,16 @@
   <a href="index.html">
     <img src="assets/logo.webp" alt="Innovate Real Estate" style="height:40px;width:auto;">
   </a>
-  <a href="index.html" style="display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--gray-light);transition:color var(--transition);" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray-light)'">
-    <i data-lucide="arrow-left" style="width:16px;height:16px;"></i>
-    Back to Home
-  </a>
+  <div style="display:flex;align-items:center;gap:var(--space-4);">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" style="width:36px;height:36px;">
+      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--gray-light);transition:color var(--transition);" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray-light)'">
+      <i data-lucide="arrow-left" style="width:16px;height:16px;"></i>
+      Back to Home
+    </a>
+  </div>
 </div>
 
 <!-- Hero -->
@@ -458,6 +546,19 @@
 </div>
 
 <script>
+// Theme Toggle
+(function() {
+  let currentTheme = 'dark';
+  function setTheme(theme) {
+    currentTheme = theme;
+    document.documentElement.setAttribute('data-theme', theme);
+  }
+  const btn = document.getElementById('theme-toggle');
+  if (btn) btn.addEventListener('click', () => {
+    setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+  });
+})();
+
 lucide.createIcons();
 
 const io = new IntersectionObserver(entries => {
