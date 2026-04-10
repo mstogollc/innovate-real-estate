@@ -13,7 +13,7 @@
   <link rel="preload" href="../assets/logo.webp" as="image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <link rel="stylesheet" href="../assets/css/style.css">
   <style>
@@ -341,13 +341,15 @@
     [data-delay="5"] { transition-delay: 0.5s; }
     [data-delay="6"] { transition-delay: 0.6s; }
   </style>
+
+  <style>.section-title, h1, h2 { font-family: 'Playfair Display', serif !important; }</style>
 </head>
 <body>
 
 <nav id="navbar" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="../index.html" class="nav-logo" aria-label="Innovate Real Estate Home">
-      <img src="../assets/logo.webp" alt="Innovate Real Estate Logo">
+      <img src="../assets/logo.webp" alt="Innovate Real Estate Logo" style="height: 56px; width: auto;">
     </a>
 
     <ul class="nav-links" role="list">
@@ -453,6 +455,26 @@
     <span>Cost Segregation</span>
   </div>
 </div>
+
+<!-- ── EDUCATION FIRST: COST SEGREGATION VIDEO ──────────── -->
+<section class="section section--black" style="padding:var(--space-16) 0;">
+  <div class="container" style="max-width:900px;">
+    <div style="text-align:center;" data-animate>
+      <span class="label">Education First</span>
+      <h2 class="section-title" style="margin-top:var(--space-3);">What is Cost Segregation?</h2>
+      <p style="color:var(--gray-light);font-size:var(--text-lg);line-height:1.7;max-width:620px;margin:var(--space-4) auto var(--space-10);">
+        In just a few minutes, understand exactly how cost segregation works, who it benefits, and 
+        why it's one of the most powerful legal tax strategies available to property owners.
+      </p>
+    </div>
+    <div style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.3);" data-animate data-delay="2">
+      <video controls preload="metadata" poster="../assets/about-section.png" style="width:100%;display:block;">
+        <source src="../assets/cost-seg-final.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</section>
 
 <!-- ── OVERVIEW ───────────────────────────────────────────── -->
 <section class="svc-overview">

@@ -18,13 +18,11 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
   <!-- CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
@@ -50,6 +48,28 @@
     ]
   }
   </script>
+
+  <!-- Playfair Display for headlines -->
+  <style>
+    .hero-headline, .section-title, h1, h2 {
+      font-family: 'Playfair Display', serif !important;
+    }
+    .service-card-link:hover {
+      opacity: 0.9;
+    }
+    .service-card {
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(221,193,89,0.15);
+    }
+    .lead-form input:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+  </style>
 </head>
 <body>
 
@@ -59,7 +79,7 @@
 <nav id="navbar" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="Innovate Real Estate Home">
-      <img src="assets/logo.webp" alt="Innovate Real Estate Logo">
+      <img src="assets/logo.webp" alt="Innovate Real Estate Logo" style="height: 56px; width: auto;">
     </a>
 
     <ul class="nav-links" role="list">
@@ -76,10 +96,11 @@
             <li><a href="services/method-change.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Method Change</a></li>
             <li><a href="services/rd-tax-credits.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>R&amp;D Tax Credits</a></li>
             <li><a href="services/energy-optimization.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Energy Optimization</a></li>
+            <li><a href="services/waste-optimization.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Waste Optimization</a></li>
+            <li><a href="services/179d.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="16" rx="2"/><path d="M1 10h22"/><path d="M12 6v16"/></svg>179D</a></li>
             <li><a href="services/wealth-strategies.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>Wealth Strategies</a></li>
           </ul>
         </li>
-      <li><a href="#tools">Tools</a></li>
       <li><a href="blog.html">Blog</a></li>
       <li><a href="team.html">Our Team</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -116,10 +137,11 @@
       <a href="services/method-change.html" class="mobile-sub-link">Method Change</a>
       <a href="services/rd-tax-credits.html" class="mobile-sub-link">R&amp;D Tax Credits</a>
       <a href="services/energy-optimization.html" class="mobile-sub-link">Energy Optimization</a>
+      <a href="services/waste-optimization.html" class="mobile-sub-link">Waste Optimization</a>
+      <a href="services/179d.html" class="mobile-sub-link">179D</a>
       <a href="services/wealth-strategies.html" class="mobile-sub-link">Wealth Strategies</a>
     </div>
   </div>
-  <a href="#tools" class="mobile-link">Tools</a>
   <a href="blog.html" class="mobile-link">Blog</a>
   <a href="team.html" class="mobile-link">Our Team</a>
   <a href="#contact" class="mobile-link">Contact</a>
@@ -136,40 +158,41 @@
 <!-- ═══════════════════════════════════════════════════════
      HERO
 ═══════════════════════════════════════════════════════ -->
-<section id="hero" aria-label="Hero">
-  <div class="hero-bg" id="hero-bg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="hero-label">
-      <span>★ &nbsp; Tax · Energy · Wealth Strategy</span>
-    </div>
-    <h1 class="hero-headline">
-      Stop Leaving Money <em>Buried in Your Buildings</em>
+<section id="hero" aria-label="Hero" style="position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center;">
+  <!-- Video Background -->
+  <video autoplay muted loop playsinline id="hero-video" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+    <source src="assets/skyscraper-hero.mp4" type="video/mp4">
+  </video>
+  <!-- Dark Overlay -->
+  <div style="position:absolute;inset:0;background:rgba(0,0,0,0.65);z-index:1;"></div>
+  <!-- Content -->
+  <div class="hero-content" style="position:relative;z-index:2;text-align:center;max-width:900px;padding:var(--space-8);">
+    <h1 class="hero-headline" style="font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,4.5rem);line-height:1.08;color:var(--white);margin-bottom:var(--space-6);">
+      Stop Leaving Money <em style="color:var(--gold);font-style:normal;">Buried in Your Buildings</em>
     </h1>
-    <p class="hero-sub">
-      We unlock the hidden tax potential inside your real estate through strategic cost segregation, 
-      advanced depreciation planning, and next-level tax strategies — legally and powerfully.
+    <p class="hero-sub" style="font-size:var(--text-lg);color:rgba(255,255,255,0.85);max-width:640px;margin:0 auto var(--space-10);line-height:1.7;">
+      We unlock the hidden tax potential inside your real estate through advanced depreciation planning and next-level tax strategies — legally and powerfully.
     </p>
-    <div class="hero-actions">
+    <div class="hero-actions" style="display:flex;flex-wrap:wrap;gap:var(--space-4);justify-content:center;margin-bottom:var(--space-12);">
       <a href="submitform.html" class="btn btn--gold btn--lg">Schedule Your Strategic Consultation</a>
-      <a href="#video-section" class="btn btn--outline btn--lg">Watch How It Works</a>
+      <a href="#services" class="btn btn--outline btn--lg" style="border-color:rgba(255,255,255,0.4);color:var(--white);">Explore Our Services</a>
     </div>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-number" data-count="357" data-suffix="+">0+</div>
-        <div class="stat-label">Clients Served</div>
+    <div class="hero-stats" style="display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-8);">
+      <div class="stat-item" style="text-align:center;">
+        <div class="stat-number" data-count="357" data-suffix="+" style="font-size:var(--text-3xl);font-weight:900;color:var(--gold);">0+</div>
+        <div class="stat-label" style="font-size:var(--text-sm);color:rgba(255,255,255,0.7);margin-top:var(--space-1);">Clients Served</div>
       </div>
-      <div class="stat-item">
-        <div class="stat-number" data-count="1023" data-suffix="+">0+</div>
-        <div class="stat-label">Projects Completed</div>
+      <div class="stat-item" style="text-align:center;">
+        <div class="stat-number" data-count="1023" data-suffix="+" style="font-size:var(--text-3xl);font-weight:900;color:var(--gold);">0+</div>
+        <div class="stat-label" style="font-size:var(--text-sm);color:rgba(255,255,255,0.7);margin-top:var(--space-1);">Projects Completed</div>
       </div>
-      <div class="stat-item">
-        <div class="stat-number" data-count="16" data-suffix="+">0+</div>
-        <div class="stat-label">Years Experience</div>
+      <div class="stat-item" style="text-align:center;">
+        <div class="stat-number" data-count="16" data-suffix="+" style="font-size:var(--text-3xl);font-weight:900;color:var(--gold);">0+</div>
+        <div class="stat-label" style="font-size:var(--text-sm);color:rgba(255,255,255,0.7);margin-top:var(--space-1);">Years Experience</div>
       </div>
-      <div class="stat-item">
-        <div class="stat-number" data-count="100" data-prefix="$" data-suffix="M+">$0+</div>
-        <div class="stat-label">Tax Savings Unlocked</div>
+      <div class="stat-item" style="text-align:center;">
+        <div class="stat-number" data-count="100" data-prefix="$" data-suffix="M+" style="font-size:var(--text-3xl);font-weight:900;color:var(--gold);">$0+</div>
+        <div class="stat-label" style="font-size:var(--text-sm);color:rgba(255,255,255,0.7);margin-top:var(--space-1);">Tax Savings Unlocked</div>
       </div>
     </div>
   </div>
@@ -192,11 +215,11 @@
         <span class="label">Who We Are</span>
         <h2 class="section-title" style="margin-top: var(--space-3);">Your Buildings Are Hiding a Fortune</h2>
         <blockquote class="about-quote">
-          "Most property owners have no idea how much money is sitting undiscovered inside the buildings they already own. We find it."
+          "Most properties owners have no idea how much money is undiscovered inside their buildings. We find deductions, sometimes layers of deductions, beyond cost segregation."
           <footer style="margin-top: var(--space-3); font-style: normal; font-size: var(--text-sm); color: var(--gray-light);">— Rob Schell, Principal</footer>
         </blockquote>
-        <p>Innovate Real Estate is a specialized tax and financial advisory firm focused on transforming the way property owners, investors, and business leaders manage their tax liabilities. We partner with CPAs, real estate professionals, and business owners to deploy the most powerful legal tax strategies available.</p>
-        <p>With a 3-time INC 500 track record and $100M+ in savings delivered, our team has mastered every layer of the tax code that touches real estate — from cost segregation and bonus depreciation to 179D energy deductions, R&D credits, and advanced wealth strategies.</p>
+        <p>Innovate Real Estate is a specialized tax, energy and financial advisory firm. We partner with CPAs, real estate professionals, and business owners to manage tax deductions, energy savings, and financial strategies.</p>
+        <p>With a 3-time INC 500 track record and $100M+ in savings delivered, our team has mastered many layers of the tax code affecting commercial real estate.</p>
         <div class="about-features">
           <div class="about-feature">IRS-Compliant Studies</div>
           <div class="about-feature">3x INC 500 Recipients</div>
@@ -213,27 +236,7 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     VIDEO SECTION
-═══════════════════════════════════════════════════════ -->
-<section id="video-section" class="section section--black">
-  <div class="container">
-    <div class="video-header" data-animate>
-      <span class="label">Education First</span>
-      <h2 class="section-title" style="margin-top: var(--space-3);">What is Cost Segregation?</h2>
-      <p class="section-subtitle" style="margin: 0 auto;">
-        In just a few minutes, understand exactly how cost segregation works, who it benefits, and 
-        why it's one of the most powerful legal tax strategies available to property owners.
-      </p>
-    </div>
-    <div class="video-wrapper" data-animate data-delay="2">
-      <video controls preload="metadata" poster="assets/about-section.png">
-        <source src="assets/cost-seg-final.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </div>
-</section>
+<!-- VIDEO SECTION MOVED TO COST-SEG SERVICE PAGE -->
 
 <!-- ═══════════════════════════════════════════════════════
      SERVICES
@@ -244,377 +247,96 @@
       <span class="label">What We Do</span>
       <h2 class="section-title" style="margin-top: var(--space-3);">Tax Strategies Built for <span class="text-gold">Real Estate & Business Owners</span></h2>
       <p class="section-subtitle" style="margin: var(--space-4) auto 0;">
-        Eight specialized disciplines, one integrated strategy — designed to minimize your tax burden and maximize your wealth.
+        Designed to minimize tax liability and maximize long-term wealth.
       </p>
     </div>
     <div class="services-grid">
       <div class="service-card" data-animate data-delay="1">
+        <a href="services/cost-segregation.html" class="service-card-link" style="text-decoration:none;color:inherit;display:block;">
         <div class="service-icon"><i data-lucide="building-2" style="width:48px;height:48px;"></i></div>
-        <div class="service-subtitle">Bonus Depreciation & PAD</div>
+        <div class="service-subtitle">Accelerated and Bonus Depreciation and PAD</div>
         <h3>Cost Segregation</h3>
-        <p>Accelerate depreciation and unlock significant tax savings by identifying and reclassifying assets to capture the full allowable deductions under IRS rules.</p>
+        <p>Unlock significant tax savings by identifying and reclassifying assets to capture the full allowable deductions under IRS rules.</p>
+        </a>
       </div>
       <div class="service-card" data-animate data-delay="2">
+        <a href="services/tangible-property-regulations.html" class="service-card-link" style="text-decoration:none;color:inherit;display:block;">
         <div class="service-icon"><i data-lucide="file-text" style="width:48px;height:48px;"></i></div>
-        <div class="service-subtitle">Tax Deductions</div>
+        <div class="service-subtitle">Retroactive Tax Deductions</div>
         <h3>Tangible Property Regulations</h3>
-        <p>Optimize your tax position by uncovering missed deductions and ensuring depreciation schedules work for you under the IRS Tangible Property Regulations.</p>
+        <p>Optimize your tax position by uncovering missed deductions in previously filed tax returns and ensuring depreciation schedules work for you under the IRS Tangible Property Regulations.</p>
+        </a>
       </div>
       <div class="service-card" data-animate data-delay="3">
+        <a href="services/unicap-exemption.html" class="service-card-link" style="text-decoration:none;color:inherit;display:block;">
         <div class="service-icon"><i data-lucide="layers" style="width:48px;height:48px;"></i></div>
-        <div class="service-subtitle">Additional Deductions</div>
+        <div class="service-subtitle">Soft Costs</div>
         <h3>263A UNICAP Exemption</h3>
-        <p>Uncover additional deductions beyond cost segregation by identifying soft costs for significant tax savings through the UNICAP exemption methodology.</p>
+        <p>Uncover additional deductions prior to cost segregation by identifying soft costs for significant tax savings through the 263A UNICAP Exemption.</p>
+        </a>
       </div>
       <div class="service-card" data-animate data-delay="4">
+        <a href="services/green-zip-tape.html" class="service-card-link" style="text-decoration:none;color:inherit;display:block;">
         <div class="service-icon"><i data-lucide="leaf" style="width:48px;height:48px;"></i></div>
         <div class="service-subtitle">Sustainable Drywall Solutions</div>
         <h3>Green Zip Tape</h3>
-        <p>Leverage sustainable drywall solutions to increase deductions by 5–10% on both new construction and adaptive reuse projects with our proprietary methodology.</p>
+        <p>Sustainable drywall solutions designed to increase deductions by 5–10% of construction costs on both new construction and adaptive reuse projects. This approach reclassifies wall components from a 27.5- or 39-year recovery period to a 5-year asset class, accelerating depreciation and enhancing near-term tax savings.</p>
+        </a>
       </div>
       <div class="service-card" data-animate data-delay="1">
+        <a href="services/method-change.html" class="service-card-link" style="text-decoration:none;color:inherit;display:block;">
         <div class="service-icon"><i data-lucide="refresh-cw" style="width:48px;height:48px;"></i></div>
-        <div class="service-subtitle">Service Industries</div>
+        <div class="service-subtitle">Construction & Service Industries</div>
         <h3>Method Change</h3>
-        <p>Enable service and construction companies to manage tax liabilities through strategic income deferral and expense timing under IRS accounting method changes.</p>
+        <p>Enable companies to manage tax liabilities through strategic income deferral and expense timing under IRS accounting method changes.</p>
+        </a>
       </div>
       <div class="service-card" data-animate data-delay="2">
+        <a href="services/rd-tax-credits.html" class="service-card-link" style="text-decoration:none;color:inherit;display:block;">
         <div class="service-icon"><i data-lucide="cpu" style="width:48px;height:48px;"></i></div>
         <div class="service-subtitle">Research & Development</div>
         <h3>R&D Tax Credits</h3>
-        <p>Capture powerful tax credits for innovation, process improvement, and technical development within your operations — often worth tens of thousands.</p>
+        <p>Capture powerful tax credits for innovation, process improvement, and technical development within your operations.</p>
+        </a>
       </div>
       <div class="service-card" data-animate data-delay="3">
+        <a href="services/energy-optimization.html" class="service-card-link" style="text-decoration:none;color:inherit;display:block;">
         <div class="service-icon"><i data-lucide="zap" style="width:48px;height:48px;"></i></div>
-        <div class="service-subtitle">Water & Waste Solutions</div>
+        <div class="service-subtitle">Water, Power & HVAC Solutions</div>
         <h3>Energy Optimization</h3>
-        <p>Reduce energy and water costs, minimize waste, and turn sustainable practices into measurable financial results through 179D energy deduction strategies.</p>
+        <p>Reduce energy, water costs, and turn sustainable practices into measurable financial results.</p>
+        </a>
       </div>
       <div class="service-card" data-animate data-delay="4">
+        <a href="services/wealth-strategies.html" class="service-card-link" style="text-decoration:none;color:inherit;display:block;">
         <div class="service-icon"><i data-lucide="trending-up" style="width:48px;height:48px;"></i></div>
         <div class="service-subtitle">Long-Term Planning</div>
         <h3>Wealth Strategies</h3>
         <p>Integrate tax planning with long-term objectives, drawing on an array of financial strategies to build lasting legacy wealth for you and your family.</p>
+        </a>
+      </div>
+
+      <div class="service-card" data-animate data-delay="1">
+        <a href="services/waste-optimization.html" class="service-card-link" style="text-decoration:none;color:inherit;display:block;">
+        <div class="service-icon"><i data-lucide="trash-2" style="width:48px;height:48px;"></i></div>
+        <div class="service-subtitle">Disposal Solutions</div>
+        <h3>Waste Optimization</h3>
+        <p>Consolidate waste hauling contracts across properties to improve operational efficiency, reduce costs, and generate measurable cash savings through streamlined vendor management and pricing optimization.</p>
+        </a>
+      </div>
+      <div class="service-card" data-animate data-delay="2">
+        <a href="services/179d.html" class="service-card-link" style="text-decoration:none;color:inherit;display:block;">
+        <div class="service-icon"><i data-lucide="hard-hat" style="width:48px;height:48px;"></i></div>
+        <div class="service-subtitle">Building Upgrades</div>
+        <h3>179D</h3>
+        <p>HVAC, LED lighting, roofing, and window components can be strategically evaluated and allocated toward energy-efficient tax deductions, helping maximize savings through improved asset classification and energy optimization strategies.</p>
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     INTERACTIVE TOOLS
-═══════════════════════════════════════════════════════ -->
-<section id="tools" class="section section--darker">
-  <div class="container--wide">
-    <div class="tools-header" data-animate>
-      <span class="label">Interactive Tax Tools</span>
-      <h2 class="section-title" style="margin-top: var(--space-3);">Calculate Your <span class="text-gold">Hidden Savings</span></h2>
-      <p class="section-subtitle" style="margin: var(--space-4) auto 0;">
-        Ten professional-grade calculators and analyzers — built to show you exactly what your 
-        buildings could be saving right now.
-      </p>
-    </div>
-
-    <div class="tools-grid">
-
-      <!-- ── Tool 1: Tax Savings Estimator ── -->
-      <div class="tool-card" data-animate>
-        <div class="tool-header">
-          <div class="tool-number">01</div>
-          <h3>Tax Savings Estimator</h3>
-        </div>
-        <div class="tool-body">
-          <div class="tool-row">
-            <div class="tool-form-group">
-              <label for="t1-value">Property Value ($)</label>
-              <input type="number" id="t1-value" class="tool-input" placeholder="e.g. 2,500,000" value="2500000">
-            </div>
-            <div class="tool-form-group">
-              <label for="t1-type">Property Type</label>
-              <select id="t1-type" class="tool-input">
-                <option value="0.30">Multifamily Residential</option>
-                <option value="0.35">Retail / Restaurant</option>
-                <option value="0.40" selected>Office Building</option>
-                <option value="0.45">Industrial / Warehouse</option>
-                <option value="0.38">Medical / Healthcare</option>
-                <option value="0.32">Hotel / Hospitality</option>
-              </select>
-            </div>
-          </div>
-          <div class="tool-row">
-            <div class="tool-form-group">
-              <label for="t1-rate">Your Tax Rate (%)</label>
-              <input type="number" id="t1-rate" class="tool-input" placeholder="37" value="37" min="1" max="55">
-            </div>
-            <div class="tool-form-group">
-              <label for="t1-bonus">Bonus Depreciation</label>
-              <select id="t1-bonus" class="tool-input">
-                <option value="0.60" selected>60% (2024)</option>
-                <option value="0.40">40% (2025)</option>
-                <option value="0.20">20% (2026)</option>
-                <option value="1.00">100% (Prior Law)</option>
-              </select>
-            </div>
-          </div>
-          <button class="btn btn--gold" style="width:100%; justify-content:center; margin-top: var(--space-3);" onclick="calcT1()">Calculate Savings</button>
-          <div class="tool-result" id="t1-result" style="display:none;">
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-4);">
-              <div>
-                <div class="result-value" id="t1-firstyear">$0</div>
-                <div class="result-label">First-Year Savings</div>
-              </div>
-              <div>
-                <div class="result-value" id="t1-total5">$0</div>
-                <div class="result-label">5-Year Savings</div>
-              </div>
-              <div>
-                <div class="result-value" id="t1-reclassed">$0</div>
-                <div class="result-label">Assets Reclassified</div>
-              </div>
-            </div>
-            <div class="chart-container" style="height:140px; margin-top:var(--space-4);">
-              <canvas id="t1-chart"></canvas>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── Tool 2: Depreciation Comparison ── -->
-      <div class="tool-card" data-animate data-delay="2">
-        <div class="tool-header">
-          <div class="tool-number">02</div>
-          <h3>Depreciation Comparison Tool</h3>
-        </div>
-        <div class="tool-body">
-          <p style="font-size:var(--text-sm);color:var(--gray-light);margin-bottom:var(--space-4);">See how cost segregation accelerated depreciation compares to standard 39-year straight-line depreciation on a $2M property.</p>
-          <div style="display:flex;gap:var(--space-4);margin-bottom:var(--space-4);">
-            <div class="tool-form-group" style="flex:1;margin:0;">
-              <label for="t2-value">Property Value ($)</label>
-              <input type="number" id="t2-value" class="tool-input" value="2000000" onchange="updateT2()">
-            </div>
-          </div>
-          <div class="chart-container" style="height:220px;">
-            <canvas id="t2-chart"></canvas>
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-top:var(--space-4);">
-            <div class="tool-result">
-              <div class="result-value" style="font-size:var(--text-xl);" id="t2-straight">$51,282</div>
-              <div class="result-label">Standard (Yr 1)</div>
-            </div>
-            <div class="tool-result" style="border-color:rgba(221,193,89,0.4);">
-              <div class="result-value" style="font-size:var(--text-xl);" id="t2-costseg">$620,000</div>
-              <div class="result-label">Cost Seg (Yr 1)</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── Tool 3: ROI Calculator ── -->
-      <div class="tool-card" data-animate>
-        <div class="tool-header">
-          <div class="tool-number">03</div>
-          <h3>ROI Calculator</h3>
-        </div>
-        <div class="tool-body">
-          <div class="tool-row">
-            <div class="tool-form-group">
-              <label for="t3-study">Study Cost ($)</label>
-              <input type="number" id="t3-study" class="tool-input" placeholder="15,000" value="15000">
-            </div>
-            <div class="tool-form-group">
-              <label for="t3-value">Property Value ($)</label>
-              <input type="number" id="t3-value" class="tool-input" placeholder="2,000,000" value="2000000">
-            </div>
-          </div>
-          <div class="tool-form-group">
-            <label for="t3-rate">Your Tax Rate (%)</label>
-            <input type="range" id="t3-rate" class="tool-input" min="24" max="37" value="35" step="1" style="padding:var(--space-2) 0;" oninput="document.getElementById('t3-rate-display').textContent=this.value+'%'; calcT3();">
-            <div style="display:flex;justify-content:space-between;font-size:var(--text-xs);color:var(--gray);margin-top:var(--space-1);">
-              <span>24%</span><span id="t3-rate-display" style="color:var(--gold);font-weight:700;">35%</span><span>37%</span>
-            </div>
-          </div>
-          <button class="btn btn--gold" style="width:100%; justify-content:center;" onclick="calcT3()">Calculate ROI</button>
-          <div class="tool-result" id="t3-result" style="display:none; margin-top:var(--space-4);">
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-4);">
-              <div>
-                <div class="result-value" id="t3-roi">0%</div>
-                <div class="result-label">ROI</div>
-              </div>
-              <div>
-                <div class="result-value" id="t3-savings">$0</div>
-                <div class="result-label">Est. Savings</div>
-              </div>
-              <div>
-                <div class="result-value" id="t3-payback">0 days</div>
-                <div class="result-label">Payback Period</div>
-              </div>
-            </div>
-            <div class="roi-gauge" style="margin-top:var(--space-4);">
-              <canvas id="t3-chart" style="max-height:120px;max-width:240px;"></canvas>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── Tool 4: Property Type Analyzer ── -->
-      <div class="tool-card" data-animate data-delay="2">
-        <div class="tool-header">
-          <div class="tool-number">04</div>
-          <h3>Property Type Analyzer</h3>
-        </div>
-        <div class="tool-body">
-          <div class="tool-form-group">
-            <label for="t4-type">Select Your Property Type</label>
-            <select id="t4-type" class="tool-input" onchange="analyzeProperty()">
-              <option value="">— Choose type —</option>
-              <option value="multifamily">Multifamily Residential</option>
-              <option value="retail">Retail / Strip Center</option>
-              <option value="restaurant">Restaurant / Food Service</option>
-              <option value="medical">Medical / Healthcare</option>
-              <option value="industrial">Industrial / Warehouse</option>
-              <option value="office">Office Building</option>
-              <option value="hospitality">Hotel / Hospitality</option>
-              <option value="selfstore">Self-Storage</option>
-              <option value="rv">RV Park / Campground</option>
-            </select>
-          </div>
-          <div id="t4-result" style="display:none;">
-            <div id="t4-strategies" style="margin-bottom:var(--space-4);"></div>
-            <div style="background:var(--dark-3);border:1px solid rgba(221,193,89,0.15);border-radius:var(--radius-lg);padding:var(--space-4);">
-              <div class="result-label" style="margin-bottom:var(--space-2);">Estimated First-Year Savings Range</div>
-              <div class="result-value" id="t4-range" style="font-size:var(--text-xl);">—</div>
-              <div style="font-size:var(--text-xs);color:var(--gray);margin-top:var(--space-2);">Based on average property values in this category</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── Tool 5: Tax Bracket Impact Tool ── -->
-      <div class="tool-card" data-animate>
-        <div class="tool-header">
-          <div class="tool-number">05</div>
-          <h3>Tax Bracket Impact Tool</h3>
-        </div>
-        <div class="tool-body">
-          <p style="font-size:var(--text-sm);color:var(--gray-light);margin-bottom:var(--space-4);">See how your tax bracket affects your real savings. Enter a property value and see the impact across all brackets.</p>
-          <div class="tool-form-group">
-            <label for="t5-value">Property Value ($)</label>
-            <input type="number" id="t5-value" class="tool-input" value="1500000" oninput="updateT5()">
-          </div>
-          <div id="t5-brackets" style="margin-top:var(--space-4);">
-            <!-- populated by JS -->
-          </div>
-        </div>
-      </div>
-
-      <!-- ── Tool 6: Bonus Depreciation Timeline ── -->
-      <div class="tool-card" data-animate data-delay="2">
-        <div class="tool-header">
-          <div class="tool-number">06</div>
-          <h3>Bonus Depreciation Timeline</h3>
-        </div>
-        <div class="tool-body">
-          <p style="font-size:var(--text-sm);color:var(--gold);font-weight:600;margin-bottom:var(--space-4);">⚡ Bonus depreciation is phasing down. The window to maximize deductions is closing fast.</p>
-          <div class="timeline-bar" id="t6-timeline">
-            <!-- Bars injected by JS -->
-          </div>
-          <div id="t6-highlight" style="margin-top:var(--space-4);background:rgba(221,193,89,0.08);border:1px solid rgba(221,193,89,0.2);border-radius:var(--radius-lg);padding:var(--space-4);"></div>
-        </div>
-      </div>
-
-      <!-- ── Tool 7: Cash Flow Projection ── -->
-      <div class="tool-card" data-animate>
-        <div class="tool-header">
-          <div class="tool-number">07</div>
-          <h3>Cash Flow Projection Tool</h3>
-        </div>
-        <div class="tool-body">
-          <div class="tool-row">
-            <div class="tool-form-group">
-              <label for="t7-value">Property Value ($)</label>
-              <input type="number" id="t7-value" class="tool-input" value="2000000">
-            </div>
-            <div class="tool-form-group">
-              <label for="t7-rate">Tax Rate (%)</label>
-              <input type="number" id="t7-rate" class="tool-input" value="35" min="1" max="50">
-            </div>
-          </div>
-          <button class="btn btn--gold" style="width:100%; justify-content:center; margin-bottom:var(--space-4);" onclick="calcT7()">Project Cash Flow</button>
-          <div id="t7-table" style="display:none;"></div>
-        </div>
-      </div>
-
-      <!-- ── Tool 8: Building Component Breakdown ── -->
-      <div class="tool-card" data-animate data-delay="2">
-        <div class="tool-header">
-          <div class="tool-number">08</div>
-          <h3>Building Component Breakdown</h3>
-        </div>
-        <div class="tool-body">
-          <p style="font-size:var(--text-sm);color:var(--gray-light);margin-bottom:var(--space-4);">Click a building component to see its depreciation category and typical savings contribution.</p>
-          <div class="building-visual">
-            <div class="component-list">
-              <button class="component-btn" onclick="selectComponent('roof', this)"><div class="component-btn-dot"></div>Roof / Structure</button>
-              <button class="component-btn" onclick="selectComponent('hvac', this)"><div class="component-btn-dot"></div>HVAC System</button>
-              <button class="component-btn" onclick="selectComponent('electrical', this)"><div class="component-btn-dot"></div>Electrical</button>
-              <button class="component-btn" onclick="selectComponent('plumbing', this)"><div class="component-btn-dot"></div>Plumbing</button>
-              <button class="component-btn" onclick="selectComponent('parking', this)"><div class="component-btn-dot"></div>Parking Lot</button>
-              <button class="component-btn" onclick="selectComponent('landscaping', this)"><div class="component-btn-dot"></div>Landscaping</button>
-              <button class="component-btn" onclick="selectComponent('interior', this)"><div class="component-btn-dot"></div>Interior Finishes</button>
-            </div>
-            <div class="component-info">
-              <div id="t8-default" style="color:var(--gray-light);font-size:var(--text-sm);text-align:center;padding:var(--space-4);">← Select a component to see details</div>
-              <div id="t8-detail" class="component-detail">
-                <div class="component-detail-title" id="t8-title"></div>
-                <div style="font-size:var(--text-xs);color:var(--gray-light);margin-bottom:var(--space-2);" id="t8-life"></div>
-                <div style="font-size:var(--text-sm);color:rgba(255,255,255,0.8);margin-bottom:var(--space-3);" id="t8-desc"></div>
-                <div style="background:rgba(221,193,89,0.08);border-radius:var(--radius-md);padding:var(--space-3);">
-                  <div class="result-label">Typical % of Building Value</div>
-                  <div class="result-value" id="t8-pct" style="font-size:var(--text-xl);"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── Tool 9: Comparison Scorecard ── -->
-      <div class="tool-card" data-animate>
-        <div class="tool-header">
-          <div class="tool-number">09</div>
-          <h3>Are You Leaving Money on the Table?</h3>
-        </div>
-        <div class="tool-body">
-          <div id="t9-quiz">
-            <div id="t9-question-wrap"></div>
-            <div class="quiz-nav">
-              <span class="quiz-progress" id="t9-progress">Question 1 of 8</span>
-              <button class="btn btn--gold" id="t9-next-btn" onclick="quizNext()" style="padding:var(--space-3) var(--space-6);">Next →</button>
-            </div>
-          </div>
-          <div id="t9-result" style="display:none;"></div>
-        </div>
-      </div>
-
-      <!-- ── Tool 10: Savings by Industry ── -->
-      <div class="tool-card" data-animate data-delay="2">
-        <div class="tool-header">
-          <div class="tool-number">10</div>
-          <h3>Savings by Industry</h3>
-        </div>
-        <div class="tool-body">
-          <p style="font-size:var(--text-sm);color:var(--gray-light);margin-bottom:var(--space-5);">Average first-year cost segregation savings as a percentage of building value, by industry sector.</p>
-          <div id="t10-industries">
-            <!-- Injected by JS -->
-          </div>
-          <div style="margin-top:var(--space-4);padding-top:var(--space-4);border-top:1px solid var(--border-dark);">
-            <p style="font-size:var(--text-xs);color:var(--gray);">* Based on average results across 1,023+ completed studies. Actual results vary by property type, age, and improvements.</p>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- end tools-grid -->
-  </div>
-</section>
+<!-- CALCULATORS MOVED TO CORRESPONDING SERVICE PAGES -->
 
 <!-- ═══════════════════════════════════════════════════════
      TESTIMONIALS
@@ -687,7 +409,7 @@
           <div class="team-card-back">
             <div class="team-back-name">Rob Schell</div>
             <div class="team-back-title">Principal</div>
-            <p class="team-bio">Rob Schell is a Tax & Financial Advisor and co-owner of Innovate Real Estate. A 3-time INC 500 recipient, he delivers advanced tax strategies including cost segregation, 179D, UNICAP, TPRs, method changes and R&D credits to industrial, medical, and commercial real estate leaders.</p>
+            <p class="team-bio">Tax, Energy & Financial Advisor and Principal of Innovate Real Estate. Rob is a 3x Inc 500 Recipient and delivers advanced strategies to commercial real estate leaders.</p>
             <div class="team-links">
               <a href="https://www.linkedin.com/in/roberteschell/" target="_blank" class="team-link">LinkedIn</a>
               <a href="mailto:rob@innovaterealestate.net" class="team-link">Email</a>
@@ -708,7 +430,7 @@
           <div class="team-card-back">
             <div class="team-back-name">Lauren Burgess</div>
             <div class="team-back-title">Principal</div>
-            <p class="team-bio">A Finance & Economics graduate from the University of South Alabama, Lauren helps commercial real estate owners transform tax strategy into a wealth-building tool. After years in mortgage lending, she mastered strategic depreciation, cost segregation, and advanced tax methodologies.</p>
+            <p class="team-bio">As a Principal at Innovate Real Estate, Lauren helps commercial real estate owners and service industry leaders transform tax strategy into a powerful wealth-building tool. Her career began in mortgage lending, where she observed entrepreneurs building successful businesses while consistently losing significant income at tax time.</p>
             <div class="team-links">
               <a href="https://www.linkedin.com/in/laurenburgesstaxstrategy/" target="_blank" class="team-link">LinkedIn</a>
               <a href="mailto:lauren@innovaterealestate.net" class="team-link">Email</a>
@@ -744,113 +466,28 @@
   </div>
 </section>
 
+<!-- BLOG POSTS MOVED TO INDIVIDUAL SERVICE PAGES -->
+
+
 <!-- ═══════════════════════════════════════════════════════
-     BLOG SECTION
+     LEAD FUNNEL - EMAIL CAPTURE
 ═══════════════════════════════════════════════════════ -->
-<section id="blog" class="section section--dark">
-  <div class="container--wide">
-    <div class="blog-header" data-animate>
-      <div>
-        <span class="label">Tax Strategy Insights</span>
-        <h2 class="section-title" style="margin-top:var(--space-3);">Knowledge That Pays</h2>
-      </div>
-      <a href="blog.html" class="btn btn--outline">View All Articles →</a>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:var(--space-6);" id="blog-main-row">
-      <!-- Featured Post -->
-      <div class="blog-card blog-card--featured" data-animate>
-        <div class="blog-img-wrap" style="height:320px;">
-          <img src="assets/blog/blog-cost-seg-101.png" alt="Cost Segregation 101 Guide" loading="lazy">
-        </div>
-        <div class="blog-content">
-          <div class="blog-meta">
-            <span class="blog-tag">Guide</span>
-            <span class="blog-date">March 15, 2025</span>
-          </div>
-          <h3>Cost Segregation 101: The Ultimate Guide for Property Owners</h3>
-          <p class="blog-excerpt">Cost segregation is the IRS-approved method of accelerating depreciation deductions on commercial and investment real estate. Instead of depreciating your entire building over 39 years, a cost segregation study identifies components that can be depreciated over 5, 7, or 15 years — often generating six-figure tax savings in year one.</p>
-          <a href="blog.html#post-1" class="blog-read-more">Read Full Guide <span>→</span></a>
-        </div>
-      </div>
-
-      <!-- Secondary Posts -->
-      <div style="display:grid;grid-template-rows:1fr 1fr;gap:var(--space-6);">
-        <div class="blog-card blog-card--secondary" data-animate data-delay="1">
-          <div class="blog-img-wrap" style="height:180px;">
-            <img src="assets/blog/blog-bonus-depreciation.png" alt="Bonus Depreciation Phase-Down" loading="lazy">
-          </div>
-          <div class="blog-content">
-            <div class="blog-meta">
-              <span class="blog-tag">Tax Alert</span>
-              <span class="blog-date">Feb 28, 2025</span>
-            </div>
-            <h3>Bonus Depreciation Phase-Down: What Property Owners Need to Know</h3>
-            <p class="blog-excerpt">The window to claim 100% bonus depreciation has closed, but there's still significant opportunity. In 2024 it's 60%, dropping to 40% in 2025, and 20% in 2026 before disappearing entirely.</p>
-            <a href="blog.html#post-2" class="blog-read-more">Read More <span>→</span></a>
-          </div>
-        </div>
-        <div class="blog-card blog-card--secondary" data-animate data-delay="2">
-          <div class="blog-img-wrap" style="height:180px;">
-            <img src="assets/blog/blog-rental-property.png" alt="Rental Property Tax Strategies" loading="lazy">
-          </div>
-          <div class="blog-content">
-            <div class="blog-meta">
-              <span class="blog-tag">Strategy</span>
-              <span class="blog-date">Jan 20, 2025</span>
-            </div>
-            <h3>Rental Property Tax Strategies That Save Millions</h3>
-            <p class="blog-excerpt">From multifamily buildings to short-term rentals and RV parks — the right tax strategy can transform your rental portfolio into a tax-advantaged wealth engine.</p>
-            <a href="blog.html#post-3" class="blog-read-more">Read More <span>→</span></a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- More Posts Row -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-6);margin-top:var(--space-6);">
-      <div class="blog-card blog-card--small" data-animate data-delay="1">
-        <div class="blog-img-wrap" style="height:160px;">
-          <img src="assets/blog/blog-medical-office.png" alt="Medical Office Cost Segregation" loading="lazy">
-        </div>
-        <div class="blog-content">
-          <div class="blog-meta">
-            <span class="blog-tag">Case Study</span>
-            <span class="blog-date">Dec 10, 2024</span>
-          </div>
-          <h3>Medical Office Cost Segregation: A Case Study</h3>
-          <p class="blog-excerpt">A 12,000 sq ft medical office building yielded $340K in first-year tax deductions through a comprehensive cost segregation study.</p>
-          <a href="blog.html#post-4" class="blog-read-more">Read More <span>→</span></a>
-        </div>
-      </div>
-      <div class="blog-card blog-card--small" data-animate data-delay="2">
-        <div class="blog-img-wrap" style="height:160px;">
-          <img src="assets/blog/blog-energy-credits.png" alt="179D Energy Deductions" loading="lazy">
-        </div>
-        <div class="blog-content">
-          <div class="blog-meta">
-            <span class="blog-tag">Energy</span>
-            <span class="blog-date">Nov 5, 2024</span>
-          </div>
-          <h3>179D Energy Deductions for Commercial Buildings</h3>
-          <p class="blog-excerpt">The 179D deduction rewards building owners and designers who invest in energy-efficient systems. Up to $5 per square foot — on buildings you already own.</p>
-          <a href="blog.html#post-5" class="blog-read-more">Read More <span>→</span></a>
-        </div>
-      </div>
-      <div class="blog-card blog-card--small" data-animate data-delay="3">
-        <div class="blog-img-wrap" style="height:160px;">
-          <img src="assets/blog/blog-rnd-credits.png" alt="R&D Tax Credits" loading="lazy">
-        </div>
-        <div class="blog-content">
-          <div class="blog-meta">
-            <span class="blog-tag">R&D</span>
-            <span class="blog-date">Oct 18, 2024</span>
-          </div>
-          <h3>R&D Tax Credits: Innovation Meets Tax Strategy</h3>
-          <p class="blog-excerpt">R&D credits aren't just for Silicon Valley. Construction processes, manufacturing improvements, and even restaurant recipe development can qualify for significant credits.</p>
-          <a href="blog.html#post-6" class="blog-read-more">Read More <span>→</span></a>
-        </div>
-      </div>
+<section id="lead-capture" class="section section--dark">
+  <div class="container" style="max-width:720px;text-align:center;">
+    <div data-animate>
+      <span class="label">Free Resource</span>
+      <h2 class="section-title" style="margin-top:var(--space-3);font-family:'Playfair Display',serif;">The Property Owner's <span class="text-gold">Tax Savings Blueprint</span></h2>
+      <p style="color:var(--gray-light);font-size:var(--text-lg);line-height:1.7;margin:var(--space-4) auto var(--space-8);max-width:56ch;">
+        Discover how commercial property owners are legally saving $50K–$500K+ per building using strategies most CPAs never discuss. Get our free guide delivered instantly.
+      </p>
+      <form action="https://formsubmit.co/ajax/hello@innovaterealestate.net" method="POST" class="lead-form" id="lead-form" style="display:flex;flex-wrap:wrap;gap:var(--space-3);justify-content:center;max-width:540px;margin:0 auto;">
+        <input type="hidden" name="_subject" value="New Lead: Tax Savings Blueprint Download">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="name" placeholder="Your Name" required style="flex:1;min-width:200px;padding:var(--space-4) var(--space-5);border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:var(--text-base);font-family:var(--font-body);">
+        <input type="email" name="email" placeholder="Your Email" required style="flex:1;min-width:200px;padding:var(--space-4) var(--space-5);border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:var(--text-base);font-family:var(--font-body);">
+        <button type="submit" class="btn btn--gold btn--lg" style="width:100%;justify-content:center;">Download Free Guide →</button>
+      </form>
+      <p style="color:var(--gray);font-size:var(--text-xs);margin-top:var(--space-4);">We respect your privacy. Unsubscribe anytime.</p>
     </div>
   </div>
 </section>
@@ -937,8 +574,7 @@
         <div class="contact-map">
           <div style="text-align:center;">
             <i data-lucide="map-pin" style="width:32px;height:32px;color:var(--gold);margin:0 auto var(--space-3);"></i>
-            <div style="color:var(--white);font-weight:600;">Pensacola, Florida</div>
-            <div style="color:var(--gray);font-size:var(--text-sm);margin-top:var(--space-1);">Serving clients nationwide</div>
+            <div style="color:var(--white);font-weight:600;">Serving Clients Nationwide</div>
           </div>
         </div>
         <div class="contact-ctas">
@@ -971,12 +607,14 @@
       <div class="footer-col">
         <h4>Services</h4>
         <ul>
-          <li><a href="#services">Cost Segregation</a></li>
-          <li><a href="#services">Tangible Property Regulations</a></li>
-          <li><a href="#services">263A UNICAP</a></li>
-          <li><a href="#services">R&D Tax Credits</a></li>
-          <li><a href="#services">Energy Optimization</a></li>
-          <li><a href="#services">Wealth Strategies</a></li>
+          <li><a href="services/cost-segregation.html">Cost Segregation</a></li>
+          <li><a href="services/tangible-property-regulations.html">Tangible Property Regulations</a></li>
+          <li><a href="services/unicap-exemption.html">263A UNICAP</a></li>
+          <li><a href="services/rd-tax-credits.html">R&D Tax Credits</a></li>
+          <li><a href="services/energy-optimization.html">Energy Optimization</a></li>
+          <li><a href="services/waste-optimization.html">Waste Optimization</a></li>
+          <li><a href="services/179d.html">179D</a></li>
+          <li><a href="services/wealth-strategies.html">Wealth Strategies</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -994,7 +632,6 @@
         <ul>
           <li><a href="submitform.html">Tax Savings Proposal</a></li>
           <li><a href="https://calendly.com/innovate-real-estate" target="_blank">Book a Consultation</a></li>
-          <li><a href="#tools">Free Tax Tools</a></li>
           <li><a href="tel:8508053737">850-805-3737</a></li>
           <li><a href="mailto:hello@innovaterealestate.net">hello@innovaterealestate.net</a></li>
         </ul>
@@ -1029,6 +666,33 @@
     });
   });
 })();
+
+
+// ── Lead Form Submission
+const leadForm = document.getElementById('lead-form');
+if (leadForm) {
+  leadForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('button[type="submit"]');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    try {
+      const formData = new FormData(this);
+      const resp = await fetch(this.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
+      if (resp.ok) {
+        btn.textContent = '✓ Guide on its way!';
+        btn.style.background = '#27ae60';
+        this.reset();
+      } else {
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+      }
+    } catch(err) {
+      btn.textContent = 'Try again';
+      btn.disabled = false;
+    }
+  });
+}
 
 // ── Initialize Lucide icons
 lucide.createIcons();
@@ -1096,13 +760,11 @@ const statsObs = new IntersectionObserver((entries) => {
 document.querySelector('.hero-stats') && statsObs.observe(document.querySelector('.hero-stats'));
 setTimeout(() => document.querySelectorAll('[data-count]').forEach(animateCounter), 800);
 
-// ── Parallax hero
-window.addEventListener('scroll', () => {
-  const bg = document.getElementById('hero-bg');
-  if (bg) bg.style.transform = `translateY(${window.scrollY * 0.3}px)`;
-}, { passive: true });
+// ── Parallax hero (video bg - no parallax needed)
+// Video hero handles its own visual depth
 
-// ── TOOL 1: Tax Savings Estimator
+// ── CALCULATORS (moved to service pages, kept for compatibility)
+try {
 let t1Chart = null;
 function calcT1() {
   const value = parseFloat(document.getElementById('t1-value').value) || 2500000;
@@ -1534,6 +1196,7 @@ renderQuiz();
   const t10 = document.getElementById('t10-industries');
   if (t10) barsObs.observe(t10.closest('.tool-card'));
 })();
+} catch(e) { /* Calculators not on this page */ }
 
 </script>
 </body>

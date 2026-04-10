@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resilience in Investing: A Guide to Secular Growth and Acyclical Trends | Innovate Real Estate</title>
+  <meta name="description" content="A comprehensive guide to identifying secular and acyclical investment trends — from AI infrastructure to solar energy and cybersecurity — for sophisticated investors in 2026.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <style>
+    /* ── Article Page Styles ─────────────────────────────── */
+    .article-hero {
+      position: relative;
+      height: 520px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      margin-top: var(--nav-height);
+    }
+
+    .article-hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .article-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.92) 0%,
+        rgba(0,0,0,0.55) 50%,
+        rgba(0,0,0,0.2) 100%
+      );
+    }
+
+    .article-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: var(--space-12) var(--space-6);
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .article-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: var(--text-sm);
+      font-family: var(--font-display);
+      font-weight: 500;
+      margin-bottom: var(--space-6);
+      transition: color var(--transition);
+    }
+    .article-back-link:hover { color: var(--gold); }
+
+    .article-tags {
+      display: flex;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-5);
+    }
+
+    .article-tag {
+      display: inline-block;
+      background: rgba(221,193,89,0.15);
+      border: 1px solid rgba(221,193,89,0.3);
+      color: var(--gold);
+      font-size: var(--text-xs);
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+    }
+
+    .article-hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.18;
+      margin-bottom: var(--space-5);
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-5);
+      flex-wrap: wrap;
+      color: rgba(255,255,255,0.65);
+      font-size: var(--text-sm);
+      font-family: var(--font-display);
+    }
+
+    .article-meta-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    /* ── Article Layout ──────────────────────────────────── */
+    .article-layout {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: var(--space-16) var(--space-6);
+    }
+
+    /* ── Article Body ────────────────────────────────────── */
+    .article-body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: var(--text-base);
+      line-height: 1.85;
+      color: var(--gray-light);
+    }
+
+    .article-body p {
+      margin-bottom: var(--space-6);
+      max-width: 72ch;
+    }
+
+    .article-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.35rem, 2.5vw, 1.9rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.25;
+      margin-top: var(--space-12);
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid rgba(221,193,89,0.18);
+    }
+
+    .article-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 600;
+      color: var(--white);
+      margin-top: var(--space-8);
+      margin-bottom: var(--space-4);
+    }
+
+    .article-body ul, .article-body ol {
+      margin-bottom: var(--space-6);
+      padding-left: var(--space-6);
+    }
+
+    .article-body li {
+      margin-bottom: var(--space-2);
+      color: var(--gray-light);
+    }
+
+    .article-body strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    /* ── Blockquote ──────────────────────────────────────── */
+    .article-blockquote {
+      border-left: 4px solid #DDC159;
+      margin: var(--space-8) 0;
+      padding: var(--space-5) var(--space-8);
+      background: rgba(221,193,89,0.04);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+
+    .article-blockquote p {
+      font-style: italic;
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      color: rgba(255,255,255,0.85);
+      line-height: 1.75;
+      margin: 0 0 var(--space-3) 0;
+      max-width: 100%;
+    }
+
+    .article-blockquote cite {
+      font-style: normal;
+      font-size: var(--text-sm);
+      color: var(--gold);
+      font-family: var(--font-display);
+      font-weight: 600;
+    }
+
+    /* ── Key Insight Box ─────────────────────────────────── */
+    .article-insight {
+      background: rgba(221,193,89,0.06);
+      border: 1px solid rgba(221,193,89,0.22);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6) var(--space-8);
+      margin: var(--space-8) 0;
+    }
+
+    .article-insight-label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-3);
+    }
+
+    .article-insight p {
+      color: rgba(255,255,255,0.88);
+      font-size: var(--text-base);
+      line-height: 1.75;
+      margin: 0;
+      max-width: 100%;
+      font-style: italic;
+    }
+
+    /* ── Data Table ──────────────────────────────────────── */
+    .article-table-wrap {
+      margin: var(--space-8) 0;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(221,193,89,0.15);
+    }
+
+    .article-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #1a1a1a;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: var(--text-sm);
+    }
+
+    .article-table thead tr {
+      background: #DDC159;
+    }
+
+    .article-table thead th {
+      color: #000;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      text-align: left;
+      padding: var(--space-4) var(--space-5);
+      letter-spacing: 0.02em;
+    }
+
+    .article-table tbody tr {
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: background var(--transition);
+    }
+
+    .article-table tbody tr:hover {
+      background: rgba(221,193,89,0.04);
+    }
+
+    .article-table tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    .article-table tbody td {
+      padding: var(--space-4) var(--space-5);
+      color: var(--gray-light);
+      vertical-align: middle;
+    }
+
+    .article-table tbody td:first-child {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .table-caption {
+      font-size: var(--text-xs);
+      color: var(--gray);
+      font-style: italic;
+      margin-top: var(--space-2);
+      padding: 0 var(--space-1);
+    }
+
+    /* ── Concept Cards ───────────────────────────────────── */
+    .concept-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-4);
+      margin: var(--space-8) 0;
+    }
+
+    .concept-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5) var(--space-6);
+      transition: border-color var(--transition);
+    }
+
+    .concept-card:hover {
+      border-color: rgba(221,193,89,0.3);
+    }
+
+    .concept-card-icon {
+      width: 38px;
+      height: 38px;
+      background: rgba(221,193,89,0.1);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      margin-bottom: var(--space-4);
+    }
+
+    .concept-card h4 {
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: var(--space-2);
+    }
+
+    .concept-card p {
+      font-size: var(--text-sm);
+      color: var(--gray-light);
+      line-height: 1.6;
+      margin: 0;
+      max-width: 100%;
+    }
+
+    /* ── Light theme ─────────────────────────────────────── */
+    [data-theme="light"] .article-table {
+      background: #fff;
+    }
+    [data-theme="light"] .article-table thead tr {
+      background: #DDC159;
+    }
+    [data-theme="light"] .article-table tbody tr {
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    [data-theme="light"] .article-table tbody td {
+      color: rgba(26,26,26,0.75);
+    }
+    [data-theme="light"] .article-table tbody td:first-child {
+      color: #1a1a1a;
+    }
+    [data-theme="light"] .article-body {
+      color: rgba(26,26,26,0.75);
+    }
+    [data-theme="light"] .article-body p {
+      color: rgba(26,26,26,0.75);
+    }
+    [data-theme="light"] .article-body li {
+      color: rgba(26,26,26,0.75);
+    }
+    [data-theme="light"] .article-body h2,
+    [data-theme="light"] .article-body h3 {
+      color: #1a1a1a;
+    }
+    [data-theme="light"] .article-body strong {
+      color: #1a1a1a;
+    }
+    [data-theme="light"] .article-blockquote {
+      background: rgba(221,193,89,0.06);
+    }
+    [data-theme="light"] .article-blockquote p {
+      color: rgba(26,26,26,0.85);
+    }
+    [data-theme="light"] .article-insight {
+      background: rgba(221,193,89,0.06);
+    }
+    [data-theme="light"] .article-insight p {
+      color: rgba(26,26,26,0.85);
+    }
+    [data-theme="light"] .concept-card {
+      background: #fff;
+      border-color: rgba(0,0,0,0.08);
+    }
+    [data-theme="light"] .concept-card h4 {
+      color: #1a1a1a;
+    }
+    [data-theme="light"] .concept-card p {
+      color: rgba(26,26,26,0.7);
+    }
+
+    /* ── Share Section ───────────────────────────────────── */
+    .article-share {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      margin: var(--space-12) 0;
+      padding: var(--space-6) 0;
+      border-top: 1px solid var(--border-dark);
+      border-bottom: 1px solid var(--border-dark);
+    }
+
+    .article-share-label {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      color: var(--gray-light);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-5);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      font-family: var(--font-display);
+      text-decoration: none;
+      transition: all var(--transition);
+      border: 1px solid;
+    }
+
+    .share-btn--linkedin {
+      background: rgba(10,102,194,0.12);
+      border-color: rgba(10,102,194,0.3);
+      color: #5aabff;
+    }
+    .share-btn--linkedin:hover {
+      background: rgba(10,102,194,0.25);
+      border-color: rgba(10,102,194,0.6);
+    }
+
+    .share-btn--x {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.15);
+      color: var(--white);
+    }
+    .share-btn--x:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    /* ── Related Articles ────────────────────────────────── */
+    .related-section {
+      padding: var(--space-16) var(--space-6);
+      background: var(--dark-2);
+      border-top: 1px solid var(--border-dark);
+    }
+
+    .related-section-inner {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .related-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: var(--space-8);
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-6);
+    }
+
+    .related-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      text-decoration: none;
+      transition: all var(--transition-slow);
+    }
+
+    .related-card:hover {
+      border-color: rgba(221,193,89,0.3);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+      transform: translateY(-2px);
+    }
+
+    .related-card-img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+    }
+
+    .related-card-body {
+      padding: var(--space-5);
+    }
+
+    .related-card-tag {
+      font-size: var(--text-xs);
+      font-family: var(--font-display);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: var(--space-2);
+    }
+
+    .related-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.35;
+      margin-bottom: var(--space-3);
+    }
+
+    .related-card-meta {
+      font-size: var(--text-xs);
+      color: var(--gray);
+      font-family: var(--font-display);
+    }
+
+    /* ── CTA Section ─────────────────────────────────────── */
+    .article-cta {
+      padding: var(--space-16) var(--space-6);
+      background: var(--black);
+      border-top: 1px solid var(--border-dark);
+      text-align: center;
+    }
+
+    .article-cta-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .article-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: var(--space-4);
+    }
+
+    .article-cta p {
+      color: var(--gray-light);
+      font-size: var(--text-base);
+      line-height: 1.7;
+      margin-bottom: var(--space-8);
+      max-width: 52ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── Light theme overrides ───────────────────────────── */
+    [data-theme="light"] .related-section {
+      background: #F0EDE6;
+    }
+    [data-theme="light"] .related-card {
+      background: #fff;
+      border-color: rgba(0,0,0,0.08);
+    }
+    [data-theme="light"] .related-card-title {
+      color: #1a1a1a;
+    }
+    [data-theme="light"] .article-cta {
+      background: #F0EDE6;
+    }
+    [data-theme="light"] .article-cta h2 {
+      color: #1a1a1a;
+    }
+    [data-theme="light"] .article-share {
+      border-color: rgba(0,0,0,0.08);
+    }
+    [data-theme="light"] .article-table-wrap {
+      border-color: rgba(0,0,0,0.10);
+    }
+    [data-theme="light"] .related-heading {
+      color: #1a1a1a;
+    }
+
+    /* ── Responsive ──────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .article-hero { height: 420px; }
+      .article-hero-content { padding: var(--space-8) var(--space-4); }
+      .article-layout { padding: var(--space-10) var(--space-4); }
+      .article-blockquote { padding: var(--space-4) var(--space-5); }
+      .related-section { padding: var(--space-10) var(--space-4); }
+      .article-cta { padding: var(--space-10) var(--space-4); }
+      .concept-cards { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .concept-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════════════════ -->
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo" aria-label="Innovate Real Estate Home">
+      <img src="../assets/logo.webp" alt="Innovate Real Estate Logo" style="height: 56px; width: auto;">
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="../index.html#about">About</a></li>
+      <li class="has-dropdown">
+        <a href="../index.html#services" class="dropdown-toggle">Services
+          <svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </a>
+        <ul class="nav-dropdown" role="menu">
+          <li><a href="../services/cost-segregation.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Cost Segregation</a></li>
+          <li><a href="../services/tangible-property-regulations.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Tangible Property Regs</a></li>
+          <li><a href="../services/unicap-exemption.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>263A UNICAP</a></li>
+          <li><a href="../services/green-zip-tape.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Green Zip Tape</a></li>
+          <li><a href="../services/method-change.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Method Change</a></li>
+          <li><a href="../services/rd-tax-credits.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>R&amp;D Tax Credits</a></li>
+          <li><a href="../services/energy-optimization.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Energy Optimization</a></li>
+          <li><a href="../services/waste-optimization.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Waste Optimization</a></li>
+          <li><a href="../services/179d.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="16" rx="2"/><path d="M1 10h22"/><path d="M12 6v16"/></svg>179D</a></li>
+          <li><a href="../services/wealth-strategies.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>Wealth Strategies</a></li>
+        </ul>
+      </li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="../team.html">Our Team</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme">
+      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+
+    <div class="nav-cta-group">
+      <a href="../submitform.html" class="btn btn--outline">Tax Savings Proposal</a>
+      <a href="../affiliate.html" class="btn btn--gold">Become an Affiliate</a>
+    </div>
+
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+  <a href="../index.html#about" class="mobile-link">About</a>
+  <div class="mobile-services-group">
+    <a href="../index.html#services" class="mobile-link mobile-services-toggle">Services
+      <svg class="chevron-icon-mobile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </a>
+    <div class="mobile-services-dropdown" id="mobile-services-dropdown">
+      <a href="../services/cost-segregation.html" class="mobile-sub-link">Cost Segregation</a>
+      <a href="../services/tangible-property-regulations.html" class="mobile-sub-link">Tangible Property Regs</a>
+      <a href="../services/unicap-exemption.html" class="mobile-sub-link">263A UNICAP Exemption</a>
+      <a href="../services/green-zip-tape.html" class="mobile-sub-link">Green Zip Tape</a>
+      <a href="../services/method-change.html" class="mobile-sub-link">Method Change</a>
+      <a href="../services/rd-tax-credits.html" class="mobile-sub-link">R&amp;D Tax Credits</a>
+      <a href="../services/energy-optimization.html" class="mobile-sub-link">Energy Optimization</a>
+      <a href="../services/waste-optimization.html" class="mobile-sub-link">Waste Optimization</a>
+      <a href="../services/179d.html" class="mobile-sub-link">179D</a>
+      <a href="../services/wealth-strategies.html" class="mobile-sub-link">Wealth Strategies</a>
+    </div>
+  </div>
+  <a href="../blog.html" class="mobile-link">Blog</a>
+  <a href="../team.html" class="mobile-link">Our Team</a>
+  <a href="../index.html#contact" class="mobile-link">Contact</a>
+  <div class="mobile-nav-btns">
+    <a href="../submitform.html" class="btn btn--outline btn--lg">Tax Savings Proposal</a>
+    <a href="../affiliate.html" class="btn btn--gold btn--lg">Become an Affiliate</a>
+  </div>
+  <button class="theme-toggle mobile-theme-toggle" id="mobile-theme-toggle" aria-label="Toggle light/dark theme">
+    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     ARTICLE HERO
+═══════════════════════════════════════════════════════ -->
+<section class="article-hero" aria-label="Article hero">
+  <img src="../assets/blog/blog-resilience-investing.png" alt="Resilience in Investing — modern portfolio strategy" class="article-hero-img" loading="eager">
+  <div class="article-hero-overlay"></div>
+  <div class="article-hero-content">
+    <a href="../blog.html" class="article-back-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      Back to Blog
+    </a>
+    <div class="article-tags">
+      <span class="article-tag">Investment Strategy</span>
+      <span class="article-tag">Secular Growth</span>
+      <span class="article-tag">Education</span>
+    </div>
+    <h1 class="article-hero-title">Resilience in Investing: A Guide to Secular Growth and Acyclical Trends</h1>
+    <div class="article-meta">
+      <div class="article-meta-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        April 10, 2026
+      </div>
+      <div class="article-meta-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        15 min read
+      </div>
+      <div class="article-meta-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Innovate Real Estate Strategy Team
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     ARTICLE BODY
+═══════════════════════════════════════════════════════ -->
+<main>
+  <div class="article-layout">
+    <article class="article-body">
+
+      <!-- Section 1: Introduction -->
+      <h2>Section 1: The Investment "Weather" vs. the Investment "Engine"</h2>
+
+      <p>Imagine you are captaining a vessel across the ocean. Your progress is dictated by two primary forces. The first is the <strong>tide</strong> — the broader economic cycle that can either lift all boats or create a persistent drag. In financial terms, this is <em>"Cyclicality."</em> When the economy (the tide) is strong, most companies accelerate; when it recedes, they struggle.</p>
+
+      <p>The second force is the vessel's own <strong>motor</strong>. A high-performance engine provides the thrust to move forward even when the tide is pulling against you. At Innovate Real Estate, our focus on Tax, Energy, and Wealth centers on identifying these "motors" — known as <strong>Secular</strong> and <strong>Acyclical</strong> trends.</p>
+
+      <div class="article-insight">
+        <div class="article-insight-label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Key Insight
+        </div>
+        <p>"For the sophisticated investor, success lies in distinguishing between the temporary 'market weather' and the underlying 'secular signals.' The goal is to pivot from broad index-tracking to strategic allocations in sectors where internal growth engines outpace the receding economic tide."</p>
+      </div>
+
+      <!-- Section 2: Economic Backdrop -->
+      <h2>Section 2: The Economic Backdrop — Navigating Macro Headwinds</h2>
+
+      <p>Understanding where we are in the economic cycle is essential before identifying which "motors" to back. The 2026 macroeconomic environment presents a complex, multi-variable picture — one where surface-level GDP figures mask divergent forces across sectors. The table below captures the key indicators that are shaping the investment thesis for this year:</p>
+
+      <div class="article-table-wrap">
+        <table class="article-table">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>2026 Forecast</th>
+              <th>Strategist's "Why"</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Real GDP Growth</td>
+              <td>2.2% (Q4/Q4)</td>
+              <td>Down from 2.5%; indicates a slowing "tide."</td>
+            </tr>
+            <tr>
+              <td>Headline PCE Inflation</td>
+              <td>2.9%</td>
+              <td>Spiked by energy costs from the Iran conflict.</td>
+            </tr>
+            <tr>
+              <td>Core PCE Inflation</td>
+              <td>2.4%</td>
+              <td>Fed's preferred metric remains above 2% target.</td>
+            </tr>
+            <tr>
+              <td>Oil Prices</td>
+              <td>$110–$145/bbl</td>
+              <td>Baseline $110 with $145 severe scenario.</td>
+            </tr>
+            <tr>
+              <td>Fed Policy</td>
+              <td>Cuts Delayed</td>
+              <td>Initial cuts pushed to September and December.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="table-caption">Source: Goldman Sachs 2026 macroeconomic estimates</p>
+      </div>
+
+      <p>The net reading: the tide is slowing but not reversing. This is precisely the environment where identifying sectors with their own powerful internal engines becomes the most critical portfolio decision an investor can make.</p>
+
+      <!-- Section 3: Secular Growth / AI -->
+      <h2>Section 3: Defining Secular Growth — The AI Infrastructure "Freight Train"</h2>
+
+      <p>A <strong>secular growth trend</strong> is one that operates independently of the business cycle. It is driven by a structural, multi-year shift in technology, demographics, regulation, or behavior — and it compounds regardless of whether the broader economy is expanding or contracting. In 2026, the dominant secular force is the AI infrastructure build-out.</p>
+
+      <p>Here is why the AI investment thesis holds even as GDP moderates:</p>
+
+      <div class="concept-cards">
+        <div class="concept-card">
+          <div class="concept-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          </div>
+          <h4>Earnings Domination</h4>
+          <p>AI investment is estimated to contribute roughly <strong>1/3 of all S&P 500 earnings growth</strong> in 2026, making it the single largest driver of corporate profitability this year.</p>
+        </div>
+        <div class="concept-card">
+          <div class="concept-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h4>Credibility of Spending</h4>
+          <p>Hyperscalers like Microsoft, Google, Amazon, and Meta are committing hundreds of billions to data center capacity — commitments that don't slow down when GDP dips by 0.3 points.</p>
+        </div>
+        <div class="concept-card">
+          <div class="concept-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h4>Conditional Resilience</h4>
+          <p>Even the "bear case" for AI spending still implies meaningful earnings growth — the debate is between very strong and extraordinarily strong, not growth vs. decline.</p>
+        </div>
+        <div class="concept-card">
+          <div class="concept-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <h4>Fundamental Shift</h4>
+          <p>AI is not a cyclical technology spend — it represents a fundamental re-architecture of how businesses operate. That transition, once begun, doesn't pause for a softening economy.</p>
+        </div>
+      </div>
+
+      <!-- Section 4: Acyclical Sectors -->
+      <h2>Section 4: Defining Acyclical Sectors — Solar and Cybersecurity as Quality Anchors</h2>
+
+      <p>An <strong>acyclical sector</strong> is one whose demand remains stable — or even accelerates — regardless of the economic cycle. These sectors succeed not because they benefit from the tide, but because their customers <em>cannot afford to cut their spending</em> on them.</p>
+
+      <h3>Solar Energy: The Triple Benefit</h3>
+
+      <p>Solar energy in 2026 sits at a rare intersection of three powerful tailwinds simultaneously — making it one of the most compelling acyclical allocations in the current environment:</p>
+
+      <ul>
+        <li><strong>AI Power Demand:</strong> Every new data center requires enormous amounts of electricity. Solar is the fastest-deploying, most scalable solution for this demand surge.</li>
+        <li><strong>Oil Price Shock:</strong> As oil climbs toward $110–$145/bbl, the economic case for solar improves dramatically — and so does the political urgency to deploy it faster.</li>
+        <li><strong>Attractive Valuations:</strong> Median solar energy stocks trade at 13x forward EV/EBITDA — below their historical median — while projecting 10% sales growth versus the S&P 500's 6%.</li>
+      </ul>
+
+      <p>This combination of accelerating demand, geopolitical tailwind, and below-median valuations is exceptionally rare. When a sector with secular growth trades at a discount, it represents one of the clearest signals in investing.</p>
+
+      <h3>Cybersecurity: The Essential Protector</h3>
+
+      <p>As businesses migrate more of their operations to AI-powered, cloud-connected infrastructure, the attack surface for cyber threats expands proportionally. Security spending is not discretionary — a breach that shuts down operations costs far more than any security contract. This makes cybersecurity a near-perfect acyclical sector: demand is driven by necessity, not sentiment.</p>
+
+      <!-- Section 5: Comparison Table -->
+      <h2>Section 5: The Learning Anchor — Software Disruption vs. Energy &amp; Security</h2>
+
+      <p>One of the most useful frameworks for building a resilient portfolio is distinguishing between "disruptor" sectors — those that create new paradigms — and "provider" sectors — those that enable and protect the new infrastructure. Both are secular, but they carry different risk profiles and respond differently to specific macro stressors:</p>
+
+      <div class="article-table-wrap">
+        <table class="article-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Software / AI (Disruptor)</th>
+              <th>Solar &amp; Cybersecurity (Providers)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Primary Driver</td>
+              <td>Tech efficiency and R&D investment</td>
+              <td>Infrastructure needs and geopolitical risk</td>
+            </tr>
+            <tr>
+              <td>Economic Sensitivity</td>
+              <td>Low: competitive necessity drives adoption</td>
+              <td>Low: strong balance sheets insulate from cycles</td>
+            </tr>
+            <tr>
+              <td>Growth Forecast</td>
+              <td>~1/3 of S&P 500 earnings growth</td>
+              <td>10% sales growth (Solar)</td>
+            </tr>
+            <tr>
+              <td>Key Risk</td>
+              <td>Credit tightening slows hyperscaler CapEx</td>
+              <td>Higher-for-longer rates increase project costs</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="table-caption">Comparative analysis based on 2026 Goldman Sachs sector estimates</p>
+      </div>
+
+      <p>The takeaway is not that one category is superior — it is that <strong>owning both</strong> creates a self-reinforcing portfolio where AI spending drives demand for energy and security, and energy/security growth validates the AI thesis.</p>
+
+      <!-- Section 6: Summary Lessons -->
+      <h2>Section 6: Three Principles for the Resilient Investor</h2>
+
+      <h3>1. Follow the Disproportionate Tailwind</h3>
+      <p>The goal is not to find sectors that will grow — it is to find sectors where the <em>magnitude</em> of the tailwind is out of proportion with current valuations. Solar energy at below-historical median valuations with three simultaneous tailwinds is a textbook example. When tailwinds are disproportionate to price, time is the investor's ally.</p>
+
+      <h3>2. Prioritize Balance Sheet Quality</h3>
+      <p>In a higher-for-longer rate environment, companies with strong balance sheets have a compounding structural advantage. They can fund growth internally while competitors scramble for expensive credit. The 2026 "quality pivot" — away from speculative growth stocks toward financially robust companies — is not a trade; it is a regime change.</p>
+
+      <h3>3. Respect the Valuation Gap</h3>
+      <p>Not all secular growth is created equal at every price point. The AI thesis is powerful, but parts of the AI trade are already priced for perfection. Solar and cybersecurity, by contrast, offer comparable or superior growth at more attractive multiples. Valuation discipline is not a constraint on ambition — it is the mechanism by which ambition is rewarded.</p>
+
+      <!-- Final Quote -->
+      <blockquote class="article-blockquote">
+        <p>"In an era of geopolitical uncertainty and shifting economic tides, the most resilient portfolios are built not by predicting the weather, but by investing in the engines that have the structural power to ignore it."</p>
+      </blockquote>
+
+      <div class="article-insight">
+        <div class="article-insight-label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Putting It Into Practice
+        </div>
+        <p>The same principles that guide resilient investing — quality, acyclical demand, and disproportionate tailwinds — apply directly to your tax strategy. UNICAP exemptions, cost segregation, and energy tax credits are not cyclical wins; they are structural mechanisms that compound year after year. The business owners who build the strongest balance sheets are those who recapture every available dollar through intelligent tax planning — regardless of where the economic tide stands.</p>
+      </div>
+
+      <!-- Share Section -->
+      <div class="article-share">
+        <span class="article-share-label">Share this article</span>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://innovaterealestate.net/blog/resilience-investing-guide.html&title=Resilience%20in%20Investing" target="_blank" rel="noopener" class="share-btn share-btn--linkedin">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          Share on LinkedIn
+        </a>
+        <a href="https://x.com/intent/tweet?text=Resilience%20in%20Investing%3A%20A%20Guide%20to%20Secular%20Growth%20and%20Acyclical%20Trends&url=https://innovaterealestate.net/blog/resilience-investing-guide.html" target="_blank" rel="noopener" class="share-btn share-btn--x">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Share on X
+        </a>
+      </div>
+
+    </article>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       RELATED ARTICLES
+  ═══════════════════════════════════════════════════════ -->
+  <section class="related-section" aria-label="Related articles">
+    <div class="related-section-inner">
+      <h2 class="related-heading">Related Articles</h2>
+      <div class="related-grid">
+        <a href="navigating-2026-shift.html" class="related-card">
+          <img src="../assets/blog/blog-2026-shift.png" alt="Navigating the 2026 Shift" class="related-card-img" loading="lazy">
+          <div class="related-card-body">
+            <div class="related-card-tag">Market Analysis</div>
+            <div class="related-card-title">Navigating the 2026 Shift: 5 Surprising Takeaways for Investors and Business Owners</div>
+            <div class="related-card-meta">April 10, 2026 · 12 min read</div>
+          </div>
+        </a>
+        <a href="../blog.html" class="related-card">
+          <img src="../assets/blog/blog-energy-credits.png" alt="Energy Tax Credits" class="related-card-img" loading="lazy">
+          <div class="related-card-body">
+            <div class="related-card-tag">Energy Strategy</div>
+            <div class="related-card-title">179D Energy Deductions: How Commercial Property Owners Are Capturing $5/sq ft</div>
+            <div class="related-card-meta">March 22, 2026 · 10 min read</div>
+          </div>
+        </a>
+        <a href="../blog.html" class="related-card">
+          <img src="../assets/blog/blog-rnd-credits.png" alt="R&D Tax Credits" class="related-card-img" loading="lazy">
+          <div class="related-card-body">
+            <div class="related-card-tag">Tax Strategy</div>
+            <div class="related-card-title">R&D Tax Credits: The Overlooked Growth Lever for Real Estate Tech Companies</div>
+            <div class="related-card-meta">March 5, 2026 · 8 min read</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       CTA SECTION
+  ═══════════════════════════════════════════════════════ -->
+  <section class="article-cta" aria-label="Consultation call to action">
+    <div class="article-cta-inner">
+      <span class="label" style="display:block;margin-bottom:var(--space-4);">Take Action</span>
+      <h2>Schedule a Consultation</h2>
+      <p>Ready to build a tax strategy as resilient as your investment portfolio? Let our team identify the secular tax engines inside your business — from cost segregation to energy credits — and start capturing that compounding advantage today.</p>
+      <a href="../submitform.html" class="btn btn--gold btn--lg">Get Your Tax Savings Proposal</a>
+    </div>
+  </section>
+</main>
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════ -->
+<footer id="footer">
+  <div class="container--wide">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="../assets/logo.webp" alt="Innovate Real Estate">
+        <p>Delivering industry-leading cost segregation studies and advanced tax strategies to property owners, investors, and business leaders nationwide.</p>
+        <div class="contact-social">
+          <a href="https://www.linkedin.com/company/innovate-real-estate850" target="_blank" class="social-link" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://x.com/InnovateTaxRE" target="_blank" class="social-link" aria-label="Twitter / X">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="../services/cost-segregation.html">Cost Segregation</a></li>
+          <li><a href="../services/tangible-property-regulations.html">Tangible Property Regulations</a></li>
+          <li><a href="../services/unicap-exemption.html">263A UNICAP</a></li>
+          <li><a href="../services/rd-tax-credits.html">R&D Tax Credits</a></li>
+          <li><a href="../services/energy-optimization.html">Energy Optimization</a></li>
+          <li><a href="../services/waste-optimization.html">Waste Optimization</a></li>
+          <li><a href="../services/179d.html">179D</a></li>
+          <li><a href="../services/wealth-strategies.html">Wealth Strategies</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../index.html#about">About Us</a></li>
+          <li><a href="../team.html">Our Team</a></li>
+          <li><a href="../blog.html">Blog &amp; Insights</a></li>
+          <li><a href="../affiliate.html">Affiliate Program</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get Started</h4>
+        <ul>
+          <li><a href="../submitform.html">Tax Savings Proposal</a></li>
+          <li><a href="https://calendly.com/innovate-real-estate" target="_blank">Book a Consultation</a></li>
+          <li><a href="tel:8508053737">850-805-3737</a></li>
+          <li><a href="mailto:hello@innovaterealestate.net">hello@innovaterealestate.net</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">© 2025 Innovate Real Estate. All rights reserved. Tax strategies should be evaluated with your CPA.</div>
+      <div style="font-size:var(--text-xs);color:var(--gray);">Tax · Energy · Wealth</div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to Top -->
+<button id="scroll-top" aria-label="Scroll to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i data-lucide="chevron-up" style="width:20px;height:20px;"></i>
+</button>
+
+<!-- ═══════════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════════ -->
+<script>
+// ── Theme Toggle
+(function() {
+  let currentTheme = 'dark';
+  function setTheme(theme) {
+    currentTheme = theme;
+    document.documentElement.setAttribute('data-theme', theme);
+  }
+  document.querySelectorAll('#theme-toggle, #mobile-theme-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+  });
+})();
+
+// ── Hamburger / Mobile Nav
+(function() {
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  if (!hamburger || !mobileNav) return;
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    mobileNav.setAttribute('aria-hidden', !isOpen);
+  });
+  document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', false);
+      mobileNav.setAttribute('aria-hidden', true);
+    }
+  });
+})();
+
+// ── Mobile Services Dropdown
+(function() {
+  const toggle = document.querySelector('.mobile-services-toggle');
+  const dropdown = document.getElementById('mobile-services-dropdown');
+  if (!toggle || !dropdown) return;
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    dropdown.classList.toggle('open');
+    toggle.classList.toggle('active');
+  });
+})();
+
+// ── Navbar Scroll
+(function() {
+  const navbar = document.getElementById('navbar');
+  if (!navbar) return;
+  const onScroll = () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+// ── Lucide Icons
+if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+
+</body>
+</html>

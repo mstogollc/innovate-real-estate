@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decoding the Fed: How Global Shocks Shape the Economy (March 2026 Case Study) | Innovate Real Estate</title>
+  <meta name="description" content="A plain-English breakdown of how the Federal Reserve responded to the 2026 Iran war shock — what it means for rates, inflation, and your real estate investments.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <style>
+    /* ── Article Page Specific ── */
+    .article-hero {
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      background: var(--black);
+      padding-top: var(--nav-height);
+    }
+
+    .article-hero-bg {
+      position: absolute;
+      inset: 0;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      opacity: 0.35;
+      filter: saturate(0.7);
+    }
+
+    .article-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.15) 100%);
+    }
+
+    .article-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: var(--space-12) var(--space-6) var(--space-10);
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .article-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: var(--gray-light);
+      text-decoration: none;
+      margin-bottom: var(--space-5);
+      transition: color var(--transition);
+    }
+
+    .article-back-link:hover { color: var(--gold); }
+
+    .article-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-bottom: var(--space-5);
+    }
+
+    .article-tag {
+      background: rgba(221,193,89,0.12);
+      border: 1px solid rgba(221,193,89,0.25);
+      border-radius: var(--radius-full);
+      padding: 3px 12px;
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .article-hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: var(--space-5);
+      max-width: 820px;
+    }
+
+    .article-hero-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      font-size: var(--text-sm);
+      color: var(--gray-light);
+    }
+
+    .article-hero-meta .author-avatar {
+      width: 32px;
+      height: 32px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: var(--black);
+      flex-shrink: 0;
+    }
+
+    .meta-divider {
+      width: 4px;
+      height: 4px;
+      background: var(--gray);
+      border-radius: 50%;
+    }
+
+    /* ── Article Body ── */
+    .article-page-wrapper {
+      background: var(--dark);
+      min-height: 100vh;
+    }
+
+    .article-layout {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: var(--space-12) var(--space-6);
+    }
+
+    .article-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+      font-weight: 700;
+      color: var(--white);
+      margin: var(--space-10) 0 var(--space-4);
+      line-height: 1.25;
+    }
+
+    .article-body h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--gold);
+      margin: var(--space-8) 0 var(--space-3);
+    }
+
+    .article-body p {
+      font-size: var(--text-base);
+      color: rgba(255,255,255,0.82);
+      line-height: 1.78;
+      margin-bottom: var(--space-5);
+      max-width: 72ch;
+    }
+
+    .article-body ul, .article-body ol {
+      color: rgba(255,255,255,0.82);
+      line-height: 1.78;
+      margin-bottom: var(--space-5);
+      padding-left: var(--space-6);
+    }
+
+    .article-body li {
+      margin-bottom: var(--space-2);
+    }
+
+    .article-body ul li::marker { color: var(--gold); }
+    .article-body ol li::marker { color: var(--gold); font-weight: 700; }
+
+    /* Blockquote */
+    .article-blockquote {
+      border-left: 4px solid #DDC159;
+      padding-left: 24px;
+      font-style: italic;
+      color: rgba(255,255,255,0.8);
+      margin: var(--space-8) 0;
+      font-size: var(--text-lg);
+      line-height: 1.7;
+    }
+
+    /* Key insight box */
+    .insight-box {
+      background: rgba(221,193,89,0.08);
+      border: 1px solid rgba(221,193,89,0.25);
+      border-radius: 12px;
+      padding: 24px;
+      margin: var(--space-8) 0;
+    }
+
+    .insight-box-label {
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: var(--space-2);
+    }
+
+    .insight-box p {
+      margin: 0;
+      color: rgba(255,255,255,0.9);
+      font-weight: 500;
+    }
+
+    /* Tables */
+    .article-table-wrapper {
+      overflow-x: auto;
+      margin: var(--space-8) 0;
+      border-radius: 12px;
+    }
+
+    .article-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(26,26,26,0.8);
+      border-radius: 12px;
+      overflow: hidden;
+      font-size: var(--text-sm);
+    }
+
+    .article-table thead tr {
+      background: #DDC159;
+    }
+
+    .article-table thead th {
+      padding: 14px 18px;
+      text-align: left;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #111;
+      white-space: nowrap;
+    }
+
+    .article-table tbody tr {
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: background var(--transition);
+    }
+
+    .article-table tbody tr:last-child { border-bottom: none; }
+    .article-table tbody tr:hover { background: rgba(255,255,255,0.04); }
+
+    .article-table tbody td {
+      padding: 13px 18px;
+      color: rgba(255,255,255,0.82);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    .article-table tbody td:first-child {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    /* Metric callout cards */
+    .metric-callouts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--space-4);
+      margin: var(--space-8) 0;
+    }
+
+    .metric-callout {
+      background: var(--dark-card);
+      border: 1px solid var(--border-dark);
+      border-radius: 12px;
+      padding: var(--space-5) var(--space-4);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric-callout::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .metric-callout-value {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-weight: 700;
+      color: #DDC159;
+      display: block;
+      line-height: 1;
+      margin-bottom: var(--space-2);
+    }
+
+    .metric-callout-change {
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: rgba(221,193,89,0.7);
+      margin-bottom: var(--space-2);
+      display: block;
+    }
+
+    .metric-callout-label {
+      font-size: var(--text-xs);
+      color: var(--gray-light);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 1.4;
+    }
+
+    /* Rate decision card */
+    .rate-decision-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border-dark);
+      border-radius: 16px;
+      padding: var(--space-8);
+      margin: var(--space-8) 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+    }
+
+    .rate-side {
+      text-align: center;
+      padding: var(--space-5);
+      border-radius: 10px;
+    }
+
+    .rate-side.hold {
+      background: rgba(221,193,89,0.08);
+      border: 1px solid rgba(221,193,89,0.2);
+    }
+
+    .rate-side.dissent {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .rate-side-label {
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--gray-light);
+      margin-bottom: var(--space-3);
+    }
+
+    .rate-side-value {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: var(--space-2);
+      line-height: 1;
+    }
+
+    .rate-side-desc {
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+    }
+
+    /* Timeline */
+    .rate-timeline {
+      position: relative;
+      padding-left: var(--space-8);
+      margin: var(--space-8) 0;
+    }
+
+    .rate-timeline::before {
+      content: '';
+      position: absolute;
+      left: 11px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: rgba(221,193,89,0.2);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: var(--space-6);
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: calc(-1 * var(--space-8) + 4px);
+      top: 4px;
+      width: 16px;
+      height: 16px;
+      background: var(--gold);
+      border-radius: 50%;
+      border: 3px solid var(--dark);
+    }
+
+    .timeline-date {
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--gold);
+      margin-bottom: var(--space-1);
+    }
+
+    .timeline-title {
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: var(--space-1);
+    }
+
+    .timeline-desc {
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+
+    /* Watch list */
+    .watch-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-4);
+      margin: var(--space-6) 0;
+    }
+
+    .watch-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      background: var(--dark-card);
+      border: 1px solid var(--border-dark);
+      border-radius: 10px;
+      padding: var(--space-4);
+    }
+
+    .watch-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(221,193,89,0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--gold);
+    }
+
+    .watch-item-title {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: var(--space-1);
+    }
+
+    .watch-item-desc {
+      font-size: var(--text-xs);
+      color: var(--gray-light);
+      line-height: 1.5;
+    }
+
+    /* Dual mandate visual */
+    .dual-mandate {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin: var(--space-8) 0;
+    }
+
+    .mandate-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border-dark);
+      border-radius: 14px;
+      padding: var(--space-6);
+      text-align: center;
+    }
+
+    .mandate-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(221,193,89,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-3);
+      color: var(--gold);
+    }
+
+    .mandate-title {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: var(--space-2);
+    }
+
+    .mandate-desc {
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.72);
+      line-height: 1.6;
+    }
+
+    /* Share */
+    .article-share {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin: var(--space-10) 0;
+      padding: var(--space-6);
+      background: var(--dark-2);
+      border-radius: 12px;
+      border: 1px solid var(--border-dark);
+    }
+
+    .share-label {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--gray-light);
+      margin-right: var(--space-2);
+    }
+
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      text-decoration: none;
+      transition: all var(--transition);
+      border: 1px solid var(--border-dark);
+      color: var(--white);
+    }
+
+    .share-btn:hover { border-color: rgba(221,193,89,0.4); color: var(--gold); }
+
+    /* Related articles */
+    .related-section {
+      background: var(--dark-2);
+      padding: var(--space-16) var(--space-6);
+      border-top: 1px solid var(--border-dark);
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--space-6);
+      max-width: 800px;
+      margin: var(--space-8) auto 0;
+    }
+
+    .related-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border-dark);
+      border-radius: 14px;
+      overflow: hidden;
+      text-decoration: none;
+      transition: box-shadow var(--transition-slow), border-color var(--transition-slow);
+    }
+
+    .related-card:hover {
+      border-color: rgba(221,193,89,0.2);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    .related-card-img {
+      height: 160px;
+      overflow: hidden;
+    }
+
+    .related-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+
+    .related-card:hover .related-card-img img { transform: scale(1.04); }
+
+    .related-card-body {
+      padding: var(--space-5);
+    }
+
+    .related-card-body h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.3;
+      margin-bottom: var(--space-2);
+    }
+
+    .related-card-body span {
+      font-size: var(--text-xs);
+      color: var(--gray);
+    }
+
+    /* CTA */
+    .article-cta {
+      background: var(--gold);
+      padding: var(--space-16) var(--space-6);
+      text-align: center;
+    }
+
+    /* Light theme adjustments */
+    [data-theme="light"] .article-page-wrapper { background: var(--dark); }
+    [data-theme="light"] .article-body p,
+    [data-theme="light"] .article-body li { color: rgba(255,255,255,0.85); }
+    [data-theme="light"] .article-blockquote { color: rgba(255,255,255,0.85); }
+
+    @media (max-width: 700px) {
+      .article-hero { min-height: 420px; }
+      .article-hero-title { font-size: 1.6rem; }
+      .metric-callouts { grid-template-columns: 1fr 1fr; }
+      .dual-mandate { grid-template-columns: 1fr; }
+      .rate-decision-card { grid-template-columns: 1fr; }
+      .article-share { flex-wrap: wrap; }
+      .watch-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav id="navbar" role="navigation">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="../assets/logo.webp" alt="Innovate Real Estate" style="height: 56px; width: auto;">
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="../index.html#about">About</a></li>
+      <li class="has-dropdown">
+        <a href="../index.html#services" class="dropdown-toggle">Services
+          <svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </a>
+        <ul class="nav-dropdown" role="menu">
+          <li><a href="../services/cost-segregation.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Cost Segregation</a></li>
+          <li><a href="../services/tangible-property-regulations.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Tangible Property Regs</a></li>
+          <li><a href="../services/unicap-exemption.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>263A UNICAP</a></li>
+          <li><a href="../services/green-zip-tape.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Green Zip Tape</a></li>
+          <li><a href="../services/method-change.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Method Change</a></li>
+          <li><a href="../services/rd-tax-credits.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>R&amp;D Tax Credits</a></li>
+          <li><a href="../services/energy-optimization.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Energy Optimization</a></li>
+          <li><a href="../services/waste-optimization.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Waste Optimization</a></li>
+          <li><a href="../services/179d.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="16" rx="2"/><path d="M1 10h22"/><path d="M12 6v16"/></svg>179D</a></li>
+          <li><a href="../services/wealth-strategies.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>Wealth Strategies</a></li>
+        </ul>
+      </li>
+      <li><a href="../index.html#tools">Tools</a></li>
+      <li><a href="../blog.html" style="color:var(--gold);">Blog</a></li>
+      <li><a href="../team.html">Our Team</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme">
+      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <div class="nav-cta-group">
+      <a href="../submitform.html" class="btn btn--outline">Tax Savings Proposal</a>
+      <a href="../affiliate.html" class="btn btn--gold">Become an Affiliate</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav">
+  <a href="../index.html#about">About</a>
+  <button class="mobile-services-toggle" aria-expanded="false">Services
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" width="14" height="14"><polyline points="6 9 12 15 18 9"></polyline></svg>
+  </button>
+  <div id="mobile-services-dropdown">
+    <a href="../services/cost-segregation.html" class="mobile-sub-link">Cost Segregation</a>
+    <a href="../services/tangible-property-regulations.html" class="mobile-sub-link">Tangible Property Regs</a>
+    <a href="../services/unicap-exemption.html" class="mobile-sub-link">263A UNICAP</a>
+    <a href="../services/green-zip-tape.html" class="mobile-sub-link">Green Zip Tape</a>
+    <a href="../services/method-change.html" class="mobile-sub-link">Method Change</a>
+    <a href="../services/rd-tax-credits.html" class="mobile-sub-link">R&D Tax Credits</a>
+    <a href="../services/energy-optimization.html" class="mobile-sub-link">Energy Optimization</a>
+    <a href="../services/waste-optimization.html" class="mobile-sub-link">Waste Optimization</a>
+    <a href="../services/179d.html" class="mobile-sub-link">179D</a>
+    <a href="../services/wealth-strategies.html" class="mobile-sub-link">Wealth Strategies</a>
+  </div>
+  <a href="../index.html#tools">Tools</a>
+  <a href="../blog.html">Blog</a>
+  <a href="../team.html">Our Team</a>
+  <a href="../index.html#contact">Contact</a>
+  <div class="mobile-nav-btns">
+    <a href="../submitform.html" class="btn btn--outline btn--lg">Tax Savings Proposal</a>
+    <a href="../affiliate.html" class="btn btn--gold btn--lg">Become an Affiliate</a>
+  </div>
+  <button class="theme-toggle mobile-theme-toggle" id="mobile-theme-toggle" aria-label="Toggle light/dark theme">
+    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
+</div>
+
+<!-- Hero Banner -->
+<div class="article-hero">
+  <img class="article-hero-bg" src="../assets/blog/blog-decoding-fed.png" alt="Federal Reserve Building">
+  <div class="article-hero-overlay"></div>
+  <div class="article-hero-content">
+    <a href="../blog.html" class="article-back-link">
+      <i data-lucide="arrow-left" style="width:16px;height:16px;"></i>
+      Back to Blog
+    </a>
+    <div class="article-tags">
+      <span class="article-tag">Federal Reserve</span>
+      <span class="article-tag">Economic Education</span>
+      <span class="article-tag">Monetary Policy</span>
+    </div>
+    <h1 class="article-hero-title">Decoding the Fed: How Global Shocks Shape the Economy (March 2026 Case Study)</h1>
+    <div class="article-hero-meta">
+      <div class="author-avatar">IR</div>
+      <span>Innovate Real Estate Strategy Team</span>
+      <div class="meta-divider"></div>
+      <i data-lucide="calendar" style="width:14px;height:14px;"></i>
+      <span>April 10, 2026</span>
+      <div class="meta-divider"></div>
+      <i data-lucide="clock" style="width:14px;height:14px;"></i>
+      <span>13 min read</span>
+    </div>
+  </div>
+</div>
+
+<!-- Article Body -->
+<div class="article-page-wrapper">
+  <div class="article-layout">
+    <div class="article-body">
+
+      <!-- Section 1 -->
+      <h2>Section 1: Introduction — The Federal Reserve's Mission and the "Invisible Gears"</h2>
+
+      <p>Most Americans interact with the Federal Reserve only indirectly — when their mortgage rate changes, when their savings account yield shifts, or when the stock market reacts sharply to a Wednesday afternoon press conference. But the Fed's influence on the economy is far more pervasive and far more deliberate than most realize.</p>
+
+      <p>Think of the Federal Reserve as the <strong>steering mechanism</strong> for the US economy. Unlike Congress, which uses fiscal tools (spending and taxation), the Fed uses monetary tools — primarily the federal funds rate — to manage the speed and direction of economic activity. When the economy overheats and inflation rises, the Fed raises rates to cool things down. When the economy slows and jobs are at risk, it cuts rates to stimulate activity. The mechanism is elegant in theory; in practice, it requires constant calibration in the face of relentless uncertainty.</p>
+
+      <div class="dual-mandate">
+        <div class="mandate-card">
+          <div class="mandate-icon">
+            <i data-lucide="briefcase" style="width:24px;height:24px;"></i>
+          </div>
+          <div class="mandate-title">Maximum Employment</div>
+          <p class="mandate-desc">The Fed aims to keep labor markets strong — minimizing unemployment without creating wage-driven inflation. Currently tracked via monthly jobs reports and unemployment rate trends.</p>
+        </div>
+        <div class="mandate-card">
+          <div class="mandate-icon">
+            <i data-lucide="trending-up" style="width:24px;height:24px;"></i>
+          </div>
+          <div class="mandate-title">Stable Prices</div>
+          <p class="mandate-desc">The Fed targets 2% annual inflation, measured by the PCE (Personal Consumption Expenditures) index. When inflation runs above target, the Fed must act — even if it hurts employment.</p>
+        </div>
+      </div>
+
+      <p>The tension between these two mandates is the central drama of modern monetary policy. Most of the time, the two goals align. Occasionally — as in early 2026 — they pull sharply in opposite directions, forcing the Fed into one of the most difficult judgment calls in economics.</p>
+
+      <!-- Section 2 -->
+      <h2>Section 2: The Catalyst — Geopolitical Shocks and the Energy Spike</h2>
+
+      <p>In early 2026, the geopolitical landscape shifted dramatically. The outbreak of military conflict involving Iran — a major oil producer and a critical node in global energy transit routes — created an immediate and severe shock to global energy markets. Oil prices spiked sharply, with some scenarios projecting a sustained level above $145 per barrel if the conflict disrupted Strait of Hormuz shipping.</p>
+
+      <blockquote class="article-blockquote">
+        "The war increases 'risk in both directions.' A weakening labor market pushes the Fed toward cuts; higher inflation from energy prices pushes it to hold. Rarely does the central bank face a more uncomfortable fork in the road."
+      </blockquote>
+
+      <div class="article-table-wrapper">
+        <table class="article-table">
+          <thead>
+            <tr>
+              <th>The Event</th>
+              <th>The Immediate Economic Consequence</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Start of War in Iran</td>
+              <td>Significant increase in geopolitical uncertainty; risk assets sold off; safe-haven assets (gold, Treasuries) bid up sharply</td>
+            </tr>
+            <tr>
+              <td>Oil Price Spike</td>
+              <td>Energy cost pass-through into broader economy; gasoline prices rise; transportation and manufacturing costs increase; headline inflation rises</td>
+            </tr>
+            <tr>
+              <td>Strait of Hormuz Tension</td>
+              <td>Insurance and shipping costs rise on all Middle East freight routes; supply chain disruption risk elevated across multiple sectors</td>
+            </tr>
+            <tr>
+              <td>Investor Risk Reassessment</td>
+              <td>Equity valuations compressed as earnings outlook deteriorated; corporate credit spreads widened; volatility indices spiked</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Energy shocks are particularly dangerous for central banks because they are inherently <em>stagflationary</em> — they simultaneously push inflation up (bad for price stability) and slow economic growth (bad for employment). The Fed cannot fix both problems at once with a single interest rate lever. Raising rates to fight inflation risks deepening the economic slowdown; cutting rates to support growth risks allowing inflation to become entrenched.</p>
+
+      <div class="insight-box">
+        <div class="insight-box-label"><i data-lucide="alert-triangle" style="width:12px;height:12px;display:inline;"></i> Why Energy Shocks Are Different</div>
+        <p>Most inflationary shocks are "demand-pull" — the economy gets too hot and prices rise. The Fed can cool demand with rate hikes. Energy shocks are "supply-push" — costs rise even as the economy slows. Rate hikes don't fix supply constraints; they only add more economic pain on top of existing pressure. This is why the March 2026 FOMC meeting was unusually contentious.</p>
+      </div>
+
+      <!-- Section 3 -->
+      <h2>Section 3: Shifting the Scales — Updated Forecasts for 2026</h2>
+
+      <p>Following the geopolitical shock, the Federal Reserve's internal forecasters revised their macroeconomic projections significantly. These revisions rippled through the "dot plot" — the Fed's published summary of where each FOMC member expects rates to go — and changed the calculus for every rate-sensitive asset class, including real estate.</p>
+
+      <div class="metric-callouts">
+        <div class="metric-callout">
+          <span class="metric-callout-value">2.9%</span>
+          <span class="metric-callout-change">↑ +0.8pp</span>
+          <span class="metric-callout-label">Headline PCE Inflation</span>
+        </div>
+        <div class="metric-callout">
+          <span class="metric-callout-value">2.4%</span>
+          <span class="metric-callout-change">↑ +0.2pp</span>
+          <span class="metric-callout-label">Core PCE Inflation</span>
+        </div>
+        <div class="metric-callout">
+          <span class="metric-callout-value">2.2%</span>
+          <span class="metric-callout-change">↓ -0.3pp</span>
+          <span class="metric-callout-label">GDP Growth (Q4/Q4)</span>
+        </div>
+        <div class="metric-callout">
+          <span class="metric-callout-value">4.6%</span>
+          <span class="metric-callout-change">↑ +0.1pp</span>
+          <span class="metric-callout-label">Unemployment Peak</span>
+        </div>
+        <div class="metric-callout">
+          <span class="metric-callout-value">~50K</span>
+          <span class="metric-callout-change">vs. 70K breakeven</span>
+          <span class="metric-callout-label">Monthly Job Growth</span>
+        </div>
+      </div>
+
+      <p>The divergence between headline and core PCE is significant. Core inflation — which strips out food and energy — rose only modestly (0.2pp), suggesting that the inflationary pressure is concentrated in energy-related categories rather than broadly embedded in the economy. This gave the inflation "hawks" on the Fed reason to exercise caution, but gave the employment "doves" room to argue the underlying economy was still fundamentally sound.</p>
+
+      <p>The projected monthly job growth of approximately 50,000 is particularly telling. The economy needs roughly 70,000 new jobs per month simply to keep pace with population growth and hold unemployment steady. At 50,000, the labor market is slowly but measurably cooling — a trend the Fed cannot ignore, even as energy prices push headline inflation higher.</p>
+
+      <!-- Section 4 -->
+      <h2>Section 4: Inside the March FOMC Decision</h2>
+
+      <p>The March 2026 Federal Open Market Committee meeting produced one of the year's most closely watched policy decisions. After days of internal deliberation — compressed into the formal two-day meeting structure but preceded by weeks of background briefings and Governor discussions — the Committee voted to hold the federal funds rate unchanged at 3.5–3.75%.</p>
+
+      <div class="rate-decision-card">
+        <div class="rate-side hold">
+          <div class="rate-side-label">Majority Decision</div>
+          <div class="rate-side-value">Hold</div>
+          <div class="rate-side-desc">3.5–3.75% target range maintained. The majority believed the inflation risk from energy prices outweighed the employment softening — for now.</div>
+        </div>
+        <div class="rate-side dissent">
+          <div class="rate-side-label">Dissenting Votes</div>
+          <div class="rate-side-value">–25bp</div>
+          <div class="rate-side-desc">Governors Bowman, Miran, and Waller favored an immediate 25 basis point cut, citing labor market softening as the more pressing near-term risk.</div>
+        </div>
+      </div>
+
+      <h3>The Internal Debate: Two Legitimate Camps</h3>
+
+      <p>The dissents were not frivolous — they reflected a genuine and legitimate split in how to read the data:</p>
+
+      <ul>
+        <li><strong>The "Weak Employment" camp</strong> (Bowman, Miran, Waller): With job growth below the 70,000 breakeven rate and unemployment trending toward 4.6%, the labor market is softening. Energy-driven inflation is transitory by nature — oil prices will eventually stabilize. Waiting too long risks a harder economic landing. Cut now to get ahead of deterioration.</li>
+        <li><strong>The "Inflation Risk" camp</strong> (the majority): Core inflation is still running above the 2% target. The geopolitical situation could worsen further, pushing energy prices higher still. Cutting into an inflationary shock sends exactly the wrong signal about the Fed's commitment to price stability. Hold and wait for more data.</li>
+      </ul>
+
+      <p>Both views are internally consistent. The difference comes down to which risk the Fed judges to be more manageable — a somewhat higher unemployment rate in the near term, or a second wave of inflation expectations becoming unanchored.</p>
+
+      <!-- Section 5 -->
+      <h2>Section 5: The Road to Rate Cuts — Timing and Triggers</h2>
+
+      <p>Despite the hold decision, the March meeting sent a clear signal: rate cuts are coming in 2026. The question is not if, but when — and what conditions will need to be met to pull that trigger.</p>
+
+      <div class="rate-timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Current — Q2 2026</div>
+          <div class="timeline-title">Hold at 3.5–3.75%</div>
+          <p class="timeline-desc">The Fed monitors incoming data — monthly jobs reports, PCE inflation releases, and energy market developments. No action expected until there is clearer evidence inflation is cooling.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">September 2026</div>
+          <div class="timeline-title">First Rate Cut Projected: –25bp</div>
+          <p class="timeline-desc">The "dot plot" median projects the first cut in September, bringing the target range to 3.25–3.5%. Conditional on inflation progress and continued labor market cooling.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">December 2026</div>
+          <div class="timeline-title">Second Rate Cut Projected: –25bp</div>
+          <p class="timeline-desc">A second cut in December would bring the terminal rate to 3.0–3.25% by year-end, consistent with a gradual normalization rather than emergency easing.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2027+</div>
+          <div class="timeline-title">Continued Gradual Normalization</div>
+          <p class="timeline-desc">The dots indicate only one additional cut projected for 2027 — signaling that the Fed is not anticipating a return to near-zero rates. The "new normal" terminal rate is structurally higher than the pre-2022 era.</p>
+        </div>
+      </div>
+
+      <h3>What the Fed Is Watching</h3>
+
+      <div class="watch-list">
+        <div class="watch-item">
+          <div class="watch-icon">
+            <i data-lucide="users" style="width:18px;height:18px;"></i>
+          </div>
+          <div>
+            <div class="watch-item-title">Labor Market Softening</div>
+            <p class="watch-item-desc">Monthly payroll additions, unemployment claims, and wage growth. A clear downtrend confirms easing is appropriate.</p>
+          </div>
+        </div>
+        <div class="watch-item">
+          <div class="watch-icon">
+            <i data-lucide="bar-chart-2" style="width:18px;height:18px;"></i>
+          </div>
+          <div>
+            <div class="watch-item-title">Underlying Inflation Progress</div>
+            <p class="watch-item-desc">Core PCE trending toward 2.2% or below would give the Fed confidence that energy-driven inflation has not passed through to the broader economy.</p>
+          </div>
+        </div>
+        <div class="watch-item">
+          <div class="watch-icon">
+            <i data-lucide="globe" style="width:18px;height:18px;"></i>
+          </div>
+          <div>
+            <div class="watch-item-title">Geopolitical Resolution</div>
+            <p class="watch-item-desc">Any stabilization in the Iran conflict that allows oil prices to retreat from elevated levels would remove the single largest inflation upside risk.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>The Warsh Nomination and Balance Sheet Policy</h3>
+
+      <p>Complicating the picture is the nomination of Kevin Warsh for a senior Fed role. Warsh is on record favoring aggressive balance sheet reduction — a policy that removes liquidity from the financial system even as rate cuts add it back. His "offsetting logic" argues that the Fed should normalize its $7+ trillion balance sheet faster than current policy permits, accepting some additional financial tightening in exchange for restoring the Fed's flexibility for future crises.</p>
+
+      <p>If Warsh's balance sheet philosophy gains traction at the Fed, the practical effect could be higher long-term rates even as short-term rates fall — a steepening yield curve that has complicated implications for real estate financing and capital allocation.</p>
+
+      <!-- Section 6 -->
+      <h2>Section 6: Conclusion — Economic Literacy as Your Best Defense</h2>
+
+      <p>The March 2026 FOMC meeting is a case study in how a single geopolitical event — a war thousands of miles away — can reshape the economic environment for every American business owner, investor, and property holder. Oil prices don't stay in the Middle East; they travel directly to the gas pump, the freight bill, the utility statement, and eventually the mortgage rate.</p>
+
+      <p>Understanding how these transmission mechanisms work is not academic. It is the foundation of every sound financial decision in a volatile environment. When you know why the Fed held rates in March — and what data would push it to cut in September — you are not guessing. You are reasoning from the same framework the Fed itself uses.</p>
+
+      <div class="insight-box">
+        <div class="insight-box-label"><i data-lucide="lightbulb" style="width:12px;height:12px;display:inline;"></i> The Actionable Takeaway</div>
+        <p>Rate cuts are coming — but they are slower and shallower than many investors hoped. The environment through at least mid-2026 is one of elevated short-term rates, compressed lending margins, and heightened volatility. Investors who have already locked in tax-driven returns through strategies like cost segregation and UNICAP exemptions are insulated from this uncertainty in a way that purely market-dependent investors are not. Economic literacy tells you what is coming; proactive tax planning ensures you are positioned for it.</p>
+      </div>
+
+      <p>The Federal Reserve's dual mandate — maximum employment and stable prices — is not just a policy framework. It is a real-time reflection of the tradeoffs every economy must navigate. When those two goals conflict, as they do now, the resulting policy uncertainty creates both risk and opportunity. The investors who thrive are those who understand the mechanism well enough to act with precision rather than react with panic.</p>
+
+      <!-- Share -->
+      <div class="article-share">
+        <span class="share-label">Share this article:</span>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://innovaterealestrategy.com/blog/decoding-the-fed.html" target="_blank" rel="noopener" class="share-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://twitter.com/intent/tweet?text=Decoding+the+Fed%3A+How+Global+Shocks+Shape+the+Economy+(March+2026+Case+Study)&url=https://innovaterealestrategy.com/blog/decoding-the-fed.html" target="_blank" rel="noopener" class="share-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          X (Twitter)
+        </a>
+      </div>
+
+    </div><!-- end article-body -->
+  </div><!-- end article-layout -->
+
+  <!-- Related Articles -->
+  <div class="related-section">
+    <div style="max-width:800px;margin:0 auto;text-align:center;">
+      <span class="label">Continue Reading</span>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:var(--white);margin-top:var(--space-3);">Related Articles</h2>
+    </div>
+    <div class="related-grid">
+      <a href="tax-engineering-hedge.html" class="related-card">
+        <div class="related-card-img">
+          <img src="../assets/blog/blog-tax-engineering.png" alt="Tax Engineering Hedge">
+        </div>
+        <div class="related-card-body">
+          <h4>Strategic Resilience: Tax Engineering as a Financial Hedge Against 2026 Market Volatility</h4>
+          <span>April 10, 2026 · 14 min read</span>
+        </div>
+      </a>
+      <a href="../blog.html" class="related-card">
+        <div class="related-card-img">
+          <img src="../assets/blog/blog-market-pivot.png" alt="Market Pivot">
+        </div>
+        <div class="related-card-body">
+          <h4>The 2025 Market Pivot: What Real Estate Investors Must Know</h4>
+          <span>February 20, 2025 · 11 min read</span>
+        </div>
+      </a>
+      <a href="../blog.html" class="related-card">
+        <div class="related-card-img">
+          <img src="../assets/blog/blog-bonus-depreciation.png" alt="Bonus Depreciation">
+        </div>
+        <div class="related-card-body">
+          <h4>Bonus Depreciation in 2025: Maximizing the 40% Phase-Down Window</h4>
+          <span>January 8, 2025 · 9 min read</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</div><!-- end article-page-wrapper -->
+
+<!-- CTA -->
+<div class="article-cta">
+  <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;color:var(--black);margin-bottom:var(--space-4);">Protect Your Portfolio from Rate Uncertainty</h2>
+  <p style="font-size:var(--text-lg);color:rgba(0,0,0,0.7);max-width:50ch;margin:0 auto var(--space-8);line-height:1.65;">While the Fed decides its next move, your tax strategy doesn't have to wait. Get a free analysis of your real estate portfolio's opportunities today.</p>
+  <a href="../submitform.html" class="btn btn--white btn--lg" style="color:var(--black);">Request Your Free Tax Savings Proposal</a>
+</div>
+
+<!-- Footer -->
+<footer style="background:var(--black);border-top:1px solid var(--border-dark);padding:var(--space-8) var(--space-6);">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-4);">
+    <a href="../index.html"><img src="../assets/logo.webp" alt="Innovate Real Estate" style="height:36px;"></a>
+    <div style="display:flex;gap:var(--space-6);">
+      <a href="../index.html" style="font-size:var(--text-sm);color:var(--gray);transition:color var(--transition);" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray)'">Home</a>
+      <a href="../blog.html" style="font-size:var(--text-sm);color:var(--gray);transition:color var(--transition);" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray)'">Blog</a>
+      <a href="../team.html" style="font-size:var(--text-sm);color:var(--gray);transition:color var(--transition);" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray)'">Team</a>
+      <a href="../submitform.html" style="font-size:var(--text-sm);color:var(--gray);transition:color var(--transition);" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray)'">Get Started</a>
+    </div>
+    <p style="font-size:var(--text-xs);color:var(--gray);">© 2026 Innovate Real Estate. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+// Theme Toggle
+(function() {
+  let currentTheme = 'dark';
+  function setTheme(theme) {
+    currentTheme = theme;
+    document.documentElement.setAttribute('data-theme', theme);
+  }
+  document.querySelectorAll('#theme-toggle, #mobile-theme-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+  });
+})();
+
+lucide.createIcons();
+
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobile-nav');
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileNav.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+document.querySelectorAll('.mobile-nav a, .mobile-nav-btns a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileNav.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+// Services mobile dropdown
+const svcToggle = document.querySelector('.mobile-services-toggle');
+const svcDropdown = document.getElementById('mobile-services-dropdown');
+if (svcToggle && svcDropdown) {
+  svcToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    const open = svcDropdown.classList.toggle('open');
+    svcToggle.classList.toggle('open', open);
+  });
+  svcDropdown.querySelectorAll('.mobile-sub-link').forEach(link => {
+    link.addEventListener('click', () => {
+      const mobileNav = document.getElementById('mobile-nav');
+      const hamburger = document.getElementById('hamburger');
+      if (mobileNav) { mobileNav.classList.remove('open'); }
+      if (hamburger) { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); }
+    });
+  });
+}
+
+// Scroll animations
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('[data-animate]').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
