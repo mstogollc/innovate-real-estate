@@ -64,7 +64,7 @@
   --content-narrow: 640px;
   --content-default: 960px;
   --content-wide: 1200px;
-  --nav-height: 80px;
+  --nav-height: 100px;
 }
 
 /* ── Light Theme Overrides ───────────────────────────────── */
@@ -762,6 +762,7 @@ button { cursor: pointer; background: none; border: none; }
   align-items: center;
   transition: all var(--transition-slow);
   padding-inline: var(--space-6);
+  padding-block: var(--space-3);
 }
 
 #navbar.scrolled {
@@ -789,14 +790,14 @@ button { cursor: pointer; background: none; border: none; }
 }
 
 .nav-logo img {
-  height: 44px;
+  height: 72px;
   width: auto;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: var(--space-1);
+  gap: var(--space-3);
   list-style: none;
 }
 
