@@ -1092,12 +1092,13 @@ document.getElementById('proposal-form').addEventListener('submit', async functi
 
   // FormSubmit.co special config fields
   formData.append('_subject',  'New Tax Savings Proposal — ' + (formData.get('name') || 'Prospect'));
+  formData.append('_cc',       'lauren@innovaterealestate.net,emily@innovaterealestate.net');
   formData.append('_captcha',  'false');
   formData.append('_template', 'table');
 
   // ── POST to FormSubmit.co ────────────────────────────────
   try {
-    const res = await fetch('https://formsubmit.co/ajax/hello@innovaterealestate.net', {
+    const res = await fetch('https://formsubmit.co/ajax/rob@innovaterealestate.net', {
       method:  'POST',
       headers: { 'Accept': 'application/json' },
       body:    formData

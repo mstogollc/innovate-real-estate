@@ -627,6 +627,62 @@
       .article-share { flex-wrap: wrap; }
       .watch-list { grid-template-columns: 1fr; }
     }
+  
+    /* ── Back to Home Button ── */
+    .back-to-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      position: fixed;
+      bottom: 90px;
+      left: 24px;
+      z-index: 999;
+      background: var(--gold);
+      color: #000;
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 12px 20px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+    }
+    .back-to-home.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .back-to-home:hover {
+      background: #fff;
+      color: #000;
+      box-shadow: 0 6px 28px rgba(221,193,89,0.4);
+      transform: translateY(-2px);
+    }
+    .back-to-home svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      transition: transform 0.3s ease;
+    }
+    .back-to-home:hover svg {
+      transform: translateX(-3px);
+    }
+    @media (max-width: 768px) {
+      .back-to-home {
+        bottom: 80px;
+        left: 16px;
+        padding: 10px 16px;
+        font-size: 12px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1050,6 +1106,13 @@
   });
 })();
 
+
+// Back to Home button visibility
+const backBtn = document.getElementById('back-to-home');
+if (backBtn) {
+  window.addEventListener('scroll', () => backBtn.classList.toggle('visible', window.scrollY > 200), { passive: true });
+}
+
 lucide.createIcons();
 
 const navbar = document.getElementById('navbar');
@@ -1097,5 +1160,12 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.08 });
 document.querySelectorAll('[data-animate]').forEach(el => io.observe(el));
 </script>
+
+<!-- Back to Blog -->
+<a href="../blog.html" class="back-to-home" id="back-to-home" aria-label="Back to Blog">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+  Back to Blog
+</a>
+
 </body>
 </html>
