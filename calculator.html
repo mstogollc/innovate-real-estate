@@ -1,0 +1,1882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cost Segregation Calculator | Innovate Real Estate</title>
+  <meta name="description" content="Free cost segregation savings calculator. Instantly estimate your accelerated depreciation, first-year tax savings, and cash flow impact. Trusted by 357+ property owners.">
+  <meta property="og:title" content="Cost Segregation Calculator | Innovate Real Estate">
+  <meta property="og:description" content="Estimate your cost segregation tax savings in under 60 seconds. Free, instant results with detailed depreciation breakdowns.">
+  <meta property="og:image" content="assets/hero-main.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="assets/logo.webp" as="image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Chart.js for results visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+
+  <style>
+    /* ── Calculator Page Styles ─────────────────────────────── */
+
+    /* Global mobile overflow fix */
+    html, body {
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+
+    /* Hero */
+    .calc-hero {
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      background: var(--dark);
+      padding-top: var(--nav-height);
+      position: relative;
+      overflow: hidden;
+    }
+    .calc-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 30%, rgba(221,193,89,0.10) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(221,193,89,0.05) 0%, transparent 50%);
+    }
+    .calc-hero-inner {
+      position: relative;
+      z-index: 2;
+      padding: var(--space-16) var(--space-8) var(--space-12);
+      max-width: var(--content-wide);
+      margin: 0 auto;
+      width: 100%;
+      text-align: center;
+    }
+    .calc-hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-4);
+    }
+    .calc-hero h1 {
+      font-size: var(--text-2xl);
+      font-weight: 900;
+      line-height: 1.08;
+      color: var(--white);
+      margin-bottom: var(--space-4);
+    }
+    .calc-hero-sub {
+      font-size: var(--text-lg);
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .calc-hero-badges {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-6);
+      margin-top: var(--space-8);
+      flex-wrap: wrap;
+    }
+    .calc-badge {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: var(--gray-light);
+      font-weight: 500;
+    }
+    .calc-badge svg {
+      width: 18px;
+      height: 18px;
+      color: var(--gold);
+    }
+
+    /* Main Layout */
+    .calc-section {
+      background: var(--dark);
+      padding: 0 var(--space-8) var(--space-20);
+      overflow-x: hidden;
+    }
+    .calc-container {
+      max-width: var(--content-wide);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: var(--space-8);
+      align-items: start;
+    }
+    @media (max-width: 960px) {
+      .calc-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Form Panel */
+    .calc-form-panel {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      position: sticky;
+      top: calc(var(--nav-height) + var(--space-4));
+    }
+    @media (max-width: 960px) {
+      .calc-form-panel {
+        position: static;
+      }
+    }
+    .calc-form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: var(--space-6);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .calc-form-title svg {
+      width: 24px;
+      height: 24px;
+      color: var(--gold);
+    }
+
+    /* Form Fields */
+    .calc-field {
+      margin-bottom: var(--space-5);
+    }
+    .calc-field label {
+      display: block;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--gray-light);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: var(--space-2);
+    }
+    .calc-field label .label-hint {
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 0.75rem;
+      color: var(--gray);
+      display: block;
+      margin-top: 2px;
+    }
+    .calc-input,
+    .calc-select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--dark-2);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-md);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 500;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .calc-input:focus,
+    .calc-select:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(221,193,89,0.15);
+    }
+    .calc-input::placeholder {
+      color: var(--gray);
+      font-weight: 400;
+    }
+    .calc-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237a7a7a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+      cursor: pointer;
+    }
+    .calc-select option {
+      background: var(--dark-2);
+      color: var(--white);
+    }
+
+    /* Currency Input Wrapper */
+    .currency-wrapper {
+      position: relative;
+    }
+    .currency-wrapper::before {
+      content: '$';
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray);
+      font-weight: 600;
+      font-size: 1rem;
+      z-index: 1;
+    }
+    .currency-wrapper .calc-input {
+      padding-left: 1.75rem;
+    }
+
+    /* Percent Input */
+    .pct-wrapper {
+      position: relative;
+    }
+    .pct-wrapper::after {
+      content: '%';
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .pct-wrapper .calc-input {
+      padding-right: 2.25rem;
+    }
+
+    /* Advanced Toggle */
+    .calc-advanced-toggle {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gold);
+      cursor: pointer;
+      margin-bottom: var(--space-5);
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: var(--font-body);
+      transition: opacity var(--transition);
+    }
+    .calc-advanced-toggle:hover { opacity: 0.8; }
+    .calc-advanced-toggle svg {
+      width: 16px;
+      height: 16px;
+      transition: transform var(--transition);
+    }
+    .calc-advanced-toggle.open svg {
+      transform: rotate(180deg);
+    }
+    .calc-advanced-fields {
+      display: none;
+    }
+    .calc-advanced-fields.open {
+      display: block;
+    }
+
+    /* Two-column row */
+    .calc-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+    }
+    @media (max-width: 480px) {
+      .calc-row { grid-template-columns: 1fr; }
+    }
+
+    /* Calculate Button */
+    .calc-btn {
+      width: 100%;
+      padding: 1rem 2rem;
+      background: var(--gold);
+      color: #121212;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .calc-btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(221,193,89,0.3);
+    }
+    .calc-btn:active { transform: translateY(0); }
+    .calc-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+    .calc-btn.loading {
+      pointer-events: none;
+      opacity: 0.8;
+    }
+    .calc-btn.loading .btn-text { visibility: hidden; }
+    .calc-btn .spinner {
+      display: none;
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(18,18,18,0.3);
+      border-top-color: #121212;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+    .calc-btn.loading .spinner { display: block; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .calc-reset {
+      width: 100%;
+      padding: 0.65rem 1rem;
+      margin-top: var(--space-3);
+      background: transparent;
+      color: var(--gray);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-md);
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .calc-reset:hover {
+      color: var(--white);
+      border-color: var(--gray);
+    }
+
+    /* Results Panel */
+    .calc-results-panel {
+      min-height: 400px;
+    }
+
+    /* Empty State */
+    .calc-empty-state {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-16) var(--space-8);
+      text-align: center;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .calc-empty-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(221,193,89,0.08);
+      border: 1px solid rgba(221,193,89,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-6);
+    }
+    .calc-empty-icon svg {
+      width: 36px;
+      height: 36px;
+      color: var(--gold);
+    }
+    .calc-empty-state h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: var(--text-lg);
+      color: var(--white);
+      margin-bottom: var(--space-3);
+    }
+    .calc-empty-state p {
+      color: var(--gray);
+      max-width: 400px;
+      line-height: 1.6;
+    }
+    .calc-empty-steps {
+      display: flex;
+      gap: var(--space-8);
+      margin-top: var(--space-8);
+    }
+    .calc-empty-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .calc-empty-step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(221,193,89,0.12);
+      border: 1px solid rgba(221,193,89,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .calc-empty-step span:last-child {
+      font-size: 0.8rem;
+      color: var(--gray);
+      font-weight: 500;
+    }
+
+    /* Results Content (hidden until calculated) */
+    .calc-results-content {
+      display: none;
+    }
+    .calc-results-content.visible {
+      display: block;
+      animation: fadeInUp 0.6s ease both;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Savings Hero Card */
+    .savings-hero-card {
+      background: linear-gradient(135deg, rgba(221,193,89,0.12) 0%, rgba(221,193,89,0.04) 100%);
+      border: 1px solid rgba(221,193,89,0.2);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      text-align: center;
+      margin-bottom: var(--space-6);
+      position: relative;
+      overflow: hidden;
+    }
+    .savings-hero-card::before {
+      content: '';
+      position: absolute;
+      top: -60%;
+      left: -20%;
+      width: 140%;
+      height: 140%;
+      background: radial-gradient(ellipse at center, rgba(221,193,89,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .savings-hero-card > * { position: relative; z-index: 1; }
+    .savings-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      margin-bottom: var(--space-2);
+    }
+    .savings-amount {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: var(--space-2);
+    }
+    .savings-subtitle {
+      font-size: var(--text-sm);
+      color: var(--gray-light);
+    }
+    .savings-range {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-6);
+      margin-top: var(--space-6);
+      padding-top: var(--space-5);
+      border-top: 1px solid rgba(221,193,89,0.15);
+    }
+    .savings-range-item {
+      text-align: center;
+    }
+    .savings-range-item .range-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gray);
+      margin-bottom: var(--space-1);
+    }
+    .savings-range-item .range-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .savings-range-divider {
+      width: 1px;
+      height: 40px;
+      background: rgba(221,193,89,0.15);
+    }
+
+    /* Stat Cards Grid */
+    .calc-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+    @media (max-width: 700px) {
+      .calc-stat-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 480px) {
+      .savings-hero-card { padding: var(--space-5); }
+      .savings-amount { font-size: 2.2rem; }
+      .savings-label { font-size: 0.7rem; }
+      .savings-subtitle { font-size: 0.8rem; }
+      .savings-range { flex-direction: column; gap: var(--space-3); }
+      .savings-range-divider { width: 60px; height: 1px; }
+      .calc-stat-card .stat-value { font-size: 1.2rem; }
+      .calc-stat-card .stat-label { font-size: 0.65rem; }
+      .calc-section { padding: 0 var(--space-3) var(--space-12); }
+      .calc-form-panel { padding: var(--space-5); }
+      .calc-chart-card { padding: var(--space-4); }
+      .calc-table-card { padding: var(--space-4); }
+      .calc-cta-card { padding: var(--space-5); }
+      .calc-results-panel { max-width: 100%; overflow-x: hidden; }
+      .savings-hero-card { overflow: hidden; }
+      .calc-results-content { max-width: 100%; overflow-x: hidden; }
+      .calc-charts-grid { grid-template-columns: 1fr; }
+    }
+    .calc-stat-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      text-align: center;
+    }
+    .calc-stat-card .stat-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(221,193,89,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-3);
+    }
+    .calc-stat-card .stat-icon svg {
+      width: 18px;
+      height: 18px;
+      color: var(--gold);
+    }
+    .calc-stat-card .stat-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: var(--space-1);
+    }
+    .calc-stat-card .stat-label {
+      font-size: 0.75rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+    }
+
+    /* Charts Section */
+    .calc-charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+      margin-bottom: var(--space-6);
+    }
+    @media (max-width: 700px) {
+      .calc-charts-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .calc-chart-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+    }
+    .calc-chart-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: var(--space-4);
+    }
+    .chart-container {
+      position: relative;
+      height: 260px;
+    }
+
+    /* Depreciation Table */
+    .calc-table-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      margin-bottom: var(--space-6);
+      overflow: hidden;
+    }
+    .calc-table-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: var(--space-4);
+    }
+    .calc-table-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .calc-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .calc-table thead th {
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      padding: 0.6rem 0.75rem;
+      border-bottom: 2px solid rgba(221,193,89,0.2);
+      white-space: nowrap;
+    }
+    .calc-table tbody td {
+      padding: 0.55rem 0.75rem;
+      color: var(--gray-light);
+      border-bottom: 1px solid var(--border-dark);
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+    .calc-table tbody tr:hover td {
+      background: rgba(221,193,89,0.04);
+    }
+    .calc-table tbody tr:first-child td {
+      color: var(--gold);
+      font-weight: 700;
+    }
+    .calc-table .col-highlight {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    /* CTA Card */
+    .calc-cta-card {
+      background: linear-gradient(135deg, rgba(221,193,89,0.15) 0%, rgba(221,193,89,0.05) 100%);
+      border: 1px solid rgba(221,193,89,0.25);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      display: flex;
+      align-items: center;
+      gap: var(--space-8);
+    }
+    @media (max-width: 700px) {
+      .calc-cta-card {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+    .calc-cta-content {
+      flex: 1;
+    }
+    .calc-cta-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: var(--space-2);
+    }
+    .calc-cta-content p {
+      color: var(--gray-light);
+      line-height: 1.6;
+    }
+    .calc-cta-actions {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      flex-shrink: 0;
+    }
+    .calc-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: 0.85rem 2rem;
+      border-radius: var(--radius-md);
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      transition: all var(--transition);
+      white-space: nowrap;
+    }
+    .calc-cta-btn svg { width: 16px; height: 16px; }
+    .calc-cta-btn.primary {
+      background: var(--gold);
+      color: #121212;
+    }
+    .calc-cta-btn.primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(221,193,89,0.3);
+    }
+    .calc-cta-btn.secondary {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid rgba(221,193,89,0.3);
+    }
+    .calc-cta-btn.secondary:hover {
+      background: rgba(221,193,89,0.08);
+      border-color: var(--gold);
+    }
+
+    /* Disclaimer */
+    .calc-disclaimer {
+      margin-top: var(--space-6);
+      padding: var(--space-4);
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-size: 0.75rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* Light Theme Overrides */
+    [data-theme="light"] .calc-hero { background: var(--dark); }
+    [data-theme="light"] .calc-form-panel {
+      background: #FFFFFF;
+      border-color: rgba(0,0,0,0.08);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    [data-theme="light"] .calc-form-title { color: #1a1a1a; }
+    [data-theme="light"] .calc-input,
+    [data-theme="light"] .calc-select {
+      background: #F0EDE6;
+      border-color: rgba(0,0,0,0.1);
+      color: #1a1a1a;
+    }
+    [data-theme="light"] .calc-input:focus,
+    [data-theme="light"] .calc-select:focus {
+      border-color: var(--gold);
+    }
+    [data-theme="light"] .calc-select option {
+      background: #F0EDE6;
+      color: #1a1a1a;
+    }
+    [data-theme="light"] .calc-empty-state {
+      background: #FFFFFF;
+      border-color: rgba(0,0,0,0.08);
+    }
+    [data-theme="light"] .calc-empty-state h3 { color: #1a1a1a; }
+    [data-theme="light"] .savings-amount { color: #9A8230; }
+    [data-theme="light"] .calc-stat-card {
+      background: #FFFFFF;
+      border-color: rgba(0,0,0,0.08);
+    }
+    [data-theme="light"] .calc-stat-card .stat-value { color: #1a1a1a; }
+    [data-theme="light"] .calc-chart-card {
+      background: #FFFFFF;
+      border-color: rgba(0,0,0,0.08);
+    }
+    [data-theme="light"] .calc-chart-card h4 { color: #1a1a1a; }
+    [data-theme="light"] .calc-table-card {
+      background: #FFFFFF;
+      border-color: rgba(0,0,0,0.08);
+    }
+    [data-theme="light"] .calc-table-card h4 { color: #1a1a1a; }
+    [data-theme="light"] .calc-table thead th { color: #9A8230; border-color: rgba(0,0,0,0.1); }
+    [data-theme="light"] .calc-table tbody td { color: #444; border-color: rgba(0,0,0,0.06); }
+    [data-theme="light"] .calc-table tbody tr:hover td { background: rgba(184,157,58,0.04); }
+    [data-theme="light"] .calc-table tbody tr:first-child td { color: #9A8230; }
+    [data-theme="light"] .calc-table .col-highlight { color: #1a1a1a; }
+    [data-theme="light"] .savings-hero-card {
+      background: linear-gradient(135deg, rgba(184,157,58,0.10) 0%, rgba(184,157,58,0.03) 100%);
+      border-color: rgba(184,157,58,0.2);
+    }
+    [data-theme="light"] .savings-label { color: #9A8230; }
+    [data-theme="light"] .savings-range-item .range-value { color: #1a1a1a; }
+    [data-theme="light"] .calc-cta-card {
+      background: linear-gradient(135deg, rgba(184,157,58,0.10) 0%, rgba(184,157,58,0.03) 100%);
+      border-color: rgba(184,157,58,0.2);
+    }
+    [data-theme="light"] .calc-cta-content h3 { color: #1a1a1a; }
+    [data-theme="light"] .calc-disclaimer {
+      background: #FFFFFF;
+      border-color: rgba(0,0,0,0.08);
+    }
+
+    /* How It Works Section */
+    .hiw-section {
+      background: var(--dark-2);
+      padding: var(--space-20) var(--space-8);
+    }
+    .hiw-inner {
+      max-width: var(--content-wide);
+      margin: 0 auto;
+    }
+    .hiw-title {
+      font-family: 'Playfair Display', serif;
+      font-size: var(--text-xl);
+      font-weight: 800;
+      color: var(--white);
+      text-align: center;
+      margin-bottom: var(--space-3);
+    }
+    .hiw-sub {
+      color: var(--gray);
+      text-align: center;
+      font-size: var(--text-base);
+      max-width: 600px;
+      margin: 0 auto var(--space-12);
+    }
+    .hiw-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+    }
+    @media (max-width: 800px) {
+      .hiw-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 500px) {
+      .hiw-grid { grid-template-columns: 1fr; }
+    }
+    .hiw-step {
+      text-align: center;
+      padding: var(--space-6);
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      transition: transform var(--transition), border-color var(--transition);
+    }
+    .hiw-step:hover {
+      transform: translateY(-4px);
+      border-color: rgba(221,193,89,0.3);
+    }
+    .hiw-step-num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      color: #121212;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-4);
+    }
+    .hiw-step h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: var(--space-2);
+    }
+    .hiw-step p {
+      font-size: 0.875rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+    [data-theme="light"] .hiw-section { background: #F0EDE6; }
+    [data-theme="light"] .hiw-title { color: #1a1a1a; }
+    [data-theme="light"] .hiw-step {
+      background: #FFFFFF;
+      border-color: rgba(0,0,0,0.08);
+    }
+    [data-theme="light"] .hiw-step h4 { color: #1a1a1a; }
+
+    /* Animated count-up */
+    .count-up { display: inline-block; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     NAVIGATION (same as all pages)
+═══════════════════════════════════════════════════════ -->
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Innovate Real Estate Home">
+      <img src="assets/logo.webp" alt="Innovate Real Estate Logo" style="height: 80px; width: auto;">
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="index.html#about">About</a></li>
+      <li class="has-dropdown">
+          <a href="index.html#services" class="dropdown-toggle">Services
+            <svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <ul class="nav-dropdown" role="menu">
+            <li><a href="services/cost-segregation.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Cost Segregation</a></li>
+            <li><a href="services/tangible-property-regulations.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Tangible Property Regs</a></li>
+            <li><a href="services/unicap-exemption.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>263A UNICAP Exemption</a></li>
+            <li><a href="services/green-zip-tape.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Green Zip Tape</a></li>
+            <li><a href="services/method-change.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Method Change</a></li>
+            <li><a href="services/rd-tax-credits.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>R&amp;D Tax Credits</a></li>
+            <li><a href="services/energy-optimization.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Energy Optimization</a></li>
+            <li><a href="services/waste-optimization.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Waste Optimization</a></li>
+            <li><a href="services/179d.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="16" rx="2"/><path d="M1 10h22"/><path d="M12 6v16"/></svg>179D</a></li>
+            <li><a href="services/wealth-strategies.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>Wealth Strategies</a></li>
+          </ul>
+        </li>
+      <li><a href="calculator.html" style="color: var(--gold);">Calculator</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="team.html">Our Team</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme">
+      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+
+    <div class="nav-cta-group">
+      <a href="submitform.html" class="btn btn--outline">Tax Savings Proposal</a>
+      <a href="affiliate.html" class="btn btn--gold">Become an Affiliate</a>
+    </div>
+
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false" id="hamburger">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Mobile navigation">
+  <button class="mobile-nav-close" aria-label="Close menu" id="mobile-nav-close">&times;</button>
+  <ul>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="calculator.html">Calculator</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="team.html">Our Team</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li style="margin-top: 1rem;"><a href="submitform.html" class="btn btn--outline" style="width:100%;text-align:center;">Tax Savings Proposal</a></li>
+    <li style="margin-top: 0.5rem;"><a href="affiliate.html" class="btn btn--gold" style="width:100%;text-align:center;">Become an Affiliate</a></li>
+  </ul>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════ -->
+<section class="calc-hero">
+  <div class="calc-hero-inner">
+    <div class="calc-hero-eyebrow">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="12" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="12" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="12" y1="18" x2="16" y2="18"/></svg>
+      Free Tax Savings Estimator
+    </div>
+    <h1>Cost Segregation<br>Savings Calculator</h1>
+    <p class="calc-hero-sub">Estimate your accelerated depreciation and first-year tax savings in under 60 seconds. See how much you could unlock with a cost segregation study.</p>
+    <div class="calc-hero-badges">
+      <span class="calc-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        IRS-Compliant Methodology
+      </span>
+      <span class="calc-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        357+ Properties Analyzed
+      </span>
+      <span class="calc-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Results in Seconds
+      </span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     CALCULATOR
+═══════════════════════════════════════════════════════ -->
+<section class="calc-section">
+  <div class="calc-container">
+
+    <!-- LEFT: Form Panel -->
+    <div class="calc-form-panel">
+      <div class="calc-form-title">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg>
+        Property Details
+      </div>
+
+      <form id="calcForm" autocomplete="off">
+        <!-- Property Type -->
+        <div class="calc-field">
+          <label for="propertyType">Property Type</label>
+          <select id="propertyType" class="calc-select" required>
+            <option value="">Select property type...</option>
+            <optgroup label="Residential">
+              <option value="single_family">Single-Family Residential</option>
+              <option value="multifamily">Multifamily Residential (5+ units)</option>
+              <option value="short_term_rental">Short-Term Rental / Vacation</option>
+              <option value="assisted_living">Assisted Living / Senior Housing</option>
+            </optgroup>
+            <optgroup label="Commercial">
+              <option value="office" selected>Office Building</option>
+              <option value="office_medical">Medical Office</option>
+              <option value="retail">Retail</option>
+              <option value="restaurant">Restaurant</option>
+              <option value="hotel">Hotel / Hospitality</option>
+              <option value="warehouse">Warehouse</option>
+              <option value="distribution">Distribution Center</option>
+              <option value="self_storage">Self-Storage Facility</option>
+              <option value="auto_dealership">Auto Dealership</option>
+              <option value="gas_station">Gas Station / C-Store</option>
+              <option value="supermarket">Supermarket / Grocery</option>
+            </optgroup>
+            <optgroup label="Industrial">
+              <option value="manufacturing_light">Manufacturing (Light)</option>
+              <option value="manufacturing_heavy">Manufacturing (Heavy)</option>
+              <option value="cold_storage">Cold Storage</option>
+              <option value="food_processing">Food Processing</option>
+            </optgroup>
+            <optgroup label="Specialty">
+              <option value="hospital">Hospital / Medical Center</option>
+              <option value="casino">Casino / Gaming</option>
+              <option value="golf_course">Golf Course / Country Club</option>
+              <option value="bank">Bank Branch</option>
+              <option value="rd_facility">R&amp;D Facility</option>
+              <option value="mixed_use">Mixed Use</option>
+              <option value="other">Other</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <!-- Purchase Price -->
+        <div class="calc-field">
+          <label for="purchasePrice">
+            Purchase Price / Cost Basis
+            <span class="label-hint">Total cost of the building, excluding land</span>
+          </label>
+          <div class="currency-wrapper">
+            <input type="text" id="purchasePrice" class="calc-input" placeholder="1,000,000" required inputmode="numeric">
+          </div>
+        </div>
+
+        <!-- Placed in Service -->
+        <div class="calc-field">
+          <label for="serviceDate">Year Placed in Service</label>
+          <select id="serviceDate" class="calc-select" required>
+            <option value="2026" selected>2026</option>
+            <option value="2025">2025</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+            <option value="2021">2021</option>
+            <option value="2020">2020</option>
+            <option value="2019">2019</option>
+            <option value="2018">2018</option>
+            <option value="2017">2017 or earlier</option>
+          </select>
+        </div>
+
+        <!-- Land Percentage -->
+        <div class="calc-field">
+          <label for="landPct">
+            Estimated Land Value
+            <span class="label-hint">Typically 15-25% of total purchase price</span>
+          </label>
+          <div class="pct-wrapper">
+            <input type="text" id="landPct" class="calc-input" value="20" inputmode="numeric">
+          </div>
+        </div>
+
+        <!-- Advanced Toggle -->
+        <button type="button" class="calc-advanced-toggle" id="advToggle">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          Show Advanced Options
+        </button>
+
+        <!-- Advanced Fields -->
+        <div class="calc-advanced-fields" id="advFields">
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="taxRate">Federal Tax Rate</label>
+              <div class="pct-wrapper">
+                <input type="text" id="taxRate" class="calc-input" value="37" inputmode="numeric">
+              </div>
+            </div>
+            <div class="calc-field">
+              <label for="stateTaxRate">State Tax Rate</label>
+              <div class="pct-wrapper">
+                <input type="text" id="stateTaxRate" class="calc-input" value="5" inputmode="numeric">
+              </div>
+            </div>
+          </div>
+
+          <div class="calc-field">
+            <label for="improvements">
+              Cost of Improvements
+              <span class="label-hint">Capital improvements made after purchase</span>
+            </label>
+            <div class="currency-wrapper">
+              <input type="text" id="improvements" class="calc-input" placeholder="0" value="0" inputmode="numeric">
+            </div>
+          </div>
+
+          <div class="calc-field">
+            <label for="propertyLife">Depreciation Schedule</label>
+            <select id="propertyLife" class="calc-select">
+              <option value="39">39 years (Commercial / Nonresidential)</option>
+              <option value="27.5">27.5 years (Residential Rental)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Calculate -->
+        <button type="submit" class="calc-btn" id="calcBtn">
+          <span class="btn-text">Calculate My Savings</span>
+          <div class="spinner"></div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        </button>
+        <button type="button" class="calc-reset" id="resetBtn">Reset Calculator</button>
+      </form>
+    </div>
+
+    <!-- RIGHT: Results Panel -->
+    <div class="calc-results-panel">
+
+      <!-- Empty State -->
+      <div class="calc-empty-state" id="emptyState">
+        <div class="calc-empty-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        </div>
+        <h3>Your Results Will Appear Here</h3>
+        <p>Enter your property details to instantly see your estimated cost segregation tax savings, depreciation breakdown, and cash flow impact.</p>
+        <div class="calc-empty-steps">
+          <div class="calc-empty-step">
+            <div class="calc-empty-step-num">1</div>
+            <span>Select Property Type</span>
+          </div>
+          <div class="calc-empty-step">
+            <div class="calc-empty-step-num">2</div>
+            <span>Enter Cost Basis</span>
+          </div>
+          <div class="calc-empty-step">
+            <div class="calc-empty-step-num">3</div>
+            <span>View Savings</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results (hidden until calculated) -->
+      <div class="calc-results-content" id="resultsContent">
+
+        <!-- Savings Hero -->
+        <div class="savings-hero-card">
+          <div class="savings-label">Estimated First-Year Tax Savings</div>
+          <div class="savings-amount" id="savingsAmount">$0</div>
+          <div class="savings-subtitle">with a cost segregation study from Innovate Real Estate</div>
+          <div class="savings-range">
+            <div class="savings-range-item">
+              <div class="range-label">Conservative</div>
+              <div class="range-value" id="savingsLow">$0</div>
+            </div>
+            <div class="savings-range-divider"></div>
+            <div class="savings-range-item">
+              <div class="range-label">Optimistic</div>
+              <div class="range-value" id="savingsHigh">$0</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key Stats -->
+        <div class="calc-stat-grid">
+          <div class="calc-stat-card">
+            <div class="stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="stat-value" id="statAccelDepr">$0</div>
+            <div class="stat-label">Accelerated Depreciation</div>
+          </div>
+          <div class="calc-stat-card">
+            <div class="stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="stat-value" id="statIncrease">$0</div>
+            <div class="stat-label">Deduction Increase vs. Standard</div>
+          </div>
+          <div class="calc-stat-card">
+            <div class="stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+            </div>
+            <div class="stat-value" id="statROI">0x</div>
+            <div class="stat-label">Typical ROI on Study Cost</div>
+          </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="calc-charts-grid">
+          <div class="calc-chart-card">
+            <h4>Depreciation Allocation</h4>
+            <div class="chart-container">
+              <canvas id="allocationChart"></canvas>
+            </div>
+          </div>
+          <div class="calc-chart-card">
+            <h4>Tax Savings Comparison</h4>
+            <div class="chart-container">
+              <canvas id="comparisonChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Year-by-Year Table -->
+        <div class="calc-table-card">
+          <h4>Year-by-Year Depreciation Schedule</h4>
+          <div class="calc-table-wrapper">
+            <table class="calc-table">
+              <thead>
+                <tr>
+                  <th>Year</th>
+                  <th>With Cost Seg</th>
+                  <th>Without Cost Seg</th>
+                  <th>Additional Savings</th>
+                  <th>Cumulative Benefit</th>
+                </tr>
+              </thead>
+              <tbody id="deprTableBody">
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="calc-cta-card">
+          <div class="calc-cta-content">
+            <h3>Ready to Unlock Your Savings?</h3>
+            <p>These estimates are based on industry averages. A formal engineering-based study from our team typically identifies even more savings. Request your free, no-obligation tax savings proposal today.</p>
+          </div>
+          <div class="calc-cta-actions">
+            <a href="submitform.html" class="calc-cta-btn primary">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Free Proposal
+            </a>
+            <a href="https://calendly.com/innovate-real-estate" target="_blank" class="calc-cta-btn secondary">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Schedule a Call
+            </a>
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="calc-disclaimer">
+          <strong>Disclaimer:</strong> This calculator provides estimates based on industry-standard allocation percentages and current tax law. Actual results may vary depending on property-specific factors, construction details, and local assessments. This tool does not constitute tax advice. Consult with a qualified tax professional before making tax-related decisions. Innovate Real Estate recommends a formal engineering-based cost segregation study for accurate results.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     HOW IT WORKS
+═══════════════════════════════════════════════════════ -->
+<section class="hiw-section">
+  <div class="hiw-inner">
+    <h2 class="hiw-title">How Cost Segregation Works</h2>
+    <p class="hiw-sub">Reclassify building components into shorter depreciation categories to accelerate your deductions and improve cash flow from day one.</p>
+
+    <div class="hiw-grid">
+      <div class="hiw-step">
+        <div class="hiw-step-num">1</div>
+        <h4>Engineering Analysis</h4>
+        <p>Our team performs a detailed review of your property's construction, identifying components eligible for accelerated depreciation.</p>
+      </div>
+      <div class="hiw-step">
+        <div class="hiw-step-num">2</div>
+        <h4>Component Reclassification</h4>
+        <p>Building elements like HVAC, electrical, plumbing, and site work are reclassified from 27.5/39-year to 5, 7, or 15-year property.</p>
+      </div>
+      <div class="hiw-step">
+        <div class="hiw-step-num">3</div>
+        <h4>Bonus Depreciation</h4>
+        <p>Eligible reclassified assets may qualify for bonus depreciation, allowing you to deduct a significant percentage in the first year.</p>
+      </div>
+      <div class="hiw-step">
+        <div class="hiw-step-num">4</div>
+        <h4>Tax Savings Realized</h4>
+        <p>File with your updated depreciation schedule and keep more of your money. Most clients see ROI of 5-10x on their study cost.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER (same as index.html)
+═══════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo.webp" alt="Innovate Real Estate Logo" style="height: 60px; width: auto; margin-bottom: 1rem;">
+        <p>Innovate Real Estate delivers industry-leading cost segregation studies and advanced tax strategies. $100M+ saved for 357+ clients.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services/cost-segregation.html">Cost Segregation</a></li>
+          <li><a href="services/179d.html">179D Deductions</a></li>
+          <li><a href="services/rd-tax-credits.html">R&D Tax Credits</a></li>
+          <li><a href="services/energy-optimization.html">Energy Optimization</a></li>
+          <li><a href="services/wealth-strategies.html">Wealth Strategies</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="calculator.html">Savings Calculator</a></li>
+          <li><a href="affiliate.html">Affiliate Program</a></li>
+          <li><a href="submitform.html">Free Proposal</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:8508053737">850-805-3737</a></li>
+          <li><a href="mailto:hello@innovaterealestate.net">hello@innovaterealestate.net</a></li>
+          <li><a href="https://calendly.com/innovate-real-estate" target="_blank">Schedule a Consultation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Innovate Real Estate. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════
+     CALCULATOR ENGINE (JavaScript)
+═══════════════════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  // ── Allocation Percentages by Property Type ──────────────────
+  // Based on industry data from KBKG, CSSI, and actual study results.
+  // Format: { personal5: [low, est, high], personal7: [low, est, high], land15: [low, est, high] }
+  // Remainder goes to real property (27.5 or 39 year)
+  const ALLOCATIONS = {
+    single_family:       { p5: [12, 18, 25], p7: [2, 4, 6],   l15: [5, 8, 12],   life: 27.5 },
+    multifamily:         { p5: [15, 22, 28], p7: [3, 5, 7],   l15: [6, 10, 15],  life: 27.5 },
+    short_term_rental:   { p5: [18, 25, 32], p7: [3, 5, 8],   l15: [5, 8, 12],   life: 27.5 },
+    assisted_living:     { p5: [15, 20, 28], p7: [4, 6, 9],   l15: [5, 8, 12],   life: 39 },
+    office:              { p5: [10, 16, 22], p7: [3, 5, 7],   l15: [5, 8, 12],   life: 39 },
+    office_medical:      { p5: [15, 22, 30], p7: [4, 6, 9],   l15: [5, 8, 12],   life: 39 },
+    retail:              { p5: [12, 18, 24], p7: [3, 5, 7],   l15: [6, 10, 14],  life: 39 },
+    restaurant:          { p5: [20, 28, 36], p7: [5, 8, 12],  l15: [5, 8, 12],   life: 39 },
+    hotel:               { p5: [20, 28, 35], p7: [4, 7, 10],  l15: [5, 8, 12],   life: 39 },
+    warehouse:           { p5: [8, 12, 18],  p7: [2, 4, 6],   l15: [6, 10, 15],  life: 39 },
+    distribution:        { p5: [10, 15, 20], p7: [3, 5, 7],   l15: [6, 10, 14],  life: 39 },
+    self_storage:        { p5: [10, 15, 22], p7: [2, 4, 6],   l15: [8, 12, 18],  life: 39 },
+    auto_dealership:     { p5: [15, 22, 30], p7: [4, 6, 9],   l15: [6, 10, 14],  life: 39 },
+    gas_station:         { p5: [18, 25, 32], p7: [5, 8, 11],  l15: [8, 12, 16],  life: 39 },
+    supermarket:         { p5: [15, 22, 28], p7: [4, 6, 9],   l15: [5, 8, 12],   life: 39 },
+    manufacturing_light: { p5: [15, 22, 30], p7: [5, 8, 12],  l15: [5, 8, 12],   life: 39 },
+    manufacturing_heavy: { p5: [18, 26, 34], p7: [6, 10, 14], l15: [5, 8, 12],   life: 39 },
+    cold_storage:        { p5: [18, 25, 32], p7: [5, 8, 11],  l15: [5, 8, 12],   life: 39 },
+    food_processing:     { p5: [18, 25, 33], p7: [5, 8, 12],  l15: [5, 8, 12],   life: 39 },
+    hospital:            { p5: [20, 28, 36], p7: [5, 8, 12],  l15: [5, 8, 12],   life: 39 },
+    casino:              { p5: [22, 30, 38], p7: [5, 8, 12],  l15: [5, 8, 12],   life: 39 },
+    golf_course:         { p5: [12, 18, 24], p7: [3, 5, 7],   l15: [10, 15, 22], life: 39 },
+    bank:                { p5: [12, 18, 24], p7: [3, 5, 7],   l15: [5, 8, 12],   life: 39 },
+    rd_facility:         { p5: [18, 25, 32], p7: [5, 8, 12],  l15: [5, 8, 12],   life: 39 },
+    mixed_use:           { p5: [14, 20, 26], p7: [3, 5, 7],   l15: [6, 10, 14],  life: 39 },
+    other:               { p5: [12, 18, 24], p7: [3, 5, 7],   l15: [5, 8, 12],   life: 39 }
+  };
+
+  // ── Bonus Depreciation Schedule ──────────────────────────────
+  const BONUS_RATES = {
+    '2026': 0.40,   // Phase-down: 40% in 2026
+    '2025': 0.60,   // 60% in 2025
+    '2024': 0.60,   // 60% in 2024
+    '2023': 0.80,   // 80% in 2023
+    '2022': 1.00,   // 100% in 2022
+    '2021': 1.00,   // 100% in 2021
+    '2020': 1.00,   // 100%
+    '2019': 1.00,   // 100%
+    '2018': 1.00,   // 100%
+    '2017': 0.50    // 50% pre-TCJA
+  };
+
+  // ── DOM Elements ─────────────────────────────────────────────
+  const form = document.getElementById('calcForm');
+  const calcBtn = document.getElementById('calcBtn');
+  const resetBtn = document.getElementById('resetBtn');
+  const advToggle = document.getElementById('advToggle');
+  const advFields = document.getElementById('advFields');
+  const emptyState = document.getElementById('emptyState');
+  const resultsContent = document.getElementById('resultsContent');
+
+  let allocationChart = null;
+  let comparisonChart = null;
+
+  // ── Format Currency ──────────────────────────────────────────
+  function fmt(n) {
+    return '$' + Math.round(n).toLocaleString('en-US');
+  }
+
+  // ── Parse Number ─────────────────────────────────────────────
+  function parseNum(str) {
+    return parseFloat(String(str).replace(/[^0-9.]/g, '')) || 0;
+  }
+
+  // ── Currency Input Formatting ────────────────────────────────
+  function formatCurrencyInput(el) {
+    el.addEventListener('blur', function() {
+      let val = parseNum(this.value);
+      if (val > 0) {
+        this.value = Math.round(val).toLocaleString('en-US');
+      }
+    });
+    el.addEventListener('focus', function() {
+      let val = parseNum(this.value);
+      if (val > 0) {
+        this.value = val;
+      } else {
+        this.value = '';
+      }
+    });
+  }
+  formatCurrencyInput(document.getElementById('purchasePrice'));
+  formatCurrencyInput(document.getElementById('improvements'));
+
+  // ── Auto-select depreciation life based on property type ─────
+  document.getElementById('propertyType').addEventListener('change', function() {
+    const type = this.value;
+    const alloc = ALLOCATIONS[type];
+    if (alloc) {
+      document.getElementById('propertyLife').value = alloc.life;
+    }
+  });
+
+  // ── Advanced Toggle ──────────────────────────────────────────
+  advToggle.addEventListener('click', function() {
+    this.classList.toggle('open');
+    advFields.classList.toggle('open');
+    this.querySelector('.btn-text') || null;
+    if (advFields.classList.contains('open')) {
+      this.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg> Hide Advanced Options';
+    } else {
+      this.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg> Show Advanced Options';
+    }
+  });
+
+  // ── Count-Up Animation ───────────────────────────────────────
+  function animateValue(el, end, prefix, suffix) {
+    prefix = prefix || '';
+    suffix = suffix || '';
+    const duration = 1200;
+    const start = 0;
+    const startTime = performance.now();
+
+    function update(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // Ease out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(start + (end - start) * eased);
+      el.textContent = prefix + current.toLocaleString('en-US') + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+
+  // ── Chart Color Helpers ──────────────────────────────────────
+  function getChartColors() {
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    return {
+      gold: isLight ? '#9A8230' : '#DDC159',
+      goldLight: isLight ? '#B89D3A' : '#EDD87A',
+      text: isLight ? '#1a1a1a' : '#FFFFFF',
+      textMuted: isLight ? '#666' : '#7a7a7a',
+      gridColor: isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)',
+      bg1: isLight ? 'rgba(154,130,48,0.85)' : 'rgba(221,193,89,0.85)',
+      bg2: isLight ? 'rgba(154,130,48,0.55)' : 'rgba(221,193,89,0.55)',
+      bg3: isLight ? 'rgba(154,130,48,0.30)' : 'rgba(221,193,89,0.30)',
+      bg4: isLight ? 'rgba(154,130,48,0.15)' : 'rgba(221,193,89,0.15)',
+      barWith: isLight ? 'rgba(154,130,48,0.8)' : 'rgba(221,193,89,0.8)',
+      barWithout: isLight ? 'rgba(0,0,0,0.15)' : 'rgba(255,255,255,0.12)',
+    };
+  }
+
+  // ── Main Calculation ─────────────────────────────────────────
+  function calculate() {
+    const type = document.getElementById('propertyType').value;
+    const price = parseNum(document.getElementById('purchasePrice').value);
+    const year = document.getElementById('serviceDate').value;
+    const landPct = parseNum(document.getElementById('landPct').value) / 100;
+    const fedRate = parseNum(document.getElementById('taxRate').value) / 100;
+    const stateRate = parseNum(document.getElementById('stateTaxRate').value) / 100;
+    const improvements = parseNum(document.getElementById('improvements').value);
+    const propLife = parseFloat(document.getElementById('propertyLife').value);
+
+    if (!type || price < 50000) {
+      alert('Please select a property type and enter a purchase price of at least $50,000.');
+      return;
+    }
+
+    const alloc = ALLOCATIONS[type];
+    const bonusRate = BONUS_RATES[year] || 0.40;
+    const combinedRate = fedRate + stateRate;
+    const depreciableBasis = (price - (price * landPct)) + improvements;
+
+    // Allocation amounts (using estimated = middle values)
+    const p5Low  = depreciableBasis * (alloc.p5[0] / 100);
+    const p5Est  = depreciableBasis * (alloc.p5[1] / 100);
+    const p5High = depreciableBasis * (alloc.p5[2] / 100);
+
+    const p7Low  = depreciableBasis * (alloc.p7[0] / 100);
+    const p7Est  = depreciableBasis * (alloc.p7[1] / 100);
+    const p7High = depreciableBasis * (alloc.p7[2] / 100);
+
+    const l15Low  = depreciableBasis * (alloc.l15[0] / 100);
+    const l15Est  = depreciableBasis * (alloc.l15[1] / 100);
+    const l15High = depreciableBasis * (alloc.l15[2] / 100);
+
+    const realPropLow  = depreciableBasis - p5High - p7High - l15High;
+    const realPropEst  = depreciableBasis - p5Est - p7Est - l15Est;
+    const realPropHigh = depreciableBasis - p5Low - p7Low - l15Low;
+
+    // First-year depreciation WITH cost seg
+    // 5-yr and 7-yr property eligible for bonus depreciation
+    // 15-yr land improvements also eligible for bonus
+    // Real property: straight-line only
+    const accelDeprLow = (p5Low + p7Low + l15Low) * bonusRate
+      + (p5Low * (1 - bonusRate) * 0.20)
+      + (p7Low * (1 - bonusRate) * 0.1429)
+      + (l15Low * (1 - bonusRate) * 0.05)
+      + realPropHigh / propLife;
+
+    const accelDeprEst = (p5Est + p7Est + l15Est) * bonusRate
+      + (p5Est * (1 - bonusRate) * 0.20)
+      + (p7Est * (1 - bonusRate) * 0.1429)
+      + (l15Est * (1 - bonusRate) * 0.05)
+      + realPropEst / propLife;
+
+    const accelDeprHigh = (p5High + p7High + l15High) * bonusRate
+      + (p5High * (1 - bonusRate) * 0.20)
+      + (p7High * (1 - bonusRate) * 0.1429)
+      + (l15High * (1 - bonusRate) * 0.05)
+      + realPropLow / propLife;
+
+    // First-year depreciation WITHOUT cost seg (straight-line only)
+    const straightLineDepr = depreciableBasis / propLife;
+
+    // Tax savings
+    const savingsLow = (accelDeprLow - straightLineDepr) * combinedRate;
+    const savingsEst = (accelDeprEst - straightLineDepr) * combinedRate;
+    const savingsHigh = (accelDeprHigh - straightLineDepr) * combinedRate;
+
+    // ROI (typical study costs $5k-$15k for a $1M property)
+    const studyCost = Math.max(5000, depreciableBasis * 0.005);
+    const roi = savingsEst / studyCost;
+
+    // ── Update DOM ──────────────────────────────────────────
+    emptyState.style.display = 'none';
+    resultsContent.classList.add('visible');
+
+    // Main savings
+    animateValue(document.getElementById('savingsAmount'), Math.round(savingsEst), '$');
+    document.getElementById('savingsLow').textContent = fmt(savingsLow);
+    document.getElementById('savingsHigh').textContent = fmt(savingsHigh);
+
+    // Stats
+    animateValue(document.getElementById('statAccelDepr'), Math.round(accelDeprEst), '$');
+    animateValue(document.getElementById('statIncrease'), Math.round(accelDeprEst - straightLineDepr), '$');
+    document.getElementById('statROI').textContent = roi.toFixed(1) + 'x';
+
+    // ── Charts ──────────────────────────────────────────────
+    const colors = getChartColors();
+
+    // Allocation Donut
+    if (allocationChart) allocationChart.destroy();
+    const allocCtx = document.getElementById('allocationChart').getContext('2d');
+    allocationChart = new Chart(allocCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['5-Year Property', '7-Year Property', '15-Year Improvements', 'Real Property'],
+        datasets: [{
+          data: [
+            alloc.p5[1],
+            alloc.p7[1],
+            alloc.l15[1],
+            100 - alloc.p5[1] - alloc.p7[1] - alloc.l15[1]
+          ],
+          backgroundColor: [colors.bg1, colors.bg2, colors.bg3, colors.bg4],
+          borderWidth: 0,
+          hoverOffset: 8
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '60%',
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              color: colors.textMuted,
+              font: { size: 11, family: 'Inter' },
+              padding: 12,
+              usePointStyle: true,
+              pointStyleWidth: 8
+            }
+          },
+          tooltip: {
+            callbacks: {
+              label: function(ctx) {
+                const val = ctx.raw;
+                const amt = depreciableBasis * (val / 100);
+                return ctx.label + ': ' + val + '% (' + fmt(amt) + ')';
+              }
+            }
+          }
+        }
+      }
+    });
+
+    // Comparison Bar Chart
+    if (comparisonChart) comparisonChart.destroy();
+    const compCtx = document.getElementById('comparisonChart').getContext('2d');
+    comparisonChart = new Chart(compCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Year 1 Depreciation', 'Year 1 Tax Savings'],
+        datasets: [
+          {
+            label: 'With Cost Segregation',
+            data: [accelDeprEst, savingsEst],
+            backgroundColor: colors.barWith,
+            borderRadius: 6,
+            barPercentage: 0.6,
+            categoryPercentage: 0.6
+          },
+          {
+            label: 'Without Cost Segregation',
+            data: [straightLineDepr, straightLineDepr * combinedRate],
+            backgroundColor: colors.barWithout,
+            borderRadius: 6,
+            barPercentage: 0.6,
+            categoryPercentage: 0.6
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              color: colors.textMuted,
+              font: { size: 11, family: 'Inter' },
+              padding: 12,
+              usePointStyle: true,
+              pointStyleWidth: 8
+            }
+          },
+          tooltip: {
+            callbacks: {
+              label: function(ctx) {
+                return ctx.dataset.label + ': ' + fmt(ctx.raw);
+              }
+            }
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: { color: colors.gridColor },
+            ticks: {
+              color: colors.textMuted,
+              font: { size: 11, family: 'Inter' },
+              callback: function(v) { return '$' + (v >= 1000 ? (v/1000).toFixed(0) + 'K' : v); }
+            }
+          },
+          x: {
+            grid: { display: false },
+            ticks: {
+              color: colors.textMuted,
+              font: { size: 11, family: 'Inter' }
+            }
+          }
+        }
+      }
+    });
+
+    // ── Year-by-Year Table ────────────────────────────────────
+    const tbody = document.getElementById('deprTableBody');
+    tbody.innerHTML = '';
+
+    let cumBenefit = 0;
+    const years = 15;
+    for (let y = 1; y <= years; y++) {
+      let withCS, withoutCS;
+
+      if (y === 1) {
+        withCS = accelDeprEst;
+        withoutCS = straightLineDepr;
+      } else {
+        // Remaining depreciation after bonus in year 1
+        const remainP5 = p5Est * (1 - bonusRate);
+        const remainP7 = p7Est * (1 - bonusRate);
+        const remainL15 = l15Est * (1 - bonusRate);
+
+        let p5Yr = 0, p7Yr = 0, l15Yr = 0;
+        if (y <= 5) p5Yr = remainP5 * 0.20;    // 200% DB simplified
+        if (y <= 7) p7Yr = remainP7 * 0.1429;  // 200% DB simplified
+        if (y <= 15) l15Yr = remainL15 * 0.0667; // 150% DB simplified
+
+        withCS = p5Yr + p7Yr + l15Yr + (realPropEst / propLife);
+        withoutCS = straightLineDepr;
+      }
+
+      const addlSavings = (withCS - withoutCS) * combinedRate;
+      cumBenefit += addlSavings;
+
+      function fmtSigned(n) {
+        if (n >= 0) return '+' + fmt(n);
+        return '-' + fmt(Math.abs(n));
+      }
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${y}</td>
+        <td class="col-highlight">${fmt(withCS)}</td>
+        <td>${fmt(withoutCS)}</td>
+        <td style="color: ${addlSavings > 0 ? 'var(--gold)' : 'var(--gray)'}">${fmtSigned(addlSavings)}</td>
+        <td class="col-highlight">${fmt(cumBenefit)}</td>
+      `;
+      tbody.appendChild(tr);
+    }
+
+    // Smooth scroll to results on mobile
+    if (window.innerWidth <= 960) {
+      resultsContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  // ── Form Submit ──────────────────────────────────────────────
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    calcBtn.classList.add('loading');
+    // Simulate brief processing for UX feel
+    setTimeout(function() {
+      calculate();
+      calcBtn.classList.remove('loading');
+    }, 600);
+  });
+
+  // ── Reset ────────────────────────────────────────────────────
+  resetBtn.addEventListener('click', function() {
+    form.reset();
+    document.getElementById('purchasePrice').value = '';
+    document.getElementById('improvements').value = '0';
+    document.getElementById('landPct').value = '20';
+    document.getElementById('taxRate').value = '37';
+    document.getElementById('stateTaxRate').value = '5';
+    document.getElementById('propertyType').value = 'office';
+    document.getElementById('serviceDate').value = '2026';
+    document.getElementById('propertyLife').value = '39';
+    emptyState.style.display = 'flex';
+    resultsContent.classList.remove('visible');
+    if (allocationChart) allocationChart.destroy();
+    if (comparisonChart) comparisonChart.destroy();
+  });
+
+  // ── Theme Change: Refresh Charts ─────────────────────────────
+  const observer = new MutationObserver(function() {
+    if (resultsContent.classList.contains('visible')) {
+      // Re-run calculation to refresh chart colors
+      calculate();
+    }
+  });
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+})();
+</script>
+
+<!-- ── Shared site scripts (theme toggle, nav, etc.) ── -->
+<script>
+// Theme Toggle
+(function() {
+  const toggle = document.getElementById('theme-toggle');
+  const saved = localStorage.getItem('theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+
+  if (toggle) {
+    toggle.addEventListener('click', function() {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  }
+})();
+
+// Navigation
+(function() {
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  const mobileClose = document.getElementById('mobile-nav-close');
+  const navbar = document.getElementById('navbar');
+
+  if (hamburger && mobileNav) {
+    hamburger.addEventListener('click', function() {
+      mobileNav.classList.add('open');
+      this.setAttribute('aria-expanded', 'true');
+    });
+    if (mobileClose) {
+      mobileClose.addEventListener('click', function() {
+        mobileNav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    }
+    mobileNav.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        mobileNav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Scroll shadow
+  if (navbar) {
+    window.addEventListener('scroll', function() {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }
+
+  // Dropdown
+  document.querySelectorAll('.has-dropdown').forEach(function(item) {
+    item.addEventListener('mouseenter', function() { this.classList.add('dropdown-open'); });
+    item.addEventListener('mouseleave', function() { this.classList.remove('dropdown-open'); });
+  });
+})();
+</script>
+
+</body>
+</html>
