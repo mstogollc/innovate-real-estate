@@ -399,146 +399,25 @@
     <p class="af-section-sub">Fill out the form below to join our affiliate program. We'll be in touch within 1–2 business days.</p>
   </div>
 
-  <form id="affiliate-form" novalidate>
-
-    <!-- Personal Info -->
-    <div class="af-form-card" data-animate>
-      <h3><span class="card-num">1</span>Personal Information</h3>
-      <div class="af-grid-2">
-        <div class="af-form-group">
-          <label class="af-label" for="af-name">First & Last Name <span class="req">*</span></label>
-          <input type="text" id="af-name" class="af-input" placeholder="Jane Smith" required>
-          <div class="af-error" id="af-name-err">Please enter your full name.</div>
-        </div>
-        <div class="af-form-group">
-          <label class="af-label" for="af-phone">Phone <span class="req">*</span></label>
-          <input type="tel" id="af-phone" class="af-input" placeholder="(555) 555-5555" required>
-          <div class="af-error" id="af-phone-err">Please enter a valid phone number.</div>
-        </div>
-        <div class="af-form-group">
-          <label class="af-label" for="af-email">Email <span class="req">*</span></label>
-          <input type="email" id="af-email" class="af-input" placeholder="jane@example.com" required>
-          <div class="af-error" id="af-email-err">Please enter a valid email.</div>
-        </div>
-        <div class="af-form-group">
-          <label class="af-label" for="af-city">City <span class="req">*</span></label>
-          <input type="text" id="af-city" class="af-input" placeholder="Miami" required>
-          <div class="af-error" id="af-city-err">Please enter your city.</div>
-        </div>
-        <div class="af-form-group full">
-          <label class="af-label" for="af-state">State <span class="req">*</span></label>
-          <select id="af-state" class="af-select" required>
-            <option value="">Select State</option>
-            <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option>
-            <option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option>
-            <option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option>
-            <option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option>
-            <option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option>
-            <option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
-            <option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option>
-            <option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option>
-            <option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
-            <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option>
-            <option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option>
-            <option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option>
-            <option>Wisconsin</option><option>Wyoming</option>
-          </select>
-          <div class="af-error" id="af-state-err">Please select your state.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Professional Status -->
-    <div class="af-form-card" data-animate>
-      <h3><span class="card-num">2</span>Professional Background</h3>
-      <div class="af-form-group">
-        <label class="af-label">Are you a Real Estate Professional?</label>
-        <div class="af-radio-group">
-          <input type="radio" name="af-rep" id="af-rep-yes" value="Yes" class="af-radio-option">
-          <label for="af-rep-yes" class="af-radio-label">Yes</label>
-          <input type="radio" name="af-rep" id="af-rep-no" value="No" class="af-radio-option">
-          <label for="af-rep-no" class="af-radio-label">No</label>
-          <input type="radio" name="af-rep" id="af-rep-ns" value="Not Sure" class="af-radio-option">
-          <label for="af-rep-ns" class="af-radio-label">Not Sure</label>
-        </div>
-      </div>
-    </div>
-
-    <!-- Services to Refer -->
-    <div class="af-form-card" data-animate>
-      <h3><span class="card-num">3</span>Products Interested in Referring</h3>
-      <p style="font-size:var(--text-sm);color:var(--gray-light);margin-bottom:var(--space-5);">Select all services you're interested in referring clients for:</p>
-      <div class="af-checkbox-group">
-        <input type="checkbox" id="svc-costseg" value="Cost Segregation" class="af-check-option">
-        <label for="svc-costseg" class="af-check-label">Cost Segregation</label>
-
-        <input type="checkbox" id="svc-tpr" value="Tangible Property Regulations" class="af-check-option">
-        <label for="svc-tpr" class="af-check-label">Tangible Property Regulations</label>
-
-        <input type="checkbox" id="svc-unicap" value="263A UNICAP Exemption" class="af-check-option">
-        <label for="svc-unicap" class="af-check-label">263A UNICAP Exemption</label>
-
-        <input type="checkbox" id="svc-gzt" value="Green Zip Tape" class="af-check-option">
-        <label for="svc-gzt" class="af-check-label">Green Zip Tape</label>
-
-        <input type="checkbox" id="svc-mc" value="Method Change" class="af-check-option">
-        <label for="svc-mc" class="af-check-label">Method Change</label>
-
-        <input type="checkbox" id="svc-rnd" value="R&D Tax Credits" class="af-check-option">
-        <label for="svc-rnd" class="af-check-label">R&D Tax Credits</label>
-
-        <input type="checkbox" id="svc-energy" value="Energy Optimization" class="af-check-option">
-        <label for="svc-energy" class="af-check-label">Energy Optimization</label>
-
-        <input type="checkbox" id="svc-wealth" value="Wealth Strategies" class="af-check-option">
-        <label for="svc-wealth" class="af-check-label">Wealth Strategies</label>
-      </div>
-    </div>
-
-    <!-- Optional Fields -->
-    <div class="af-form-card" data-animate>
-      <h3><span class="card-num">4</span>Additional Information</h3>
-      <div class="af-form-group">
-        <label class="af-label" for="af-referred">Referred By (optional)</label>
-        <input type="text" id="af-referred" class="af-input" placeholder="Name of person who referred you to Innovate">
-      </div>
-      <div class="af-form-group">
-        <label class="af-label" for="af-notes">Notes (optional)</label>
-        <textarea id="af-notes" class="af-textarea" placeholder="Tell us about your network, typical clients, or anything else we should know..."></textarea>
-      </div>
-    </div>
-
-    <!-- Terms -->
-    <div class="af-form-card" data-animate>
-      <h3><span class="card-num">5</span>Terms & Agreement</h3>
-      <div style="background:var(--dark-3);border-radius:var(--radius-md);padding:var(--space-5);margin-bottom:var(--space-5);">
-        <p style="font-size:var(--text-xs);color:var(--gray-light);line-height:1.65;">
-          By submitting this affiliate application, you agree to partner with Innovate Real Estate in referring clients for tax strategy services. Commission rates and payment terms will be provided upon approval. You agree to accurately represent Innovate Real Estate's services and not make any guarantees of specific tax savings outcomes. You consent to receive communications regarding the affiliate program via phone, email, and SMS. This application does not guarantee acceptance into the affiliate program.
-        </p>
-      </div>
-      <div class="terms-check-row">
-        <input type="checkbox" id="af-terms" required>
-        <label for="af-terms">I agree to the affiliate program terms and consent to receive program communications from Innovate Real Estate. <span style="color:var(--gold);">*</span></label>
-      </div>
-      <div class="af-error" id="af-terms-err" style="margin-top:var(--space-3);">You must agree to the terms to apply.</div>
-    </div>
-
-    <button type="submit" class="btn btn--gold af-submit-btn">
-      <i data-lucide="send" style="width:18px;height:18px;"></i>
-      Submit Affiliate Application
-    </button>
-  </form>
-
-  <!-- Success -->
-  <div class="af-success" id="af-success">
-    <div style="width:72px;height:72px;background:rgba(221,193,89,0.1);border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-6);color:var(--gold);">
-      <i data-lucide="check-circle" style="width:36px;height:36px;"></i>
-    </div>
-    <h2 style="font-size:var(--text-2xl);font-weight:900;margin-bottom:var(--space-4);">Application Received!</h2>
-    <p style="font-size:var(--text-lg);color:var(--gray-light);max-width:45ch;margin:0 auto var(--space-8);line-height:1.65;">Thank you for your interest in our affiliate program. Our team will review your application and reach out within 1–2 business days.</p>
-    <div style="display:flex;flex-direction:column;gap:var(--space-4);align-items:center;">
-      <a href="index.html" class="btn btn--gold btn--lg">Return to Homepage</a>
-    </div>
+  <div class="af-form-card" data-animate style="padding:0;overflow:hidden;background:#fff;">
+    <iframe
+      src="https://api.leadconnectorhq.com/widget/form/vlKw8xXYm2O4ZLRkVdZg"
+      style="width:100%;min-height:1127px;height:1400px;border:none;border-radius:0px"
+      id="inline-vlKw8xXYm2O4ZLRkVdZg"
+      data-layout="{'id':'INLINE'}"
+      data-trigger-type="alwaysShow"
+      data-trigger-value=""
+      data-activation-type="alwaysActivated"
+      data-activation-value=""
+      data-deactivation-type="neverDeactivate"
+      data-deactivation-value=""
+      data-form-name="Innovate Affiliate Self Onboarding"
+      data-height="1127"
+      data-layout-iframe-id="inline-vlKw8xXYm2O4ZLRkVdZg"
+      data-form-id="vlKw8xXYm2O4ZLRkVdZg"
+      title="Innovate Affiliate Self Onboarding"
+    ></iframe>
+    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
   </div>
 </div>
 
@@ -567,46 +446,7 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 document.querySelectorAll('[data-animate]').forEach(el => io.observe(el));
 
-document.getElementById('af-phone').addEventListener('input', function() {
-  let val = this.value.replace(/\D/g, '');
-  if (val.length >= 6) val = '(' + val.slice(0,3) + ') ' + val.slice(3,6) + '-' + val.slice(6,10);
-  else if (val.length >= 3) val = '(' + val.slice(0,3) + ') ' + val.slice(3);
-  this.value = val;
-});
-
-function validateAF(id, errId, test) {
-  const el = document.getElementById(id);
-  const ok = test(el.value);
-  el.classList.toggle('error', !ok);
-  document.getElementById(errId).classList.toggle('visible', !ok);
-  return ok;
-}
-
-document.getElementById('affiliate-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  let valid = true;
-  valid = validateAF('af-name', 'af-name-err', v => v.trim().length > 1) && valid;
-  valid = validateAF('af-phone', 'af-phone-err', v => v.replace(/\D/g,'').length >= 10) && valid;
-  valid = validateAF('af-email', 'af-email-err', v => /\S+@\S+\.\S+/.test(v)) && valid;
-  valid = validateAF('af-city', 'af-city-err', v => v.trim().length > 0) && valid;
-  valid = validateAF('af-state', 'af-state-err', v => v.length > 0) && valid;
-  
-  const terms = document.getElementById('af-terms');
-  if (!terms.checked) {
-    document.getElementById('af-terms-err').classList.add('visible');
-    valid = false;
-  } else {
-    document.getElementById('af-terms-err').classList.remove('visible');
-  }
-  
-  if (!valid) return;
-  
-  this.style.display = 'none';
-  document.getElementById('af-success').classList.add('visible');
-  lucide.createIcons();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+// Affiliate form is now handled by LeadConnector CRM iframe
 
 // ── Services mobile dropdown toggle ─────────────────────────────────────────
 const svcToggle = document.querySelector('.mobile-services-toggle');
