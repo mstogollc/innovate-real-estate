@@ -709,7 +709,7 @@ button { cursor: pointer; background: none; border: none; }
 
 .btn--gold {
   background: var(--gold);
-  color: var(--black);
+  color: #121212;
   border-color: var(--gold);
 }
 .btn--gold:hover {
@@ -721,12 +721,12 @@ button { cursor: pointer; background: none; border: none; }
 
 .btn--outline {
   background: transparent;
-  color: var(--gold);
-  border-color: var(--gold);
+  color: var(--gold-dark);
+  border-color: var(--gold-dark);
 }
 .btn--outline:hover {
   background: var(--gold);
-  color: var(--black);
+  color: #121212;
   transform: translateY(-2px);
 }
 
@@ -768,17 +768,19 @@ button { cursor: pointer; background: none; border: none; }
   transition: all var(--transition-slow);
   padding-inline: var(--space-6);
   padding-block: var(--space-3);
-  background: rgba(0,0,0,0.45);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
 }
 
 #navbar.scrolled {
-  background: rgba(18,18,18,0.95);
+  background: rgba(255,255,255,0.96);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
 }
 
 .nav-inner {
@@ -815,14 +817,14 @@ button { cursor: pointer; background: none; border: none; }
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.8);
+  color: rgba(18,18,18,0.75);
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-sm);
   transition: color var(--transition);
   white-space: nowrap;
 }
 
-.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover { color: var(--gold-dark); }
 
 .nav-cta-group {
   display: flex;
@@ -848,7 +850,7 @@ button { cursor: pointer; background: none; border: none; }
   display: block;
   width: 24px;
   height: 2px;
-  background: var(--white);
+  background: #1a1a1a;
   border-radius: 2px;
   transition: all var(--transition);
 }
