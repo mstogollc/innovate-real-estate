@@ -1813,7 +1813,7 @@ button { cursor: pointer; background: none; border: none; }
 }
 
 .footer-brand img {
-  height: 50px;
+  height: 80px;
   width: auto;
   margin-bottom: var(--space-4);
 }
