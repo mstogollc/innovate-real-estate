@@ -945,6 +945,10 @@ button { cursor: pointer; background: none; border: none; }
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .hero-label {
@@ -973,7 +977,10 @@ button { cursor: pointer; background: none; border: none; }
   line-height: 1.0;
   letter-spacing: -0.02em;
   max-width: 14ch;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: var(--space-6);
+  text-align: center;
 }
 
 .hero-headline em {
@@ -987,13 +994,17 @@ button { cursor: pointer; background: none; border: none; }
   color: rgba(255,255,255,0.75);
   max-width: 52ch;
   line-height: 1.65;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: var(--space-10);
+  text-align: center;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-4);
+  justify-content: center;
   margin-bottom: var(--space-16);
 }
 
@@ -1002,6 +1013,8 @@ button { cursor: pointer; background: none; border: none; }
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-6);
   max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .stat-item {
