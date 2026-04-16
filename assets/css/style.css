@@ -817,7 +817,7 @@ button { cursor: pointer; background: none; border: none; }
 
 .nav-links a {
   font-family: var(--font-display);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.03em;
   text-transform: uppercase;
@@ -1895,7 +1895,7 @@ button { cursor: pointer; background: none; border: none; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
   .nav-links, .nav-cta-group { display: none; }
   .hamburger { display: flex; }
 }
@@ -2469,4 +2469,11 @@ button { cursor: pointer; background: none; border: none; }
 
 .mobile-sub-link:hover {
   color: var(--gold) !important;
+}
+
+/* Events Teaser - Mobile */
+@media (max-width: 768px) {
+  .events-teaser-grid {
+    grid-template-columns: 1fr !important;
+  }
 }

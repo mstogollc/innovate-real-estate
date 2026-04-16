@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events & Speaking Engagements | Innovate Real Estate</title>
+  <meta name="description" content="Join Innovate Real Estate at upcoming webinars, speaking engagements, and networking events. See where we're sharing tax strategies and building community.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    /* ── Hero ── */
+    .events-hero {
+      min-height: 55vh;
+      background-image: url('assets/hero-main.png');
+      background-size: cover;
+      background-position: center 40%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-top: var(--nav-height);
+    }
+    .events-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,0,0,0.92) 0%, rgba(18,18,18,0.75) 100%);
+    }
+    .events-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: var(--space-16) var(--space-6);
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .events-hero-content .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-4);
+    }
+    .events-hero-content h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: var(--space-4);
+    }
+    .events-hero-content p {
+      font-size: var(--text-lg);
+      color: rgba(255,255,255,0.7);
+      line-height: 1.65;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    /* ── Upcoming Events ── */
+    .events-upcoming {
+      padding: var(--space-20) var(--space-6);
+      background: var(--bg);
+    }
+    .events-upcoming .section-header {
+      text-align: center;
+      margin-bottom: var(--space-12);
+    }
+    .events-upcoming .section-header .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-3);
+    }
+    .events-upcoming .section-header h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      color: var(--text);
+    }
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: var(--space-8);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Event Card */
+    .event-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .event-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(221,193,89,0.1);
+    }
+    .event-card-badge {
+      position: absolute;
+      top: var(--space-4);
+      left: var(--space-4);
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 6px;
+      z-index: 2;
+    }
+    .event-card-image {
+      position: relative;
+      height: 200px;
+      background: linear-gradient(135deg, var(--dark-2) 0%, var(--black) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .event-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .event-date-overlay {
+      position: absolute;
+      bottom: var(--space-4);
+      right: var(--space-4);
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(221,193,89,0.3);
+      border-radius: 10px;
+      padding: 8px 14px;
+      text-align: center;
+      min-width: 60px;
+    }
+    .event-date-overlay .date-month {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .event-date-overlay .date-day {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+    }
+    .event-card-body {
+      padding: var(--space-6);
+    }
+    .event-card-type {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-2);
+    }
+    .event-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: var(--space-3);
+      line-height: 1.3;
+    }
+    .event-card-desc {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: var(--space-4);
+    }
+    .event-meta {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      margin-bottom: var(--space-5);
+    }
+    .event-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .event-meta-item svg {
+      flex-shrink: 0;
+      color: var(--gold);
+    }
+    .event-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      transition: gap 0.2s ease;
+    }
+    .event-card-cta:hover {
+      gap: 10px;
+    }
+
+    /* ── Past Events / Speaking ── */
+    .events-past {
+      padding: var(--space-20) var(--space-6);
+      background: var(--surface);
+    }
+    .events-past .section-header {
+      text-align: center;
+      margin-bottom: var(--space-12);
+    }
+    .events-past .section-header .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-3);
+    }
+    .events-past .section-header h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      color: var(--text);
+    }
+    .events-past .section-header p {
+      font-size: var(--text-base);
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: var(--space-3) auto 0;
+      line-height: 1.6;
+    }
+
+    .past-events-timeline {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .past-events-timeline::before {
+      content: '';
+      position: absolute;
+      left: 28px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .timeline-item {
+      display: flex;
+      gap: var(--space-6);
+      padding-bottom: var(--space-10);
+      position: relative;
+    }
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+    .timeline-marker {
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      z-index: 1;
+    }
+    .timeline-content {
+      flex: 1;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: var(--space-5);
+    }
+    .timeline-content-type {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-1);
+    }
+    .timeline-content-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: var(--space-2);
+    }
+    .timeline-content-detail {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .timeline-content-date {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: var(--space-2);
+      font-style: italic;
+    }
+
+    /* ── CTA Section ── */
+    .events-cta {
+      padding: var(--space-20) var(--space-6);
+      background: var(--bg);
+      text-align: center;
+    }
+    .events-cta-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .events-cta h2 {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      color: var(--text);
+      margin-bottom: var(--space-4);
+    }
+    .events-cta p {
+      font-size: var(--text-base);
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: var(--space-8);
+    }
+    .events-cta-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+    }
+
+    /* ── Empty State (for when we add event images later) ── */
+    .event-card-image .event-placeholder-icon {
+      color: var(--gold);
+      opacity: 0.4;
+    }
+
+    @media (max-width: 768px) {
+      .events-grid {
+        grid-template-columns: 1fr;
+      }
+      .past-events-timeline::before {
+        left: 24px;
+      }
+      .timeline-marker {
+        width: 48px;
+        height: 48px;
+      }
+      .timeline-item {
+        gap: var(--space-4);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Innovate Real Estate Home">
+      <img src="assets/logo.webp" alt="Innovate Real Estate Logo" style="height: 80px; width: auto;">
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="index.html#about">About</a></li>
+      <li class="has-dropdown">
+          <a href="index.html#services" class="dropdown-toggle">Services
+            <svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <ul class="nav-dropdown" role="menu">
+            <li><a href="services/cost-segregation.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Cost Segregation</a></li>
+            <li><a href="services/tangible-property-regulations.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Tangible Property Regs</a></li>
+            <li><a href="services/unicap-exemption.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>263A UNICAP Exemption</a></li>
+            <li><a href="services/green-zip-tape.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Green Zip Tape</a></li>
+            <li><a href="services/method-change.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Method Change</a></li>
+            <li><a href="services/rd-tax-credits.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>R&amp;D Tax Credits</a></li>
+            <li><a href="services/energy-optimization.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Energy Optimization</a></li>
+            <li><a href="services/waste-optimization.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Waste Optimization</a></li>
+            <li><a href="services/179d.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="16" rx="2"/><path d="M1 10h22"/><path d="M12 6v16"/></svg>179D</a></li>
+            <li><a href="services/wealth-strategies.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>Wealth Strategies</a></li>
+          </ul>
+        </li>
+      <li><a href="calculator.html" style="color: var(--gold);">Calculator</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="team.html">Our Team</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-cta-group">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="submitform.html" class="btn btn--outline">Tax Savings Proposal</a>
+      <a href="affiliate.html" class="btn btn--gold">Become an Affiliate</a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <ul>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="calculator.html" style="color:var(--gold);">Calculator</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="team.html">Our Team</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="mobile-menu-ctas">
+      <button class="theme-toggle" id="mobile-theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="submitform.html" class="btn btn--outline btn--lg">Tax Savings Proposal</a>
+      <a href="affiliate.html" class="btn btn--gold btn--lg">Become an Affiliate</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="events-hero">
+  <div class="events-hero-content">
+    <div class="section-label">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Events & Engagements
+    </div>
+    <h1>Where We're <em style="font-style:normal;color:var(--gold);">Making an Impact</em></h1>
+    <p>From exclusive webinars to industry conferences, we're actively sharing tax strategies and building relationships across the real estate community.</p>
+  </div>
+</section>
+
+<!-- UPCOMING EVENTS -->
+<section class="events-upcoming">
+  <div class="section-header">
+    <div class="section-label">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Coming Up
+    </div>
+    <h2>Upcoming Events</h2>
+  </div>
+
+  <div class="events-grid">
+    <!-- Dental Webinar -->
+    <div class="event-card">
+      <div class="event-card-image">
+        <div class="event-card-badge">Featured</div>
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;background:linear-gradient(135deg, rgba(221,193,89,0.08) 0%, rgba(0,0,0,0.4) 100%);">
+          <i data-lucide="monitor-play" style="width:48px;height:48px;color:var(--gold);opacity:0.6;"></i>
+        </div>
+        <div class="event-date-overlay">
+          <span class="date-month">May</span>
+          <span class="date-day">13</span>
+        </div>
+      </div>
+      <div class="event-card-body">
+        <div class="event-card-type">Webinar</div>
+        <div class="event-card-title">Dental Industry Tax Strategies Webinar</div>
+        <div class="event-card-desc">Join us for an exclusive deep-dive into tax-saving opportunities specifically designed for dental practice owners and investors in dental real estate.</div>
+        <div class="event-meta">
+          <div class="event-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Tuesday, May 13, 2026
+          </div>
+          <div class="event-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Time TBA
+          </div>
+          <div class="event-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Virtual / Online
+          </div>
+        </div>
+        <span class="event-card-cta">
+          Details Coming Soon
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+    </div>
+
+    <!-- Placeholder for future events -->
+    <div class="event-card" style="border-style:dashed;opacity:0.6;">
+      <div class="event-card-image">
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:8px;">
+          <i data-lucide="calendar-plus" style="width:40px;height:40px;color:var(--gold);opacity:0.4;"></i>
+          <span style="font-size:0.75rem;color:var(--text-muted);font-family:'Montserrat',sans-serif;font-weight:600;">More events coming</span>
+        </div>
+      </div>
+      <div class="event-card-body">
+        <div class="event-card-type">Stay Tuned</div>
+        <div class="event-card-title">More Events Being Planned</div>
+        <div class="event-card-desc">We're expanding our presence across the community with more webinars, workshops, and networking opportunities. Check back for updates.</div>
+        <div class="event-meta">
+          <div class="event-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            hello@innovaterealestate.net for inquiries
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAST EVENTS & SPEAKING ENGAGEMENTS -->
+<section class="events-past">
+  <div class="section-header">
+    <div class="section-label">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+      In the Community
+    </div>
+    <h2>Speaking & Community Engagement</h2>
+    <p>We're committed to educating property owners and building lasting relationships across the real estate industry.</p>
+  </div>
+
+  <div class="past-events-timeline">
+    <div class="timeline-item">
+      <div class="timeline-marker">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="timeline-content">
+        <div class="timeline-content-type">Networking</div>
+        <div class="timeline-content-title">Real Estate Investor Meetups</div>
+        <div class="timeline-content-detail">Active participants in local and regional real estate investor networking events, connecting with property owners to discuss tax optimization strategies.</div>
+        <div class="timeline-content-date">Ongoing</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-marker">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="timeline-content">
+        <div class="timeline-content-type">Speaking Engagement</div>
+        <div class="timeline-content-title">Industry Tax Strategy Presentations</div>
+        <div class="timeline-content-detail">Delivering presentations on cost segregation, bonus depreciation, and advanced tax strategies to CPA firms, real estate groups, and business associations.</div>
+        <div class="timeline-content-date">Ongoing</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-marker">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      </div>
+      <div class="timeline-content">
+        <div class="timeline-content-type">Education</div>
+        <div class="timeline-content-title">Community Tax Education Workshops</div>
+        <div class="timeline-content-detail">Hosting educational workshops that help commercial property owners understand their tax rights and the advanced depreciation strategies available to them.</div>
+        <div class="timeline-content-date">Ongoing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="events-cta">
+  <div class="events-cta-inner">
+    <h2>Want Us at <em style="font-style:normal;color:var(--gold);">Your Next Event?</em></h2>
+    <p>We're available for speaking engagements, webinar collaborations, and industry panel discussions. Let's connect and bring real value to your audience.</p>
+    <div class="events-cta-buttons">
+      <a href="book.html" class="btn btn--gold btn--lg">Schedule a Conversation</a>
+      <a href="submitform.html" class="btn btn--outline btn--lg">Send Us a Message</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="container--wide">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo-white.png" alt="Innovate Real Estate">
+        <p>Delivering industry-leading cost segregation studies and advanced tax strategies to property owners, investors, and business leaders nationwide.</p>
+        <div class="contact-social">
+          <a href="https://www.linkedin.com/company/innovate-real-estate850" target="_blank" class="social-link" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://x.com/InnovateTaxRE" target="_blank" class="social-link" aria-label="Twitter / X">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services/cost-segregation.html">Cost Segregation</a></li>
+          <li><a href="services/tangible-property-regulations.html">Tangible Property Regulations</a></li>
+          <li><a href="services/unicap-exemption.html">263A UNICAP</a></li>
+          <li><a href="services/rd-tax-credits.html">R&D Tax Credits</a></li>
+          <li><a href="services/energy-optimization.html">Energy Optimization</a></li>
+          <li><a href="services/waste-optimization.html">Waste Optimization</a></li>
+          <li><a href="services/179d.html">179D</a></li>
+          <li><a href="services/wealth-strategies.html">Wealth Strategies</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="blog.html">Blog & Insights</a></li>
+          <li><a href="calculator.html">Savings Calculator</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="affiliate.html">Affiliate Program</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get Started</h4>
+        <ul>
+          <li><a href="submitform.html">Tax Savings Proposal</a></li>
+          <li><a href="book.html">Book a Consultation</a></li>
+          <li><a href="tel:8508053737">850-805-3737</a></li>
+          <li><a href="mailto:hello@innovaterealestate.net">hello@innovaterealestate.net</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">© 2025 Innovate Real Estate. All rights reserved. Tax strategies should be evaluated with your CPA.</div>
+    </div>
+  </div>
+</footer>
+
+<button id="scroll-top" aria-label="Scroll to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i data-lucide="chevron-up" style="width:20px;height:20px;"></i>
+</button>
+
+<script>
+// Theme Toggle
+(function() {
+  let currentTheme = 'dark';
+  function setTheme(theme) {
+    currentTheme = theme;
+    document.documentElement.setAttribute('data-theme', theme);
+  }
+  document.querySelectorAll('#theme-toggle, #mobile-theme-toggle').forEach(btn => {
+    btn.addEventListener('click', () => setTheme(currentTheme === 'dark' ? 'light' : 'dark'));
+  });
+  setTheme(currentTheme);
+})();
+
+// Navbar
+(function() {
+  const navbar = document.getElementById('navbar');
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+    if (window.scrollY > lastScroll && window.scrollY > 200) {
+      navbar.style.transform = 'translateY(-100%)';
+    } else {
+      navbar.style.transform = 'translateY(0)';
+    }
+    lastScroll = window.scrollY;
+  });
+
+  if (hamburger) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+      mobileMenu.setAttribute('aria-hidden', !isOpen);
+    });
+  }
+
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+    });
+  });
+})();
+
+// Scroll to top
+const scrollBtn = document.getElementById('scroll-top');
+window.addEventListener('scroll', () => scrollBtn?.classList.toggle('visible', window.scrollY > 600));
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+
+lucide.createIcons();
+</script>
+</body>
+</html>
