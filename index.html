@@ -206,7 +206,7 @@
 <section style="background:var(--dark-2);padding:var(--space-20) var(--space-6);">
   <div style="max-width:var(--content-wide);margin:0 auto;">
     <div style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.3);max-width:900px;margin:0 auto;" data-animate>
-      <video controls preload="metadata" style="width:100%;display:block;">
+      <video controls preload="metadata" poster="assets/video-poster.png" style="width:100%;display:block;">
         <source src="assets/cost-seg-final.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
@@ -267,19 +267,19 @@
     </div>
     <div class="services-grid">
       <div class="service-card" data-animate data-delay="1">
-        <a href="services/cost-segregation.html" class="service-card-link" style="text-decoration:none;color:inherit;display:block;">
-        <div class="service-icon"><i data-lucide="building-2" style="width:48px;height:48px;"></i></div>
-        <div class="service-subtitle">Accelerated and Bonus Depreciation and PAD</div>
-        <h3>Cost Segregation</h3>
-        <p>Unlock significant tax savings by identifying and reclassifying assets to capture the full allowable deductions under IRS rules.</p>
-        </a>
-      </div>
-      <div class="service-card" data-animate data-delay="2">
         <a href="services/tangible-property-regulations.html" class="service-card-link" style="text-decoration:none;color:inherit;display:block;">
         <div class="service-icon"><i data-lucide="file-text" style="width:48px;height:48px;"></i></div>
         <div class="service-subtitle">Retroactive Tax Deductions</div>
         <h3>Tangible Property Regulations</h3>
         <p>Optimize your tax position by uncovering missed deductions in previously filed tax returns and ensuring depreciation schedules work for you under the IRS Tangible Property Regulations.</p>
+        </a>
+      </div>
+      <div class="service-card" data-animate data-delay="2">
+        <a href="services/cost-segregation.html" class="service-card-link" style="text-decoration:none;color:inherit;display:block;">
+        <div class="service-icon"><i data-lucide="building-2" style="width:48px;height:48px;"></i></div>
+        <div class="service-subtitle">Accelerated and Bonus Depreciation and PAD</div>
+        <h3>Cost Segregation</h3>
+        <p>Unlock significant tax savings by identifying and reclassifying assets to capture the full allowable deductions under IRS rules.</p>
         </a>
       </div>
       <div class="service-card" data-animate data-delay="3">
@@ -635,10 +635,19 @@
       </div>
 
       <div data-animate="slide-right">
-        <div class="contact-map">
-          <div style="text-align:center;">
-            <i data-lucide="map-pin" style="width:32px;height:32px;color:var(--gold);margin:0 auto var(--space-3);"></i>
-            <div style="color:var(--white);font-weight:600;">Serving Clients Nationwide</div>
+        <div class="contact-map" style="background:url('assets/cta-nationwide-bg.png') center/cover no-repeat;position:relative;overflow:hidden;">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.4) 50%,rgba(0,0,0,0.7) 100%);"></div>
+          <div style="position:relative;z-index:1;text-align:center;padding:var(--space-6);">
+            <div style="display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:rgba(221,193,89,0.15);border:2px solid var(--gold);margin-bottom:var(--space-4);">
+              <i data-lucide="globe" style="width:28px;height:28px;color:var(--gold);"></i>
+            </div>
+            <div style="font-family:'Playfair Display',serif;font-size:var(--text-xl);font-weight:700;color:var(--white);margin-bottom:var(--space-2);">Serving Clients <span style="color:var(--gold);">Nationwide</span></div>
+            <div style="font-size:var(--text-sm);color:rgba(255,255,255,0.7);max-width:280px;margin:0 auto var(--space-5);line-height:1.6;">Coast to coast tax strategy and cost segregation for commercial property owners across all 50 states.</div>
+            <div style="display:flex;justify-content:center;gap:var(--space-6);">
+              <div style="text-align:center;"><div style="font-family:var(--font-display);font-size:var(--text-lg);font-weight:900;color:var(--gold);">50</div><div style="font-size:0.6rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;">States</div></div>
+              <div style="text-align:center;"><div style="font-family:var(--font-display);font-size:var(--text-lg);font-weight:900;color:var(--gold);">350+</div><div style="font-size:0.6rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;">Studies</div></div>
+              <div style="text-align:center;"><div style="font-family:var(--font-display);font-size:var(--text-lg);font-weight:900;color:var(--gold);">$100M+</div><div style="font-size:0.6rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;">Saved</div></div>
+            </div>
           </div>
         </div>
         <div class="contact-ctas">
