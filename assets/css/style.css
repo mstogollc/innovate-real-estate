@@ -810,9 +810,9 @@ button { cursor: pointer; background: none; border: none; }
   align-items: center;
   gap: var(--space-1);
   list-style: none;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  flex: 1;
+  justify-content: center;
+  min-width: 0;
 }
 
 .nav-links a {
@@ -1895,7 +1895,7 @@ button { cursor: pointer; background: none; border: none; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
   .nav-links, .nav-cta-group { display: none; }
   .hamburger { display: flex; }
 }
