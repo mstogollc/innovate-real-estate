@@ -547,14 +547,10 @@
       <p style="color:var(--gray-light);font-size:var(--text-lg);line-height:1.7;margin:var(--space-4) auto var(--space-8);max-width:56ch;">
         Discover how commercial property owners are legally saving $50K–$500K+ per building using strategies most CPAs never discuss. Get our free guide delivered instantly.
       </p>
-      <form action="https://formsubmit.co/ajax/rob@innovaterealestate.net" method="POST" class="lead-form" id="lead-form" style="display:flex;flex-wrap:wrap;gap:var(--space-3);justify-content:center;max-width:540px;margin:0 auto;">
-        <input type="hidden" name="_subject" value="New Lead: Tax Savings Blueprint Download">
-        <input type="hidden" name="_cc" value="lauren@innovaterealestate.net,emily@innovaterealestate.net">
-        <input type="hidden" name="_template" value="table">
-        <input type="text" name="name" placeholder="Your Name" required style="flex:1;min-width:200px;padding:var(--space-4) var(--space-5);border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:var(--text-base);font-family:var(--font-body);">
-        <input type="email" name="email" placeholder="Your Email" required style="flex:1;min-width:200px;padding:var(--space-4) var(--space-5);border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:var(--text-base);font-family:var(--font-body);">
-        <button type="submit" class="btn btn--gold btn--lg" style="width:100%;justify-content:center;">Download Free Guide →</button>
-      </form>
+      <div style="max-width:540px;margin:0 auto;border-radius:12px;overflow:hidden;">
+        <iframe src="https://link.apisystem.tech/widget/form/tNToOZyhee0Y0POno2EE" style="border:none;width:100%;min-height:450px;border-radius:12px;" id="blueprint-form" title="Tax Savings Blueprint Request Form" scrolling="no"></iframe>
+      </div>
+      <script src="https://link.apisystem.tech/js/form_embed.js"></script>
       <p style="color:var(--gray);font-size:var(--text-xs);margin-top:var(--space-4);">We respect your privacy. Unsubscribe anytime.</p>
     </div>
   </div>
@@ -737,31 +733,7 @@
 })();
 
 
-// ── Lead Form Submission
-const leadForm = document.getElementById('lead-form');
-if (leadForm) {
-  leadForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const btn = this.querySelector('button[type="submit"]');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-    try {
-      const formData = new FormData(this);
-      const resp = await fetch(this.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
-      if (resp.ok) {
-        btn.textContent = '✓ Guide on its way!';
-        btn.style.background = '#27ae60';
-        this.reset();
-      } else {
-        btn.textContent = 'Try again';
-        btn.disabled = false;
-      }
-    } catch(err) {
-      btn.textContent = 'Try again';
-      btn.disabled = false;
-    }
-  });
-}
+// ── Blueprint form handled by GHL iframe embed
 
 // ── Initialize Lucide icons
 lucide.createIcons();
