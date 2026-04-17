@@ -179,22 +179,22 @@
       <a href="book.html" class="btn btn--gold btn--lg">Schedule Your Strategic Consultation</a>
       <a href="#services" class="btn btn--outline btn--lg" style="border-color:rgba(255,255,255,0.4);color:var(--white);">Explore Our Services</a>
     </div>
-    <div class="hero-stats" style="margin:0 auto;">
-      <div class="stat-item" style="text-align:center;">
-        <div class="stat-number" data-count="357" data-suffix="+" style="font-size:var(--text-3xl);font-weight:900;color:var(--gold);">0+</div>
-        <div class="stat-label" style="font-size:var(--text-sm);color:rgba(255,255,255,0.7);margin-top:var(--space-1);">Clients Served</div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number" data-count="357" data-suffix="+">0+</div>
+        <div class="stat-label">Clients Served</div>
       </div>
-      <div class="stat-item" style="text-align:center;">
-        <div class="stat-number" data-count="1023" data-suffix="+" style="font-size:var(--text-3xl);font-weight:900;color:var(--gold);">0+</div>
-        <div class="stat-label" style="font-size:var(--text-sm);color:rgba(255,255,255,0.7);margin-top:var(--space-1);">Projects Completed</div>
+      <div class="stat-item">
+        <div class="stat-number" data-count="1023" data-suffix="+">0+</div>
+        <div class="stat-label">Projects Completed</div>
       </div>
-      <div class="stat-item" style="text-align:center;">
-        <div class="stat-number" data-count="16" data-suffix="+" style="font-size:var(--text-3xl);font-weight:900;color:var(--gold);">0+</div>
-        <div class="stat-label" style="font-size:var(--text-sm);color:rgba(255,255,255,0.7);margin-top:var(--space-1);">Years Experience</div>
+      <div class="stat-item">
+        <div class="stat-number" data-count="16" data-suffix="+">0+</div>
+        <div class="stat-label">Years Experience</div>
       </div>
-      <div class="stat-item" style="text-align:center;">
-        <div class="stat-number" data-count="100" data-prefix="$" data-suffix="M+" style="font-size:var(--text-3xl);font-weight:900;color:var(--gold);">$0+</div>
-        <div class="stat-label" style="font-size:var(--text-sm);color:rgba(255,255,255,0.7);margin-top:var(--space-1);">Tax Savings Unlocked</div>
+      <div class="stat-item">
+        <div class="stat-number" data-count="100" data-prefix="$" data-suffix="M+">$0+</div>
+        <div class="stat-label">Tax Savings Unlocked</div>
       </div>
     </div>
   </div>
@@ -818,6 +818,23 @@ function animateCounter(el) {
     if (current >= target) clearInterval(timer);
   }, 16);
 }
+// Auto-increment Clients Served: base 357 in April 2026, +17 avg per month
+(function() {
+  const baseCount = 357;
+  const baseDate = new Date(2026, 3, 1); // April 2026
+  const now = new Date();
+  const monthsElapsed = (now.getFullYear() - baseDate.getFullYear()) * 12 + (now.getMonth() - baseDate.getMonth());
+  if (monthsElapsed > 0) {
+    // Seed a deterministic per-month random between 15-20 using month index
+    let total = baseCount;
+    for (let i = 1; i <= monthsElapsed; i++) {
+      const seed = ((i * 2654435761) >>> 0) % 6; // 0-5 range
+      total += 15 + seed; // 15-20 per month
+    }
+    const el = document.querySelector('[data-count="357"]');
+    if (el) el.setAttribute('data-count', total);
+  }
+})();
 const statsObs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {

@@ -1018,8 +1018,7 @@ button { cursor: pointer; background: none; border: none; }
 }
 
 .stat-item {
-  border-left: 2px solid var(--gold);
-  padding-left: var(--space-4);
+  text-align: center;
 }
 
 .stat-number {
@@ -1945,7 +1944,7 @@ button { cursor: pointer; background: none; border: none; }
     padding: var(--space-3) var(--space-4);
   }
   .hero-stats { grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
-  .stat-item { padding-left: var(--space-3); }
+  .stat-item { text-align: center; }
   .tool-row { grid-template-columns: 1fr; }
   .building-visual { grid-template-columns: 1fr; }
 
