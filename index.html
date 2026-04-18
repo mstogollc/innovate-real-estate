@@ -612,7 +612,7 @@
           <div class="bp-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
           <h3>Your Blueprint is Ready</h3>
           <p>Click below to download your free Tax Savings Blueprint.</p>
-          <a href="assets/tax-savings-blueprint.pdf" download="Tax-Savings-Blueprint-Innovate.pdf" class="bp-dl" id="bpDlBtn">
+          <a href="https://innovaterealestate.net/assets/tax-savings-blueprint.pdf" target="_blank" rel="noopener" class="bp-dl" id="bpDlBtn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             Download Blueprint
           </a>
@@ -637,16 +637,11 @@
         if(!ok)return;
         /* disable button immediately */
         b.disabled=true;b.textContent='Sending...';
-        /* Show success + trigger download — NO external dependency */
+        /* Show success — user clicks download button themselves */
         setTimeout(function(){
           f.style.display='none';
           s.style.display='block';
           s.scrollIntoView({behavior:'smooth',block:'center'});
-          /* auto-download PDF */
-          var a=document.createElement('a');
-          a.href='assets/tax-savings-blueprint.pdf';
-          a.download='Tax-Savings-Blueprint-Innovate.pdf';
-          document.body.appendChild(a);a.click();document.body.removeChild(a);
         },400);
         /* Background: send to FormSubmit (team notification) — fire & forget */
         try{fetch('https://formsubmit.co/ajax/hello@innovaterealestate.net',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({_subject:'New Blueprint Lead: '+fn.value+' '+ln.value,first_name:fn.value.trim(),last_name:ln.value.trim(),email:em.value.trim(),phone:ph.value.trim()||'Not provided',_template:'table',_captcha:'false'})});}catch(x){}
