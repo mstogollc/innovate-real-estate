@@ -550,150 +550,39 @@
       </p>
       <p style="color:var(--gold);font-size:var(--text-base);font-weight:600;margin-bottom:var(--space-6);">Fill out the form below and we'll send you the guide instantly.</p>
     </div>
-    <!-- Blueprint Lead Capture Form -->
-    <div id="blueprintFormWrap" data-animate>
+    <!-- GHL Blueprint Lead Capture Form -->
+    <div data-animate>
       <style>
-        .bp-card{background:rgba(255,255,255,0.04);border:1px solid rgba(221,193,89,0.25);border-radius:20px;padding:clamp(2rem,5vw,3.5rem);backdrop-filter:blur(16px);position:relative;overflow:hidden;}
-        .bp-card::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:120px;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);border-radius:0 0 4px 4px;}
-        .bp-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4);}
-        @media(max-width:600px){.bp-form-grid{grid-template-columns:1fr;}}
-        .bp-field{display:flex;flex-direction:column;gap:6px;}
-        .bp-field.full{grid-column:1/-1;}
-        .bp-label{font-family:var(--font-display);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);}
-        .bp-input{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:14px 16px;color:var(--white);font-family:var(--font-body);font-size:var(--text-base);transition:border-color 0.2s,box-shadow 0.2s;outline:none;}
-        .bp-input::placeholder{color:rgba(255,255,255,0.25);}
-        .bp-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(221,193,89,0.15);}
-        .bp-input.error{border-color:#e74c3c;box-shadow:0 0 0 3px rgba(231,76,60,0.15);}
-        .bp-submit{width:100%;padding:16px 32px;background:linear-gradient(135deg,var(--gold),#c9a82c);color:var(--black);font-family:var(--font-display);font-size:var(--text-base);font-weight:800;letter-spacing:0.06em;text-transform:uppercase;border:none;border-radius:12px;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;position:relative;overflow:hidden;}
-        .bp-submit:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(221,193,89,0.35);}
-        .bp-submit:active{transform:translateY(0);}
-        .bp-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
-        .bp-submit .spinner{display:none;width:18px;height:18px;border:2.5px solid rgba(0,0,0,0.2);border-top-color:var(--black);border-radius:50%;animation:bpspin 0.6s linear infinite;margin:0 auto;}
-        .bp-submit.loading .spinner{display:block;}
-        .bp-submit.loading .btn-text{display:none;}
-        @keyframes bpspin{to{transform:rotate(360deg);}}
+        .bp-ghl-wrap{background:var(--white);border-radius:16px;padding:var(--space-4);box-shadow:0 12px 48px rgba(0,0,0,0.4),0 0 0 1px rgba(221,193,89,0.2);min-height:600px;overflow:hidden;}
+        .bp-ghl-wrap iframe{width:100%;min-height:600px;border:none;display:block;border-radius:8px;}
         .bp-trust{display:flex;align-items:center;justify-content:center;gap:var(--space-2);margin-top:var(--space-4);color:rgba(255,255,255,0.35);font-size:var(--text-xs);}
         .bp-trust svg{width:14px;height:14px;opacity:0.5;}
-        .bp-success{text-align:center;padding:var(--space-8) var(--space-4);}
-        .bp-success .check-circle{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#c9a82c);display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-6);animation:bppop 0.5s cubic-bezier(0.175,0.885,0.32,1.275);}
-        .bp-success .check-circle svg{width:36px;height:36px;color:var(--black);}
-        @keyframes bppop{0%{transform:scale(0);opacity:0;}100%{transform:scale(1);opacity:1;}}
-        .bp-success h3{font-family:'Playfair Display',serif;font-size:var(--text-2xl);color:var(--white);margin-bottom:var(--space-2);}
-        .bp-success p{color:rgba(255,255,255,0.6);margin-bottom:var(--space-6);}
-        .bp-download{display:inline-flex;align-items:center;gap:10px;padding:16px 40px;background:linear-gradient(135deg,var(--gold),#c9a82c);color:var(--black);font-family:var(--font-display);font-size:var(--text-base);font-weight:800;letter-spacing:0.06em;text-transform:uppercase;border-radius:12px;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;}
-        .bp-download:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(221,193,89,0.35);}
-        .bp-download svg{width:20px;height:20px;}
-        .bp-also-sent{color:rgba(255,255,255,0.4);font-size:var(--text-xs);margin-top:var(--space-4);}
       </style>
-
-      <div class="bp-card">
-        <!-- Form State -->
-        <form id="blueprintForm" autocomplete="on">
-          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-          <div class="bp-form-grid">
-            <div class="bp-field">
-              <label class="bp-label" for="bp-fname">First Name</label>
-              <input class="bp-input" type="text" id="bp-fname" name="first_name" placeholder="John" required autocomplete="given-name">
-            </div>
-            <div class="bp-field">
-              <label class="bp-label" for="bp-lname">Last Name</label>
-              <input class="bp-input" type="text" id="bp-lname" name="last_name" placeholder="Smith" required autocomplete="family-name">
-            </div>
-            <div class="bp-field">
-              <label class="bp-label" for="bp-email">Email</label>
-              <input class="bp-input" type="email" id="bp-email" name="email" placeholder="john@example.com" required autocomplete="email">
-            </div>
-            <div class="bp-field">
-              <label class="bp-label" for="bp-phone">Phone <span style="opacity:0.5;font-weight:400;text-transform:none;letter-spacing:0;">(optional)</span></label>
-              <input class="bp-input" type="tel" id="bp-phone" name="phone" placeholder="(555) 123-4567" autocomplete="tel">
-            </div>
-          </div>
-          <button type="submit" class="bp-submit" id="bpSubmitBtn">
-            <span class="btn-text">Send Me The Blueprint &rarr;</span>
-            <span class="spinner"></span>
-          </button>
-          <div class="bp-trust">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            <span>Your information is secure and never shared.</span>
-          </div>
-        </form>
-
-        <!-- Success State (hidden initially) -->
-        <div id="blueprintSuccess" class="bp-success" style="display:none;">
-          <div class="check-circle">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
-          <h3>Your Blueprint is Ready</h3>
-          <p>Click below to download your free Tax Savings Blueprint.</p>
-          <a href="assets/tax-savings-blueprint.pdf" download="Tax-Savings-Blueprint-Innovate.pdf" class="bp-download">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Download Blueprint
-          </a>
-          <p class="bp-also-sent">A copy has also been sent to your email.</p>
-        </div>
+      <div class="bp-ghl-wrap">
+        <iframe
+          src="https://api.leadconnectorhq.com/widget/form/gCTU9j3TlNXW995Ll5zd"
+          style="width:100%;height:100%;border:none;border-radius:3px;"
+          id="msgsndr-gCTU9j3TlNXW995Ll5zd"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="Tax Savings Blueprint - Guide Download"
+          data-height="600"
+          data-layout-iframe-id="msgsndr-gCTU9j3TlNXW995Ll5zd"
+          data-form-id="gCTU9j3TlNXW995Ll5zd"
+          title="Tax Savings Blueprint - Guide Download"
+        ></iframe>
+      </div>
+      <div class="bp-trust">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        <span>Your information is secure and never shared.</span>
       </div>
     </div>
-
-    <script>
-    (function(){
-      var form = document.getElementById('blueprintForm');
-      var successEl = document.getElementById('blueprintSuccess');
-      var submitBtn = document.getElementById('bpSubmitBtn');
-      if(!form) return;
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
-        // Honeypot check
-        if(form._honey && form._honey.value) return;
-        // Validate
-        var fname = document.getElementById('bp-fname');
-        var lname = document.getElementById('bp-lname');
-        var email = document.getElementById('bp-email');
-        var phone = document.getElementById('bp-phone');
-        var valid = true;
-        [fname,lname,email].forEach(function(inp){
-          inp.classList.remove('error');
-          if(!inp.value.trim()){ inp.classList.add('error'); valid = false; }
-        });
-        if(!valid) return;
-        // Show loading
-        submitBtn.classList.add('loading');
-        submitBtn.disabled = true;
-        // Send data to FormSubmit (notification to team)
-        var data = {
-          _subject: 'New Blueprint Request: ' + fname.value + ' ' + lname.value,
-          first_name: fname.value.trim(),
-          last_name: lname.value.trim(),
-          email: email.value.trim(),
-          phone: phone.value.trim() || 'Not provided',
-          _template: 'table',
-          _captcha: 'false'
-        };
-        fetch('https://formsubmit.co/ajax/hello@innovaterealestate.net', {
-          method: 'POST',
-          headers: {'Content-Type':'application/json','Accept':'application/json'},
-          body: JSON.stringify(data)
-        }).then(function(){ showSuccess(); }).catch(function(){ showSuccess(); });
-        // Also try GHL form submission in background
-        try {
-          var ghlFrame = document.createElement('iframe');
-          ghlFrame.style.cssText = 'position:absolute;width:0;height:0;border:0;opacity:0;pointer-events:none;';
-          ghlFrame.src = 'https://api.leadconnectorhq.com/widget/form/tNToOZyhee0Y0POno2EE';
-          document.body.appendChild(ghlFrame);
-        } catch(ex){}
-        function showSuccess(){
-          form.style.display = 'none';
-          successEl.style.display = 'block';
-          // Auto-trigger download after brief delay
-          setTimeout(function(){
-            var link = document.createElement('a');
-            link.href = 'assets/tax-savings-blueprint.pdf';
-            link.download = 'Tax-Savings-Blueprint-Innovate.pdf';
-            link.click();
-          }, 800);
-        }
-      });
-    })();
-    </script>
+    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
     <p style="color:rgba(255,255,255,0.3);font-size:var(--text-xs);margin-top:var(--space-4);text-align:center;">We respect your privacy. Unsubscribe anytime.</p>
   </div>
 </section>
