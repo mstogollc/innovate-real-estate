@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Innovate Real Estate | Cost Segregation & Tax Strategy Experts</title>
-  <meta name="description" content="Innovate Real Estate delivers industry-leading cost segregation studies, 179D energy deductions, R&D tax credits, and advanced tax strategies. $100M+ saved for thousands of clients.">
+  <meta name="description" content="Innovate Real Estate delivers industry-leading cost segregation studies, 179D energy deductions, R&D tax credits, and advanced tax strategies. $100M+ in tax savings unlocked.">
   <meta property="og:title" content="Innovate Real Estate | Cost Segregation & Tax Strategy Experts">
-  <meta property="og:description" content="Stop leaving money buried in your buildings. We've unlocked $100M+ in tax savings for thousands of clients through strategic depreciation planning.">
+  <meta property="og:description" content="Stop leaving money buried in your buildings. We've unlocked $100M+ in tax savings through strategic depreciation planning and advanced engineering studies.">
   <meta property="og:image" content="assets/hero-main.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -181,8 +181,8 @@
     </div>
     <div class="hero-stats">
       <div class="stat-item">
-        <div class="stat-number" style="font-size:inherit;">Thousands</div>
-        <div class="stat-label">Clients Served</div>
+        <div class="stat-number" data-count="100" data-prefix="$" data-suffix="M+">$0+</div>
+        <div class="stat-label">Tax Savings Unlocked</div>
       </div>
       <div class="stat-item">
         <div class="stat-number" data-count="1023" data-suffix="+">0+</div>
@@ -191,10 +191,6 @@
       <div class="stat-item">
         <div class="stat-number" data-count="16" data-suffix="+">0+</div>
         <div class="stat-label">Years Experience</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number" data-count="100" data-prefix="$" data-suffix="M+">$0+</div>
-        <div class="stat-label">Tax Savings Unlocked</div>
       </div>
     </div>
   </div>
@@ -931,7 +927,7 @@ function animateCounter(el) {
     if (current >= target) clearInterval(timer);
   }, 16);
 }
-// Clients Served — now static "Thousands" per client request
+// Counter animations
 const statsObs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
