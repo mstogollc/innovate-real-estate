@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Innovate Real Estate | Cost Segregation & Tax Strategy Experts</title>
-  <meta name="description" content="Innovate Real Estate delivers industry-leading cost segregation studies, 179D energy deductions, R&D tax credits, and advanced tax strategies. $100M+ saved for 357+ clients.">
+  <meta name="description" content="Innovate Real Estate delivers industry-leading cost segregation studies, 179D energy deductions, R&D tax credits, and advanced tax strategies. $100M+ saved for thousands of clients.">
   <meta property="og:title" content="Innovate Real Estate | Cost Segregation & Tax Strategy Experts">
-  <meta property="og:description" content="Stop leaving money buried in your buildings. We've unlocked $100M+ in tax savings for 357+ clients through strategic depreciation planning.">
+  <meta property="og:description" content="Stop leaving money buried in your buildings. We've unlocked $100M+ in tax savings for thousands of clients through strategic depreciation planning.">
   <meta property="og:image" content="assets/hero-main.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -181,7 +181,7 @@
     </div>
     <div class="hero-stats">
       <div class="stat-item">
-        <div class="stat-number" data-count="357" data-suffix="+">0+</div>
+        <div class="stat-number" style="font-size:inherit;">Thousands</div>
         <div class="stat-label">Clients Served</div>
       </div>
       <div class="stat-item">
@@ -777,7 +777,7 @@
             <div style="font-size:var(--text-sm);color:rgba(255,255,255,0.7);max-width:280px;margin:0 auto var(--space-5);line-height:1.6;">Coast to coast tax strategy and cost segregation for commercial property owners across all 50 states.</div>
             <div style="display:flex;justify-content:center;gap:var(--space-6);">
               <div style="text-align:center;"><div style="font-family:var(--font-display);font-size:var(--text-lg);font-weight:900;color:var(--gold);">50</div><div style="font-size:0.6rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;">States</div></div>
-              <div style="text-align:center;"><div style="font-family:var(--font-display);font-size:var(--text-lg);font-weight:900;color:var(--gold);">350+</div><div style="font-size:0.6rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;">Studies</div></div>
+              <div style="text-align:center;"><div style="font-family:var(--font-display);font-size:var(--text-lg);font-weight:900;color:var(--gold);">Thousands</div><div style="font-size:0.6rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;">Studies</div></div>
               <div style="text-align:center;"><div style="font-family:var(--font-display);font-size:var(--text-lg);font-weight:900;color:var(--gold);">$100M+</div><div style="font-size:0.6rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;">Saved</div></div>
             </div>
           </div>
@@ -931,23 +931,7 @@ function animateCounter(el) {
     if (current >= target) clearInterval(timer);
   }, 16);
 }
-// Auto-increment Clients Served: base 357 in April 2026, +17 avg per month
-(function() {
-  const baseCount = 357;
-  const baseDate = new Date(2026, 3, 1); // April 2026
-  const now = new Date();
-  const monthsElapsed = (now.getFullYear() - baseDate.getFullYear()) * 12 + (now.getMonth() - baseDate.getMonth());
-  if (monthsElapsed > 0) {
-    // Seed a deterministic per-month random between 15-20 using month index
-    let total = baseCount;
-    for (let i = 1; i <= monthsElapsed; i++) {
-      const seed = ((i * 2654435761) >>> 0) % 6; // 0-5 range
-      total += 15 + seed; // 15-20 per month
-    }
-    const el = document.querySelector('[data-count="357"]');
-    if (el) el.setAttribute('data-count', total);
-  }
-})();
+// Clients Served — now static "Thousands" per client request
 const statsObs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
