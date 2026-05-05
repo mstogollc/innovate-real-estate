@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMS Opt-In | Innovate Real Estate</title>
+  <meta name="description" content="Opt in to receive SMS text updates from Innovate Real Estate about cost segregation strategies, appointment reminders, webinar invitations, and review requests.">
+  <meta name="robots" content="index,follow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    .opt-hero {
+      min-height: 38vh;
+      background: linear-gradient(135deg, #000 0%, #121212 100%);
+      display: flex;
+      align-items: center;
+      padding-top: var(--nav-height);
+    }
+    .opt-hero-inner {
+      padding: var(--space-16) var(--space-6);
+    }
+    .opt-card {
+      background: var(--dark-2);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-xl);
+      padding: var(--space-10);
+      max-width: 720px;
+      margin: 0 auto var(--space-8);
+    }
+    .opt-card.gold-accent {
+      border-left: 4px solid var(--gold);
+    }
+    .opt-section {
+      padding-block: var(--space-12);
+    }
+    .opt-form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+    @media (max-width: 600px) { .opt-form-row { grid-template-columns: 1fr; } }
+    .opt-input {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      color: #fff;
+      font-size: 16px;
+      font-family: inherit;
+    }
+    .opt-input:focus {
+      border-color: var(--gold);
+      outline: none;
+      background: rgba(255,255,255,0.06);
+    }
+    .opt-label {
+      display: block;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 8px;
+    }
+    .consent-row {
+      display: flex;
+      gap: 12px;
+      padding: 16px;
+      background: rgba(221,193,89,0.06);
+      border: 1px solid rgba(221,193,89,0.25);
+      border-radius: var(--radius-md);
+      margin: var(--space-4) 0;
+      align-items: flex-start;
+    }
+    .consent-row input[type="checkbox"] {
+      flex-shrink: 0;
+      margin-top: 3px;
+      width: 20px;
+      height: 20px;
+      accent-color: var(--gold);
+      cursor: pointer;
+    }
+    .consent-text {
+      font-size: 14px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.85);
+    }
+    .opt-submit {
+      width: 100%;
+      background: var(--gold);
+      color: #000;
+      border: none;
+      border-radius: var(--radius-md);
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .opt-submit:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(221,193,89,0.25); }
+    .opt-success {
+      display: none;
+      background: rgba(46,160,67,0.08);
+      border: 1px solid rgba(46,160,67,0.4);
+      color: #6dd684;
+      padding: 16px;
+      border-radius: var(--radius-md);
+      margin-top: var(--space-4);
+      font-size: 14px;
+    }
+    .info-block h2 {
+      font-family: 'Playfair Display', serif !important;
+      font-size: var(--text-2xl);
+      font-weight: 800;
+      margin-bottom: var(--space-4);
+    }
+    .info-block h3 {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--gold);
+      margin-top: var(--space-6);
+      margin-bottom: var(--space-3);
+    }
+    .info-block p, .info-block li {
+      font-size: 15px;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.7;
+    }
+    .info-block ul { margin: var(--space-3) 0 var(--space-5) var(--space-6); }
+    .info-block li { margin-bottom: var(--space-2); }
+    .keyword-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-4);
+      margin: var(--space-5) 0;
+    }
+    .keyword-cell {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+    }
+    .keyword-cell strong {
+      display: block;
+      color: var(--gold);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .sample-msg {
+      background: rgba(255,255,255,0.03);
+      border-left: 3px solid var(--gold);
+      padding: 14px 18px;
+      margin: var(--space-3) 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 14px;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.6;
+      font-style: italic;
+    }
+    .section-title, h1, h2 { font-family: 'Playfair Display', serif !important; }
+  </style>
+</head>
+<body>
+
+<!-- Nav (simplified) -->
+<nav id="navbar" role="navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo.webp" alt="Innovate Real Estate">
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="calculator.html" style="color: var(--gold);">Calculator</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="team.html">Our Team</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta-group">
+      <a href="submitform.html" class="btn btn--outline">Tax Savings Proposal</a>
+      <a href="affiliate.html" class="btn btn--gold">Become an Affiliate</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="opt-hero">
+  <div class="opt-hero-inner container">
+    <span class="label" style="display:block;margin-bottom:var(--space-4);color:var(--gold);">SMS Communications</span>
+    <h1 style="font-size:var(--text-3xl);font-weight:900;line-height:1.05;margin-bottom:var(--space-5);color:var(--white);">SMS Text <span class="text-gold">Opt-In</span></h1>
+    <p style="font-size:var(--text-lg);color:rgba(255,255,255,0.7);max-width:60ch;line-height:1.6;">Sign up to receive text messages from Innovate Real Estate. Stay current on your tax savings analysis, appointment reminders, webinars, and educational content from our team.</p>
+  </div>
+</div>
+
+<!-- Opt-In Form -->
+<div class="opt-section">
+  <div class="container">
+
+    <div class="opt-card gold-accent">
+      <h2 style="font-family:'Playfair Display',serif;font-size:var(--text-2xl);font-weight:800;margin-bottom:var(--space-3);">Sign Up for SMS Updates</h2>
+      <p style="color:rgba(255,255,255,0.7);margin-bottom:var(--space-6);font-size:15px;">Complete the form below to opt in. All fields are required. By submitting, you confirm you are the owner or authorized user of the phone number provided.</p>
+
+      <form id="smsOptInForm" novalidate>
+        <div class="opt-form-row">
+          <div>
+            <label class="opt-label" for="opt-first">First Name</label>
+            <input class="opt-input" type="text" id="opt-first" name="first_name" required autocomplete="given-name">
+          </div>
+          <div>
+            <label class="opt-label" for="opt-last">Last Name</label>
+            <input class="opt-input" type="text" id="opt-last" name="last_name" required autocomplete="family-name">
+          </div>
+        </div>
+
+        <div style="margin-bottom:var(--space-4);">
+          <label class="opt-label" for="opt-email">Email Address</label>
+          <input class="opt-input" type="email" id="opt-email" name="email" required autocomplete="email">
+        </div>
+
+        <div style="margin-bottom:var(--space-4);">
+          <label class="opt-label" for="opt-phone">Mobile Phone Number</label>
+          <input class="opt-input" type="tel" id="opt-phone" name="phone" required autocomplete="tel" placeholder="(555) 555-5555">
+        </div>
+
+        <div class="consent-row">
+          <input type="checkbox" id="opt-consent" name="sms_consent" required>
+          <label for="opt-consent" class="consent-text">
+            <strong style="color:#fff;">Yes, I want to receive text messages from Innovate Real Estate.</strong><br>
+            By checking this box, I agree to receive recurring marketing and informational text messages from Innovate Real Estate at the mobile number provided, related to advanced tax strategies, service updates, appointment reminders, review requests, webinar invitations, and newsletters. Message frequency varies (typically 2&ndash;6 messages per month). Message and data rates may apply. Reply <strong>STOP</strong> at any time to unsubscribe, or <strong>HELP</strong> for assistance. Consent is not a condition of purchasing any goods or services. See our <a href="privacy.html" style="color:var(--gold);">Privacy Policy</a> and <a href="terms.html" style="color:var(--gold);">Terms of Service</a>.
+          </label>
+        </div>
+
+        <button type="submit" class="opt-submit">Submit &amp; Opt In</button>
+
+        <div class="opt-success" id="opt-success">
+          You're signed up. We'll send a confirmation text to your phone shortly. Reply STOP at any time to unsubscribe.
+        </div>
+      </form>
+    </div>
+
+    <!-- Required A2P Disclosures -->
+    <div class="opt-card info-block">
+      <h2>SMS Program Details</h2>
+      <p><strong style="color:#fff;">Program name:</strong> Innovate Real Estate SMS Updates</p>
+
+      <h3>What you will receive</h3>
+      <p>If you opt in, you will receive recurring text messages from Innovate Real Estate that may include:</p>
+      <ul>
+        <li>Appointment reminders and confirmations for tax strategy calls and engineering walkthroughs</li>
+        <li>Follow-ups on your requested Tax Savings Blueprint or Tax Savings Proposal</li>
+        <li>Webinar and educational event invitations</li>
+        <li>Service updates and newsletters about cost segregation, R&amp;D credits, 179D, 263A UNICAP, and other advanced tax strategies</li>
+        <li>Review requests after a completed engagement</li>
+      </ul>
+
+      <h3>Sample messages</h3>
+      <div class="sample-msg">"Hi {Name}, this is Lauren with Innovate Real Estate. Thanks for requesting your Tax Savings Blueprint &mdash; would you like to schedule a 15-minute strategy call this week? Reply STOP to opt out."</div>
+      <div class="sample-msg">"Reminder: Your cost segregation engineering walkthrough is scheduled for Tuesday at 10am CT. Reply Y to confirm. Reply STOP to opt out."</div>
+      <div class="sample-msg">"New webinar &mdash; Dental Industry Tax Strategies on May 13. Save your seat: innovaterealestate.net/events. Reply STOP to opt out."</div>
+
+      <h3>Frequency &amp; cost</h3>
+      <p>Message frequency varies, typically 2&ndash;6 messages per month. Message and data rates may apply based on your wireless carrier plan.</p>
+
+      <h3>Keywords supported</h3>
+      <div class="keyword-grid">
+        <div class="keyword-cell">
+          <strong>Stop</strong>
+          STOP, UNSUBSCRIBE, CANCEL, END, QUIT
+        </div>
+        <div class="keyword-cell">
+          <strong>Help</strong>
+          HELP, INFO
+        </div>
+        <div class="keyword-cell">
+          <strong>Resume</strong>
+          START, UNSTOP
+        </div>
+      </div>
+
+      <h3>How to opt out</h3>
+      <p>Reply <strong>STOP</strong> to any message at any time to immediately unsubscribe. You will receive one final confirmation that you have been removed, after which no further messages will be sent.</p>
+
+      <h3>How to get help</h3>
+      <p>Reply <strong>HELP</strong> to any message for support, or contact us directly:</p>
+      <ul>
+        <li>Email: <a href="mailto:hello@innovaterealestate.net" style="color:var(--gold);">hello@innovaterealestate.net</a></li>
+        <li>Phone: <a href="tel:8508053737" style="color:var(--gold);">850-805-3737</a></li>
+      </ul>
+
+      <h3>Privacy &amp; data sharing</h3>
+      <p><strong style="color:#fff;">No mobile information will be shared with third parties or affiliates for marketing or promotional purposes.</strong> Information sharing with subcontractors that support our services (e.g., our SMS platform provider HighLevel/LeadConnector and Twilio) is permitted only as necessary to deliver these messages. Text messaging originator opt-in data and consent will not be shared with any third parties for any other purpose. See our full <a href="privacy.html" style="color:var(--gold);">Privacy Policy</a>.</p>
+
+      <h3>Eligibility</h3>
+      <p>U.S. residents only. You must be at least 18 years old and the owner or authorized user of the wireless device. Carriers are not liable for delayed or undelivered messages.</p>
+
+      <h3>Other ways to opt in</h3>
+      <p>In addition to this dedicated opt-in form, you may also consent to receive SMS messages from Innovate Real Estate by:</p>
+      <ul>
+        <li>Submitting the <strong>Tax Savings Blueprint form</strong> on our <a href="index.html#blueprint" style="color:var(--gold);">homepage</a> with the SMS consent checkbox checked</li>
+        <li>Submitting the <strong>Tax Savings Proposal form</strong> on our <a href="submitform.html" style="color:var(--gold);">/submitform</a> page with the SMS consent checkbox checked</li>
+        <li>Verbally consenting and providing your phone number to a representative during an in-person meeting at an industry event we attend or sponsor</li>
+      </ul>
+      <p>In every case, your phone number will only be enrolled if you take an explicit affirmative opt-in action (such as checking a box). We will never enroll a phone number without that consent.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Footer -->
+<footer style="background:var(--black);border-top:1px solid var(--border-dark);padding:var(--space-8) var(--space-6);">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-4);">
+    <a href="index.html"><img src="assets/logo-white.png" alt="Innovate Real Estate" style="height:40px;width:auto;"></a>
+    <div style="display:flex;gap:var(--space-6);">
+      <a href="index.html" style="font-size:var(--text-sm);color:var(--gray);">Home</a>
+      <a href="privacy.html" style="font-size:var(--text-sm);color:var(--gray);">Privacy</a>
+      <a href="terms.html" style="font-size:var(--text-sm);color:var(--gray);">Terms</a>
+      <a href="sms-opt-in.html" style="font-size:var(--text-sm);color:var(--gold);">SMS Opt-In</a>
+    </div>
+    <p style="font-size:var(--text-xs);color:var(--gray);">© 2026 Innovate Real Estate · Pensacola, FL</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById('smsOptInForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var fn = document.getElementById('opt-first').value.trim();
+  var ln = document.getElementById('opt-last').value.trim();
+  var em = document.getElementById('opt-email').value.trim();
+  var ph = document.getElementById('opt-phone').value.trim();
+  var cs = document.getElementById('opt-consent').checked;
+
+  if (!fn || !ln || !em || !ph) { alert('Please complete all fields.'); return; }
+  if (!cs) { alert('You must check the SMS consent box to opt in.'); return; }
+
+  try {
+    fetch('https://formsubmit.co/ajax/hello@innovaterealestate.net', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'NEW SMS OPT-IN: ' + fn + ' ' + ln,
+        first_name: fn,
+        last_name: ln,
+        email: em,
+        phone: ph,
+        sms_consent: 'Yes — explicit opt-in via /sms-opt-in.html',
+        opt_in_timestamp: new Date().toISOString(),
+        opt_in_url: window.location.href,
+        _template: 'table',
+        _captcha: 'false'
+      })
+    });
+  } catch (x) {}
+
+  this.style.display = 'none';
+  document.getElementById('opt-success').style.display = 'block';
+  document.getElementById('opt-success').scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
+</script>
+
+<!-- HighLevel Chat Widget intentionally omitted from forms-bearing page per HighLevel rule #6 -->
+</body>
+</html>
