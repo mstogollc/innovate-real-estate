@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resource Center | Innovate Real Estate</title>
+  <meta name="description" content="Download Innovate Real Estate marketing brochures — Cost Segregation, 179D, R&D Tax Credit, 263A UNICAP and more. Free PDFs for CPAs, advisors and property owners.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    .res-hero {
+      min-height: 50vh;
+      background-image: url('assets/hero-main.png');
+      background-size: cover;
+      background-position: center 40%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-top: var(--nav-height);
+    }
+    .res-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,0,0,0.92) 0%, rgba(18,18,18,0.75) 100%);
+    }
+    .res-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: var(--space-16) var(--space-6);
+    }
+
+    .res-section {
+      background: var(--dark);
+      padding: var(--space-20) var(--space-6);
+    }
+
+    .res-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: var(--space-6);
+      margin-top: var(--space-10);
+    }
+
+    .res-card {
+      background: var(--dark-2, #1a1a1a);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-xl);
+      padding: var(--space-7);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .res-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .res-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(221,193,89,0.45);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(221,193,89,0.1);
+    }
+    .res-card:hover::before { opacity: 1; }
+
+    .res-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-md);
+      background: rgba(221,193,89,0.12);
+      border: 1px solid rgba(221,193,89,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .res-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(221,193,89,0.08);
+      border: 1px solid rgba(221,193,89,0.2);
+      padding: 4px 10px;
+      border-radius: 999px;
+      width: fit-content;
+    }
+
+    .res-title {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.2;
+    }
+
+    .res-desc {
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .res-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: var(--text-xs);
+      color: var(--gray);
+      padding-top: var(--space-3);
+      border-top: 1px solid var(--border-dark);
+    }
+    .res-meta svg { width: 14px; height: 14px; }
+
+    .res-actions {
+      display: flex;
+      gap: var(--space-3);
+      margin-top: var(--space-2);
+    }
+
+    .res-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      flex: 1;
+      padding: var(--space-3) var(--space-4);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      border-radius: var(--radius-md);
+      transition: all var(--transition);
+      text-decoration: none;
+    }
+    .res-btn--gold {
+      background: var(--gold);
+      color: var(--black);
+      border: 1px solid var(--gold);
+    }
+    .res-btn--gold:hover {
+      background: #e8d175;
+      border-color: #e8d175;
+      transform: translateY(-1px);
+    }
+    .res-btn--ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .res-btn--ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .res-btn svg { width: 16px; height: 16px; }
+
+    .res-cta-section {
+      background: var(--black);
+      padding: var(--space-16) var(--space-6);
+      border-top: 1px solid var(--border-dark);
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .res-hero { min-height: 40vh; }
+      .res-section { padding: var(--space-12) var(--space-5); }
+      .res-card { padding: var(--space-5); }
+      .res-actions { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav id="navbar" role="navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo.webp" alt="Innovate Real Estate">
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html#about">About</a></li>
+      <li class="has-dropdown">
+          <a href="index.html#services" class="dropdown-toggle">Services
+            <svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <ul class="nav-dropdown" role="menu">
+            <li><a href="services/cost-segregation.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Cost Segregation</a></li>
+            <li><a href="services/tangible-property-regulations.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Tangible Property Regs</a></li>
+            <li><a href="services/unicap-exemption.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>263A UNICAP Exemption</a></li>
+            <li><a href="services/green-zip-tape.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Green Zip Tape</a></li>
+            <li><a href="services/method-change.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Method Change</a></li>
+            <li><a href="services/rd-tax-credits.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>R&amp;D Tax Credits</a></li>
+            <li><a href="services/energy-optimization.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Energy Optimization</a></li>
+            <li><a href="services/waste-optimization.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Waste Optimization</a></li>
+            <li><a href="services/179d.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="16" rx="2"/><path d="M1 10h22"/><path d="M12 6v16"/></svg>179D</a></li>
+            <li><a href="services/wealth-strategies.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>Wealth Strategies</a></li>
+          </ul>
+        </li>
+      <li><a href="calculator.html" style="color: var(--gold);">Calculator</a></li>
+          <li><a href="blog.html">Blog</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="resources.html" style="color:var(--gold);">Resources</a></li>
+      <li><a href="team.html">Our Team</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul><div class="nav-cta-group">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme">
+      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+      <a href="submitform.html" class="btn btn--outline">Tax Savings Proposal</a>
+      <a href="affiliate.html" class="btn btn--gold">Become an Affiliate</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html#about">About</a>
+  <a href="index.html#services">Services</a>
+  <a href="index.html#tools">Tools</a>
+  <a href="blog.html">Blog</a>
+  <a href="resources.html">Resources</a>
+  <a href="team.html">Our Team</a>
+  <a href="index.html#contact">Contact</a>
+  <div class="mobile-nav-btns">
+    <a href="submitform.html" class="btn btn--outline btn--lg">Tax Savings Proposal</a>
+    <a href="affiliate.html" class="btn btn--gold btn--lg">Become an Affiliate</a>
+  </div>
+  <button class="theme-toggle mobile-theme-toggle" id="mobile-theme-toggle" aria-label="Toggle light/dark theme">
+    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </button>
+</div>
+
+<!-- Hero -->
+<div class="res-hero">
+  <div class="res-hero-content">
+    <div class="container">
+      <span class="label" style="display:block;margin-bottom:var(--space-4);">Resource Center</span>
+      <h1 style="font-size:var(--text-3xl);font-weight:900;max-width:18ch;line-height:1.05;margin-bottom:var(--space-5);">
+        Marketing <span class="text-gold">Brochures &amp; Guides</span>
+      </h1>
+      <p class="hero-desc" style="font-size:var(--text-lg);color:rgba(255,255,255,0.75);max-width:60ch;line-height:1.65;">
+        Free downloadable PDFs covering every service we offer — Cost Segregation, 179D, R&amp;D Tax Credits,
+        263A UNICAP Exemptions, and our full national overview. Share with clients, prospects, and your team.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Resource Grid -->
+<section class="res-section">
+  <div class="container">
+
+    <div style="text-align:center;max-width:60ch;margin:0 auto;">
+      <span class="label" style="display:block;margin-bottom:var(--space-3);">Downloadable PDFs</span>
+      <h2 style="font-size:var(--text-2xl);font-weight:900;color:var(--white);line-height:1.15;margin-bottom:var(--space-4);">
+        Everything You Need to <span class="text-gold">Educate &amp; Close</span>
+      </h2>
+      <p style="font-size:var(--text-base);color:rgba(255,255,255,0.7);line-height:1.65;">
+        These are the same materials our team uses on calls and in proposals. Use them with CPAs, advisors,
+        property owners, and prospects — or read them yourself to get up to speed fast.
+      </p>
+    </div>
+
+    <div class="res-grid">
+
+      <!-- National Brochure -->
+      <article class="res-card">
+        <div class="res-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <span class="res-tag">Company Overview</span>
+        <h3 class="res-title">Innovate Real Estate National Brochure</h3>
+        <p class="res-desc">The complete overview of who we are and what we do — Cost Segregation, 179D, 263A UNICAP, R&amp;D Tax Credits and more. Perfect first-touch handout for new prospects, CPAs, and advisors nationwide.</p>
+        <div class="res-meta">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>PDF · 4.3 MB</span>
+        </div>
+        <div class="res-actions">
+          <a href="assets/resources/innovate-real-estate-national-brochure.pdf" class="res-btn res-btn--gold" target="_blank" rel="noopener" download>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
+          </a>
+          <a href="assets/resources/innovate-real-estate-national-brochure.pdf" class="res-btn res-btn--ghost" target="_blank" rel="noopener">View</a>
+        </div>
+      </article>
+
+      <!-- Cost Segregation -->
+      <article class="res-card">
+        <div class="res-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <span class="res-tag">Service Brochure</span>
+        <h3 class="res-title">Cost Segregation Brochure</h3>
+        <p class="res-desc">How accelerated depreciation and asset reclassification into 5, 7, and 15-year property can unlock six- to seven-figure tax savings on commercial and investment real estate.</p>
+        <div class="res-meta">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>PDF · 3.8 MB</span>
+        </div>
+        <div class="res-actions">
+          <a href="assets/resources/cost-segregation-brochure.pdf" class="res-btn res-btn--gold" target="_blank" rel="noopener" download>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
+          </a>
+          <a href="assets/resources/cost-segregation-brochure.pdf" class="res-btn res-btn--ghost" target="_blank" rel="noopener">View</a>
+        </div>
+      </article>
+
+      <!-- 179D -->
+      <article class="res-card">
+        <div class="res-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <span class="res-tag">Service Brochure</span>
+        <h3 class="res-title">179D Brochure</h3>
+        <p class="res-desc">A concise overview of the §179D tax <strong>deduction</strong> for energy-efficient commercial buildings — who qualifies, how much you can claim, and how we run the study end-to-end.</p>
+        <div class="res-meta">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>PDF · 3.1 MB</span>
+        </div>
+        <div class="res-actions">
+          <a href="assets/resources/179D-brochure.pdf" class="res-btn res-btn--gold" target="_blank" rel="noopener" download>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
+          </a>
+          <a href="assets/resources/179D-brochure.pdf" class="res-btn res-btn--ghost" target="_blank" rel="noopener">View</a>
+        </div>
+      </article>
+
+      <!-- 179D EECB (deep dive) -->
+      <article class="res-card">
+        <div class="res-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="16" rx="2"/><path d="M1 10h22"/><path d="M12 6v16"/></svg>
+        </div>
+        <span class="res-tag">Deep Dive</span>
+        <h3 class="res-title">179D — Energy Efficient Commercial Building</h3>
+        <p class="res-desc">Full deep-dive on §179D for designers of government and tax-exempt buildings, building owners, and architects. Includes eligibility, qualification thresholds, and project examples.</p>
+        <div class="res-meta">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>PDF · 5.9 MB</span>
+        </div>
+        <div class="res-actions">
+          <a href="assets/resources/179D-energy-efficient-commercial-building-brochure.pdf" class="res-btn res-btn--gold" target="_blank" rel="noopener" download>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
+          </a>
+          <a href="assets/resources/179D-energy-efficient-commercial-building-brochure.pdf" class="res-btn res-btn--ghost" target="_blank" rel="noopener">View</a>
+        </div>
+      </article>
+
+      <!-- R&D Tax Credit -->
+      <article class="res-card">
+        <div class="res-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <span class="res-tag">Service Brochure</span>
+        <h3 class="res-title">R&amp;D Tax Credit Brochure</h3>
+        <p class="res-desc">The federal R&amp;D Tax Credit isn't just for tech — design, engineering, software, and process innovation in real estate and construction can all qualify. See who's eligible and what's at stake.</p>
+        <div class="res-meta">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>PDF · 2.8 MB</span>
+        </div>
+        <div class="res-actions">
+          <a href="assets/resources/rd-tax-credit-brochure.pdf" class="res-btn res-btn--gold" target="_blank" rel="noopener" download>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
+          </a>
+          <a href="assets/resources/rd-tax-credit-brochure.pdf" class="res-btn res-btn--ghost" target="_blank" rel="noopener">View</a>
+        </div>
+      </article>
+
+      <!-- 263A UNICAP Exemption -->
+      <article class="res-card">
+        <div class="res-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </div>
+        <span class="res-tag">Service Brochure</span>
+        <h3 class="res-title">263A UNICAP Exemption Brochure</h3>
+        <p class="res-desc">How small business taxpayers can apply the §263A UNICAP exemption to recover capitalized soft costs — interest, taxes, insurance, and other indirect costs — and accelerate deductions.</p>
+        <div class="res-meta">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>PDF · 3.5 MB</span>
+        </div>
+        <div class="res-actions">
+          <a href="assets/resources/263A-unicap-exemption-brochure.pdf" class="res-btn res-btn--gold" target="_blank" rel="noopener" download>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
+          </a>
+          <a href="assets/resources/263A-unicap-exemption-brochure.pdf" class="res-btn res-btn--ghost" target="_blank" rel="noopener">View</a>
+        </div>
+      </article>
+
+      <!-- 263A UNICAP STR/LTR -->
+      <article class="res-card">
+        <div class="res-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <span class="res-tag">For STR / LTR Owners</span>
+        <h3 class="res-title">263A UNICAP — Short &amp; Long-Term Rentals</h3>
+        <p class="res-desc">A focused breakdown of how the 263A UNICAP exemption applies to short-term and long-term rental property owners — including practical examples of soft cost recovery on rental portfolios.</p>
+        <div class="res-meta">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>PDF · 4.8 MB</span>
+        </div>
+        <div class="res-actions">
+          <a href="assets/resources/263A-unicap-str-ltr-brochure.pdf" class="res-btn res-btn--gold" target="_blank" rel="noopener" download>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
+          </a>
+          <a href="assets/resources/263A-unicap-str-ltr-brochure.pdf" class="res-btn res-btn--ghost" target="_blank" rel="noopener">View</a>
+        </div>
+      </article>
+
+      <!-- Tax Savings Blueprint (existing asset) -->
+      <article class="res-card">
+        <div class="res-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <span class="res-tag">Flagship Guide</span>
+        <h3 class="res-title">Tax Savings Blueprint</h3>
+        <p class="res-desc">Our flagship guide pulling every Innovate strategy together — Cost Seg, 179D, R&amp;D, 263A UNICAP, and Method Change — into one playbook for maximizing real estate tax savings.</p>
+        <div class="res-meta">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>PDF · Flagship</span>
+        </div>
+        <div class="res-actions">
+          <a href="assets/tax-savings-blueprint.pdf" class="res-btn res-btn--gold" target="_blank" rel="noopener" download>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
+          </a>
+          <a href="assets/tax-savings-blueprint.pdf" class="res-btn res-btn--ghost" target="_blank" rel="noopener">View</a>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<div style="background:var(--gold);padding:var(--space-16) var(--space-6);text-align:center;">
+  <h2 style="font-size:var(--text-2xl);font-weight:900;color:var(--black);margin-bottom:var(--space-4);">Want a Custom Tax Savings Estimate?</h2>
+  <p style="font-size:var(--text-lg);color:rgba(0,0,0,0.7);max-width:55ch;margin:0 auto var(--space-8);line-height:1.65;">
+    Brochures are great — but the real value comes from a no-cost proposal on your specific property. We'll show you the savings before you ever pay us a dollar.
+  </p>
+  <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap;">
+    <a href="submitform.html" class="btn btn--white btn--lg" style="color:var(--black);">Request Tax Savings Proposal</a>
+    <a href="book.html" class="btn btn--lg" style="background:rgba(0,0,0,0.15);color:var(--black);border:2px solid rgba(0,0,0,0.3);">Schedule a Consultation</a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer style="background:var(--black);border-top:1px solid var(--border-dark);padding:var(--space-8) var(--space-6);">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-4);">
+    <a href="index.html"><img src="assets/logo-white.png" alt="Innovate Real Estate"></a>
+    <div style="display:flex;gap:var(--space-6);flex-wrap:wrap;">
+      <a href="index.html" style="font-size:var(--text-sm);color:var(--gray);transition:color var(--transition);" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray)'">Home</a>
+      <a href="blog.html" style="font-size:var(--text-sm);color:var(--gray);transition:color var(--transition);" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray)'">Blog</a>
+      <a href="resources.html" style="font-size:var(--text-sm);color:var(--gray);transition:color var(--transition);" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray)'">Resources</a>
+      <a href="submitform.html" style="font-size:var(--text-sm);color:var(--gray);transition:color var(--transition);" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--gray)'">Get Started</a>
+    </div>
+    <p style="font-size:var(--text-xs);color:var(--gray);">© 2026 Innovate Real Estate · Pensacola, FL · <a href="privacy.html" style="color:var(--gray);">Privacy</a> · <a href="terms.html" style="color:var(--gray);">Terms</a> · <a href="sms-opt-in.html" style="color:var(--gray);">SMS Opt-In</a></p>
+  </div>
+</footer>
+
+<script>
+(function() {
+  let currentTheme = 'dark';
+  function setTheme(theme) {
+    currentTheme = theme;
+    document.documentElement.setAttribute('data-theme', theme);
+  }
+  document.querySelectorAll('#theme-toggle, #mobile-theme-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+  });
+})();
+
+lucide.createIcons();
+
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobile-nav');
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileNav.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+document.querySelectorAll('.mobile-nav a, .mobile-nav-btns a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileNav.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+</script>
+
+<!-- HighLevel Chat Widget -->
+<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="69e77383150b3c71d5eecd48"></script>
+</body>
+</html>
