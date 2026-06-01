@@ -153,22 +153,175 @@
       line-height: 1.6;
     }
 
-    /* CRM Iframe Container */
+    /* Native Form Container */
     .crm-form-container {
       flex: 1;
-      background: var(--dark-card);
-      border: 1px solid var(--border);
+      background: var(--dark-card, #181818);
+      border: 1px solid var(--border, rgba(255,255,255,0.08));
       border-radius: var(--radius-xl);
-      overflow: hidden;
-      min-height: 800px;
+      padding: var(--space-8);
+      min-height: 600px;
     }
 
-    .crm-form-container iframe {
-      width: 100%;
-      min-height: 2730px;
-      border: none;
-      border-radius: 0;
+    /* Form styles */
+    .tsp-form { display: flex; flex-direction: column; gap: var(--space-5); }
+    .tsp-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+    @media (max-width: 640px) { .tsp-row { grid-template-columns: 1fr; } }
+
+    .tsp-field { display: flex; flex-direction: column; gap: 6px; }
+    .tsp-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.01em;
     }
+    .tsp-label .req { color: var(--gold); margin-left: 2px; }
+
+    .tsp-input, .tsp-select, .tsp-textarea {
+      width: 100%;
+      padding: 13px 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      color: var(--white);
+      font-family: inherit;
+      font-size: 15px;
+      transition: border-color 0.18s, background 0.18s, box-shadow 0.18s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .tsp-textarea { min-height: 110px; resize: vertical; line-height: 1.5; }
+    .tsp-select {
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23DDC159' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-size: 16px;
+      padding-right: 40px;
+    }
+    .tsp-input::placeholder, .tsp-textarea::placeholder { color: rgba(255,255,255,0.35); }
+    .tsp-input:focus, .tsp-select:focus, .tsp-textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: rgba(221,193,89,0.06);
+      box-shadow: 0 0 0 3px rgba(221,193,89,0.12);
+    }
+    .tsp-input.tsp-err, .tsp-select.tsp-err, .tsp-textarea.tsp-err {
+      border-color: #ef4444;
+      background: rgba(239,68,68,0.06);
+    }
+
+    .tsp-checkbox {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .tsp-checkbox input {
+      margin-top: 3px;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--gold);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .tsp-checkbox-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.55;
+    }
+
+    .tsp-submit {
+      margin-top: var(--space-3);
+      padding: 16px 32px;
+      background: var(--gold);
+      color: var(--black);
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .tsp-submit:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(221,193,89,0.25);
+    }
+    .tsp-submit:disabled { opacity: 0.6; cursor: wait; }
+    .tsp-submit svg { width: 16px; height: 16px; }
+
+    .tsp-success {
+      display: none;
+      text-align: center;
+      padding: var(--space-12) var(--space-6);
+    }
+    .tsp-success.show { display: block; }
+    .tsp-success-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto var(--space-6);
+      border-radius: 50%;
+      background: rgba(221,193,89,0.12);
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+    }
+    .tsp-success h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: var(--space-4);
+    }
+    .tsp-success p {
+      color: rgba(255,255,255,0.7);
+      font-size: 15px;
+      line-height: 1.6;
+      max-width: 52ch;
+      margin: 0 auto var(--space-3);
+    }
+
+    .tsp-error-msg {
+      display: none;
+      padding: 14px 16px;
+      border-radius: 10px;
+      background: rgba(239,68,68,0.1);
+      border: 1px solid rgba(239,68,68,0.3);
+      color: #fca5a5;
+      font-size: 14px;
+    }
+    .tsp-error-msg.show { display: block; }
+
+    /* Light theme adjustments */
+    [data-theme="light"] .tsp-input,
+    [data-theme="light"] .tsp-select,
+    [data-theme="light"] .tsp-textarea {
+      background: #FFFFFF;
+      border-color: rgba(0,0,0,0.12);
+      color: #1a1a1a;
+    }
+    [data-theme="light"] .tsp-label { color: #2a2a2a; }
+    [data-theme="light"] .tsp-input::placeholder,
+    [data-theme="light"] .tsp-textarea::placeholder { color: rgba(0,0,0,0.4); }
+    [data-theme="light"] .tsp-checkbox {
+      background: rgba(0,0,0,0.02);
+      border-color: rgba(0,0,0,0.08);
+    }
+    [data-theme="light"] .tsp-checkbox-label { color: rgba(0,0,0,0.7); }
+    [data-theme="light"] .tsp-success h3 { color: #1a1a1a; }
+    [data-theme="light"] .tsp-success p { color: rgba(0,0,0,0.7); }
 
     /* ── Mobile ── */
     @media (max-width: 900px) {
@@ -283,23 +436,158 @@
     </div>
 
     <div class="crm-form-container">
-      <iframe
-        src="https://api.leadconnectorhq.com/widget/form/zzC31an3q1m3NkArEPPe"
-        style="width:100%;height:100%;border:none;border-radius:0px"
-        id="inline-zzC31an3q1m3NkArEPPe"
-        data-layout="{'id':'INLINE'}"
-        data-trigger-type="alwaysShow"
-        data-trigger-value=""
-        data-activation-type="alwaysActivated"
-        data-activation-value=""
-        data-deactivation-type="neverDeactivate"
-        data-deactivation-value=""
-        data-form-name="Innovate Real Estate Lead Form - Rob & Lauren"
-        data-height="2730"
-        data-layout-iframe-id="inline-zzC31an3q1m3NkArEPPe"
-        data-form-id="zzC31an3q1m3NkArEPPe"
-        title="Innovate Real Estate Lead Form - Rob & Lauren"
-      ></iframe>
+
+      <!-- Tax Savings Proposal — native form, posts to Formspree -->
+      <form id="tspForm" class="tsp-form" action="https://formspree.io/f/xeedbbka" method="POST" autocomplete="on" novalidate>
+
+        <!-- Honeypot anti-spam -->
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
+
+        <!-- Formspree meta -->
+        <input type="hidden" name="_subject" value="New Tax Savings Proposal Request - Innovate Real Estate">
+        <input type="hidden" name="_format" value="plain">
+
+        <div id="tspError" class="tsp-error-msg" role="alert"></div>
+
+        <div class="tsp-row">
+          <div class="tsp-field">
+            <label class="tsp-label" for="tsp-first">First Name <span class="req">*</span></label>
+            <input class="tsp-input" type="text" id="tsp-first" name="first_name" required autocomplete="given-name" placeholder="John">
+          </div>
+          <div class="tsp-field">
+            <label class="tsp-label" for="tsp-last">Last Name <span class="req">*</span></label>
+            <input class="tsp-input" type="text" id="tsp-last" name="last_name" required autocomplete="family-name" placeholder="Smith">
+          </div>
+        </div>
+
+        <div class="tsp-row">
+          <div class="tsp-field">
+            <label class="tsp-label" for="tsp-email">Email <span class="req">*</span></label>
+            <input class="tsp-input" type="email" id="tsp-email" name="email" required autocomplete="email" placeholder="you@company.com">
+          </div>
+          <div class="tsp-field">
+            <label class="tsp-label" for="tsp-phone">Phone</label>
+            <input class="tsp-input" type="tel" id="tsp-phone" name="phone" autocomplete="tel" placeholder="(555) 123-4567">
+          </div>
+        </div>
+
+        <div class="tsp-field">
+          <label class="tsp-label" for="tsp-company">Company / Entity</label>
+          <input class="tsp-input" type="text" id="tsp-company" name="company" autocomplete="organization" placeholder="Company or LLC name">
+        </div>
+
+        <div class="tsp-row">
+          <div class="tsp-field">
+            <label class="tsp-label" for="tsp-role">I am a... <span class="req">*</span></label>
+            <select class="tsp-select" id="tsp-role" name="role" required>
+              <option value="">Select one...</option>
+              <option value="Property Owner">Property Owner / Investor</option>
+              <option value="CPA / Tax Advisor">CPA / Tax Advisor</option>
+              <option value="Real Estate Professional">Real Estate Professional</option>
+              <option value="Developer / Builder">Developer / Builder</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="tsp-field">
+            <label class="tsp-label" for="tsp-property-type">Property Type <span class="req">*</span></label>
+            <select class="tsp-select" id="tsp-property-type" name="property_type" required>
+              <option value="">Select one...</option>
+              <option value="Office">Office</option>
+              <option value="Retail">Retail</option>
+              <option value="Industrial / Warehouse">Industrial / Warehouse</option>
+              <option value="Multifamily / Apartments">Multifamily / Apartments</option>
+              <option value="Short-Term Rental (STR)">Short-Term Rental (STR)</option>
+              <option value="Long-Term Rental (LTR)">Long-Term Rental (LTR)</option>
+              <option value="Hospitality / Hotel">Hospitality / Hotel</option>
+              <option value="Medical / Healthcare">Medical / Healthcare</option>
+              <option value="Restaurant">Restaurant</option>
+              <option value="Mixed-Use">Mixed-Use</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="tsp-field">
+          <label class="tsp-label" for="tsp-address">Property Address</label>
+          <input class="tsp-input" type="text" id="tsp-address" name="property_address" autocomplete="street-address" placeholder="123 Main St, City, State, ZIP">
+        </div>
+
+        <div class="tsp-row">
+          <div class="tsp-field">
+            <label class="tsp-label" for="tsp-price">Purchase Price / Cost Basis</label>
+            <select class="tsp-select" id="tsp-price" name="purchase_price">
+              <option value="">Select range...</option>
+              <option value="Under $500K">Under $500K</option>
+              <option value="$500K – $1M">$500K – $1M</option>
+              <option value="$1M – $2.5M">$1M – $2.5M</option>
+              <option value="$2.5M – $5M">$2.5M – $5M</option>
+              <option value="$5M – $10M">$5M – $10M</option>
+              <option value="$10M – $25M">$10M – $25M</option>
+              <option value="$25M+">$25M+</option>
+            </select>
+          </div>
+          <div class="tsp-field">
+            <label class="tsp-label" for="tsp-acquired">Year Acquired / Placed in Service</label>
+            <input class="tsp-input" type="text" id="tsp-acquired" name="year_acquired" placeholder="e.g. 2023" inputmode="numeric" pattern="[0-9]{4}" maxlength="4">
+          </div>
+        </div>
+
+        <div class="tsp-field">
+          <label class="tsp-label" for="tsp-services">Services You're Interested In</label>
+          <select class="tsp-select" id="tsp-services" name="services_interested">
+            <option value="">Select primary interest...</option>
+            <option value="Cost Segregation Study">Cost Segregation Study</option>
+            <option value="179D Energy Efficient Deduction">179D Energy Efficient Deduction</option>
+            <option value="263A UNICAP Exemption">263A UNICAP Exemption</option>
+            <option value="R&D Tax Credit">R&amp;D Tax Credit</option>
+            <option value="Tangible Property Regulations">Tangible Property Regulations</option>
+            <option value="Method Change">Method Change</option>
+            <option value="Energy Optimization">Energy Optimization</option>
+            <option value="Waste Optimization">Waste Optimization</option>
+            <option value="Wealth Strategies">Wealth Strategies</option>
+            <option value="Not Sure — Need Recommendation">Not Sure — Need Recommendation</option>
+          </select>
+        </div>
+
+        <div class="tsp-field">
+          <label class="tsp-label" for="tsp-notes">Additional Details / Questions</label>
+          <textarea class="tsp-textarea" id="tsp-notes" name="notes" placeholder="Tell us anything else about your property or situation that will help us prepare your proposal."></textarea>
+        </div>
+
+        <label class="tsp-checkbox" for="tsp-sms">
+          <input type="checkbox" id="tsp-sms" name="sms_consent_checkbox">
+          <span class="tsp-checkbox-label">
+            <strong style="color:rgba(255,255,255,0.9);">SMS Consent (Optional):</strong> I agree to receive text messages from Innovate Real Estate at the phone number provided, including appointment reminders, tax savings analysis updates, webinars, and educational content. Message frequency varies (2–6 msgs/month). Msg &amp; data rates may apply. Reply STOP to unsubscribe, HELP for help. Consent is not a condition of purchase. No mobile information will be shared with third parties or affiliates for marketing or promotional purposes.
+          </span>
+        </label>
+
+        <label class="tsp-checkbox" for="tsp-tos">
+          <input type="checkbox" id="tsp-tos" name="tos_consent" required>
+          <span class="tsp-checkbox-label">
+            I agree to the <a href="privacy.html" style="color:var(--gold);text-decoration:underline;">Privacy Policy</a> and <a href="terms.html" style="color:var(--gold);text-decoration:underline;">Terms of Service</a>. <span style="color:var(--gold);">*</span>
+          </span>
+        </label>
+
+        <input type="hidden" name="sms_consent" id="tsp-sms-hidden" value="No">
+        <input type="hidden" name="submitted_url" id="tsp-submitted-url" value="">
+        <input type="hidden" name="submitted_at" id="tsp-submitted-at" value="">
+
+        <button class="tsp-submit" type="submit" id="tspSubmit">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          <span id="tspSubmitText">Request My Tax Savings Proposal</span>
+        </button>
+      </form>
+
+      <!-- Success State -->
+      <div id="tspSuccess" class="tsp-success" role="status" aria-live="polite">
+        <div class="tsp-success-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Proposal Request Received</h3>
+        <p>Thanks — we've got your information. A member of our team will reach out within 1 business day to confirm your details and start your customized Tax Savings Proposal.</p>
+        <p style="font-size:13px;color:rgba(255,255,255,0.5);">Questions in the meantime? Email <a href="mailto:hello@innovaterealestate.net" style="color:var(--gold);">hello@innovaterealestate.net</a> or call <a href="tel:8508053737" style="color:var(--gold);">850-805-3737</a>.</p>
+      </div>
+
     </div>
     <div class="sms-notice" style="margin-top:24px;padding:18px 22px;background:rgba(255,255,255,0.04);border:1px solid rgba(221,193,89,0.25);border-radius:12px;font-size:13.5px;line-height:1.65;color:rgba(255,255,255,0.78);">
       <p style="margin:0 0 10px;"><strong style="color:var(--gold);">Privacy &amp; SMS Notice:</strong> By submitting this form you agree to our <a href="privacy.html" style="color:var(--gold);text-decoration:underline;">Privacy Policy</a> and <a href="terms.html" style="color:var(--gold);text-decoration:underline;">Terms of Service</a>. We will never sell or share your personal information.</p>
@@ -308,14 +596,143 @@
   </main>
 </div>
 
-<!-- LeadConnector Form Embed Script -->
-<script src="https://link.msgsndr.com/js/form_embed.js"></script>
-
 <!-- Theme Toggle (persist user preference) -->
 <script>
 (function() {
   const saved = localStorage.getItem('theme');
   if (saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+</script>
+
+<!-- Tax Savings Proposal form submit handler -> Formspree -->
+<script>
+(function() {
+  var form = document.getElementById('tspForm');
+  var success = document.getElementById('tspSuccess');
+  var errBox = document.getElementById('tspError');
+  var btn = document.getElementById('tspSubmit');
+  var btnText = document.getElementById('tspSubmitText');
+  if (!form) return;
+
+  // Pre-fill hidden context fields
+  try {
+    document.getElementById('tsp-submitted-url').value = window.location.href;
+    document.getElementById('tsp-submitted-at').value = new Date().toISOString();
+  } catch (e) {}
+
+  function showError(msg) {
+    errBox.textContent = msg;
+    errBox.classList.add('show');
+    errBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+  function clearError() {
+    errBox.textContent = '';
+    errBox.classList.remove('show');
+  }
+
+  // Phone formatting (US)
+  var phone = document.getElementById('tsp-phone');
+  if (phone) {
+    phone.addEventListener('input', function() {
+      var d = this.value.replace(/\D/g, '').slice(0, 10);
+      if (d.length >= 7)      this.value = '(' + d.slice(0,3) + ') ' + d.slice(3,6) + '-' + d.slice(6);
+      else if (d.length >= 4) this.value = '(' + d.slice(0,3) + ') ' + d.slice(3);
+      else if (d.length >= 1) this.value = '(' + d;
+      else                    this.value = '';
+    });
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    clearError();
+
+    // Validate required
+    var required = ['tsp-first', 'tsp-last', 'tsp-email', 'tsp-role', 'tsp-property-type'];
+    var ok = true;
+    required.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.classList.remove('tsp-err');
+      if (!el.value || (el.tagName === 'SELECT' && el.value === '')) {
+        el.classList.add('tsp-err');
+        ok = false;
+      }
+    });
+    // Email format
+    var em = document.getElementById('tsp-email');
+    if (em.value && !/\S+@\S+\.\S+/.test(em.value)) {
+      em.classList.add('tsp-err');
+      ok = false;
+    }
+    // Terms checkbox
+    var tos = document.getElementById('tsp-tos');
+    if (!tos.checked) {
+      showError('Please agree to the Privacy Policy and Terms of Service to continue.');
+      ok = false;
+    }
+
+    if (!ok) {
+      if (!errBox.classList.contains('show')) {
+        showError('Please complete the required fields highlighted in red.');
+      }
+      return;
+    }
+
+    // SMS consent: if not checked, blank the phone before sending (per A2P compliance)
+    var smsBox = document.getElementById('tsp-sms');
+    var smsHidden = document.getElementById('tsp-sms-hidden');
+    smsHidden.value = smsBox && smsBox.checked ? 'Yes' : 'No';
+    if (smsBox && !smsBox.checked && phone) {
+      // Don't actually clear visible value, but mark sms_consent properly
+      // Phone still gets sent as a callable number, just no SMS authorization
+    }
+
+    // Honeypot check
+    var hp = form.querySelector('input[name="_gotcha"]');
+    if (hp && hp.value) {
+      // Silently fake-success spam
+      form.style.display = 'none';
+      success.classList.add('show');
+      return;
+    }
+
+    // Submit to Formspree via fetch (AJAX)
+    btn.disabled = true;
+    btnText.textContent = 'Sending...';
+
+    var data = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function(response) {
+      if (response.ok) {
+        return response.json().catch(function() { return {}; });
+      }
+      // Try to read Formspree error JSON
+      return response.json().then(function(j) {
+        var msg = (j && j.errors && j.errors[0] && j.errors[0].message) ||
+                  (j && j.error) ||
+                  ('Submission failed (HTTP ' + response.status + ').');
+        throw new Error(msg);
+      }).catch(function(err) {
+        if (err && err.message && err.message !== 'failed') throw err;
+        throw new Error('Submission failed. Please try again or email hello@innovaterealestate.net.');
+      });
+    })
+    .then(function() {
+      form.style.display = 'none';
+      success.classList.add('show');
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    })
+    .catch(function(err) {
+      btn.disabled = false;
+      btnText.textContent = 'Request My Tax Savings Proposal';
+      showError(err.message || 'Submission failed. Please try again or email hello@innovaterealestate.net.');
+    });
+  });
 })();
 </script>
 
