@@ -399,25 +399,170 @@
     <p class="af-section-sub">Fill out the form below to join our affiliate program. We'll be in touch within 1–2 business days.</p>
   </div>
 
-  <div class="af-form-card" data-animate style="padding:0;overflow:hidden;background:#fff;">
-    <iframe
-      src="https://api.leadconnectorhq.com/widget/form/vlKw8xXYm2O4ZLRkVdZg"
-      style="width:100%;min-height:1127px;height:1400px;border:none;border-radius:0px"
-      id="inline-vlKw8xXYm2O4ZLRkVdZg"
-      data-layout="{'id':'INLINE'}"
-      data-trigger-type="alwaysShow"
-      data-trigger-value=""
-      data-activation-type="alwaysActivated"
-      data-activation-value=""
-      data-deactivation-type="neverDeactivate"
-      data-deactivation-value=""
-      data-form-name="Innovate Affiliate Self Onboarding"
-      data-height="1127"
-      data-layout-iframe-id="inline-vlKw8xXYm2O4ZLRkVdZg"
-      data-form-id="vlKw8xXYm2O4ZLRkVdZg"
-      title="Innovate Affiliate Self Onboarding"
-    ></iframe>
-    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+  <form id="affiliateForm" action="https://formspree.io/f/maqkggpz" method="POST" novalidate>
+    <input type="hidden" name="_subject" value="New Affiliate Application — Innovate Real Estate">
+    <input type="hidden" name="_format" value="plain">
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+    <input type="hidden" name="submitted_url" id="af_submitted_url">
+    <input type="hidden" name="submitted_at" id="af_submitted_at">
+    <input type="hidden" name="sms_consent" id="af_sms_consent_hidden" value="No">
+
+    <!-- Card 1: Contact -->
+    <div class="af-form-card" data-animate>
+      <h3><span class="card-num">1</span> Contact Information</h3>
+      <div class="af-grid-2">
+        <div class="af-form-group">
+          <label class="af-label" for="af_first_name">First Name<span class="req">*</span></label>
+          <input class="af-input" type="text" id="af_first_name" name="first_name" placeholder="Jane" required autocomplete="given-name">
+        </div>
+        <div class="af-form-group">
+          <label class="af-label" for="af_last_name">Last Name<span class="req">*</span></label>
+          <input class="af-input" type="text" id="af_last_name" name="last_name" placeholder="Doe" required autocomplete="family-name">
+        </div>
+        <div class="af-form-group">
+          <label class="af-label" for="af_email">Email<span class="req">*</span></label>
+          <input class="af-input" type="email" id="af_email" name="email" placeholder="jane@firm.com" required autocomplete="email">
+        </div>
+        <div class="af-form-group">
+          <label class="af-label" for="af_phone">Phone<span class="req">*</span></label>
+          <input class="af-input" type="tel" id="af_phone" name="phone" placeholder="(850) 555-1234" required autocomplete="tel" inputmode="tel">
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: Business -->
+    <div class="af-form-card" data-animate>
+      <h3><span class="card-num">2</span> Your Business</h3>
+      <div class="af-grid-2">
+        <div class="af-form-group">
+          <label class="af-label" for="af_company">Company / Firm<span class="req">*</span></label>
+          <input class="af-input" type="text" id="af_company" name="company" placeholder="Acme Advisors" required autocomplete="organization">
+        </div>
+        <div class="af-form-group">
+          <label class="af-label" for="af_title">Your Title / Role<span class="req">*</span></label>
+          <input class="af-input" type="text" id="af_title" name="title" placeholder="Managing Partner, CPA, Broker, etc." required autocomplete="organization-title">
+        </div>
+        <div class="af-form-group">
+          <label class="af-label" for="af_website">Website</label>
+          <input class="af-input" type="url" id="af_website" name="website" placeholder="https://yourfirm.com" autocomplete="url">
+        </div>
+        <div class="af-form-group">
+          <label class="af-label" for="af_location">Primary Market (City, State)</label>
+          <input class="af-input" type="text" id="af_location" name="location" placeholder="Pensacola, FL">
+        </div>
+        <div class="af-form-group full">
+          <label class="af-label" for="af_partner_type">What Best Describes You?<span class="req">*</span></label>
+          <select class="af-select" id="af_partner_type" name="partner_type" required>
+            <option value="" disabled selected>— Select a category —</option>
+            <option value="CPA / Tax Professional">CPA / Tax Professional</option>
+            <option value="Financial Advisor / Wealth Manager">Financial Advisor / Wealth Manager</option>
+            <option value="Commercial Real Estate Broker">Commercial Real Estate Broker</option>
+            <option value="Residential / STR Realtor">Residential / STR Realtor</option>
+            <option value="Attorney">Attorney</option>
+            <option value="Mortgage / Lender">Mortgage / Lender</option>
+            <option value="Insurance Professional">Insurance Professional</option>
+            <option value="Property Manager">Property Manager</option>
+            <option value="1031 / QI / Exchange Coordinator">1031 / QI / Exchange Coordinator</option>
+            <option value="Other Professional Service">Other Professional Service</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3: Network -->
+    <div class="af-form-card" data-animate>
+      <h3><span class="card-num">3</span> Your Network &amp; Fit</h3>
+      <div class="af-form-group">
+        <label class="af-label" for="af_client_count">Approximate Number of Clients / Contacts in Your Network</label>
+        <select class="af-select" id="af_client_count" name="client_count">
+          <option value="" disabled selected>— Select a range —</option>
+          <option value="1–25">1–25</option>
+          <option value="26–100">26–100</option>
+          <option value="101–500">101–500</option>
+          <option value="501–2,000">501–2,000</option>
+          <option value="2,000+">2,000+</option>
+        </select>
+      </div>
+
+      <div class="af-form-group">
+        <label class="af-label">Services Your Network Could Benefit From (select all that apply)</label>
+        <div class="af-checkbox-group">
+          <input type="checkbox" class="af-check-option" id="af_svc_costseg" name="services_of_interest" value="Cost Segregation">
+          <label for="af_svc_costseg" class="af-check-label">Cost Segregation</label>
+
+          <input type="checkbox" class="af-check-option" id="af_svc_179d" name="services_of_interest" value="§179D Energy Deduction">
+          <label for="af_svc_179d" class="af-check-label">§179D Energy Deduction</label>
+
+          <input type="checkbox" class="af-check-option" id="af_svc_rd" name="services_of_interest" value="R&D Tax Credit">
+          <label for="af_svc_rd" class="af-check-label">R&amp;D Tax Credit</label>
+
+          <input type="checkbox" class="af-check-option" id="af_svc_263a" name="services_of_interest" value="§263A UNICAP Exemption">
+          <label for="af_svc_263a" class="af-check-label">§263A UNICAP</label>
+        </div>
+      </div>
+
+      <div class="af-form-group">
+        <label class="af-label" for="af_referral_source">How Did You Hear About Us?</label>
+        <select class="af-select" id="af_referral_source" name="referral_source">
+          <option value="" disabled selected>— Select an option —</option>
+          <option value="Existing Innovate client">Existing Innovate client</option>
+          <option value="Colleague / Peer">Colleague / Peer</option>
+          <option value="LinkedIn">LinkedIn</option>
+          <option value="Google Search">Google Search</option>
+          <option value="Event / Conference">Event / Conference</option>
+          <option value="Podcast / Webinar">Podcast / Webinar</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="af-form-group">
+        <label class="af-label" for="af_notes">Anything Else We Should Know?</label>
+        <textarea class="af-textarea" id="af_notes" name="notes" rows="4" placeholder="Tell us about your practice, the types of clients you serve, or how you envision partnering with Innovate."></textarea>
+      </div>
+    </div>
+
+    <!-- Card 4: Consent -->
+    <div class="af-form-card" data-animate>
+      <h3><span class="card-num">4</span> Consent &amp; Submit</h3>
+
+      <div class="terms-check-row" style="margin-bottom:var(--space-4);">
+        <input type="checkbox" id="af_sms_consent" name="sms_consent_checkbox" value="Yes">
+        <label for="af_sms_consent">
+          I agree to receive SMS messages from Innovate Real Estate at the phone number provided regarding affiliate onboarding, account updates, and partnership communications. Message frequency varies. Message &amp; data rates may apply. Reply STOP to opt out, HELP for help. You must be 18+. Carriers are not liable for delayed or undelivered messages. View our <a href="privacy.html" style="color:var(--gold);">Privacy Policy</a> and <a href="terms.html" style="color:var(--gold);">Terms</a>.
+        </label>
+      </div>
+
+      <div class="terms-check-row">
+        <input type="checkbox" id="af_tos" name="tos_consent" value="Yes" required>
+        <label for="af_tos">
+          I have read and agree to the <a href="terms.html" style="color:var(--gold);">Terms of Service</a> and <a href="privacy.html" style="color:var(--gold);">Privacy Policy</a>.<span style="color:var(--gold);">*</span>
+        </label>
+      </div>
+
+      <div id="af-error-msg" class="af-error" style="margin-top:var(--space-4);">Please complete all required fields.</div>
+
+      <button type="submit" class="btn btn--gold af-submit-btn" id="af-submit">
+        <span class="af-submit-label">Submit Application</span>
+        <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+      </button>
+
+      <p style="font-size:var(--text-xs);color:var(--gray-light);margin-top:var(--space-4);text-align:center;line-height:1.55;">
+        We'll review your application and reach out within 1–2 business days. Submissions are sent directly to our partnerships team — no third-party tracking.
+      </p>
+    </div>
+  </form>
+
+  <!-- Success state -->
+  <div class="af-success" id="af-success">
+    <div style="width:80px;height:80px;margin:0 auto var(--space-6);border-radius:50%;background:rgba(221,193,89,0.12);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;color:var(--gold);">
+      <i data-lucide="check" style="width:40px;height:40px;"></i>
+    </div>
+    <h2 class="af-section-title" style="margin-bottom:var(--space-4);">Application Received</h2>
+    <p style="color:var(--gray-light);max-width:52ch;margin:0 auto var(--space-6);line-height:1.65;">Thank you for your interest in becoming an Innovate Real Estate affiliate. Our partnerships team will review your application and reach out within 1–2 business days.</p>
+    <a href="index.html" class="btn btn--outline" style="display:inline-flex;">
+      <i data-lucide="arrow-left" style="width:16px;height:16px;"></i>
+      Back to Home
+    </a>
   </div>
 </div>
 
@@ -446,7 +591,130 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 document.querySelectorAll('[data-animate]').forEach(el => io.observe(el));
 
-// Affiliate form is now handled by LeadConnector CRM iframe
+// ── Affiliate form: Formspree integration ────────────────────────────────
+(function() {
+  const form = document.getElementById('affiliateForm');
+  if (!form) return;
+
+  const submitBtn = document.getElementById('af-submit');
+  const submitLabel = submitBtn ? submitBtn.querySelector('.af-submit-label') : null;
+  const errorMsg = document.getElementById('af-error-msg');
+  const successPanel = document.getElementById('af-success');
+  const smsCheckbox = document.getElementById('af_sms_consent');
+  const smsHidden = document.getElementById('af_sms_consent_hidden');
+  const phoneInput = document.getElementById('af_phone');
+  const urlField = document.getElementById('af_submitted_url');
+  const atField = document.getElementById('af_submitted_at');
+
+  // Phone auto-formatting → (XXX) XXX-XXXX
+  if (phoneInput) {
+    phoneInput.addEventListener('input', function(e) {
+      let v = e.target.value.replace(/\D/g, '').slice(0, 10);
+      if (v.length > 6)      e.target.value = '(' + v.slice(0,3) + ') ' + v.slice(3,6) + '-' + v.slice(6);
+      else if (v.length > 3) e.target.value = '(' + v.slice(0,3) + ') ' + v.slice(3);
+      else if (v.length > 0) e.target.value = '(' + v;
+      else                   e.target.value = '';
+    });
+  }
+
+  // SMS consent hidden mirror
+  if (smsCheckbox && smsHidden) {
+    smsCheckbox.addEventListener('change', function() {
+      smsHidden.value = smsCheckbox.checked ? 'Yes' : 'No';
+    });
+  }
+
+  // Set submission metadata
+  if (urlField) urlField.value = window.location.href;
+  if (atField)  atField.value  = new Date().toISOString();
+
+  function showError(msg) {
+    if (!errorMsg) return;
+    errorMsg.textContent = msg || 'Please complete all required fields.';
+    errorMsg.classList.add('visible');
+  }
+  function clearError() {
+    if (errorMsg) errorMsg.classList.remove('visible');
+  }
+
+  function validate() {
+    clearError();
+    const required = form.querySelectorAll('[required]');
+    let firstBad = null;
+    let ok = true;
+    required.forEach(function(el) {
+      let bad = false;
+      if (el.type === 'checkbox') bad = !el.checked;
+      else                        bad = !el.value || !String(el.value).trim();
+      if (el.type === 'email' && el.value) {
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value)) bad = true;
+      }
+      el.classList.toggle('error', bad);
+      if (bad) { ok = false; if (!firstBad) firstBad = el; }
+    });
+    if (!ok && firstBad) {
+      firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      try { firstBad.focus({ preventScroll: true }); } catch(e) { firstBad.focus(); }
+      showError('Please complete the required fields highlighted in red.');
+    }
+    return ok;
+  }
+
+  // Clear error styling as the user types
+  form.querySelectorAll('input, select, textarea').forEach(function(el) {
+    el.addEventListener('input',  function() { el.classList.remove('error'); clearError(); });
+    el.addEventListener('change', function() { el.classList.remove('error'); clearError(); });
+  });
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    // Honeypot — silent drop
+    const honey = form.querySelector('input[name="_gotcha"]');
+    if (honey && honey.value) return;
+
+    if (!validate()) return;
+
+    // Refresh metadata at submit time
+    if (urlField) urlField.value = window.location.href;
+    if (atField)  atField.value  = new Date().toISOString();
+    if (smsHidden && smsCheckbox) smsHidden.value = smsCheckbox.checked ? 'Yes' : 'No';
+
+    if (submitBtn) submitBtn.disabled = true;
+    if (submitLabel) submitLabel.textContent = 'Submitting…';
+
+    try {
+      const data = new FormData(form);
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        form.style.display = 'none';
+        if (successPanel) {
+          successPanel.classList.add('visible');
+          successPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        try { lucide.createIcons(); } catch(e) {}
+      } else {
+        let detail = '';
+        try {
+          const j = await res.json();
+          if (j && j.errors && j.errors.length) detail = ' — ' + j.errors.map(function(x){return x.message;}).join(', ');
+        } catch(_) {}
+        showError('Sorry, something went wrong submitting the form' + detail + '. Please email hello@innovaterealestate.net or call 850-805-3737.');
+        if (submitBtn) submitBtn.disabled = false;
+        if (submitLabel) submitLabel.textContent = 'Submit Application';
+      }
+    } catch(err) {
+      showError('Network error. Please check your connection and try again, or email hello@innovaterealestate.net.');
+      if (submitBtn) submitBtn.disabled = false;
+      if (submitLabel) submitLabel.textContent = 'Submit Application';
+    }
+  });
+})();
 
 // ── Services mobile dropdown toggle ─────────────────────────────────────────
 const svcToggle = document.querySelector('.mobile-services-toggle');
