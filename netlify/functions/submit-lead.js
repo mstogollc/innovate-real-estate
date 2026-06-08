@@ -44,6 +44,34 @@ function isEmail(s) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
 }
 
+// Build a human-readable summary so nothing is lost even if a custom field
+// hasn't been pre-created in GHL.
+function buildSummary(p) {
+  const rows = [
+    ["Role",                p.role],
+    ["Property Type",       p.property_type],
+    ["Property Address",    p.property_address],
+    ["# Properties",        p.num_properties],
+    ["Purchase Price",      p.purchase_price],
+    ["Year Acquired",       p.year_acquired],
+    ["Services Interested", p.services_interested],
+    ["Current CPA",         p.current_cpa],
+    ["Urgency",             p.urgency],
+    ["Referral Source",     p.referral_source],
+    ["SMS Consent",         (p.sms_consent === true || p.sms_consent === "Yes") ? "Yes" : "No"],
+    ["TOS Consent",         p.tos_consent ? "Yes" : "No"],
+    ["Submitted From",      p.submitted_url],
+    ["Submitted At",        p.submitted_at || new Date().toISOString()],
+  ].filter(r => r[1]);
+  const block = rows.map(r => `• ${r[0]}: ${clean(r[1], 300)}`).join("\n");
+  const notesText = clean(p.notes, 2000);
+  return [
+    "─── TAX SAVINGS PROPOSAL LEAD ───",
+    block,
+    notesText ? `\nAdditional Notes:\n${notesText}` : "",
+  ].filter(Boolean).join("\n");
+}
+
 // Map structured form payload to GHL contact body + custom fields.
 function buildContactPayload(p, locationId) {
   const firstName = clean(p.first_name, 80);
@@ -51,6 +79,7 @@ function buildContactPayload(p, locationId) {
   const email     = clean(p.email,     200).toLowerCase();
   const phone     = clean(p.phone,      40);
   const company   = clean(p.company,   200);
+  const summary   = buildSummary(p);
 
   const tags = ["Website Lead", "Tax Savings Proposal"];
   if (p.services_interested) tags.push(`Service: ${clean(p.services_interested, 80)}`);
@@ -82,7 +111,7 @@ function buildContactPayload(p, locationId) {
       { key: "num_properties",       field_value: clean(p.num_properties, 12) },
       { key: "urgency",              field_value: clean(p.urgency, 40) },
       { key: "referral_source",      field_value: clean(p.referral_source, 80) },
-      { key: "notes",                field_value: clean(p.notes, 2000) },
+      { key: "notes",                field_value: summary },
       { key: "sms_consent",          field_value: p.sms_consent === true || p.sms_consent === "Yes" ? "Yes" : "No" },
       { key: "tos_consent",          field_value: p.tos_consent ? "Yes" : "No" },
       { key: "submitted_url",        field_value: clean(p.submitted_url, 500) },
