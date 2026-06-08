@@ -1,0 +1,26 @@
+# Innovate Real Estate — Netlify configuration
+# Static site with serverless functions for CRM lead capture.
+
+[build]
+  publish   = "."
+  functions = "netlify/functions"
+
+[functions]
+  # Node 20 has native fetch() — no node-fetch dependency needed.
+  node_bundler = "esbuild"
+
+# Friendly URL aliases so the form posts to /api/submit-lead instead of the
+# longer /.netlify/functions/submit-lead path.
+[[redirects]]
+  from   = "/api/submit-lead"
+  to     = "/.netlify/functions/submit-lead"
+  status = 200
+  force  = true
+
+# Standard security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options       = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy       = "strict-origin-when-cross-origin"

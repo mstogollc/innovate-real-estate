@@ -324,6 +324,105 @@
     [data-theme="light"] .tsp-success p { color: rgba(0,0,0,0.7); }
 
     /* ── Mobile ── */
+    /* ─── Multi-step form layer ─── */
+    .ms-progress {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: var(--space-7);
+    }
+    .ms-progress-step {
+      display: flex; flex-direction: column; gap: 6px;
+      align-items: flex-start;
+    }
+    .ms-progress-bar {
+      height: 4px; width: 100%;
+      background: rgba(255,255,255,0.08);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+    .ms-progress-bar::after {
+      content: ""; position: absolute; inset: 0;
+      background: var(--gold); transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .ms-progress-step.is-active .ms-progress-bar::after,
+    .ms-progress-step.is-complete .ms-progress-bar::after { transform: scaleX(1); }
+    .ms-progress-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      transition: color 0.25s ease;
+    }
+    .ms-progress-step.is-active .ms-progress-label,
+    .ms-progress-step.is-complete .ms-progress-label { color: var(--gold); }
+    [data-theme="light"] .ms-progress-label { color: rgba(0,0,0,0.45); }
+    [data-theme="light"] .ms-progress-step.is-active .ms-progress-label,
+    [data-theme="light"] .ms-progress-step.is-complete .ms-progress-label { color: #b89a32; }
+    [data-theme="light"] .ms-progress-bar { background: rgba(0,0,0,0.08); }
+
+    .ms-step {
+      display: none;
+      flex-direction: column;
+      gap: var(--space-5);
+      animation: ms-fade 0.35s ease;
+    }
+    .ms-step.is-active { display: flex; }
+    @keyframes ms-fade {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .ms-step-title {
+      font-family: "Playfair Display", serif;
+      font-size: var(--text-2xl);
+      color: var(--white);
+      margin: 0 0 4px;
+    }
+    [data-theme="light"] .ms-step-title { color: #1a1a1a; }
+    .ms-step-subtitle {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      margin: 0 0 var(--space-3);
+    }
+    [data-theme="light"] .ms-step-subtitle { color: rgba(0,0,0,0.55); }
+
+    .ms-nav {
+      display: flex; gap: var(--space-3);
+      margin-top: var(--space-3);
+      flex-wrap: wrap;
+    }
+    .ms-btn {
+      flex: 1 1 0;
+      min-width: 140px;
+      padding: 14px 22px;
+      font-size: 15px; font-weight: 700;
+      border-radius: 10px;
+      border: 1px solid var(--gold);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .ms-btn--back {
+      background: transparent;
+      color: var(--gold);
+    }
+    .ms-btn--back:hover { background: rgba(221,193,89,0.08); }
+    .ms-btn--next {
+      background: var(--gold);
+      color: #0a0a0a;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .ms-btn--next:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(221,193,89,0.25); }
+    .ms-btn--next:disabled { opacity: 0.6; cursor: wait; }
+    .ms-step-counter {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      font-weight: 700;
+    }
+    [data-theme="light"] .ms-step-counter { color: rgba(0,0,0,0.45); }
+
     @media (max-width: 900px) {
       .form-page {
         grid-template-columns: 1fr;
@@ -437,145 +536,245 @@
 
     <div class="crm-form-container">
 
-      <!-- Tax Savings Proposal — native form, posts to Formspree -->
-      <form id="tspForm" class="tsp-form" action="https://formspree.io/f/xeedbbka" method="POST" autocomplete="on" novalidate>
+      <!-- Tax Savings Proposal — multi-step form, posts JSON to Netlify Function -> GoHighLevel CRM -->
+      <form id="tspForm" class="tsp-form" action="/api/submit-lead" method="POST" autocomplete="on" novalidate>
 
         <!-- Honeypot anti-spam -->
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
 
-        <!-- Formspree meta -->
-        <input type="hidden" name="_subject" value="New Tax Savings Proposal Request - Innovate Real Estate">
-        <input type="hidden" name="_format" value="plain">
+        <!-- Progress indicator -->
+        <div class="ms-progress" aria-hidden="true">
+          <div class="ms-progress-step is-active" data-step="1"><div class="ms-progress-bar"></div><div class="ms-progress-label">Contact</div></div>
+          <div class="ms-progress-step" data-step="2"><div class="ms-progress-bar"></div><div class="ms-progress-label">Property</div></div>
+          <div class="ms-progress-step" data-step="3"><div class="ms-progress-bar"></div><div class="ms-progress-label">Tax Strategy</div></div>
+          <div class="ms-progress-step" data-step="4"><div class="ms-progress-bar"></div><div class="ms-progress-label">Consent</div></div>
+        </div>
 
         <div id="tspError" class="tsp-error-msg" role="alert"></div>
 
-        <div class="tsp-row">
-          <div class="tsp-field">
-            <label class="tsp-label" for="tsp-first">First Name <span class="req">*</span></label>
-            <input class="tsp-input" type="text" id="tsp-first" name="first_name" required autocomplete="given-name" placeholder="John">
+        <!-- ───── STEP 1 ─ Contact ───── -->
+        <div class="ms-step is-active" data-step="1">
+          <div class="ms-step-counter">Step 1 of 4</div>
+          <h2 class="ms-step-title">Let's start with you</h2>
+          <p class="ms-step-subtitle">A few quick details so we know how to reach you.</p>
+
+          <div class="tsp-row">
+            <div class="tsp-field">
+              <label class="tsp-label" for="tsp-first">First Name <span class="req">*</span></label>
+              <input class="tsp-input" type="text" id="tsp-first" name="first_name" required autocomplete="given-name" placeholder="John">
+            </div>
+            <div class="tsp-field">
+              <label class="tsp-label" for="tsp-last">Last Name <span class="req">*</span></label>
+              <input class="tsp-input" type="text" id="tsp-last" name="last_name" required autocomplete="family-name" placeholder="Smith">
+            </div>
           </div>
+
+          <div class="tsp-row">
+            <div class="tsp-field">
+              <label class="tsp-label" for="tsp-email">Email <span class="req">*</span></label>
+              <input class="tsp-input" type="email" id="tsp-email" name="email" required autocomplete="email" placeholder="you@company.com">
+            </div>
+            <div class="tsp-field">
+              <label class="tsp-label" for="tsp-phone">Phone</label>
+              <input class="tsp-input" type="tel" id="tsp-phone" name="phone" autocomplete="tel" placeholder="(555) 123-4567">
+            </div>
+          </div>
+
           <div class="tsp-field">
-            <label class="tsp-label" for="tsp-last">Last Name <span class="req">*</span></label>
-            <input class="tsp-input" type="text" id="tsp-last" name="last_name" required autocomplete="family-name" placeholder="Smith">
+            <label class="tsp-label" for="tsp-company">Company / Entity</label>
+            <input class="tsp-input" type="text" id="tsp-company" name="company" autocomplete="organization" placeholder="Company or LLC name">
+          </div>
+
+          <div class="ms-nav">
+            <button type="button" class="ms-btn ms-btn--next" data-next="2">
+              Continue <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
           </div>
         </div>
 
-        <div class="tsp-row">
-          <div class="tsp-field">
-            <label class="tsp-label" for="tsp-email">Email <span class="req">*</span></label>
-            <input class="tsp-input" type="email" id="tsp-email" name="email" required autocomplete="email" placeholder="you@company.com">
+        <!-- ───── STEP 2 ─ Role + Property ───── -->
+        <div class="ms-step" data-step="2">
+          <div class="ms-step-counter">Step 2 of 4</div>
+          <h2 class="ms-step-title">Tell us about the property</h2>
+          <p class="ms-step-subtitle">This is the core data we use to build your custom savings analysis.</p>
+
+          <div class="tsp-row">
+            <div class="tsp-field">
+              <label class="tsp-label" for="tsp-role">I am a... <span class="req">*</span></label>
+              <select class="tsp-select" id="tsp-role" name="role" required>
+                <option value="">Select one...</option>
+                <option value="Property Owner">Property Owner / Investor</option>
+                <option value="CPA / Tax Advisor">CPA / Tax Advisor</option>
+                <option value="Real Estate Professional">Real Estate Professional</option>
+                <option value="Developer / Builder">Developer / Builder</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="tsp-field">
+              <label class="tsp-label" for="tsp-property-type">Property Type <span class="req">*</span></label>
+              <select class="tsp-select" id="tsp-property-type" name="property_type" required>
+                <option value="">Select one...</option>
+                <option value="Office">Office</option>
+                <option value="Retail">Retail</option>
+                <option value="Industrial / Warehouse">Industrial / Warehouse</option>
+                <option value="Multifamily / Apartments">Multifamily / Apartments</option>
+                <option value="Short-Term Rental (STR)">Short-Term Rental (STR)</option>
+                <option value="Long-Term Rental (LTR)">Long-Term Rental (LTR)</option>
+                <option value="Hospitality / Hotel">Hospitality / Hotel</option>
+                <option value="Medical / Healthcare">Medical / Healthcare</option>
+                <option value="Restaurant">Restaurant</option>
+                <option value="Mixed-Use">Mixed-Use</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
           </div>
+
           <div class="tsp-field">
-            <label class="tsp-label" for="tsp-phone">Phone</label>
-            <input class="tsp-input" type="tel" id="tsp-phone" name="phone" autocomplete="tel" placeholder="(555) 123-4567">
+            <label class="tsp-label" for="tsp-address">Property Address</label>
+            <input class="tsp-input" type="text" id="tsp-address" name="property_address" autocomplete="street-address" placeholder="123 Main St, City, State, ZIP">
+          </div>
+
+          <div class="tsp-row">
+            <div class="tsp-field">
+              <label class="tsp-label" for="tsp-num-properties">How many properties do you own?</label>
+              <select class="tsp-select" id="tsp-num-properties" name="num_properties">
+                <option value="">Select...</option>
+                <option value="1">1</option>
+                <option value="2-5">2 – 5</option>
+                <option value="6-10">6 – 10</option>
+                <option value="11-25">11 – 25</option>
+                <option value="26-50">26 – 50</option>
+                <option value="50+">50+</option>
+              </select>
+            </div>
+            <div class="tsp-field">
+              <label class="tsp-label" for="tsp-urgency">When are you looking to act?</label>
+              <select class="tsp-select" id="tsp-urgency" name="urgency">
+                <option value="">Select...</option>
+                <option value="ASAP">ASAP — before the next filing</option>
+                <option value="Within 30 days">Within 30 days</option>
+                <option value="This Quarter">This quarter</option>
+                <option value="Just Exploring">Just exploring options</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="ms-nav">
+            <button type="button" class="ms-btn ms-btn--back" data-back="1">Back</button>
+            <button type="button" class="ms-btn ms-btn--next" data-next="3">
+              Continue <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
           </div>
         </div>
 
-        <div class="tsp-field">
-          <label class="tsp-label" for="tsp-company">Company / Entity</label>
-          <input class="tsp-input" type="text" id="tsp-company" name="company" autocomplete="organization" placeholder="Company or LLC name">
+        <!-- ───── STEP 3 ─ Tax Strategy ───── -->
+        <div class="ms-step" data-step="3">
+          <div class="ms-step-counter">Step 3 of 4</div>
+          <h2 class="ms-step-title">A few tax basics</h2>
+          <p class="ms-step-subtitle">These help us prioritize the strategies most likely to unlock the biggest savings.</p>
+
+          <div class="tsp-row">
+            <div class="tsp-field">
+              <label class="tsp-label" for="tsp-price">Purchase Price / Cost Basis</label>
+              <select class="tsp-select" id="tsp-price" name="purchase_price">
+                <option value="">Select range...</option>
+                <option value="Under $500K">Under $500K</option>
+                <option value="$500K – $1M">$500K – $1M</option>
+                <option value="$1M – $2.5M">$1M – $2.5M</option>
+                <option value="$2.5M – $5M">$2.5M – $5M</option>
+                <option value="$5M – $10M">$5M – $10M</option>
+                <option value="$10M – $25M">$10M – $25M</option>
+                <option value="$25M+">$25M+</option>
+              </select>
+            </div>
+            <div class="tsp-field">
+              <label class="tsp-label" for="tsp-acquired">Year Acquired / Placed in Service</label>
+              <input class="tsp-input" type="text" id="tsp-acquired" name="year_acquired" placeholder="e.g. 2023" inputmode="numeric" pattern="[0-9]{4}" maxlength="4">
+            </div>
+          </div>
+
+          <div class="tsp-field">
+            <label class="tsp-label" for="tsp-services">Services You're Interested In</label>
+            <select class="tsp-select" id="tsp-services" name="services_interested">
+              <option value="">Select primary interest...</option>
+              <option value="Cost Segregation Study">Cost Segregation Study</option>
+              <option value="179D Energy Efficient Deduction">179D Energy Efficient Deduction</option>
+              <option value="263A UNICAP Exemption">263A UNICAP Exemption</option>
+              <option value="R&D Tax Credit">R&amp;D Tax Credit</option>
+              <option value="Tangible Property Regulations">Tangible Property Regulations</option>
+              <option value="Method Change">Method Change</option>
+              <option value="Energy Optimization">Energy Optimization</option>
+              <option value="Waste Optimization">Waste Optimization</option>
+              <option value="Wealth Strategies">Wealth Strategies</option>
+              <option value="Make It a Deductible">Make It a Deductible — full audit</option>
+              <option value="Not Sure — Need Recommendation">Not Sure — Need Recommendation</option>
+            </select>
+          </div>
+
+          <div class="tsp-field">
+            <label class="tsp-label" for="tsp-current-cpa">Current CPA / Tax Preparer (optional)</label>
+            <input class="tsp-input" type="text" id="tsp-current-cpa" name="current_cpa" placeholder="Name of firm or individual — helps us coordinate the hand-off">
+          </div>
+
+          <div class="ms-nav">
+            <button type="button" class="ms-btn ms-btn--back" data-back="2">Back</button>
+            <button type="button" class="ms-btn ms-btn--next" data-next="4">
+              Continue <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
         </div>
 
-        <div class="tsp-row">
+        <!-- ───── STEP 4 ─ Consent + Notes ───── -->
+        <div class="ms-step" data-step="4">
+          <div class="ms-step-counter">Step 4 of 4</div>
+          <h2 class="ms-step-title">Final details</h2>
+          <p class="ms-step-subtitle">Anything else we should know? Confirm your consents and we'll get to work.</p>
+
           <div class="tsp-field">
-            <label class="tsp-label" for="tsp-role">I am a... <span class="req">*</span></label>
-            <select class="tsp-select" id="tsp-role" name="role" required>
-              <option value="">Select one...</option>
-              <option value="Property Owner">Property Owner / Investor</option>
-              <option value="CPA / Tax Advisor">CPA / Tax Advisor</option>
-              <option value="Real Estate Professional">Real Estate Professional</option>
-              <option value="Developer / Builder">Developer / Builder</option>
+            <label class="tsp-label" for="tsp-referral">How did you hear about us?</label>
+            <select class="tsp-select" id="tsp-referral" name="referral_source">
+              <option value="">Select...</option>
+              <option value="Google Search">Google search</option>
+              <option value="Referral">Referral from CPA / colleague</option>
+              <option value="Speaking Event">Speaking event / conference</option>
+              <option value="LinkedIn">LinkedIn</option>
+              <option value="Podcast">Podcast / interview</option>
+              <option value="Ad">Online ad</option>
               <option value="Other">Other</option>
             </select>
           </div>
+
           <div class="tsp-field">
-            <label class="tsp-label" for="tsp-property-type">Property Type <span class="req">*</span></label>
-            <select class="tsp-select" id="tsp-property-type" name="property_type" required>
-              <option value="">Select one...</option>
-              <option value="Office">Office</option>
-              <option value="Retail">Retail</option>
-              <option value="Industrial / Warehouse">Industrial / Warehouse</option>
-              <option value="Multifamily / Apartments">Multifamily / Apartments</option>
-              <option value="Short-Term Rental (STR)">Short-Term Rental (STR)</option>
-              <option value="Long-Term Rental (LTR)">Long-Term Rental (LTR)</option>
-              <option value="Hospitality / Hotel">Hospitality / Hotel</option>
-              <option value="Medical / Healthcare">Medical / Healthcare</option>
-              <option value="Restaurant">Restaurant</option>
-              <option value="Mixed-Use">Mixed-Use</option>
-              <option value="Other">Other</option>
-            </select>
+            <label class="tsp-label" for="tsp-notes">Additional Details / Questions</label>
+            <textarea class="tsp-textarea" id="tsp-notes" name="notes" placeholder="Tell us anything else about your property or situation that will help us prepare your proposal."></textarea>
+          </div>
+
+          <label class="tsp-checkbox" for="tsp-sms">
+            <input type="checkbox" id="tsp-sms" name="sms_consent_checkbox">
+            <span class="tsp-checkbox-label">
+              <strong style="color:rgba(255,255,255,0.9);">SMS Consent (Optional):</strong> I agree to receive text messages from Innovate Real Estate at the phone number provided, including appointment reminders, tax savings analysis updates, webinars, and educational content. Message frequency varies (2–6 msgs/month). Msg &amp; data rates may apply. Reply STOP to unsubscribe, HELP for help. Consent is not a condition of purchase. No mobile information will be shared with third parties or affiliates for marketing or promotional purposes.
+            </span>
+          </label>
+
+          <label class="tsp-checkbox" for="tsp-tos">
+            <input type="checkbox" id="tsp-tos" name="tos_consent" required>
+            <span class="tsp-checkbox-label">
+              I agree to the <a href="privacy.html" style="color:var(--gold);text-decoration:underline;">Privacy Policy</a> and <a href="terms.html" style="color:var(--gold);text-decoration:underline;">Terms of Service</a>. <span style="color:var(--gold);">*</span>
+            </span>
+          </label>
+
+          <input type="hidden" name="sms_consent" id="tsp-sms-hidden" value="No">
+          <input type="hidden" name="submitted_url" id="tsp-submitted-url" value="">
+          <input type="hidden" name="submitted_at" id="tsp-submitted-at" value="">
+
+          <div class="ms-nav">
+            <button type="button" class="ms-btn ms-btn--back" data-back="3">Back</button>
+            <button class="tsp-submit" type="submit" id="tspSubmit" style="flex:2;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              <span id="tspSubmitText">Request My Tax Savings Proposal</span>
+            </button>
           </div>
         </div>
-
-        <div class="tsp-field">
-          <label class="tsp-label" for="tsp-address">Property Address</label>
-          <input class="tsp-input" type="text" id="tsp-address" name="property_address" autocomplete="street-address" placeholder="123 Main St, City, State, ZIP">
-        </div>
-
-        <div class="tsp-row">
-          <div class="tsp-field">
-            <label class="tsp-label" for="tsp-price">Purchase Price / Cost Basis</label>
-            <select class="tsp-select" id="tsp-price" name="purchase_price">
-              <option value="">Select range...</option>
-              <option value="Under $500K">Under $500K</option>
-              <option value="$500K – $1M">$500K – $1M</option>
-              <option value="$1M – $2.5M">$1M – $2.5M</option>
-              <option value="$2.5M – $5M">$2.5M – $5M</option>
-              <option value="$5M – $10M">$5M – $10M</option>
-              <option value="$10M – $25M">$10M – $25M</option>
-              <option value="$25M+">$25M+</option>
-            </select>
-          </div>
-          <div class="tsp-field">
-            <label class="tsp-label" for="tsp-acquired">Year Acquired / Placed in Service</label>
-            <input class="tsp-input" type="text" id="tsp-acquired" name="year_acquired" placeholder="e.g. 2023" inputmode="numeric" pattern="[0-9]{4}" maxlength="4">
-          </div>
-        </div>
-
-        <div class="tsp-field">
-          <label class="tsp-label" for="tsp-services">Services You're Interested In</label>
-          <select class="tsp-select" id="tsp-services" name="services_interested">
-            <option value="">Select primary interest...</option>
-            <option value="Cost Segregation Study">Cost Segregation Study</option>
-            <option value="179D Energy Efficient Deduction">179D Energy Efficient Deduction</option>
-            <option value="263A UNICAP Exemption">263A UNICAP Exemption</option>
-            <option value="R&D Tax Credit">R&amp;D Tax Credit</option>
-            <option value="Tangible Property Regulations">Tangible Property Regulations</option>
-            <option value="Method Change">Method Change</option>
-            <option value="Energy Optimization">Energy Optimization</option>
-            <option value="Waste Optimization">Waste Optimization</option>
-            <option value="Wealth Strategies">Wealth Strategies</option>
-            <option value="Not Sure — Need Recommendation">Not Sure — Need Recommendation</option>
-          </select>
-        </div>
-
-        <div class="tsp-field">
-          <label class="tsp-label" for="tsp-notes">Additional Details / Questions</label>
-          <textarea class="tsp-textarea" id="tsp-notes" name="notes" placeholder="Tell us anything else about your property or situation that will help us prepare your proposal."></textarea>
-        </div>
-
-        <label class="tsp-checkbox" for="tsp-sms">
-          <input type="checkbox" id="tsp-sms" name="sms_consent_checkbox">
-          <span class="tsp-checkbox-label">
-            <strong style="color:rgba(255,255,255,0.9);">SMS Consent (Optional):</strong> I agree to receive text messages from Innovate Real Estate at the phone number provided, including appointment reminders, tax savings analysis updates, webinars, and educational content. Message frequency varies (2–6 msgs/month). Msg &amp; data rates may apply. Reply STOP to unsubscribe, HELP for help. Consent is not a condition of purchase. No mobile information will be shared with third parties or affiliates for marketing or promotional purposes.
-          </span>
-        </label>
-
-        <label class="tsp-checkbox" for="tsp-tos">
-          <input type="checkbox" id="tsp-tos" name="tos_consent" required>
-          <span class="tsp-checkbox-label">
-            I agree to the <a href="privacy.html" style="color:var(--gold);text-decoration:underline;">Privacy Policy</a> and <a href="terms.html" style="color:var(--gold);text-decoration:underline;">Terms of Service</a>. <span style="color:var(--gold);">*</span>
-          </span>
-        </label>
-
-        <input type="hidden" name="sms_consent" id="tsp-sms-hidden" value="No">
-        <input type="hidden" name="submitted_url" id="tsp-submitted-url" value="">
-        <input type="hidden" name="submitted_at" id="tsp-submitted-at" value="">
-
-        <button class="tsp-submit" type="submit" id="tspSubmit">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          <span id="tspSubmitText">Request My Tax Savings Proposal</span>
-        </button>
       </form>
 
       <!-- Success State -->
@@ -604,22 +803,28 @@
 })();
 </script>
 
-<!-- Tax Savings Proposal form submit handler -> Formspree -->
+<!-- Multi-step Tax Savings Proposal form -> Netlify Function -> GoHighLevel -->
 <script>
 (function() {
-  var form = document.getElementById('tspForm');
+  var form    = document.getElementById('tspForm');
   var success = document.getElementById('tspSuccess');
-  var errBox = document.getElementById('tspError');
-  var btn = document.getElementById('tspSubmit');
+  var errBox  = document.getElementById('tspError');
+  var btn     = document.getElementById('tspSubmit');
   var btnText = document.getElementById('tspSubmitText');
   if (!form) return;
 
-  // Pre-fill hidden context fields
+  var steps    = form.querySelectorAll('.ms-step');
+  var progress = form.querySelectorAll('.ms-progress-step');
+  var TOTAL    = steps.length;
+  var current  = 1;
+
+  // ─── Hidden context ───────────────────────────────────────────────
   try {
     document.getElementById('tsp-submitted-url').value = window.location.href;
-    document.getElementById('tsp-submitted-at').value = new Date().toISOString();
+    document.getElementById('tsp-submitted-at').value  = new Date().toISOString();
   } catch (e) {}
 
+  // ─── Error helpers ────────────────────────────────────────────────
   function showError(msg) {
     errBox.textContent = msg;
     errBox.classList.add('show');
@@ -630,7 +835,7 @@
     errBox.classList.remove('show');
   }
 
-  // Phone formatting (US)
+  // ─── Phone formatter (US) ─────────────────────────────────────────
   var phone = document.getElementById('tsp-phone');
   if (phone) {
     phone.addEventListener('input', function() {
@@ -642,95 +847,152 @@
     });
   }
 
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    clearError();
+  // ─── Step navigation ──────────────────────────────────────────────
+  function gotoStep(n) {
+    n = Math.max(1, Math.min(TOTAL, n));
+    steps.forEach(function(s) {
+      s.classList.toggle('is-active', Number(s.dataset.step) === n);
+    });
+    progress.forEach(function(p) {
+      var sn = Number(p.dataset.step);
+      p.classList.toggle('is-active',   sn === n);
+      p.classList.toggle('is-complete', sn < n);
+    });
+    current = n;
+    // Scroll the form into view smoothly
+    var card = form.closest('.tsp-form-card') || form;
+    if (card && card.scrollIntoView) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
-    // Validate required
-    var required = ['tsp-first', 'tsp-last', 'tsp-email', 'tsp-role', 'tsp-property-type'];
+  // Per-step required fields
+  var STEP_REQUIRED = {
+    1: ['tsp-first', 'tsp-last', 'tsp-email'],
+    2: ['tsp-role', 'tsp-property-type'],
+    3: [],
+    4: []
+  };
+
+  function validateStep(n) {
+    clearError();
+    var ids = STEP_REQUIRED[n] || [];
     var ok = true;
-    required.forEach(function(id) {
+    ids.forEach(function(id) {
       var el = document.getElementById(id);
       if (!el) return;
       el.classList.remove('tsp-err');
-      if (!el.value || (el.tagName === 'SELECT' && el.value === '')) {
+      var v = (el.value || '').trim();
+      if (!v) {
         el.classList.add('tsp-err');
         ok = false;
       }
     });
-    // Email format
-    var em = document.getElementById('tsp-email');
-    if (em.value && !/\S+@\S+\.\S+/.test(em.value)) {
-      em.classList.add('tsp-err');
-      ok = false;
+    // Email format on step 1
+    if (n === 1) {
+      var em = document.getElementById('tsp-email');
+      if (em && em.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value)) {
+        em.classList.add('tsp-err');
+        ok = false;
+      }
     }
-    // Terms checkbox
-    var tos = document.getElementById('tsp-tos');
-    if (!tos.checked) {
-      showError('Please agree to the Privacy Policy and Terms of Service to continue.');
-      ok = false;
+    if (!ok) showError('Please complete the highlighted fields before continuing.');
+    return ok;
+  }
+
+  // Wire Next / Back buttons
+  form.querySelectorAll('.ms-btn--next').forEach(function(b) {
+    b.addEventListener('click', function() {
+      var target = Number(b.dataset.next);
+      if (!validateStep(current)) return;
+      gotoStep(target);
+    });
+  });
+  form.querySelectorAll('.ms-btn--back').forEach(function(b) {
+    b.addEventListener('click', function() {
+      clearError();
+      gotoStep(Number(b.dataset.back));
+    });
+  });
+
+  // Allow Enter key to advance (except on textareas)
+  form.addEventListener('keydown', function(e) {
+    if (e.key !== 'Enter') return;
+    if (e.target && e.target.tagName === 'TEXTAREA') return;
+    if (current < TOTAL) {
+      e.preventDefault();
+      if (validateStep(current)) gotoStep(current + 1);
+    }
+  });
+
+  // ─── Final submit ─────────────────────────────────────────────────
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    clearError();
+
+    // Validate every prior step before sending
+    for (var i = 1; i <= TOTAL; i++) {
+      if (!validateStep(i)) { gotoStep(i); return; }
     }
 
-    if (!ok) {
-      if (!errBox.classList.contains('show')) {
-        showError('Please complete the required fields highlighted in red.');
-      }
+    // TOS
+    var tos = document.getElementById('tsp-tos');
+    if (!tos || !tos.checked) {
+      showError('Please agree to the Privacy Policy and Terms of Service to continue.');
       return;
     }
 
-    // SMS consent: if not checked, blank the phone before sending (per A2P compliance)
-    var smsBox = document.getElementById('tsp-sms');
+    // SMS consent hidden field
+    var smsBox    = document.getElementById('tsp-sms');
     var smsHidden = document.getElementById('tsp-sms-hidden');
-    smsHidden.value = smsBox && smsBox.checked ? 'Yes' : 'No';
-    if (smsBox && !smsBox.checked && phone) {
-      // Don't actually clear visible value, but mark sms_consent properly
-      // Phone still gets sent as a callable number, just no SMS authorization
-    }
+    if (smsHidden) smsHidden.value = (smsBox && smsBox.checked) ? 'Yes' : 'No';
 
-    // Honeypot check
+    // Honeypot — silent success on bots
     var hp = form.querySelector('input[name="_gotcha"]');
     if (hp && hp.value) {
-      // Silently fake-success spam
       form.style.display = 'none';
       success.classList.add('show');
       return;
     }
 
-    // Submit to Formspree via fetch (AJAX)
+    // Build JSON payload from FormData
+    var fd = new FormData(form);
+    var payload = {};
+    fd.forEach(function(value, key) {
+      // collapse checkbox "on" to boolean true
+      payload[key] = (value === 'on') ? true : value;
+    });
+    payload.sms_consent = (smsBox && smsBox.checked);
+    payload.tos_consent = !!tos.checked;
+
     btn.disabled = true;
     btnText.textContent = 'Sending...';
 
-    var data = new FormData(form);
-
-    fetch(form.action, {
+    fetch('/api/submit-lead', {
       method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept':       'application/json'
+      },
+      body: JSON.stringify(payload)
     })
     .then(function(response) {
-      if (response.ok) {
-        return response.json().catch(function() { return {}; });
-      }
-      // Try to read Formspree error JSON
-      return response.json().then(function(j) {
-        var msg = (j && j.errors && j.errors[0] && j.errors[0].message) ||
-                  (j && j.error) ||
-                  ('Submission failed (HTTP ' + response.status + ').');
-        throw new Error(msg);
-      }).catch(function(err) {
-        if (err && err.message && err.message !== 'failed') throw err;
-        throw new Error('Submission failed. Please try again or email hello@innovaterealestate.net.');
-      });
+      return response.json().then(function(j) { return { status: response.status, ok: response.ok, body: j }; })
+        .catch(function() { return { status: response.status, ok: response.ok, body: {} }; });
     })
-    .then(function() {
-      form.style.display = 'none';
-      success.classList.add('show');
-      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    .then(function(res) {
+      // 200 = full success, 202 = degraded (Formspree backup / CRM deferred) → still show success
+      if (res.status === 200 || res.status === 202) {
+        form.style.display = 'none';
+        success.classList.add('show');
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      var msg = (res.body && res.body.error) || ('Submission failed (HTTP ' + res.status + ').');
+      throw new Error(msg);
     })
     .catch(function(err) {
       btn.disabled = false;
       btnText.textContent = 'Request My Tax Savings Proposal';
-      showError(err.message || 'Submission failed. Please try again or email hello@innovaterealestate.net.');
+      showError((err && err.message) || 'Submission failed. Please try again or email hello@innovaterealestate.net.');
     });
   });
 })();
