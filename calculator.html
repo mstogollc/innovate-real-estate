@@ -934,7 +934,7 @@
             <li><a href="services/energy-optimization.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Energy Optimization</a></li>
             <li><a href="services/waste-optimization.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Waste Optimization</a></li>
             <li><a href="services/wealth-strategies.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>Wealth Strategies</a></li>
-            <li><a href="services/make-it-a-deductible.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Make It a Deductible</a></li>
+            <li><a href="services/make-it-a-deductible.html" role="menuitem"><svg class="dd-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Make It Deductible</a></li>
           </ul>
         </li>
       <li><a href="calculator.html" style="color: var(--gold);">Calculator</a></li>
@@ -1380,46 +1380,46 @@
   // Format: { personal5: [low, est, high], personal7: [low, est, high], land15: [low, est, high] }
   // Remainder goes to real property (27.5 or 39 year)
   const ALLOCATIONS = {
-    single_family:       { p5: [12, 18, 25], p7: [2, 4, 6],   l15: [5, 8, 12],   life: 27.5 },
-    multifamily:         { p5: [15, 22, 28], p7: [3, 5, 7],   l15: [6, 10, 15],  life: 27.5 },
-    short_term_rental:   { p5: [18, 25, 32], p7: [3, 5, 8],   l15: [5, 8, 12],   life: 27.5 },
-    assisted_living:     { p5: [15, 20, 28], p7: [4, 6, 9],   l15: [5, 8, 12],   life: 39 },
-    office:              { p5: [10, 16, 22], p7: [3, 5, 7],   l15: [5, 8, 12],   life: 39 },
-    office_medical:      { p5: [15, 22, 30], p7: [4, 6, 9],   l15: [5, 8, 12],   life: 39 },
-    retail:              { p5: [12, 18, 24], p7: [3, 5, 7],   l15: [6, 10, 14],  life: 39 },
-    restaurant:          { p5: [20, 28, 36], p7: [5, 8, 12],  l15: [5, 8, 12],   life: 39 },
-    hotel:               { p5: [20, 28, 35], p7: [4, 7, 10],  l15: [5, 8, 12],   life: 39 },
-    warehouse:           { p5: [8, 12, 18],  p7: [2, 4, 6],   l15: [6, 10, 15],  life: 39 },
-    distribution:        { p5: [10, 15, 20], p7: [3, 5, 7],   l15: [6, 10, 14],  life: 39 },
-    self_storage:        { p5: [10, 15, 22], p7: [2, 4, 6],   l15: [8, 12, 18],  life: 39 },
-    auto_dealership:     { p5: [15, 22, 30], p7: [4, 6, 9],   l15: [6, 10, 14],  life: 39 },
-    gas_station:         { p5: [18, 25, 32], p7: [5, 8, 11],  l15: [8, 12, 16],  life: 39 },
-    supermarket:         { p5: [15, 22, 28], p7: [4, 6, 9],   l15: [5, 8, 12],   life: 39 },
-    manufacturing_light: { p5: [15, 22, 30], p7: [5, 8, 12],  l15: [5, 8, 12],   life: 39 },
-    manufacturing_heavy: { p5: [18, 26, 34], p7: [6, 10, 14], l15: [5, 8, 12],   life: 39 },
-    cold_storage:        { p5: [18, 25, 32], p7: [5, 8, 11],  l15: [5, 8, 12],   life: 39 },
-    food_processing:     { p5: [18, 25, 33], p7: [5, 8, 12],  l15: [5, 8, 12],   life: 39 },
-    hospital:            { p5: [20, 28, 36], p7: [5, 8, 12],  l15: [5, 8, 12],   life: 39 },
-    casino:              { p5: [22, 30, 38], p7: [5, 8, 12],  l15: [5, 8, 12],   life: 39 },
-    golf_course:         { p5: [12, 18, 24], p7: [3, 5, 7],   l15: [10, 15, 22], life: 39 },
-    bank:                { p5: [12, 18, 24], p7: [3, 5, 7],   l15: [5, 8, 12],   life: 39 },
-    rd_facility:         { p5: [18, 25, 32], p7: [5, 8, 12],  l15: [5, 8, 12],   life: 39 },
-    mixed_use:           { p5: [14, 20, 26], p7: [3, 5, 7],   l15: [6, 10, 14],  life: 39 },
-    other:               { p5: [12, 18, 24], p7: [3, 5, 7],   l15: [5, 8, 12],   life: 39 }
+    single_family: { p5: [12, 18, 25], p7: [2, 4, 6], l15: [5, 8, 12], life: 27.5 },
+    multifamily: { p5: [15, 22, 28], p7: [3, 5, 7], l15: [6, 10, 15], life: 27.5 },
+    short_term_rental: { p5: [18, 25, 32], p7: [3, 5, 8], l15: [5, 8, 12], life: 27.5 },
+    assisted_living: { p5: [15, 20, 28], p7: [4, 6, 9], l15: [5, 8, 12], life: 39 },
+    office: { p5: [10, 16, 22], p7: [3, 5, 7], l15: [5, 8, 12], life: 39 },
+    office_medical: { p5: [15, 22, 30], p7: [4, 6, 9], l15: [5, 8, 12], life: 39 },
+    retail: { p5: [12, 18, 24], p7: [3, 5, 7], l15: [6, 10, 14], life: 39 },
+    restaurant: { p5: [20, 28, 36], p7: [5, 8, 12], l15: [5, 8, 12], life: 39 },
+    hotel: { p5: [20, 28, 35], p7: [4, 7, 10], l15: [5, 8, 12], life: 39 },
+    warehouse: { p5: [8, 12, 18], p7: [2, 4, 6], l15: [6, 10, 15], life: 39 },
+    distribution: { p5: [10, 15, 20], p7: [3, 5, 7], l15: [6, 10, 14], life: 39 },
+    self_storage: { p5: [10, 15, 22], p7: [2, 4, 6], l15: [8, 12, 18], life: 39 },
+    auto_dealership: { p5: [15, 22, 30], p7: [4, 6, 9], l15: [6, 10, 14], life: 39 },
+    gas_station: { p5: [18, 25, 32], p7: [5, 8, 11], l15: [8, 12, 16], life: 39 },
+    supermarket: { p5: [15, 22, 28], p7: [4, 6, 9], l15: [5, 8, 12], life: 39 },
+    manufacturing_light: { p5: [15, 22, 30], p7: [5, 8, 12], l15: [5, 8, 12], life: 39 },
+    manufacturing_heavy: { p5: [18, 26, 34], p7: [6, 10, 14], l15: [5, 8, 12], life: 39 },
+    cold_storage: { p5: [18, 25, 32], p7: [5, 8, 11], l15: [5, 8, 12], life: 39 },
+    food_processing: { p5: [18, 25, 33], p7: [5, 8, 12], l15: [5, 8, 12], life: 39 },
+    hospital: { p5: [20, 28, 36], p7: [5, 8, 12], l15: [5, 8, 12], life: 39 },
+    casino: { p5: [22, 30, 38], p7: [5, 8, 12], l15: [5, 8, 12], life: 39 },
+    golf_course: { p5: [12, 18, 24], p7: [3, 5, 7], l15: [10, 15, 22], life: 39 },
+    bank: { p5: [12, 18, 24], p7: [3, 5, 7], l15: [5, 8, 12], life: 39 },
+    rd_facility: { p5: [18, 25, 32], p7: [5, 8, 12], l15: [5, 8, 12], life: 39 },
+    mixed_use: { p5: [14, 20, 26], p7: [3, 5, 7], l15: [6, 10, 14], life: 39 },
+    other: { p5: [12, 18, 24], p7: [3, 5, 7], l15: [5, 8, 12], life: 39 }
   };
 
   // ── Bonus Depreciation Schedule ──────────────────────────────
   const BONUS_RATES = {
-    '2026': 0.40,   // Phase-down: 40% in 2026
-    '2025': 0.60,   // 60% in 2025
-    '2024': 0.60,   // 60% in 2024
-    '2023': 0.80,   // 80% in 2023
-    '2022': 1.00,   // 100% in 2022
-    '2021': 1.00,   // 100% in 2021
-    '2020': 1.00,   // 100%
-    '2019': 1.00,   // 100%
-    '2018': 1.00,   // 100%
-    '2017': 0.50    // 50% pre-TCJA
+    '2026': 0.40, // Phase-down: 40% in 2026
+    '2025': 0.60, // 60% in 2025
+    '2024': 0.60, // 60% in 2024
+    '2023': 0.80, // 80% in 2023
+    '2022': 1.00, // 100% in 2022
+    '2021': 1.00, // 100% in 2021
+    '2020': 1.00, // 100%
+    '2019': 1.00, // 100%
+    '2018': 1.00, // 100%
+    '2017': 0.50 // 50% pre-TCJA
   };
 
   // ── DOM Elements ─────────────────────────────────────────────
@@ -1545,20 +1545,20 @@
     const depreciableBasis = (price - (price * landPct)) + improvements;
 
     // Allocation amounts (using estimated = middle values)
-    const p5Low  = depreciableBasis * (alloc.p5[0] / 100);
-    const p5Est  = depreciableBasis * (alloc.p5[1] / 100);
+    const p5Low = depreciableBasis * (alloc.p5[0] / 100);
+    const p5Est = depreciableBasis * (alloc.p5[1] / 100);
     const p5High = depreciableBasis * (alloc.p5[2] / 100);
 
-    const p7Low  = depreciableBasis * (alloc.p7[0] / 100);
-    const p7Est  = depreciableBasis * (alloc.p7[1] / 100);
+    const p7Low = depreciableBasis * (alloc.p7[0] / 100);
+    const p7Est = depreciableBasis * (alloc.p7[1] / 100);
     const p7High = depreciableBasis * (alloc.p7[2] / 100);
 
-    const l15Low  = depreciableBasis * (alloc.l15[0] / 100);
-    const l15Est  = depreciableBasis * (alloc.l15[1] / 100);
+    const l15Low = depreciableBasis * (alloc.l15[0] / 100);
+    const l15Est = depreciableBasis * (alloc.l15[1] / 100);
     const l15High = depreciableBasis * (alloc.l15[2] / 100);
 
-    const realPropLow  = depreciableBasis - p5High - p7High - l15High;
-    const realPropEst  = depreciableBasis - p5Est - p7Est - l15Est;
+    const realPropLow = depreciableBasis - p5High - p7High - l15High;
+    const realPropEst = depreciableBasis - p5Est - p7Est - l15Est;
     const realPropHigh = depreciableBasis - p5Low - p7Low - l15Low;
 
     // First-year depreciation WITH cost seg
@@ -1747,8 +1747,8 @@
         const remainL15 = l15Est * (1 - bonusRate);
 
         let p5Yr = 0, p7Yr = 0, l15Yr = 0;
-        if (y <= 5) p5Yr = remainP5 * 0.20;    // 200% DB simplified
-        if (y <= 7) p7Yr = remainP7 * 0.1429;  // 200% DB simplified
+        if (y <= 5) p5Yr = remainP5 * 0.20; // 200% DB simplified
+        if (y <= 7) p7Yr = remainP7 * 0.1429; // 200% DB simplified
         if (y <= 15) l15Yr = remainL15 * 0.0667; // 150% DB simplified
 
         withCS = p5Yr + p7Yr + l15Yr + (realPropEst / propLife);

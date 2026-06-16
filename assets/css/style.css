@@ -22,7 +22,7 @@
   --border-dark:    rgba(255,255,255,0.08);
 
   --font-display:   'Montserrat', system-ui, sans-serif;
-  --font-body:      'Inter', system-ui, sans-serif;
+  --font-body:      'Montserrat', system-ui, sans-serif;
 
   --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
   --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
@@ -1010,7 +1010,7 @@ button { cursor: pointer; background: none; border: none; }
 
 .hero-stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-6);
   max-width: 700px;
   margin-left: auto;

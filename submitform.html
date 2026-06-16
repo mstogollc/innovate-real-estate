@@ -371,7 +371,7 @@
     .ms-step.is-active { display: flex; }
     @keyframes ms-fade {
       from { opacity: 0; transform: translateY(8px); }
-      to   { opacity: 1; transform: translateY(0); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .ms-step-title {
       font-family: "Playfair Display", serif;
@@ -536,7 +536,7 @@
 
     <div class="crm-form-container">
 
-      <!-- Tax Savings Proposal — multi-step form, posts JSON to Netlify Function -> GoHighLevel CRM -->
+      <!-- Tax Savings Proposal, multi-step form, posts JSON to Netlify Function -> GoHighLevel CRM -->
       <form id="tspForm" class="tsp-form" action="/api/submit-lead" method="POST" autocomplete="on" novalidate>
 
         <!-- Honeypot anti-spam -->
@@ -640,10 +640,10 @@
               <select class="tsp-select" id="tsp-num-properties" name="num_properties">
                 <option value="">Select...</option>
                 <option value="1">1</option>
-                <option value="2-5">2 – 5</option>
-                <option value="6-10">6 – 10</option>
-                <option value="11-25">11 – 25</option>
-                <option value="26-50">26 – 50</option>
+                <option value="2-5">2 to 5</option>
+                <option value="6-10">6 to 10</option>
+                <option value="11-25">11 to 25</option>
+                <option value="26-50">26 to 50</option>
                 <option value="50+">50+</option>
               </select>
             </div>
@@ -651,7 +651,7 @@
               <label class="tsp-label" for="tsp-urgency">When are you looking to act?</label>
               <select class="tsp-select" id="tsp-urgency" name="urgency">
                 <option value="">Select...</option>
-                <option value="ASAP">ASAP — before the next filing</option>
+                <option value="ASAP">ASAP, before the next filing</option>
                 <option value="Within 30 days">Within 30 days</option>
                 <option value="This Quarter">This quarter</option>
                 <option value="Just Exploring">Just exploring options</option>
@@ -679,11 +679,11 @@
               <select class="tsp-select" id="tsp-price" name="purchase_price">
                 <option value="">Select range...</option>
                 <option value="Under $500K">Under $500K</option>
-                <option value="$500K – $1M">$500K – $1M</option>
-                <option value="$1M – $2.5M">$1M – $2.5M</option>
-                <option value="$2.5M – $5M">$2.5M – $5M</option>
-                <option value="$5M – $10M">$5M – $10M</option>
-                <option value="$10M – $25M">$10M – $25M</option>
+                <option value="$500K to $1M">$500K to $1M</option>
+                <option value="$1M to $2.5M">$1M to $2.5M</option>
+                <option value="$2.5M to $5M">$2.5M to $5M</option>
+                <option value="$5M to $10M">$5M to $10M</option>
+                <option value="$10M to $25M">$10M to $25M</option>
                 <option value="$25M+">$25M+</option>
               </select>
             </div>
@@ -706,14 +706,14 @@
               <option value="Energy Optimization">Energy Optimization</option>
               <option value="Waste Optimization">Waste Optimization</option>
               <option value="Wealth Strategies">Wealth Strategies</option>
-              <option value="Make It a Deductible">Make It a Deductible — full audit</option>
-              <option value="Not Sure — Need Recommendation">Not Sure — Need Recommendation</option>
+              <option value="Make It Deductible">Make It Deductible, full audit</option>
+              <option value="Not Sure, Need Recommendation">Not Sure, Need Recommendation</option>
             </select>
           </div>
 
           <div class="tsp-field">
             <label class="tsp-label" for="tsp-current-cpa">Current CPA / Tax Preparer (optional)</label>
-            <input class="tsp-input" type="text" id="tsp-current-cpa" name="current_cpa" placeholder="Name of firm or individual — helps us coordinate the hand-off">
+            <input class="tsp-input" type="text" id="tsp-current-cpa" name="current_cpa" placeholder="Name of firm or individual, helps us coordinate the hand-off">
           </div>
 
           <div class="ms-nav">
@@ -752,7 +752,7 @@
           <label class="tsp-checkbox" for="tsp-sms">
             <input type="checkbox" id="tsp-sms" name="sms_consent_checkbox">
             <span class="tsp-checkbox-label">
-              <strong style="color:rgba(255,255,255,0.9);">SMS Consent (Optional):</strong> I agree to receive text messages from Innovate Real Estate at the phone number provided, including appointment reminders, tax savings analysis updates, webinars, and educational content. Message frequency varies (2–6 msgs/month). Msg &amp; data rates may apply. Reply STOP to unsubscribe, HELP for help. Consent is not a condition of purchase. No mobile information will be shared with third parties or affiliates for marketing or promotional purposes.
+              <strong style="color:rgba(255,255,255,0.9);">SMS Consent (Optional):</strong> I agree to receive text messages from Innovate Real Estate at the phone number provided, including appointment reminders, tax savings analysis updates, webinars, and educational content. Message frequency varies (2 to 6 msgs/month). Msg &amp; data rates may apply. Reply STOP to unsubscribe, HELP for help. Consent is not a condition of purchase. No mobile information will be shared with third parties or affiliates for marketing or promotional purposes.
             </span>
           </label>
 
@@ -783,7 +783,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
         <h3>Proposal Request Received</h3>
-        <p>Thanks — we've got your information. A member of our team will reach out within 1 business day to confirm your details and start your customized Tax Savings Proposal.</p>
+        <p>Thanks, we've got your information. A member of our team will reach out within 1 business day to confirm your details and start your customized Tax Savings Proposal.</p>
         <p style="font-size:13px;color:rgba(255,255,255,0.5);">Questions in the meantime? Email <a href="mailto:hello@innovaterealestate.net" style="color:var(--gold);">hello@innovaterealestate.net</a> or call <a href="tel:8508053737" style="color:var(--gold);">850-805-3737</a>.</p>
       </div>
 
@@ -806,22 +806,22 @@
 <!-- Multi-step Tax Savings Proposal form -> Netlify Function -> GoHighLevel -->
 <script>
 (function() {
-  var form    = document.getElementById('tspForm');
+  var form = document.getElementById('tspForm');
   var success = document.getElementById('tspSuccess');
-  var errBox  = document.getElementById('tspError');
-  var btn     = document.getElementById('tspSubmit');
+  var errBox = document.getElementById('tspError');
+  var btn = document.getElementById('tspSubmit');
   var btnText = document.getElementById('tspSubmitText');
   if (!form) return;
 
-  var steps    = form.querySelectorAll('.ms-step');
+  var steps = form.querySelectorAll('.ms-step');
   var progress = form.querySelectorAll('.ms-progress-step');
-  var TOTAL    = steps.length;
-  var current  = 1;
+  var TOTAL = steps.length;
+  var current = 1;
 
   // ─── Hidden context ───────────────────────────────────────────────
   try {
     document.getElementById('tsp-submitted-url').value = window.location.href;
-    document.getElementById('tsp-submitted-at').value  = new Date().toISOString();
+    document.getElementById('tsp-submitted-at').value = new Date().toISOString();
   } catch (e) {}
 
   // ─── Error helpers ────────────────────────────────────────────────
@@ -840,10 +840,10 @@
   if (phone) {
     phone.addEventListener('input', function() {
       var d = this.value.replace(/\D/g, '').slice(0, 10);
-      if (d.length >= 7)      this.value = '(' + d.slice(0,3) + ') ' + d.slice(3,6) + '-' + d.slice(6);
+      if (d.length >= 7) this.value = '(' + d.slice(0,3) + ') ' + d.slice(3,6) + '-' + d.slice(6);
       else if (d.length >= 4) this.value = '(' + d.slice(0,3) + ') ' + d.slice(3);
       else if (d.length >= 1) this.value = '(' + d;
-      else                    this.value = '';
+      else this.value = '';
     });
   }
 
@@ -855,7 +855,7 @@
     });
     progress.forEach(function(p) {
       var sn = Number(p.dataset.step);
-      p.classList.toggle('is-active',   sn === n);
+      p.classList.toggle('is-active', sn === n);
       p.classList.toggle('is-complete', sn < n);
     });
     current = n;
@@ -941,11 +941,11 @@
     }
 
     // SMS consent hidden field
-    var smsBox    = document.getElementById('tsp-sms');
+    var smsBox = document.getElementById('tsp-sms');
     var smsHidden = document.getElementById('tsp-sms-hidden');
     if (smsHidden) smsHidden.value = (smsBox && smsBox.checked) ? 'Yes' : 'No';
 
-    // Honeypot — silent success on bots
+    // Honeypot, silent success on bots
     var hp = form.querySelector('input[name="_gotcha"]');
     if (hp && hp.value) {
       form.style.display = 'none';
@@ -970,7 +970,7 @@
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept':       'application/json'
+        'Accept': 'application/json'
       },
       body: JSON.stringify(payload)
     })

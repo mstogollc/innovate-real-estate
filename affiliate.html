@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Become an Affiliate | Innovate Real Estate</title>
-  <meta name="description" content="Partner with Innovate Real Estate. Deepen your client relationships by introducing next-level tax strategies — cost segregation, §179D, §263A UNICAP, and R&D credits.">
+  <meta name="description" content="Partner with Innovate Real Estate. Deepen your client relationships by introducing next-level tax strategies, cost segregation, §179D, §263A UNICAP, and R&D credits.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -396,12 +396,11 @@
 <div class="affiliate-form-wrap">
   <div style="text-align:center;margin-bottom:var(--space-10);" data-animate>
     <h2 class="af-section-title">Affiliate Onboarding Application</h2>
-    <p class="af-section-sub">Fill out the form below to join our affiliate program. We'll be in touch within 1–2 business days.</p>
+    <p class="af-section-sub">Fill out the form below to join our affiliate program. We'll be in touch within 1 to 2 business days.</p>
   </div>
 
-  <form id="affiliateForm" action="https://formspree.io/f/maqkggpz" method="POST" novalidate>
-    <input type="hidden" name="_subject" value="New Affiliate Application — Innovate Real Estate">
-    <input type="hidden" name="_format" value="plain">
+  <form id="affiliateForm" action="/api/submit-lead" method="POST" novalidate>
+    <input type="hidden" name="form_type" value="affiliate_application">
     <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
     <input type="hidden" name="submitted_url" id="af_submitted_url">
     <input type="hidden" name="submitted_at" id="af_submitted_at">
@@ -453,7 +452,7 @@
         <div class="af-form-group full">
           <label class="af-label" for="af_partner_type">What Best Describes You?<span class="req">*</span></label>
           <select class="af-select" id="af_partner_type" name="partner_type" required>
-            <option value="" disabled selected>— Select a category —</option>
+            <option value="" disabled selected>Select a category , </option>
             <option value="CPA / Tax Professional">CPA / Tax Professional</option>
             <option value="Financial Advisor / Wealth Manager">Financial Advisor / Wealth Manager</option>
             <option value="Commercial Real Estate Broker">Commercial Real Estate Broker</option>
@@ -475,11 +474,11 @@
       <div class="af-form-group">
         <label class="af-label" for="af_client_count">Approximate Number of Clients / Contacts in Your Network</label>
         <select class="af-select" id="af_client_count" name="client_count">
-          <option value="" disabled selected>— Select a range —</option>
-          <option value="1–25">1–25</option>
-          <option value="26–100">26–100</option>
-          <option value="101–500">101–500</option>
-          <option value="501–2,000">501–2,000</option>
+          <option value="" disabled selected>Select a range , </option>
+          <option value="1 to 25">1 to 25</option>
+          <option value="26 to 100">26 to 100</option>
+          <option value="101 to 500">101 to 500</option>
+          <option value="501 to 2,000">501 to 2,000</option>
           <option value="2,000+">2,000+</option>
         </select>
       </div>
@@ -504,7 +503,7 @@
       <div class="af-form-group">
         <label class="af-label" for="af_referral_source">How Did You Hear About Us?</label>
         <select class="af-select" id="af_referral_source" name="referral_source">
-          <option value="" disabled selected>— Select an option —</option>
+          <option value="" disabled selected>Select an option , </option>
           <option value="Existing Innovate client">Existing Innovate client</option>
           <option value="Colleague / Peer">Colleague / Peer</option>
           <option value="LinkedIn">LinkedIn</option>
@@ -547,7 +546,7 @@
       </button>
 
       <p style="font-size:var(--text-xs);color:var(--gray-light);margin-top:var(--space-4);text-align:center;line-height:1.55;">
-        We'll review your application and reach out within 1–2 business days. Submissions are sent directly to our partnerships team — no third-party tracking.
+        We'll review your application and reach out within 1 to 2 business days. Submissions are sent directly to our partnerships team, no third-party tracking.
       </p>
     </div>
   </form>
@@ -558,7 +557,7 @@
       <i data-lucide="check" style="width:40px;height:40px;"></i>
     </div>
     <h2 class="af-section-title" style="margin-bottom:var(--space-4);">Application Received</h2>
-    <p style="color:var(--gray-light);max-width:52ch;margin:0 auto var(--space-6);line-height:1.65;">Thank you for your interest in becoming an Innovate Real Estate affiliate. Our partnerships team will review your application and reach out within 1–2 business days.</p>
+    <p style="color:var(--gray-light);max-width:52ch;margin:0 auto var(--space-6);line-height:1.65;">Thank you for your interest in becoming an Innovate Real Estate affiliate. Our partnerships team will review your application and reach out within 1 to 2 business days.</p>
     <a href="index.html" class="btn btn--outline" style="display:inline-flex;">
       <i data-lucide="arrow-left" style="width:16px;height:16px;"></i>
       Back to Home
@@ -591,7 +590,7 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 document.querySelectorAll('[data-animate]').forEach(el => io.observe(el));
 
-// ── Affiliate form: Formspree integration ────────────────────────────────
+// ── Affiliate form: GoHighLevel CRM integration via /api/submit-lead ────────
 (function() {
   const form = document.getElementById('affiliateForm');
   if (!form) return;
@@ -610,10 +609,10 @@ document.querySelectorAll('[data-animate]').forEach(el => io.observe(el));
   if (phoneInput) {
     phoneInput.addEventListener('input', function(e) {
       let v = e.target.value.replace(/\D/g, '').slice(0, 10);
-      if (v.length > 6)      e.target.value = '(' + v.slice(0,3) + ') ' + v.slice(3,6) + '-' + v.slice(6);
+      if (v.length > 6) e.target.value = '(' + v.slice(0,3) + ') ' + v.slice(3,6) + '-' + v.slice(6);
       else if (v.length > 3) e.target.value = '(' + v.slice(0,3) + ') ' + v.slice(3);
       else if (v.length > 0) e.target.value = '(' + v;
-      else                   e.target.value = '';
+      else e.target.value = '';
     });
   }
 
@@ -626,7 +625,7 @@ document.querySelectorAll('[data-animate]').forEach(el => io.observe(el));
 
   // Set submission metadata
   if (urlField) urlField.value = window.location.href;
-  if (atField)  atField.value  = new Date().toISOString();
+  if (atField) atField.value = new Date().toISOString();
 
   function showError(msg) {
     if (!errorMsg) return;
@@ -645,7 +644,7 @@ document.querySelectorAll('[data-animate]').forEach(el => io.observe(el));
     required.forEach(function(el) {
       let bad = false;
       if (el.type === 'checkbox') bad = !el.checked;
-      else                        bad = !el.value || !String(el.value).trim();
+      else bad = !el.value || !String(el.value).trim();
       if (el.type === 'email' && el.value) {
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value)) bad = true;
       }
@@ -662,14 +661,14 @@ document.querySelectorAll('[data-animate]').forEach(el => io.observe(el));
 
   // Clear error styling as the user types
   form.querySelectorAll('input, select, textarea').forEach(function(el) {
-    el.addEventListener('input',  function() { el.classList.remove('error'); clearError(); });
+    el.addEventListener('input', function() { el.classList.remove('error'); clearError(); });
     el.addEventListener('change', function() { el.classList.remove('error'); clearError(); });
   });
 
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
 
-    // Honeypot — silent drop
+    // Honeypot, silent drop
     const honey = form.querySelector('input[name="_gotcha"]');
     if (honey && honey.value) return;
 
@@ -677,37 +676,52 @@ document.querySelectorAll('[data-animate]').forEach(el => io.observe(el));
 
     // Refresh metadata at submit time
     if (urlField) urlField.value = window.location.href;
-    if (atField)  atField.value  = new Date().toISOString();
+    if (atField) atField.value = new Date().toISOString();
     if (smsHidden && smsCheckbox) smsHidden.value = smsCheckbox.checked ? 'Yes' : 'No';
 
     if (submitBtn) submitBtn.disabled = true;
     if (submitLabel) submitLabel.textContent = 'Submitting…';
 
-    try {
-      const data = new FormData(form);
-      const res = await fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
+    // Build a JSON payload that the /api/submit-lead Netlify Function can
+    // map straight into a GoHighLevel contact. Multi-select checkboxes
+    // (services_of_interest) get collapsed into an array.
+    const fd = new FormData(form);
+    const payload = {};
+    fd.forEach(function(value, key) {
+      if (key === 'services_of_interest') {
+        if (!Array.isArray(payload[key])) payload[key] = [];
+        payload[key].push(value);
+      } else {
+        payload[key] = (value === 'on') ? true : value;
+      }
+    });
+    payload.sms_consent = !!(smsCheckbox && smsCheckbox.checked);
+    const tosBox = form.querySelector('input[name="tos_consent"]');
+    payload.tos_consent = !!(tosBox && tosBox.checked);
 
-      if (res.ok) {
+    try {
+      const res = await fetch('/api/submit-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      let body = {};
+      try { body = await res.json(); } catch(_) {}
+
+      // 200 = full success, 202 = degraded (CRM deferred / backup channel) → still show success
+      if (res.status === 200 || res.status === 202) {
         form.style.display = 'none';
         if (successPanel) {
           successPanel.classList.add('visible');
           successPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
         try { lucide.createIcons(); } catch(e) {}
-      } else {
-        let detail = '';
-        try {
-          const j = await res.json();
-          if (j && j.errors && j.errors.length) detail = ' — ' + j.errors.map(function(x){return x.message;}).join(', ');
-        } catch(_) {}
-        showError('Sorry, something went wrong submitting the form' + detail + '. Please email hello@innovaterealestate.net or call 850-805-3737.');
-        if (submitBtn) submitBtn.disabled = false;
-        if (submitLabel) submitLabel.textContent = 'Submit Application';
+        return;
       }
+      const msg = (body && body.error) || ('Submission failed (HTTP ' + res.status + ').');
+      showError('Sorry, ' + msg + ' Please email hello@innovaterealestate.net or call 850-805-3737.');
+      if (submitBtn) submitBtn.disabled = false;
+      if (submitLabel) submitLabel.textContent = 'Submit Application';
     } catch(err) {
       showError('Network error. Please check your connection and try again, or email hello@innovaterealestate.net.');
       if (submitBtn) submitBtn.disabled = false;
