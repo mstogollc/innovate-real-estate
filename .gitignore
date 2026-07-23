@@ -1,1 +1,3 @@
 assets/tax-savings-blueprint.original.pdf
+# local pre-edit backups (do not push)
+assets/**/.backup/
