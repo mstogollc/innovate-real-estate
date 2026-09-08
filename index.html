@@ -641,6 +641,10 @@
             </label>
           </div>
           <button type="submit" class="bp-submit" id="bpBtn" style="margin-top:18px;">Send Me The Blueprint &rarr;</button>
+          <div id="bpError" role="alert" hidden style="margin-top:16px;color:var(--white);font-size:var(--text-sm);">
+            <p>We couldn't confirm delivery of your request. Your details are still here. Try again, or email <a href="mailto:hello@innovaterealestate.net" style="color:var(--gold);text-decoration:underline;">hello@innovaterealestate.net</a>.</p>
+            <p style="margin-top:8px;">You can still <a href="https://innovaterealestate.net/assets/tax-savings-blueprint.pdf" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;">download the Blueprint</a>.</p>
+          </div>
           <div class="bp-trust">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
             <span>Your information is secure and never shared.</span>
@@ -655,18 +659,20 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             Download Blueprint
           </a>
-          <p style="color:rgba(255,255,255,0.4);font-size:var(--text-xs);margin-top:var(--space-4);">A copy has also been sent to your email.</p>
+          <p style="color:rgba(255,255,255,0.4);font-size:var(--text-xs);margin-top:var(--space-4);">Save the PDF for future reference.</p>
         </div>
       </div>
     </div>
 
     <script>
     (function(){
-      var f=document.getElementById('bpForm'),s=document.getElementById('bpSuccess'),b=document.getElementById('bpBtn');
+      var f=document.getElementById('bpForm'),s=document.getElementById('bpSuccess'),b=document.getElementById('bpBtn'),error=document.getElementById('bpError');
       if(!f)return;
-      f.addEventListener('submit',function(e){
+      f.addEventListener('submit',async function(e){
         e.preventDefault();
         e.stopPropagation();
+        if(b.disabled)return;
+        error.hidden=true;
         /* honeypot */
         if(f._hp&&f._hp.value)return;
         var fn=document.getElementById('bp-fn'),ln=document.getElementById('bp-ln'),em=document.getElementById('bp-em'),ph=document.getElementById('bp-ph'),sms=document.getElementById('bp-sms');
@@ -680,16 +686,21 @@
         if(!ok)return;
         /* disable button immediately */
         b.disabled=true;b.textContent='Sending...';
-        /* Show success, user clicks download button themselves */
-        setTimeout(function(){
+        var controller=new AbortController();
+        var timeout=setTimeout(function(){controller.abort();},20000);
+        try{
+          var response=await fetch('https://formsubmit.co/ajax/hello@innovaterealestate.net',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},signal:controller.signal,body:JSON.stringify({_subject:'New Blueprint Lead: '+fn.value+' '+ln.value,first_name:fn.value.trim(),last_name:ln.value.trim(),email:em.value.trim(),phone:phoneVal||'Not provided',sms_consent:smsOptIn?'Yes':'No',_template:'table',_captcha:'false'})});
+          var result=await response.json();
+          if(!response.ok||!(result.success===true||result.success==='true'))throw new Error('Delivery not confirmed');
           f.style.display='none';
           s.style.display='block';
           s.scrollIntoView({behavior:'smooth',block:'center'});
-        },400);
-        /* Background: send to FormSubmit (team notification), fire & forget */
-        try{fetch('https://formsubmit.co/ajax/hello@innovaterealestate.net',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({_subject:'New Blueprint Lead: '+fn.value+' '+ln.value,first_name:fn.value.trim(),last_name:ln.value.trim(),email:em.value.trim(),phone:phoneVal||'Not provided',sms_consent:smsOptIn?'Yes':'No',_template:'table',_captcha:'false'})});}catch(x){}
-        /* Background: also submit to GHL form, fire & forget */
-        try{var g=document.createElement('iframe');g.style.cssText='position:fixed;top:-9999px;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;';g.src='https://api.leadconnectorhq.com/widget/form/gCTU9j3TlNXW995Ll5zd';document.body.appendChild(g);}catch(x){}
+        }catch(x){
+          error.hidden=false;
+          b.disabled=false;b.textContent='Send Me The Blueprint →';
+        }finally{
+          clearTimeout(timeout);
+        }
       });
     })();
     </script>
