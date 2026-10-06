@@ -866,17 +866,23 @@ button { cursor: pointer; background: none; border: none; }
 /* Mobile nav overlay */
 .mobile-nav {
   position: fixed;
-  inset: 0;
+  inset: var(--nav-height) 0 0;
   background: var(--black);
   z-index: 999;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--space-6) 0;
+  box-sizing: border-box;
   gap: var(--space-6);
   transform: translateX(100%);
   transition: transform var(--transition-slow);
 }
+
+.mobile-nav > * { flex-shrink: 0; }
 
 .mobile-nav.open { transform: translateX(0); }
 
